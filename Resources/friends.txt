@@ -1,0 +1,9 @@
+# Generated: 2020/06/21 20:59:10
+Name: friends
+Size: 6
+1: friends
+2: buddies
+3: pals
+4: homies
+5: buds
+6: soulmates

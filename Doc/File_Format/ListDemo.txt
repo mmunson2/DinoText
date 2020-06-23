@@ -1,0 +1,7 @@
+# Generated: 6/17/2020
+Name: adjectives
+Size: 4
+1. silly
+2. stupid
+3. long
+4. difficult
