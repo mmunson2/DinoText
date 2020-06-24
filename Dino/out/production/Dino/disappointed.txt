@@ -1,0 +1,8 @@
+# Generated: 2020/06/21 20:59:10
+
+Lists Referenced: 5
+verbpastnegative belonging emotionnegative friends nickname 
+
+What do you mean, you \L[verbpastnegative] my \L[belonging]?
+That makes me feel \L[emotionnegative]...
+I thought we were \L[friends], \L[nickname]!

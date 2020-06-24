@@ -1,0 +1,8 @@
+# Generated: 2020/06/21 20:48:37
+
+Lists Referenced: 3
+nickname adjective noun 
+
+Hey there, \L[nickname]!
+It's a \L[adjective] day.
+How is your \L[noun]?
