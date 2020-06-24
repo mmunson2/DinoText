@@ -8,18 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoParser/DialogueParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoParser/DialogueParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/adjective.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/goodday.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/nickname.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/noun.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoParser/DialogueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoParser/DialogueParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoParser/ListParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoParser/ListParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/adjective.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test/adjective.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/goodday.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test/goodday.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/nickname.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test/nickname.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/noun.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test/noun.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +40,7 @@
           <entry key="class" value="1" />
           <entry key="iml" value="3" />
           <entry key="java" value="32" />
-          <entry key="txt" value="5" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -59,24 +49,24 @@
           <entry key="IDEA_MODULE" value="3" />
           <entry key="JAVA" value="32" />
           <entry key="Manifest" value="3" />
-          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="PLAIN_TEXT" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6069" />
+          <entry key="java" value="6118" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6069" />
+          <entry key="JAVA" value="6118" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DinoParser/DialogueParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="312">
@@ -98,11 +88,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test/DinoParser/DialogueParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="285">
+              <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/Test/DinoParser/DinoTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="460">
-              <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+              <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -143,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DinoParser/ListParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="945">
-              <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+            <state relative-caret-position="407">
+              <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
               <folding>
                 <element signature="e#1657#1658#0" expanded="true" />
                 <element signature="e#1689#1690#0" expanded="true" />
@@ -154,12 +144,8 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DinoText/DinoList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/../Resources/nickname.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -214,13 +200,13 @@
         <option value="$PROJECT_DIR$/src/DinoViewer/DinoParser/Dino.java" />
         <option value="$PROJECT_DIR$/src/DinoViewer/DinoParser/ListParser.java" />
         <option value="$PROJECT_DIR$/src/DinoViewer/DinoParser/Parser.java" />
-        <option value="$PROJECT_DIR$/Test/DinoParser/DialogueParserTest.java" />
         <option value="$PROJECT_DIR$/Test/DinoParser/ListParserTest.java" />
         <option value="$PROJECT_DIR$/Test/DinoParser/ParserTest.java" />
         <option value="$PROJECT_DIR$/src/DinoParser/test.java" />
         <option value="$PROJECT_DIR$/Test/DinoParser/DinoTest.java" />
-        <option value="$PROJECT_DIR$/src/DinoParser/ListParser.java" />
         <option value="$PROJECT_DIR$/src/DinoParser/DialogueParser.java" />
+        <option value="$PROJECT_DIR$/src/DinoParser/ListParser.java" />
+        <option value="$PROJECT_DIR$/Test/DinoParser/DialogueParserTest.java" />
       </list>
     </option>
   </component>
@@ -293,7 +279,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593034606522" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593035424525" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -314,6 +300,7 @@
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../Resources" />
       <recent name="$PROJECT_DIR$/META-INF" />
     </key>
   </component>
@@ -483,7 +470,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33476394" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33476394" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -493,8 +480,8 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2313253" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2313253" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -662,16 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/DinoParser/DialogueParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DinoParser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -685,21 +662,10 @@
     <entry file="file://$PROJECT_DIR$/../Resources/Test/goodday.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DinoParser/ListParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding>
-            <element signature="e#1657#1658#0" expanded="true" />
-            <element signature="e#1689#1690#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Test/DinoParser/DinoTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
-          <caret line="42" column="38" lean-forward="true" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -717,6 +683,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="355" column="58" selection-start-line="355" selection-start-column="58" selection-end-line="355" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DinoParser/ListParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
+          <folding>
+            <element signature="e#1657#1658#0" expanded="true" />
+            <element signature="e#1689#1690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Resources/nickname.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/DinoParser/DialogueParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
