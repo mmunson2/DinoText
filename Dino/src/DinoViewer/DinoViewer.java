@@ -25,6 +25,8 @@ public class DinoViewer
      **************************************************************************/
     public static void main(String[] args)
     {
+        System.out.println("Matthew was here");
+        
         Scanner keyboard = new Scanner(System.in);
 
         System.out.println("_________________________________________________");
