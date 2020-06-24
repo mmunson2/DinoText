@@ -30,8 +30,8 @@ class ListParser
 
         Scanner stringScan;
 
-        initialize(name);
-        this.name = name;
+        initialize(file);
+        this.name = name.substring(0,name.length() - 4);
 
         //Unused currently, sanity check? Remove entirely?
         String nameLine = Parser.getNextLine(fileScanner);
@@ -79,18 +79,15 @@ class ListParser
      * initialize
      *
      **************************************************************************/
-    private void initialize(String name)
+    private void initialize(File file)
     {
-        String path = name + ".txt";
-
         try
         {
-            this.fileScanner = new Scanner(
-                    new FileInputStream(path));
+            this.fileScanner = new Scanner(file);
         }
         catch(IOException e)
         {
-            System.err.println("ListParser could not locate fileScanner: " + path);
+            System.err.println("ListParser could not locate fileScanner: " + file.getName());
             System.exit(-1);
         }
     }

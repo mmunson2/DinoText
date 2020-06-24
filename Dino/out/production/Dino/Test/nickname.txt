@@ -1,0 +1,11 @@
+# Generated: 2020/06/21 20:59:10
+Name: nickname
+Size: 8
+1: buddy
+2: bucko
+3: pal
+4: fella
+5: darlin'
+6: cutie
+7: homie
+8: bud

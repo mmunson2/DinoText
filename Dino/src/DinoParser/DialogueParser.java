@@ -3,6 +3,7 @@ package DinoParser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /*******************************************************************************
@@ -37,6 +38,9 @@ class DialogueParser
      **************************************************************************/
     DialogueParser(String path)
     {
+        File file = (new File(path)).getAbsoluteFile();
+        this.parentDirectory = file.getParentFile();
+
         initializeDialogue(path);
         initializeLists();
 
@@ -342,7 +346,8 @@ class DialogueParser
 
             String nextList = stringScan.next();
 
-            lists[listIndex] = new ListParser(new File(parentDirectory.getAbsolutePath() + "/" + nextList));
+            lists[listIndex] = new ListParser(
+                    new File(Paths.get(parentDirectory.toString(), nextList).toString() + ".txt"));
             listIndex++;
         }
 
@@ -382,10 +387,6 @@ class DialogueParser
     {
         try
         {
-            File file = new File(path);
-            File parent = file.getParentFile();
-            this.parentDirectory = parent;
-
             this.dialogueIn = new Scanner(new FileInputStream(path));
         }
         catch(IOException e)
