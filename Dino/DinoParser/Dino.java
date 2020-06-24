@@ -17,8 +17,7 @@ public class Dino
 {
     private String dialogue;
     private String[][] listContents;
-    private int[][] indices;
-
+    private int[] indices;
 
     /***************************************************************************
      * Dino
@@ -49,21 +48,14 @@ public class Dino
     {
         String retVal = this.dialogue;
 
-        int totalIndices = getTotalIndices();
         int indexOffset = 0;
-        int runningMin = Integer.MIN_VALUE;
 
-        for(int i = 0; i < totalIndices; i++)
+        for(int i = 0; i < this.indices.length; i += 2)
         {
-            int[] minIndex = getNextMin(runningMin);
-
-            runningMin = this.indices[minIndex[0]][minIndex[1]];
-
             int originalLength = retVal.length();
 
-            retVal = insertToIndex(minIndex[0],
-                    indices[minIndex[0]][minIndex[1]] + indexOffset,
-                    retVal);
+            retVal = insertToIndex(this.indices[i],
+                    this.indices[i + 1] + indexOffset, retVal);
 
             indexOffset += retVal.length() - originalLength;
         }
@@ -71,46 +63,6 @@ public class Dino
         return retVal;
     }
 
-    /***************************************************************************
-     * getTotalIndices
-     *
-     **************************************************************************/
-    private int getTotalIndices()
-    {
-        int sum = 0;
-
-        for(int array[] : indices)
-        {
-            sum += array.length;
-        }
-
-        return sum;
-    }
-
-    /***************************************************************************
-     * getNextMin
-     *
-     **************************************************************************/
-    private int[] getNextMin(int runningMin)
-    {
-        int nextMin = Integer.MAX_VALUE;
-        int[] retVal = new int[2];
-
-        for(int i = 0; i < indices.length; i++)
-        {
-            for(int j = 0; j < indices[i].length; j++)
-            {
-                   if(indices[i][j] < nextMin && indices[i][j] > runningMin)
-                   {
-                       nextMin = indices[i][j];
-                       retVal[0] = i;
-                       retVal[1] = j;
-                   }
-            }
-        }
-
-        return retVal;
-    }
 
     /***************************************************************************
      * insertToIndex
@@ -139,6 +91,5 @@ public class Dino
 
         return listContents[listNumber][index];
     }
-
 
 }

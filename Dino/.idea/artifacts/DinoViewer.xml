@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DinoViewer">
+    <output-path>$PROJECT_DIR$/out/artifacts/DinoViewer</output-path>
+    <root id="archive" name="DinoViewer.jar">
+      <element id="module-output" name="Dino" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST_DINOVIEWER.MF" output-file-name="MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
