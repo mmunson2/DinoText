@@ -1,0 +1,8 @@
+# Generated: 2020/06/25 08:05:35
+Name: Myths
+Size: 5
+1: the Iliad
+2: the Odyssey
+3: the story of Paul Bunyan
+4: the story of Amaterasu and the Cave
+5: democracy
