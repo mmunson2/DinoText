@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Matthew Munson
  * Date: 6/18/2020
- * @version 0.1
+ * @version 0.15-alpha
  *
  * File interface for the DinoText dynamic text creation tool. Handles both
  * List and Dialogue file writes with separate methods.
@@ -21,6 +21,7 @@ import java.util.Set;
  * Note that a line beginning with a # symbol is ignored by the parser, this
  * symbol can be used to insert comments anywhere in any file type.
  *
+ * //Todo: Place list files in the same directory as dialogue when path specified
  ******************************************************************************/
 class DinoWriter
 {
@@ -39,9 +40,13 @@ class DinoWriter
      *
      * @param list The DinoList to write to file.
      *
+     *
      **************************************************************************/
     void writeListToFile(DinoList list)
     {
+        if(list.skipWrite())
+            return;
+
         String fileName = list.getName() + ".txt";
 
         try
@@ -64,6 +69,8 @@ class DinoWriter
                 " to file.");
     }
 
+
+
     /***************************************************************************
      * writeDialogueToFile
      *
@@ -76,9 +83,11 @@ class DinoWriter
      * @param dialogue The dialogue String to write
      * @param lists The set of DinoLists linked to the dialogue
      *
+     * //Todo: Update doc
+     * //Todo: Refactor with Set-writing method
      **************************************************************************/
     void writeDialogueToFile(String path, String dialogue,
-                                    Set<DinoList> lists)
+                                    Set<DinoList> lists, Set<String> staticVars)
     {
         try
         {
@@ -86,6 +95,7 @@ class DinoWriter
             StringBuilder builder = new StringBuilder();
             writeDate();
 
+            //Write lists to file
             this.writer.write(
                     "\nLists Referenced: " + lists.size() + "\n");
 
@@ -100,6 +110,25 @@ class DinoWriter
             }
 
             this.writer.write('\n');
+
+            //Write Static Variables to File:
+            this.writer.write(
+                    "\nStatic Variables: " +
+                            staticVars.size() + "\n");
+
+            for(String var : staticVars)
+            {
+                builder.setLength(0);
+
+                builder.append(var);
+                builder.append(" ");
+
+                this.writer.write(builder.toString());
+            }
+
+            this.writer.write('\n');
+
+            //Write dialogue to file
             this.writer.write(dialogue);
 
             this.writer.close();

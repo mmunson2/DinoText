@@ -1,6 +1,8 @@
 # Generated: 2020/06/24 11:43:02
 
 Lists Referenced: 1
-T3_List1 
+T3_List1
+
+Static Variables: 0
 
 This is a \L[T3_List1]

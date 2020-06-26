@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 6/21/2020
- * @version 0.1
+ * @version 0.15-alpha
  *
  * A simple demonstration of the Dino API, allowing the user to specify
  * a dialogue file and view as many random dialogue combinations as they
@@ -25,9 +25,6 @@ public class DinoViewer
      **************************************************************************/
     public static void main(String[] args)
     {
-        System.out.println("Matthew was here");
-        System.out.println("Camden was here");
-        
         Scanner keyboard = new Scanner(System.in);
 
         System.out.println("_________________________________________________");
@@ -37,6 +34,22 @@ public class DinoViewer
         String file = keyboard.nextLine();
 
         Dino dino = new Dino(file);
+
+        int staticCount = dino.getStaticVariableCount();
+
+        if(staticCount > 0)
+        {
+            for(int i = 0; i < staticCount; i++)
+            {
+                System.out.println("__________");
+                System.out.println("Enter static variable: "
+                        + dino.getStaticVariableName(i));
+
+                String variable = keyboard.nextLine();
+
+                dino.setStaticVariable(i, variable);
+            }
+        }
 
         System.out.println("_________________________________________________");
         System.out.println("Enter the number of randomly generated " +

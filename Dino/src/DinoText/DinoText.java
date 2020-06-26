@@ -1,16 +1,21 @@
 package DinoText;
 
+import DinoParser.Delimiter;
+import DinoParser.Reference;
+
+import java.io.File;
+import java.nio.file.Paths;
+import java.util.InputMismatchException;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.Set;
-
 
 /*******************************************************************************
  * DinoText Prototype
  *
  * @author Matthew Munson
  * Date: 6/17/2020
- * @version 0.1
+ * @version 0.15-alpha
  *
  * Command line proof of concept for a dynamic text creation tool. Organized
  * into three phases:
@@ -31,6 +36,7 @@ public class DinoText
 {
     private static Scanner keyboard = new Scanner(System.in);
     private static Set<DinoList> lists = new LinkedHashSet<>();
+    private static Set<String> staticVars = new LinkedHashSet<>();
 
     /***************************************************************************
      * main method
@@ -46,16 +52,28 @@ public class DinoText
     {
         DinoWriter writer = new DinoWriter();
 
+        String dialogueName = promptDialogueName();
+
+
         printIntroText();
         String dialogue = getUserDialogue();
 
+
         for(DinoList list : lists)
         {
+            if(listFileExists(dialogueName, list.getName()))
+            {
+                if(!promptOverwrite(list))
+                {
+                    list.setSkipWrite(true);
+                    continue;
+                }
+            }
+
             populateList(list);
         }
 
-        String dialogueName = promptDialogueName();
-        writer.writeDialogueToFile(dialogueName, dialogue, lists);
+        writer.writeDialogueToFile(dialogueName, dialogue, lists, staticVars);
 
         for(DinoList list : lists)
         {
@@ -96,7 +114,7 @@ public class DinoText
             {
                 System.exit(1);
             }
-            else if(nextLine.contains("\\"))
+            else if(nextLine.contains(Delimiter.ESCAPE_STRING))
             {
                 recursiveEscapeHandler(nextLine);
             }
@@ -151,11 +169,11 @@ public class DinoText
      * there are no additional escape characters in the String.
      *
      * @param nextLine A string that may contain an escape character
-     *
+     * //Todo: Update doc
      **************************************************************************/
     private static void recursiveEscapeHandler(String nextLine)
     {
-        int escapeIndex = nextLine.indexOf('\\');
+        int escapeIndex = nextLine.indexOf(Delimiter.ESCAPE_STRING);
 
         //Base case
         if(escapeIndex == -1)
@@ -163,13 +181,37 @@ public class DinoText
             return;
         }
 
-        //Look for open bracket, wary of ArrayIndexOutOfBoundsException
-        if(nextLine.length() > (escapeIndex + 2)
-           && nextLine.charAt(escapeIndex + 1) == 'L'
-           && nextLine.charAt(escapeIndex + 2) == '[')
+        String reducedString = nextLine.substring(escapeIndex);
+
+        boolean verified = Delimiter.verify(reducedString);
+
+        if(verified)
         {
-            String listName = nextLine.substring(escapeIndex + 3);
-            parseListName(listName);
+            Reference ref = Delimiter.getReference(reducedString,
+                    false);
+
+            String name = Delimiter.getName(reducedString, false);
+
+            switch(ref)
+            {
+                case LIST:
+
+                    lists.add(new DinoList(name));
+                    break;
+
+                case STATIC:
+
+                    staticVars.add(name);
+                    break;
+
+
+                default:
+
+                    System.err.println(
+                            "Warning: Unidentified reference in DinoText." +
+                                    "Update likely required.");
+            }
+
         }
 
         String remainder = nextLine.substring(escapeIndex + 1);
@@ -177,38 +219,6 @@ public class DinoText
         recursiveEscapeHandler(remainder);
     }
 
-
-
-    /***************************************************************************
-     * parseListName
-     *
-     * Attempts to extract the name of the list. Fails if no closing bracket
-     * can be found.
-     *
-     * The name is added to the LinkedHashSet. Duplicates are automatically
-     * rejected in the data structure so they need not be checked for here.
-     *
-     * @param listString A string representing the text after an open bracket,
-     *                   with the assumption that a closed bracket exists
-     *                   somewhere.
-     *
-     **************************************************************************/
-    private static void parseListName(String listString)
-    {
-        //Todo: (Maybe) improve error handling
-        if(!listString.contains("]"))
-        {
-            System.out.println("List name error: Missing \"]\", " +
-                    "could not parse!");
-            System.exit(-1);
-        }
-
-        int closeIndex = listString.indexOf("]");
-        listString = listString.substring(0,closeIndex);
-
-        lists.add(new DinoList(listString));
-
-    }
 
     /***************************************************************************
      * populateList
@@ -254,6 +264,77 @@ public class DinoText
             count++;
         }
     }
+
+    private static boolean listFileExists(String dialogueName, String listName)
+    {
+        File file = (new File(dialogueName)).getAbsoluteFile();
+        File parentDirectory = file.getParentFile();
+
+        File listFile = new File(Paths.get(parentDirectory.toString(),
+                listName).toString() + ".txt");
+
+        return listFile.exists();
+    }
+
+    private static boolean promptOverwrite(DinoList list)
+    {
+        String listName = list.getName();
+
+        System.out.println("List: \"" + listName + "\" already exists. " +
+                "Would you like to:");
+        System.out.println("1) Overwrite \"" + listName + "\"");
+        System.out.println("2) Link to the existing \"" + listName + "\"");
+
+        int choice = promptNumberMenu(2);
+
+        switch(choice)
+        {
+            case 1:
+                return true;
+            case 2:
+                return false;
+
+        }
+
+        return false;
+    }
+
+
+    private static int promptNumberMenu(int choices)
+    {
+        System.out.println("Enter a number between 1 and " + choices
+        + ":");
+
+        while(true)
+        {
+            try
+            {
+                int choice = keyboard.nextInt();
+                keyboard.nextLine();
+
+                if(choice > 0 && choice <= choices)
+                {
+                    return choice;
+                }
+                else
+                {
+                    System.out.println("Error: " + choice + " is not between " +
+                            "1 and " + choices + ".");
+                    System.out.println("Enter a number between 1 and " + choices
+                            + ":");
+                }
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println("Error: Invalid character detected.");
+                System.out.println("Enter a number between 1 and " + choices
+                        + ":");
+                keyboard.nextLine();
+            }
+        }
+    }
+
+
 
     /***************************************************************************
      * printIntroText

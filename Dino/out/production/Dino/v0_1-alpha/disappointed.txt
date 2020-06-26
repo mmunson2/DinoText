@@ -1,7 +1,9 @@
 # Generated: 2020/06/21 20:59:10
 
 Lists Referenced: 5
-verbpastnegative belonging emotionnegative friends nickname 
+verbpastnegative belonging emotionnegative friends nickname
+
+Static Variables: 0
 
 What do you mean, you \L[verbpastnegative] my \L[belonging]?
 That makes me feel \L[emotionnegative]...

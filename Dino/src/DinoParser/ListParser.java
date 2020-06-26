@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.1
+ * @version 0.15-alpha
  *
  ******************************************************************************/
 class ListParser

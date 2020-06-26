@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Matthew Munson
  * Date: 6/17/2020
- * @version 0.1
+ * @version 0.15-alpha
  *
  * A variable length list used in the creation of dynamic text lists.
  *
@@ -17,6 +17,7 @@ public class DinoList
 {
     private String name;
     private ArrayList<String> list;
+    private boolean skipWrite = false;
 
 
     /***************************************************************************
@@ -29,6 +30,16 @@ public class DinoList
         this.name = name;
 
         list = new ArrayList<>();
+    }
+
+    void setSkipWrite(boolean skipWrite)
+    {
+        this.skipWrite = skipWrite;
+    }
+
+    boolean skipWrite()
+    {
+        return skipWrite;
     }
 
     /***************************************************************************
@@ -51,6 +62,8 @@ public class DinoList
     {
         return name;
     }
+
+    public void setName(String name) { this.name = name; }
 
     /***************************************************************************
      * equals
