@@ -1,7 +1,5 @@
 package DinoText;
 
-import DinoParser.Dino;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,12 +9,23 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class DinoGUI {
-    private JTextField input;
     private JPanel panel1;
-    private JButton writeToFileButton;
-    private JButton submitButton;
-    private JTextPane output;
-    private JTextPane listContents;
+
+    private JTextField jTextField_input;
+
+    private JScrollPane jScrollPane_dialogueInput;
+    private JScrollPane jScrollPane_listContents;
+
+    private JButton jButton_writeToFile;
+    private JButton jButton_submit;
+
+    private JTextPane jTextPane_output;
+    private JTextPane jTextPane_listContents;
+    private JTextPane jTextPane_dialogueInput;
+
+    private JLabel jLabel_instructions;
+    private JLabel jLabel_listContents;
+
     private String dialogue;
     private String name;
     private String nextListItem;
@@ -24,7 +33,7 @@ public class DinoGUI {
     private DinoList currentList;
     private int count = 1;
     private static Set<DinoList> lists = new LinkedHashSet<>();
-    private enum Mode {GETUSERDIALOGUE, POPULATELIST, DIALOGUEFILENAME, RESTART}
+    private enum Mode {GETUSERDIALOGUE, POPULATELIST, DIALOGUEFILENAME, WRITETOFILE, RESTART}
     private static Mode mode;
 
 
@@ -33,8 +42,14 @@ public class DinoGUI {
         mode = Mode.GETUSERDIALOGUE;
         dialogue = "";
         name = "";
+        setSubmitButtonVisible();
+        setWriteButtonInvisible();
 
-        writeToFileButton.addActionListener(new ActionListener() {
+        setDialogueVisible();
+        setListContentsInvisible();
+        setInputInvisible();
+
+        jButton_writeToFile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 DinoWriter writer = new DinoWriter();
@@ -45,18 +60,21 @@ public class DinoGUI {
                     writer.writeListToFile(list);
                 }
 
-                input.setText("");
-                output.setText("Press the enter key to create a new dialogue file. Press the X in the top right corner to exit.");
+                jTextField_input.setText("");
+                jTextPane_output.setText("Press the enter key to create a new dialogue file. Press the X in the top right corner to exit.");
+
+                setDialogueVisible();
+
                 mode = Mode.RESTART;
             }
         });
 
-        submitButton.addActionListener(new ActionListener() {
+        jButton_submit.addActionListener(new ActionListener() { // USER HITS SUBMIT
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (mode) {
                     case GETUSERDIALOGUE:
-                        String nextLine = input.getText();
+                        String nextLine = jTextPane_dialogueInput.getText();
                         StringBuilder builder = new StringBuilder();
 
                         if (nextLine.contains("\\")) {
@@ -72,35 +90,41 @@ public class DinoGUI {
 
                         currentList = itr.next();
 
-                        output.setText("Populate List: \nList name: " + currentList.getName() + "\nEnter list contents" +
+                        jTextPane_output.setText("Populate List: \nList name: " + currentList.getName() + "\nEnter list contents" +
                                 " one line at a time. \nPress the enter key to complete a list entry." +
                                 "\nPress \"Submit\" when all entries are made. \nPress the X in the upper right corner " +
                                 "to quit without saving.");
 
                         nextListItem = "";
 
-                        input.setText("");
+                        jTextField_input.setText("");
+
+                        setInputVisible();
+                        setDialogueInvisible();
+
                         break;
                     case POPULATELIST:
                         if (itr.hasNext()) {
                             count = 1;
                             currentList = itr.next();
-                            input.setText("");
-                            output.setText("Populate List: \nList name: " + currentList.getName() + "\nEnter list contents" +
+                            jTextField_input.setText("");
+                            jTextPane_output.setText("Populate List: \nList name: " + currentList.getName() + "\nEnter list contents" +
                                     " one line at a time. \nPress the enter key to complete a list entry." +
                                     "\nPress \"Submit\" when all entries are made. \nPress the X in the upper right corner " +
                                     "to quit without saving.");
                         } else {
-                            input.setText("");
-                            output.setText("Enter a name for the dialogue file. Press the enter key when done. ");
+                            setSubmitButtonInvisible();
+                            jTextField_input.setText("");
+                            jTextPane_output.setText("Enter a name for the dialogue file. Press the enter key when done. ");
                             mode = Mode.DIALOGUEFILENAME;
                         }
-                        listContents.setText("");
+                        jTextPane_listContents.setText("");
+                        break;
                 }
             }
         });
 
-        input.addActionListener(new ActionListener() {
+        jTextField_input.addActionListener(new ActionListener() { // USER HITS ENTER
             @Override
             public void actionPerformed(ActionEvent e) {
                 switch (mode) {
@@ -108,33 +132,39 @@ public class DinoGUI {
                         break;
 
                     case POPULATELIST:
-                        output.setText("Populate List: \nList name: " + currentList.getName() + "\nEnter list contents" +
+                        setListContentsVisible();
+
+                        jTextPane_output.setText("Populate List: \nList name: " + currentList.getName() + "\nEnter list contents" +
                                 " one line at a time. \nPress the enter key to complete a list entry." +
                                 "\nPress \"Submit\" when all entries are made. \nPress the X in the upper right corner " +
                                 "to quit without saving.");
 
-                        nextListItem = input.getText();
+                        nextListItem = jTextField_input.getText();
 
                         System.out.println(count + ": "); // DEBUG
 
                         currentList.add(nextListItem);
 
-                        listContents.setText(listContents.getText() + "\n" + count + ": " + nextListItem);
+                        jTextPane_listContents.setText(jTextPane_listContents.getText() + "\n" + count + ": " + nextListItem);
 
                         count++;
+
+                        jTextField_input.setText("");
 
                         break;
 
                     case DIALOGUEFILENAME:
-                        name = input.getText();
+                        name = jTextField_input.getText();
 
                         if (name.length() < 4
                                 || !name.substring(name.length() - 4).equals(".txt")) {
                             name += ".txt";
                         }
-                        input.setText("");
+                        jTextField_input.setText("");
 
-                        output.setText("Press \"Write to File\" to create the dialogue file.");
+                        setWriteButtonVisible();
+
+                        jTextPane_output.setText("Press \"Write to File\" to create the dialogue file.");
                         break;
 
                     case RESTART:
@@ -146,15 +176,62 @@ public class DinoGUI {
                         currentList = null;
                         count = 1;
                         lists = new LinkedHashSet<>();
-                        output.setText("Enter dialogue in as many lines as necessary. \nUse \"\\L[NAME]\" to " +
+                        jTextPane_output.setText("Enter dialogue in as many lines as necessary. \nUse \"\\L[NAME]\" to " +
                                 "specify a list, where NAME is the list name.  \nYou will be asked to populate each " +
                                 "list once the dialogue is complete.  \nPress \"Submit Dialogue\" to complete dialogue " +
                                 "entry. \nPress the X in the upper right corner to quit without saving.");
                         break;
                 }
-                input.setText("");
             }
         });
+    }
+
+    private void setWriteButtonInvisible() {
+        jButton_writeToFile.setVisible(false);
+    }
+
+    private void setWriteButtonVisible() {
+        jButton_submit.setVisible(false);
+        jButton_writeToFile.setVisible(true);
+    }
+
+    private void setSubmitButtonVisible() {
+        jButton_writeToFile.setVisible(false);
+        jButton_submit.setVisible(true);
+    }
+    private void setSubmitButtonInvisible() {
+        jButton_submit.setVisible(false);
+    }
+
+
+    private void setDialogueVisible() {
+        jTextPane_dialogueInput.setVisible(true);
+        jScrollPane_dialogueInput.setVisible(true);
+    }
+
+    private void setInputInvisible() {
+        jTextField_input.setVisible(false);
+    }
+
+    private void setInputVisible() {
+        jTextField_input.setVisible(true);
+    }
+
+    private void setDialogueInvisible() {
+        jTextPane_dialogueInput.setVisible(false);
+        jScrollPane_dialogueInput.setVisible(false);
+    }
+
+    private void setListContentsInvisible() {
+        jScrollPane_listContents.setVisible(false);
+        jTextPane_listContents.setVisible(false);
+        jLabel_listContents.setVisible(false);
+    }
+
+    private void setListContentsVisible() {
+        jScrollPane_listContents.setVisible(true);
+        jTextPane_listContents.setVisible(true);
+        jLabel_listContents.setVisible(true);
     }
 
 
@@ -231,6 +308,7 @@ public class DinoGUI {
         DinoGUI dinogui = new DinoGUI();
         JFrame frame = new JFrame("DinoGUI");
         frame.setContentPane(new DinoGUI().panel1);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

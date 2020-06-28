@@ -8,26 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/AbstractLayout.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/DimensionInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/GridConstraints.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/GridLayoutManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/HorizontalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/LayoutState.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/Spacer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/VerticalInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoParser/DialogueParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoParser/DialogueParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoParser/ListParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoParser/ListParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoViewer/DinoViewer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoViewer/DinoViewer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/Dino/DinoParser/DialogueParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/Dino/DinoParser/DialogueParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/GUITest3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/GUITest3.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,26 +185,34 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="381" y="272" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593097110985" />
-    <state x="706" y="372" key="FileChooserDialogImpl" timestamp="1593097059864">
+    <state x="656" y="407" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1593353252379">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1593097059864" />
-    <state width="1808" height="346" key="GridCell.Tab.0.bottom" timestamp="1593098215949">
+    <state x="656" y="407" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593353252378" />
+    <state x="801" y="504" key="#com.intellij.uiDesigner.palette.ComponentItemDialog.OneOff" timestamp="1593353265903">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1593098215949" />
-    <state width="1808" height="346" key="GridCell.Tab.0.center" timestamp="1593098215949">
+    <state x="801" y="504" key="#com.intellij.uiDesigner.palette.ComponentItemDialog.OneOff/0.0.1851.1234@0.0.1851.1234" timestamp="1593353265903" />
+    <state x="706" y="372" key="FileChooserDialogImpl" timestamp="1593359359712">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1593098215949" />
-    <state width="1808" height="346" key="GridCell.Tab.0.left" timestamp="1593098215949">
+    <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1593359359712" />
+    <state width="1808" height="346" key="GridCell.Tab.0.bottom" timestamp="1593366505849">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1593098215949" />
-    <state width="1808" height="346" key="GridCell.Tab.0.right" timestamp="1593098215949">
+    <state width="1808" height="346" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
+    <state width="1808" height="346" key="GridCell.Tab.0.center" timestamp="1593366505849">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1593098215949" />
+    <state width="1808" height="346" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
+    <state width="1808" height="346" key="GridCell.Tab.0.left" timestamp="1593366505849">
+      <screen x="0" y="0" width="1851" height="1234" />
+    </state>
+    <state width="1808" height="346" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
+    <state width="1808" height="346" key="GridCell.Tab.0.right" timestamp="1593366505849">
+      <screen x="0" y="0" width="1851" height="1234" />
+    </state>
+    <state width="1808" height="346" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
     <state width="1808" height="425" key="GridCell.Tab.1.bottom" timestamp="1593085342214">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -235,6 +229,10 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1808" height="425" key="GridCell.Tab.1.right/0.0.1851.1234@0.0.1851.1234" timestamp="1593085342214" />
+    <state x="586" y="332" key="GuiDesigner.FormSource.Dialog" timestamp="1593353163712">
+      <screen x="0" y="0" width="1851" height="1234" />
+    </state>
+    <state x="586" y="332" key="GuiDesigner.FormSource.Dialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593353163712" />
     <state x="406" y="191" key="SettingsEditor" timestamp="1593036054384">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -243,10 +241,10 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="622" y="441" key="com.intellij.ide.util.TipDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593034884018" />
-    <state x="734" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593077724755">
+    <state x="734" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593357662906">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state x="734" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1851.1234@0.0.1851.1234" timestamp="1593077724755" />
+    <state x="734" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1851.1234@0.0.1851.1234" timestamp="1593357662906" />
     <state x="712" y="498" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog" timestamp="1593093689434">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
