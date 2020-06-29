@@ -8,15 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/DinoGUIController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoTextGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoGUIModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoGUIView.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoGUIView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$3.class" beforeDir="false" />
@@ -26,9 +17,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoList.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoText.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoWriter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI_V1/DinoGUI_V1.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI_V1/DinoGUI_V1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,11 +158,12 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.DinoGUI" />
       <item itemvalue="Application.DinoViewer" />
-      <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="Application.DinoWriterGUI" />
       <item itemvalue="Application.DinoText" />
       <item itemvalue="Application.DinoGUI_V1" />
+      <item itemvalue="JUnit.Unnamed" />
     </list>
     <recent_temporary>
       <list>
