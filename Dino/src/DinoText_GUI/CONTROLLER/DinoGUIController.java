@@ -11,5 +11,15 @@ public class DinoGUIController {
     public DinoGUIController(DinoGUIModel model, DinoGUIView view) {
         dinoGUIModel = model;
         dinoGUIView = view;
+        
+        initialize();
+    }
+
+    private void initialize() {
+        newDialogueScreen();
+    }
+
+    private void newDialogueScreen() {
+
     }
 }

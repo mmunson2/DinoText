@@ -14,6 +14,7 @@
         </constraints>
         <properties>
           <text value="List Contents"/>
+          <visible value="false"/>
         </properties>
       </component>
       <component id="b8aa" class="javax.swing.JLabel" binding="jLabel_instructions">
@@ -22,6 +23,7 @@
         </constraints>
         <properties>
           <text value="Instructions"/>
+          <visible value="false"/>
         </properties>
       </component>
       <component id="c5871" class="javax.swing.JButton" binding="jButton_submit">
@@ -30,6 +32,7 @@
         </constraints>
         <properties>
           <text value="Submit"/>
+          <visible value="false"/>
         </properties>
       </component>
       <component id="e3561" class="javax.swing.JButton" binding="jButton_writeToFile">
@@ -39,13 +42,17 @@
         <properties>
           <horizontalAlignment value="0"/>
           <text value="Write to File"/>
+          <visible value="false"/>
         </properties>
       </component>
       <scrollpane id="a48a2" binding="jScrollPane_listContents">
         <constraints>
           <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <visible value="false"/>
+          <wheelScrollingEnabled value="true"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="413ff" class="javax.swing.JTextPane" binding="jTextPane_listContents">
@@ -64,6 +71,7 @@
           <editable value="false"/>
           <opaque value="false"/>
           <text value="Enter dialogue in as many lines as necessary. Use &quot;\L[NAME]&quot; to specify a list, where NAME is the list name.  &#10;You will be asked to populate each list once the dialogue is complete.  &#10;Press &quot;Submit Dialogue&quot; to complete dialogue entry. &#10;Press the X in the upper right corner to quit without saving."/>
+          <visible value="false"/>
         </properties>
       </component>
       <scrollpane id="ff0fd" binding="jScrollPane_dialogueInput">
@@ -72,7 +80,9 @@
             <minimum-size width="-1" height="300"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <visible value="false"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="1e04" class="javax.swing.JTextPane" binding="jTextPane_dialogueInput">
@@ -92,6 +102,7 @@
         </constraints>
         <properties>
           <text value=""/>
+          <visible value="false"/>
         </properties>
       </component>
     </children>
