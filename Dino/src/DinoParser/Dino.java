@@ -70,15 +70,16 @@ public class Dino
         }
 
 
-        for(int i = 0; i < staticIndices.length; i++)
+        for(int i = 0; i < staticIndices.length; i += 2)
         {
-            String text = staticVars[i][1];
 
-            retVal = insertToIndex(staticIndices[i],
+            String text = staticVars[staticIndices[i]][1];
+
+            retVal = insertToIndex(staticIndices[i + 1],
                     retVal,text);
 
             updateStaticIndicies(staticIndices,
-                    staticIndices[i],
+                    staticIndices[i + 1],
                     text.length());
         }
 
@@ -104,6 +105,7 @@ public class Dino
             if(name.equals(this.staticVars[i][0]))
             {
                 setStaticVariable(i,value);
+                return true;
             }
         }
 
@@ -173,8 +175,6 @@ public class Dino
      **************************************************************************/
     private void updateListIndices(int[] indices, int insert, int length)
     {
-        int listIndex = Reference.LIST.ordinal();
-
         for(int i = 0; i < indices.length; i += 2)
         {
             if(indices[i + 1] > insert)
@@ -189,13 +189,11 @@ public class Dino
      **************************************************************************/
     private void updateStaticIndicies(int[] indices, int insert, int length)
     {
-        int staticIndex = Reference.STATIC.ordinal();
-
-        for(int i = 0; i < indices.length; i++)
+        for(int i = 0; i < indices.length; i += 2)
         {
-            if(indices[i] > insert)
+            if(indices[i + 1] > insert)
             {
-                indices[i] += length - 1;
+                indices[i + 1] += length - 1;
             }
         }
     }

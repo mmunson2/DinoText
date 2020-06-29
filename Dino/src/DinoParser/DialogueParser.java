@@ -146,7 +146,7 @@ class DialogueParser
         int staticIndex = Reference.STATIC.ordinal();
 
         this.indices[listIndex] = new int[referenceCounts[listIndex] * 2];
-        this.indices[staticIndex] = new int[referenceCounts[staticIndex]];
+        this.indices[staticIndex] = new int[referenceCounts[staticIndex] * 2];
 
         //Initialize indices to -1
         for(int i = 0; i < indices.length; i++)
@@ -241,49 +241,45 @@ class DialogueParser
     }
 
 
-    /***************************************************************************
-     * getListNameIndex
-     *
-     * Returns the index of a list given its name
-     *
-     * @param name The name of the list
-     * @return The index of the list in the lists Array. -1 if not found.
-     *
-     **************************************************************************/
-    private int getListNameIndex(String name)
+    private int getNameIndex(Reference ref, String name)
     {
-        for(int i = 0; i < this.lists.length; i++)
-        {
-            if(this.lists[i].getName().equals(name))
-            {
-                return i;
-            }
-        }
 
-        return -1;
+        switch(ref)
+        {
+            case LIST:
+
+                for(int i = 0; i < this.lists.length; i++)
+                {
+                    if(this.lists[i].getName().equals(name))
+                    {
+                        return i;
+                    }
+                }
+
+                return -1;
+
+            case STATIC:
+
+                for(int i = 0; i < this.staticVars.length; i++)
+                {
+                    if(this.staticVars[i].equals(name))
+                    {
+                        return i;
+                    }
+                }
+
+                return -1;
+
+
+            default:
+
+                System.err.println("DialogueParser: Error in " +
+                        "getStaticNameIndex, update likely required.");
+
+                return -1;
+        }
     }
 
-    /***************************************************************************
-     * getStaticNameIndex
-     *
-     * Returns the index of a list given its name
-     *
-     * @param name The name of the list
-     * @return The index of the list in the lists Array. -1 if not found.
-     *
-     **************************************************************************/
-    private int getStaticNameIndex(String name)
-    {
-        for(int i = 0; i < this.lists.length; i++)
-        {
-            if(this.staticVars[i].equals(name))
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
 
     /***************************************************************************
      * addIndex
@@ -304,7 +300,7 @@ class DialogueParser
         {
             case LIST:
 
-                int listNumber = getListNameIndex(name);
+                int listNumber = getNameIndex(ref, name);
 
                 for(int i = 0; i < indices[refIndex].length; i += 2)
                 {
@@ -320,13 +316,14 @@ class DialogueParser
 
             case STATIC:
 
-                int staticListNumber = getStaticNameIndex(name);
+                int staticListNumber = getNameIndex(ref, name);
 
-                for(int i = 0; i < indices[refIndex].length; i++)
+                for(int i = 0; i < indices[refIndex].length; i += 2)
                 {
                     if(this.indices[refIndex][i] == -1)
                     {
-                        this.indices[refIndex][i] = index;
+                        this.indices[refIndex][i] = staticListNumber;
+                        this.indices[refIndex][i + 1] = index;
                         break;
                     }
                 }
@@ -411,9 +408,9 @@ class DialogueParser
         stringScan = new Scanner(listNames);
         int index = 0;
 
-        while(this.lists.length > 0 && stringScan.hasNext())
+        while(this.staticVars.length > 0 && stringScan.hasNext())
         {
-            if(index > lists.length)
+            if(index > staticVars.length)
             {
                 System.err.println("DialogueParser Warning: " +
                         "Static references exceed size");
@@ -427,7 +424,7 @@ class DialogueParser
             index++;
         }
 
-        if(index != lists.length)
+        if(index != staticVars.length)
         {
             System.out.println("DialogueParser Warning: " +
                     "Size exceeds list references ");
