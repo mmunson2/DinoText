@@ -1,11 +1,9 @@
-package DinoText;
+package DinoText_GUI.MODEL;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 /*******************************************************************************

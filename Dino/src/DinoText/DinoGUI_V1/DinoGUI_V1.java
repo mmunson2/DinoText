@@ -1,4 +1,7 @@
-package DinoText;
+package DinoText.DinoGUI_V1;
+
+import DinoText.DinoList;
+import DinoText.DinoWriter;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +11,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class DinoGUI {
+public class DinoGUI_V1 extends JFrame{
     private JPanel panel1;
 
     private JTextField jTextField_input;
@@ -38,7 +41,7 @@ public class DinoGUI {
 
 
 
-    public DinoGUI() {
+    public DinoGUI_V1() {
         mode = Mode.GETUSERDIALOGUE;
         dialogue = "";
         name = "";
@@ -305,9 +308,9 @@ public class DinoGUI {
 
 
     public static void main(String args[]) throws IOException {
-        DinoGUI dinogui = new DinoGUI();
+        DinoGUI_V1 dinogui = new DinoGUI_V1();
         JFrame frame = new JFrame("DinoGUI");
-        frame.setContentPane(new DinoGUI().panel1);
+        frame.setContentPane(new DinoGUI_V1().panel1);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

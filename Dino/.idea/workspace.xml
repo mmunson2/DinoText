@@ -8,12 +8,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/DinoGUIController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoTextGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoGUIModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoGUIView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoGUIView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/GUITest3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/GUITest3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI$Mode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText/DinoWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI_V1/DinoGUI_V1.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoGUI_V1/DinoGUI_V1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText/DinoWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +62,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/DinoText/DinoGUI_V1" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -58,18 +73,22 @@
       <recent name="DinoParser" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ihsan\Documents\GitHub\DinoText\Dino\src\DinoText\DinoGUI_V1" />
+      <recent name="C:\Users\ihsan\Documents\GitHub\DinoText\Dino\src\DinoText_GUI\VIEW" />
+      <recent name="C:\Users\ihsan\Documents\GitHub\DinoText\Dino\src\DinoText_GUI" />
       <recent name="$PROJECT_DIR$/META-INF" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ihsan\Documents\GitHub\DinoText\Dino\src\DinoText_GUI\VIEW" />
       <recent name="C:\Users\ihsan\Documents\GitHub\DinoText\Dino\src\DinoText" />
       <recent name="$PROJECT_DIR$/../Resources/Test" />
       <recent name="$PROJECT_DIR$/../Resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DinoGUI">
+  <component name="RunManager" selected="Application.DinoGUI_V1">
     <configuration name="DinoGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DinoViewer.DinoGUI" />
       <module name="Dino" />
@@ -84,13 +103,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DinoGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText.DinoGUI" />
+    <configuration name="DinoGUI_V1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DinoText.DinoGUI_V1" />
       <module name="Dino" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Resources" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText.*" />
+          <option name="PATTERN" value="DinoText.MODEL.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,11 +118,11 @@
       </method>
     </configuration>
     <configuration name="DinoText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText.DinoText" />
+      <option name="MAIN_CLASS_NAME" value="DinoText.MODEL.DinoText" />
       <module name="Dino" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText.*" />
+          <option name="PATTERN" value="DinoText.MODEL.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,7 +149,7 @@
       <module name="Dino" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText.*" />
+          <option name="PATTERN" value="DinoText.MODEL.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -152,14 +171,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.DinoViewer" />
-      <item itemvalue="Application.DinoGUI" />
       <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="Application.DinoWriterGUI" />
       <item itemvalue="Application.DinoText" />
+      <item itemvalue="Application.DinoGUI_V1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DinoGUI" />
+        <item itemvalue="Application.DinoGUI_V1" />
         <item itemvalue="Application.DinoText" />
         <item itemvalue="Application.DinoWriterGUI" />
         <item itemvalue="Application.DinoGUI" />
@@ -189,6 +208,14 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="656" y="407" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593353252378" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593396270068">
+      <screen x="0" y="0" width="1851" height="1234" />
+    </state>
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593396270068" />
+    <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593396263145">
+      <screen x="0" y="0" width="1851" height="1234" />
+    </state>
+    <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593396263145" />
     <state x="801" y="504" key="#com.intellij.uiDesigner.palette.ComponentItemDialog.OneOff" timestamp="1593353265903">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -197,22 +224,22 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1593359359712" />
-    <state width="1808" height="346" key="GridCell.Tab.0.bottom" timestamp="1593366505849">
+    <state width="1808" height="346" key="GridCell.Tab.0.bottom" timestamp="1593395747432">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
-    <state width="1808" height="346" key="GridCell.Tab.0.center" timestamp="1593366505849">
+    <state width="1808" height="346" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1593395747432" />
+    <state width="1808" height="346" key="GridCell.Tab.0.center" timestamp="1593395747432">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
-    <state width="1808" height="346" key="GridCell.Tab.0.left" timestamp="1593366505849">
+    <state width="1808" height="346" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1593395747432" />
+    <state width="1808" height="346" key="GridCell.Tab.0.left" timestamp="1593395747432">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
-    <state width="1808" height="346" key="GridCell.Tab.0.right" timestamp="1593366505849">
+    <state width="1808" height="346" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1593395747432" />
+    <state width="1808" height="346" key="GridCell.Tab.0.right" timestamp="1593395747432">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1593366505849" />
+    <state width="1808" height="346" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1593395747432" />
     <state width="1808" height="425" key="GridCell.Tab.1.bottom" timestamp="1593085342214">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -280,7 +307,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/DinoText/DinoText.java</url>
           <line>44</line>
-          <properties class="DinoText.DinoText" method="main">
+          <properties class="DinoText.MODEL.DinoText" method="main">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="17" />
