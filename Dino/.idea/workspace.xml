@@ -344,7 +344,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593771663052" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593771749474" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -389,7 +389,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DinoViewer">
+  <component name="RunManager" selected="JUnit.DinoTest_Lists">
     <configuration name="DinoText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DinoText.DinoText" />
       <module name="Dino" />
@@ -481,10 +481,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DinoTest_Lists" />
         <item itemvalue="Application.DinoViewer" />
         <item itemvalue="JUnit.DinoTest_Static" />
         <item itemvalue="Application.DinoText" />
-        <item itemvalue="JUnit.DinoTest_Lists" />
         <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
