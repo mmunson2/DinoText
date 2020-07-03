@@ -1,17 +1,25 @@
 package DinoParser;
 
+import DinoParser.Delimiter.Delimiter;
+import DinoParser.Delimiter.Reference;
+import DinoParser.List.List;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
+
 
 /*******************************************************************************
  * DialogueParser
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.1
+ * @version 0.2-alpha
  *
  * Used to extract the contents of a dialogue file and the list files connected
  * to it.
@@ -20,10 +28,13 @@ import java.util.Scanner;
 class DialogueParser
 {
     private Scanner dialogueIn;
-    private ListParser[] lists;
+    private List[] lists;
+    private Set<String> traitNames;
 
     private String dialogue;
-    private int[] indices;
+    private String[] staticVars;
+
+    private int[][] indices;
 
     private File parentDirectory;
 
@@ -43,6 +54,8 @@ class DialogueParser
 
         initializeDialogue(path);
         initializeLists();
+        initializeStaticVars();
+
 
         StringBuilder builder = new StringBuilder();
 
@@ -81,16 +94,9 @@ class DialogueParser
      *   what should be substituted into the text.
      *
      **************************************************************************/
-    String[][] getListArray()
+    List[] getListArray()
     {
-        String[][] retVal = new String[this.lists.length][];
-
-        for(int i = 0; i < retVal.length; i++)
-        {
-            retVal[i] = this.lists[i].getList();
-        }
-
-        return retVal;
+        return this.lists;
     }
 
     /***************************************************************************
@@ -106,7 +112,26 @@ class DialogueParser
      *          • indices[3] = index of second reference in dialogue String
      *
      **************************************************************************/
-    int[] getIndices() { return this.indices; }
+    int[][] getIndices() { return this.indices; }
+
+    String[][] getStaticVars()
+    {
+        String[][] retVal = new String[staticVars.length][2];
+
+        for(int i = 0; i < retVal.length; i++)
+        {
+            retVal[i][0] = this.staticVars[i];
+            retVal[i][1] = this.staticVars[i];
+        }
+
+        return retVal;
+    }
+
+    String[] getTraitNames()
+    {
+        return Arrays.copyOf(this.traitNames.toArray(),
+                this.traitNames.size(), String[].class);
+    }
 
 
     /***************************************************************************
@@ -118,36 +143,28 @@ class DialogueParser
      **************************************************************************/
     private void initializeIndices(String dialogue)
     {
-        Scanner stringScan = new Scanner(dialogue);
-        String next;
-
         int referenceSum = 0;
 
-        //Figure out how many list references exist total
-        while(stringScan.hasNext())
-        {
-            next = stringScan.next();
+        int[] referenceCounts = Delimiter.referenceCounter(dialogue,
+                true);
 
-            if(next.length() > 3
-            && next.charAt(0) == '\\'
-            && next.charAt(1) == 'L'
-            && next.charAt(2) == '[')
-            {
-                referenceSum++;
-            }
-        }
+        this.indices = new int[referenceCounts.length][];
 
-        //Initialize array so we have two elements for each reference
-        this.indices = new int[referenceSum * 2];
+        int listIndex = Reference.LIST.ordinal();
+        int staticIndex = Reference.STATIC.ordinal();
+
+        this.indices[listIndex] = new int[referenceCounts[listIndex] * 2];
+        this.indices[staticIndex] = new int[referenceCounts[staticIndex] * 2];
 
         //Initialize indices to -1
         for(int i = 0; i < indices.length; i++)
         {
-            this.indices[i] = -1;
+            for(int j = 0; j < indices[i].length; j++)
+            {
+                this.indices[i][j] = -1;
+            }
         }
-
     }
-
 
     /***************************************************************************
      * formatDialogue
@@ -183,32 +200,38 @@ class DialogueParser
         int oldStringIndex = 0; //The index relative to the original String
         int newStringIndex = -1; //The index relative to the new dialogue String
 
+
         //Go until there are no more escape characters
-        while(cutDown.indexOf('\\') != -1)
+        while(cutDown.contains(Delimiter.ESCAPE_STRING))
         {
-            escapeIndex = cutDown.indexOf('\\');
+            escapeIndex = cutDown.indexOf(Delimiter.ESCAPE_STRING);
+            String subString = cutDown.substring(escapeIndex);
 
-            if(cutDown.charAt(escapeIndex + 1) == 'L'
-            && cutDown.charAt(escapeIndex + 2) == '[')
+            if(Delimiter.verify(subString))
             {
-                String name = cutDown.substring(escapeIndex + 3);
-                name = parseListName(name);
-
                 String lastString = cutDown.substring(0, escapeIndex + 1);
                 formattedDialogue.append(lastString);
 
-                oldStringIndex += lastString.length() + 3 + name.length();
+                String name = Delimiter.getName(subString, false);
+
+                Reference ref = Delimiter.getReference(subString, false);
+                int delimiterLength = Delimiter.getCombinedDelimiterLength(ref);
+
+
+                oldStringIndex += lastString.length() + delimiterLength - 1
+                        + name.length();
                 newStringIndex += lastString.length();
 
-                addIndex(name, newStringIndex);
+                addIndex(ref, name, newStringIndex);
 
-                cutDown = cutDown.substring(escapeIndex + 4 + name.length());
+                cutDown = cutDown.substring(escapeIndex + delimiterLength
+                        + name.length());
             }
             //This handles escape characters in the dialogue
             //We don't want to mess with them, so we cut down and move on
             else
             {
-                escapeIndex = cutDown.indexOf('\\');
+                escapeIndex = cutDown.indexOf(Delimiter.ESCAPE_STRING);
 
                 String lastString = cutDown.substring(0, escapeIndex + 1);
                 formattedDialogue.append(lastString);
@@ -227,59 +250,47 @@ class DialogueParser
 
 
     /***************************************************************************
-     * parseListNames
-     *
-     * • This method assumes that the "\L[" has been chopped off
-     *
-     * • The remaining String can be any length, but it must have a "]"
-     *
-     * @param listString String to parse the List name from
-     * @return The text before the "]"
-     *
+     * getNameIndex
      **************************************************************************/
-    private String parseListName(String listString)
+    private int getNameIndex(Reference ref, String name)
     {
-        if(!listString.contains("]"))
+
+        switch(ref)
         {
-            System.err.println("List name error: Missing \"]\", " +
-                    "could not parse!");
-            System.exit(-1);
+            case LIST:
+
+                for(int i = 0; i < this.lists.length; i++)
+                {
+                    if(this.lists[i].getName().equals(name))
+                    {
+                        return i;
+                    }
+                }
+
+                return -1;
+
+            case STATIC:
+
+                for(int i = 0; i < this.staticVars.length; i++)
+                {
+                    if(this.staticVars[i].equals(name))
+                    {
+                        return i;
+                    }
+                }
+
+                return -1;
+
+
+            default:
+
+                System.err.println("DialogueParser: Error in " +
+                        "getStaticNameIndex, update likely required.");
+
+                return -1;
         }
-
-        int closeIndex = listString.indexOf("]");
-        listString = listString.substring(0,closeIndex);
-
-        if(getListNameIndex(listString) == -1)
-        {
-            System.err.println("List Error: " + listString + " is not" +
-                    "linked to the dialogue file");
-            System.exit(-1);
-        }
-
-        return listString;
     }
 
-    /***************************************************************************
-     * getListNameIndex
-     *
-     * Returns the index of a list given its name
-     *
-     * @param name The name of the list
-     * @return The index of the list in the lists Array. -1 if not found.
-     *
-     **************************************************************************/
-    private int getListNameIndex(String name)
-    {
-        for(int i = 0; i < this.lists.length; i++)
-        {
-            if(this.lists[i].getName().equals(name))
-            {
-                return i;
-            }
-        }
-
-        return -1;
-    }
 
     /***************************************************************************
      * addIndex
@@ -292,18 +303,48 @@ class DialogueParser
      * • The indices array MUST be in the order that the list references occur!
      *
      **************************************************************************/
-    private void addIndex(String listName, int index)
+    private void addIndex(Reference ref, String name, int index)
     {
-        int listNumber = getListNameIndex(listName);
+        int refIndex = ref.ordinal();
 
-        for(int i = 0; i < indices.length; i += 2)
+        switch(ref)
         {
-            if(this.indices[i] == -1)
-            {
-                this.indices[i] = listNumber;
-                this.indices[i + 1] = index;
+            case LIST:
+
+                int listNumber = getNameIndex(ref, name);
+
+                for(int i = 0; i < indices[refIndex].length; i += 2)
+                {
+                    if(this.indices[refIndex][i] == -1)
+                    {
+                        this.indices[refIndex][i] = listNumber;
+                        this.indices[refIndex][i + 1] = index;
+                        break;
+                    }
+                }
+
                 break;
-            }
+
+            case STATIC:
+
+                int staticListNumber = getNameIndex(ref, name);
+
+                for(int i = 0; i < indices[refIndex].length; i += 2)
+                {
+                    if(this.indices[refIndex][i] == -1)
+                    {
+                        this.indices[refIndex][i] = staticListNumber;
+                        this.indices[refIndex][i + 1] = index;
+                        break;
+                    }
+                }
+
+                break;
+
+            default:
+
+                System.err.println("DialogueParser: Error in addIndex, update" +
+                        "likely required.");
         }
     }
 
@@ -315,15 +356,15 @@ class DialogueParser
      *
      * • List file names must be their name + ".txt".
      *
-     * •
-     *
      **************************************************************************/
     private void initializeLists()
     {
+        this.traitNames = new LinkedHashSet<>();
+
         Scanner stringScan;
 
         int listCount = getListCount();
-        this.lists = new ListParser[listCount];
+        this.lists = new List[listCount];
 
         if(listCount == 0)
         {
@@ -346,12 +387,71 @@ class DialogueParser
 
             String nextList = stringScan.next();
 
-            lists[listIndex] = new ListParser(
-                    new File(Paths.get(parentDirectory.toString(), nextList).toString() + ".txt"));
+            ListParser parser = new ListParser(new File(
+                    Paths.get(parentDirectory.toString(),
+                            nextList).toString() + ".txt"));
+
+
+            lists[listIndex] = new List(parser);
+
+            this.traitNames.addAll(parser.getTraitNames());
+
             listIndex++;
         }
 
+
         if(listIndex != lists.length)
+        {
+            System.out.println("DialogueParser Warning: " +
+                    "Size exceeds list references ");
+        }
+
+        for(List list: lists)
+        {
+            String[] traitNames = Arrays.copyOf(this.traitNames.toArray(),
+                    this.traitNames.size(), String[].class);
+
+            list.initializeTraits(traitNames);
+        }
+
+    }
+
+    /***************************************************************************
+     * initializeStaticVars
+     **************************************************************************/
+    private void initializeStaticVars()
+    {
+        Scanner stringScan;
+
+        int staticVarCount = getListCount();
+
+        this.staticVars = new String[staticVarCount];
+
+        if(staticVarCount == 0)
+            return;
+
+        String listNames = Parser.getNextLine(dialogueIn);
+
+        stringScan = new Scanner(listNames);
+        int index = 0;
+
+        while(this.staticVars.length > 0 && stringScan.hasNext())
+        {
+            if(index > staticVars.length)
+            {
+                System.err.println("DialogueParser Warning: " +
+                        "Static references exceed size");
+                break;
+            }
+
+            String nextList = stringScan.next();
+
+            this.staticVars[index] = nextList;
+
+            index++;
+        }
+
+        if(index != staticVars.length)
         {
             System.out.println("DialogueParser Warning: " +
                     "Size exceeds list references ");

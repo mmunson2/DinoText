@@ -7,7 +7,7 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.1
+ * @version 0.2-alpha
  *
  ******************************************************************************/
 class Parser

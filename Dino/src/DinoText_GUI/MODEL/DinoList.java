@@ -1,14 +1,16 @@
 package DinoText_GUI.MODEL;
 
+import DinoParser.List.ListEntry;
+
 import java.util.ArrayList;
 
 
 /*******************************************************************************
- * DinoList Prototype
+ * List Prototype
  *
  * @author Matthew Munson
  * Date: 6/17/2020
- * @version 0.1
+ * @version 0.2-alpha
  *
  * A variable length list used in the creation of dynamic text lists.
  *
@@ -16,7 +18,8 @@ import java.util.ArrayList;
 public class DinoList
 {
     private String name;
-    private ArrayList<String> list;
+    private ArrayList<ListEntry> list;
+    private boolean skipWrite = false;
 
 
     /***************************************************************************
@@ -32,13 +35,29 @@ public class DinoList
     }
 
     /***************************************************************************
+     * setSkipWrite
+     **************************************************************************/
+    void setSkipWrite(boolean skipWrite)
+    {
+        this.skipWrite = skipWrite;
+    }
+
+    /***************************************************************************
+     * skipWrite
+     **************************************************************************/
+    boolean skipWrite()
+    {
+        return skipWrite;
+    }
+
+    /***************************************************************************
      * add
      *
      * Simple wrapper for ArrayList functions
      **************************************************************************/
     public void add(String entry)
     {
-        list.add(entry);
+        list.add(new ListEntry(entry, 1, null));
     }
 
 
@@ -50,6 +69,51 @@ public class DinoList
     public String getName()
     {
         return name;
+    }
+
+    /***************************************************************************
+     * setName
+     **************************************************************************/
+    public void setName(String name) { this.name = name; }
+
+    /***************************************************************************
+     * size
+     **************************************************************************/
+    public int size()
+    {
+        return this.list.size();
+    }
+
+    /***************************************************************************
+     * getEntry
+     **************************************************************************/
+    public ListEntry getEntry(int index)
+    {
+        if(index < 0 || index > this.list.size())
+        {
+            System.err.println("Error: Index " + index + " is out of bounds");
+            RuntimeException e = new RuntimeException();
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
+        return this.list.get(index);
+    }
+
+    /***************************************************************************
+     * setProbability
+     **************************************************************************/
+    public void setProbability(int index, double probability)
+    {
+        if(index < 0 || index > this.list.size())
+        {
+            System.err.println("Error: Index " + index + " is out of bounds");
+            RuntimeException e = new RuntimeException();
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
+        this.list.get(index).setBaseProbability(probability);
     }
 
     /***************************************************************************
@@ -88,12 +152,11 @@ public class DinoList
     /***************************************************************************
      * toString
      *
-     * Warning: This toString is used to write the DinoList to file. Changing
+     * Warning: This toString is used to write the List to file. Changing
      * its order may require changes to the ListParser Class.
      **************************************************************************/
     @Override
-    public String toString()
-    {
+    public String toString() {
         StringBuilder builder = new StringBuilder();
 
         builder.append("Name: ");
@@ -104,15 +167,14 @@ public class DinoList
         builder.append(this.list.size());
         builder.append("\n");
 
-        for(int i = 0; i < list.size(); i++)
-        {
+        for (int i = 0; i < list.size(); i++) {
             builder.append(i + 1);
             builder.append(": ");
-            builder.append(list.get(i));
+            builder.append(list.get(i).toFileString());
             builder.append("\n");
         }
 
         return builder.toString();
-    }
 
+    }
 }

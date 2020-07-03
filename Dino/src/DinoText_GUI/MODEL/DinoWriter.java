@@ -2,8 +2,10 @@ package DinoText_GUI.MODEL;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
+
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 import java.util.Set;
 
 /*******************************************************************************
@@ -11,7 +13,7 @@ import java.util.Set;
  *
  * @author Matthew Munson
  * Date: 6/18/2020
- * @version 0.1
+ * @version 0.2-alpha
  *
  * File interface for the DinoText dynamic text creation tool. Handles both
  * List and Dialogue file writes with separate methods.
@@ -19,27 +21,32 @@ import java.util.Set;
  * Note that a line beginning with a # symbol is ignored by the parser, this
  * symbol can be used to insert comments anywhere in any file type.
  *
+ * //Todo: Place list files in the same directory as dialogue when path specified
  ******************************************************************************/
-public class DinoWriter
+class DinoWriter
 {
 
     private FileWriter writer;
 
-    public DinoWriter() {}
+    DinoWriter() {}
 
     /***************************************************************************
      * writeListToFile
      *
-     * Writes a List file given a DinoList Object. Simply utilizes the list
+     * Writes a List file given a List Object. Simply utilizes the list
      * toString() method to populate data.
      *
      * See Examples/ListDemo.txt for formatting example
      *
-     * @param list The DinoList to write to file.
+     * @param list The List to write to file.
+     *
      *
      **************************************************************************/
-    public void writeListToFile(DinoList list)
+    void writeListToFile(DinoList list)
     {
+        if(list.skipWrite())
+            return;
+
         String fileName = list.getName() + ".txt";
 
         try
@@ -62,6 +69,8 @@ public class DinoWriter
                 " to file.");
     }
 
+
+
     /***************************************************************************
      * writeDialogueToFile
      *
@@ -74,9 +83,11 @@ public class DinoWriter
      * @param dialogue The dialogue String to write
      * @param lists The set of DinoLists linked to the dialogue
      *
+     * //Todo: Update doc
+     * //Todo: Refactor with Set-writing method
      **************************************************************************/
-    public void writeDialogueToFile(String path, String dialogue,
-                                    Set<DinoList> lists)
+    void writeDialogueToFile(String path, String dialogue,
+                                    Set<DinoList> lists, Set<String> staticVars)
     {
         try
         {
@@ -84,6 +95,7 @@ public class DinoWriter
             StringBuilder builder = new StringBuilder();
             writeDate();
 
+            //Write lists to file
             this.writer.write(
                     "\nLists Referenced: " + lists.size() + "\n");
 
@@ -98,6 +110,25 @@ public class DinoWriter
             }
 
             this.writer.write('\n');
+
+            //Write Static Variables to File:
+            this.writer.write(
+                    "\nStatic Variables: " +
+                            staticVars.size() + "\n");
+
+            for(String var : staticVars)
+            {
+                builder.setLength(0);
+
+                builder.append(var);
+                builder.append(" ");
+
+                this.writer.write(builder.toString());
+            }
+
+            this.writer.write('\n');
+
+            //Write dialogue to file
             this.writer.write(dialogue);
 
             this.writer.close();
