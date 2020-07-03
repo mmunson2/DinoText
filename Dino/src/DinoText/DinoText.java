@@ -1,21 +1,21 @@
 package DinoText;
 
-import DinoParser.Delimiter;
-import DinoParser.Reference;
+import DinoParser.Delimiter.Delimiter;
+import DinoParser.Delimiter.Reference;
+
+import static DinoText.DinoText_Traits.*;
+import static DinoText.DinoText_Util.*;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.InputMismatchException;
-import java.util.LinkedHashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /*******************************************************************************
  * DinoText Prototype
  *
  * @author Matthew Munson
  * Date: 6/17/2020
- * @version 0.15-alpha
+ * @version 0.2-alpha
  *
  * Command line proof of concept for a dynamic text creation tool. Organized
  * into three phases:
@@ -170,6 +170,7 @@ public class DinoText
      *
      * @param nextLine A string that may contain an escape character
      * //Todo: Update doc
+     * //Todo: Move to different class
      **************************************************************************/
     private static void recursiveEscapeHandler(String nextLine)
     {
@@ -228,7 +229,7 @@ public class DinoText
      * short. The list is terminated by entering \finish, and the user can quit
      * at any time using \exit.
      *
-     * @param list The DinoList to be initialized by the user.
+     * @param list The List to be initialized by the user.
      *
      **************************************************************************/
     private static void populateList(DinoList list)
@@ -240,7 +241,6 @@ public class DinoText
         System.out.println("Type \"\\finish\" to complete dialogue entry. " +
                 "\nType \\exit to quit without saving.");
         System.out.println();
-
 
         String nextLine;
         int count = 1;
@@ -263,8 +263,53 @@ public class DinoText
 
             count++;
         }
+
+        boolean enterProbability = promptYesNo("Enter individual " +
+                "probability values?");
+
+        if(enterProbability)
+        {
+            populateProbability(list);
+        }
+
+        if(enterProbability)
+        {
+            boolean linkTraits = promptYesNo("Link Traits?");
+
+            if(linkTraits)
+            {
+                populateTraits(list);
+            }
+        }
+
     }
 
+    /***************************************************************************
+     * populateProbability
+     **************************************************************************/
+    private static void populateProbability(DinoList list)
+    {
+        System.out.println("\n________________________________________");
+        System.out.println("Populate Probability: ");
+        System.out.println();
+
+        for(int i = 0; i < list.size(); i++)
+        {
+            System.out.print(list.getEntry(i).getListEntry());
+            System.out.println(" Probability: ");
+
+            double probability = keyboard.nextDouble();
+
+            list.setProbability(i,probability);
+        }
+
+        keyboard.nextLine();
+    }
+
+
+    /***************************************************************************
+     * listFileExists
+     **************************************************************************/
     private static boolean listFileExists(String dialogueName, String listName)
     {
         File file = (new File(dialogueName)).getAbsoluteFile();
@@ -276,6 +321,9 @@ public class DinoText
         return listFile.exists();
     }
 
+    /***************************************************************************
+     * promptOverwrite
+     **************************************************************************/
     private static boolean promptOverwrite(DinoList list)
     {
         String listName = list.getName();
@@ -298,43 +346,6 @@ public class DinoText
 
         return false;
     }
-
-
-    private static int promptNumberMenu(int choices)
-    {
-        System.out.println("Enter a number between 1 and " + choices
-        + ":");
-
-        while(true)
-        {
-            try
-            {
-                int choice = keyboard.nextInt();
-                keyboard.nextLine();
-
-                if(choice > 0 && choice <= choices)
-                {
-                    return choice;
-                }
-                else
-                {
-                    System.out.println("Error: " + choice + " is not between " +
-                            "1 and " + choices + ".");
-                    System.out.println("Enter a number between 1 and " + choices
-                            + ":");
-                }
-            }
-            catch (InputMismatchException e)
-            {
-                System.out.println("Error: Invalid character detected.");
-                System.out.println("Enter a number between 1 and " + choices
-                        + ":");
-                keyboard.nextLine();
-            }
-        }
-    }
-
-
 
     /***************************************************************************
      * printIntroText

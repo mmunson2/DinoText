@@ -1,30 +1,39 @@
 package DinoParser;
 
+import DinoParser.List.ListEntry;
+import DinoParser.List.Trait;
+import DinoParser.Parser;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /*******************************************************************************
  * ListParser
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.15-alpha
+ * @version 0.2-alpha
  *
  ******************************************************************************/
-class ListParser
+public class ListParser
 {
-    private String[] list;
     private Scanner fileScanner;
     private String name;
+
+    private ListEntry[] list;
+    private Set<String> traitNames;
 
 
     /***************************************************************************
      * ListParser
      *
      **************************************************************************/
-    ListParser(File file)
+    public ListParser(File file)
     {
         String name = file.getName();
 
@@ -42,24 +51,92 @@ class ListParser
         stringScan.next(); //Ignore the "Size: " text
 
         int size = stringScan.nextInt();
-        this.list = new String[size];
+        this.list = new ListEntry[size];
 
         for(int i = 0; i < list.length; i++)
         {
             String listEntry = Parser.getNextLine(fileScanner);
             stringScan = new Scanner(listEntry);
-            stringScan.next(); //Ignore the entry number
-            String line = stringScan.nextLine();
-            line = line.substring(1);
-            list[i] = line;
+            String entryNumber = stringScan.next(); //Ignore the entry number
+            String entryName = stringScan.nextLine();
+            entryName = entryName.substring(1);
+
+            String dataEntry = Parser.getNextLine(fileScanner);
+            stringScan = new Scanner(dataEntry);
+
+            double baseProbability = stringScan.nextDouble();
+
+            ArrayList<Trait> traitList = new ArrayList<>();
+
+            while(stringScan.hasNext())
+            {
+                String traitLine = stringScan.next();
+
+                Scanner traitScanner = new Scanner(traitLine);
+                traitScanner.useDelimiter(":");
+
+                String traitName = traitScanner.next();
+                double lowerBound = traitScanner.nextDouble();
+                double upperBound = traitScanner.nextDouble();
+                double traitProbability = traitScanner.nextDouble();
+
+                Trait nextTrait = new Trait(traitName,lowerBound,
+                        upperBound,traitProbability);
+
+                traitList.add(nextTrait);
+            }
+
+            Trait[] traits = null;
+
+            if(traitList.size() > 0)
+            {
+                traits = new Trait[traitList.size()];
+
+                for(int j = 0; j < traits.length; j++)
+                {
+                    traits[j] = traitList.get(j);
+                }
+            }
+
+
+            list[i] = new ListEntry(entryName, baseProbability, traits);
+        }
+
+        this.setTraitNames();
+    }
+
+    /***************************************************************************
+     * setTraitNames
+     **************************************************************************/
+    private void setTraitNames()
+    {
+        this.traitNames = new LinkedHashSet<>();
+
+        for(int i = 0; i < this.list.length; i++)
+        {
+            Trait[] traits = this.list[i].getTraits();
+
+            if(traits == null)
+                continue;
+
+            for(int j = 0; j < traits.length; j++)
+            {
+                this.traitNames.add(traits[j].getName());
+            }
         }
     }
+
+    public Set<String> getTraitNames()
+    {
+        return this.traitNames;
+    }
+
 
     /***************************************************************************
      * getName
      *
      **************************************************************************/
-     String getName()
+     public String getName()
     {
         return this.name;
     }
@@ -68,11 +145,10 @@ class ListParser
      * getList
      *
      **************************************************************************/
-     String[] getList()
+     public ListEntry[] getList()
     {
         return this.list;
     }
-
 
 
     /***************************************************************************

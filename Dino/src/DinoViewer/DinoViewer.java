@@ -10,15 +10,20 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 6/21/2020
- * @version 0.15-alpha
+ * @version 0.2-alpha
  *
  * A simple demonstration of the Dino API, allowing the user to specify
  * a dialogue file and view as many random dialogue combinations as they
  * please.
  *
+ * Expanded in version 0.15-alpha to allow the user to pass in static variables
+ * at runtime. This demonstrates how a player may enter their name and it can
+ * be automatically inserted into the text.
+ *
  ******************************************************************************/
 public class DinoViewer
 {
+
     /***************************************************************************
      * main
      *
@@ -35,31 +40,67 @@ public class DinoViewer
 
         Dino dino = new Dino(file);
 
-        int staticCount = dino.getStaticVariableCount();
 
-        if(staticCount > 0)
+        while(true)
         {
-            for(int i = 0; i < staticCount; i++)
+            int staticCount = dino.getStaticVariableCount();
+
+            if(staticCount > 0)
             {
-                System.out.println("__________");
-                System.out.println("Enter static variable: "
-                        + dino.getStaticVariableName(i));
+                for(int i = 0; i < staticCount; i++)
+                {
+                    System.out.println("__________");
+                    System.out.println("Enter static variable: "
+                            + dino.getStaticVariableName(i));
 
-                String variable = keyboard.nextLine();
+                    String variable = keyboard.nextLine();
 
-                dino.setStaticVariable(i, variable);
+                    dino.setStaticVariable(i, variable);
+                }
             }
-        }
 
-        System.out.println("_________________________________________________");
-        System.out.println("Enter the number of randomly generated " +
-                "dialogue samples you'd like to view.");
+            int traitCount = dino.getTraitCount();
 
-        int samples = keyboard.nextInt();
+            if(traitCount > 0)
+            {
+                double[] traitVals = new double[traitCount];
 
-        for(int i = 0; i < samples; i++)
-        {
-            System.out.println(dino.getDialogue());
+                for(int i = 0; i < traitCount; i++)
+                {
+                    System.out.println("__________");
+                    System.out.println("Enter trait value: " + dino.getTraitName(i));
+
+                    double value = keyboard.nextDouble();
+
+                    traitVals[i] = value;
+                }
+
+                dino.setTraitValues(traitVals);
+            }
+
+
+            System.out.println("_________________________________________________");
+            System.out.println("Enter the number of randomly generated " +
+                    "dialogue samples you'd like to view.");
+
+            int samples = keyboard.nextInt();
+            keyboard.nextLine();
+
+            for(int i = 0; i < samples; i++)
+            {
+                System.out.println(dino.getDialogue());
+            }
+
+
+            System.out.println("Continue? (Y/N)");
+
+            String reply = keyboard.nextLine();
+
+            if(reply.equalsIgnoreCase("N"))
+            {
+                break;
+            }
+            //Else: continue
         }
     }
 }

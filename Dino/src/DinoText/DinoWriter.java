@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Matthew Munson
  * Date: 6/18/2020
- * @version 0.15-alpha
+ * @version 0.2-alpha
  *
  * File interface for the DinoText dynamic text creation tool. Handles both
  * List and Dialogue file writes with separate methods.
@@ -33,12 +33,12 @@ class DinoWriter
     /***************************************************************************
      * writeListToFile
      *
-     * Writes a List file given a DinoList Object. Simply utilizes the list
+     * Writes a List file given a List Object. Simply utilizes the list
      * toString() method to populate data.
      *
      * See Examples/ListDemo.txt for formatting example
      *
-     * @param list The DinoList to write to file.
+     * @param list The List to write to file.
      *
      *
      **************************************************************************/

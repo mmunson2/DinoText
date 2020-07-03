@@ -1,0 +1,27 @@
+Actual Design Structures:
+
+
+
+What gets stored in a file:
+
+List of traits
+
+(Each item entry may have multiple)
+• Lower bound decimal
+• Upper bound decimal
+• Probability while in range
+
+
+
+What gets stored in each List Object
+
+
+
+ListEntry
+• List String
+• Base probability
+• Trait array
+
+
+
+What gets stored in the overarching Dino Object=

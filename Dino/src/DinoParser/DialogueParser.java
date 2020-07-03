@@ -1,17 +1,25 @@
 package DinoParser;
 
+import DinoParser.Delimiter.Delimiter;
+import DinoParser.Delimiter.Reference;
+import DinoParser.List.List;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
+import java.util.Set;
+
 
 /*******************************************************************************
  * DialogueParser
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.15-alpha
+ * @version 0.2-alpha
  *
  * Used to extract the contents of a dialogue file and the list files connected
  * to it.
@@ -20,7 +28,8 @@ import java.util.Scanner;
 class DialogueParser
 {
     private Scanner dialogueIn;
-    private ListParser[] lists;
+    private List[] lists;
+    private Set<String> traitNames;
 
     private String dialogue;
     private String[] staticVars;
@@ -85,16 +94,9 @@ class DialogueParser
      *   what should be substituted into the text.
      *
      **************************************************************************/
-    String[][] getListArray()
+    List[] getListArray()
     {
-        String[][] retVal = new String[this.lists.length][];
-
-        for(int i = 0; i < retVal.length; i++)
-        {
-            retVal[i] = this.lists[i].getList();
-        }
-
-        return retVal;
+        return this.lists;
     }
 
     /***************************************************************************
@@ -123,6 +125,12 @@ class DialogueParser
         }
 
         return retVal;
+    }
+
+    String[] getTraitNames()
+    {
+        return Arrays.copyOf(this.traitNames.toArray(),
+                this.traitNames.size(), String[].class);
     }
 
 
@@ -241,6 +249,9 @@ class DialogueParser
     }
 
 
+    /***************************************************************************
+     * getNameIndex
+     **************************************************************************/
     private int getNameIndex(Reference ref, String name)
     {
 
@@ -345,15 +356,15 @@ class DialogueParser
      *
      * • List file names must be their name + ".txt".
      *
-     * •
-     *
      **************************************************************************/
     private void initializeLists()
     {
+        this.traitNames = new LinkedHashSet<>();
+
         Scanner stringScan;
 
         int listCount = getListCount();
-        this.lists = new ListParser[listCount];
+        this.lists = new List[listCount];
 
         if(listCount == 0)
         {
@@ -376,15 +387,31 @@ class DialogueParser
 
             String nextList = stringScan.next();
 
-            lists[listIndex] = new ListParser(
-                    new File(Paths.get(parentDirectory.toString(), nextList).toString() + ".txt"));
+            ListParser parser = new ListParser(new File(
+                    Paths.get(parentDirectory.toString(),
+                            nextList).toString() + ".txt"));
+
+
+            lists[listIndex] = new List(parser);
+
+            this.traitNames.addAll(parser.getTraitNames());
+
             listIndex++;
         }
+
 
         if(listIndex != lists.length)
         {
             System.out.println("DialogueParser Warning: " +
                     "Size exceeds list references ");
+        }
+
+        for(List list: lists)
+        {
+            String[] traitNames = Arrays.copyOf(this.traitNames.toArray(),
+                    this.traitNames.size(), String[].class);
+
+            list.initializeTraits(traitNames);
         }
 
     }

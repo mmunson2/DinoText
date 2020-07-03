@@ -1,22 +1,33 @@
 package DinoParser;
 
-import java.util.Random;
+import DinoParser.Delimiter.Reference;
+import DinoParser.List.List;
+
 
 /*******************************************************************************
  * Dino
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.15-alpha
+ * @version 0.2-alpha
  *
  * The Dino API allows for dynamic text to be quickly generated and returned
  * for display.
+ *
+ * //Todo: Allow user to set lowerBounds and upperBounds
  *
  ******************************************************************************/
 public class Dino
 {
     private String dialogue;
-    private String[][] listContents;
+    private List[] lists;
+
+    private double[] traitVals;
+    private String[] traitNames;
+
+    private double[] lowerBounds;
+    private double[] upperBounds;
+
     private int[][] indices;
     private String[][] staticVars;
 
@@ -34,9 +45,27 @@ public class Dino
     {
         DialogueParser parser = new DialogueParser(path);
         this.dialogue = parser.getDialogue();
-        this.listContents = parser.getListArray();
+        this.lists = parser.getListArray();
         this.staticVars = parser.getStaticVars();
         this.indices = parser.getIndices();
+
+        this.traitNames = parser.getTraitNames();
+        this.traitVals = new double[this.traitNames.length];
+
+        for(int i = 0; i < traitVals.length; i++)
+        {
+            this.traitVals[i] = Double.NaN;
+        }
+
+        this.upperBounds = new double[this.traitVals.length];
+        this.lowerBounds = new double[this.traitVals.length];
+
+        for(int i = 0; i < this.traitVals.length; i++)
+        {
+            this.upperBounds[i] = 100;
+            this.lowerBounds[i] = 0;
+        }
+
     }
 
     /***************************************************************************
@@ -171,6 +200,128 @@ public class Dino
     }
 
     /***************************************************************************
+     * setTraitValue
+     *
+     * Finds a trait with a matching name and sets its value to what's given.
+     *
+     * @return true if successfully set, false otherwise.
+     **************************************************************************/
+    public boolean setTraitValue(String name, double value)
+    {
+        for(int i = 0; i < this.traitNames.length; i++)
+        {
+            if(this.traitNames[i].equals(name))
+            {
+                setAbsoluteTraitVal(i, value);
+                updateTraits();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /***************************************************************************
+     * setTraitValue
+     *
+     * Finds a trait with a matching index and sets its value to what's given.
+     *
+     * @return true if successfully set, false otherwise.
+     **************************************************************************/
+    public boolean setTraitValue(int index, double value)
+    {
+        if(index < 0 || index > this.traitVals.length)
+        {
+            return false;
+        }
+        else
+        {
+            setAbsoluteTraitVal(index, value);
+            updateTraits();
+            return true;
+        }
+    }
+
+    /***************************************************************************
+     * setTraitValues
+     *
+     * Sets all trait values at once - much more efficient!!
+     *
+     * @return true if successfully set, false otherwise.
+     **************************************************************************/
+    public boolean setTraitValues(double[] values)
+    {
+        if(values == null || values.length != this.traitVals.length)
+        {
+            return false;
+        }
+        else
+        {
+            for(int i = 0; i < this.traitVals.length; i++)
+            {
+                setAbsoluteTraitVal(i, values[i]);
+            }
+
+            updateTraits();
+            return true;
+        }
+    }
+
+    /***************************************************************************
+     * getTraitName
+     *
+     * Gets the name of the trait at the given index
+     *
+     * @return The trait name, OUT_OF_BOUNDS for invalid index
+     **************************************************************************/
+    public String getTraitName(int index)
+    {
+        if(index < 0 || index >= this.staticVars.length)
+        {
+            return "OUT_OF_BOUNDS";
+        }
+        else
+        {
+            return this.traitNames[index];
+        }
+    }
+
+    /***************************************************************************
+     * getTraitCount
+     *
+     * gets the number of traits
+     *
+     * @return the number of traits in the dialogue
+     **************************************************************************/
+    public int getTraitCount()
+    {
+        return this.traitNames.length;
+    }
+
+
+    /***************************************************************************
+     * updateTraits
+     **************************************************************************/
+    private void updateTraits()
+    {
+        for(List list : this.lists)
+        {
+            list.updateTraits(this.traitVals);
+        }
+    }
+
+    /***************************************************************************
+     * setAbsoluteTraitVal
+     **************************************************************************/
+    private void setAbsoluteTraitVal(int index, double newValue)
+    {
+        double range = this.upperBounds[index] - this.lowerBounds[index];
+
+        this.traitVals[index] = newValue / range;
+    }
+
+
+    /***************************************************************************
      * updateListIndices
      **************************************************************************/
     private void updateListIndices(int[] indices, int insert, int length)
@@ -232,11 +383,7 @@ public class Dino
      **************************************************************************/
     private String getRandomLine(int listNumber)
     {
-        Random random = new Random();
-
-        int index = random.nextInt(listContents[listNumber].length);
-
-        return listContents[listNumber][index];
+        return this.lists[listNumber].getEntry();
     }
 
 }

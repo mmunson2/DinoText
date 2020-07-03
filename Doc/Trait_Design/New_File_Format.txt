@@ -1,0 +1,16 @@
+New File Format:
+
+________________________________________________________________________________
+# Generated: 6/17/2020
+Name: adjectives
+
+Linked_Traits:
+0: Jealousy
+1: Happiness
+
+Size: 4
+# Name, base probability modifier,
+1. silly 0.5 Happiness:0.25:0.75:1.0 Excitedness:0.5:1.0:1.0 
+2. stupid 0.5
+3. long 0.5
+4. difficult 0.5

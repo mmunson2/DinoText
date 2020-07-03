@@ -1,0 +1,28 @@
+Traits / Probability Design Goals:
+
+
+• Store everything in decimal form (0.0-1.0). Users on both ends (writer, dev)
+will be able to set upper and lower bounds to whatever they want. That way
+the writer doesn't need to know how the devs are scaling their traits
+and vice versa.
+
+List Item Trait info
+• lower bound decimal
+• upper bound decimal
+• Probability while in range
+
+
+
+
+How should list items with assigned traits compare to regular?
+
+Example:
+
+Hey \S[player], \L[testList]
+
+testList:
+==========
+general: 0.3 : what are you doing today?
+linked -> attraction, L0.3H0.7P:0.5 um, give me a call if you'd like to hang out sometime
+linked -> attraction, L0.7H1.0P:0.7 let me know when we can hang out =)
+linked -> jealousy, L0.3H0.7P0.5  Oh, going out to see \S[rival] now are we?
