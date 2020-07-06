@@ -117,6 +117,11 @@ public class ListEntry
 
     public double getUpdatedProbability(double[] allTraits)
     {
+        if(this.traits == null)
+        {
+            return this.baseProbability;
+        }
+
         double sum = 0;
         int count = 0;
 

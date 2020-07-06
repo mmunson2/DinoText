@@ -1,0 +1,9 @@
+# Generated: 2020/07/05 22:33:00
+Name: status
+Size: 3
+1: look amazing
+0.0 health:0.75:1.0:1.0 
+2: look nice
+0.0 health:0.25:0.75:1.0 
+3: smell bad
+0.0 health:0.0:0.25:1.0

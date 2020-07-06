@@ -276,7 +276,7 @@ public class Dino
      **************************************************************************/
     public String getTraitName(int index)
     {
-        if(index < 0 || index >= this.staticVars.length)
+        if(index < 0 || index >= this.traitVals.length)
         {
             return "OUT_OF_BOUNDS";
         }
@@ -367,7 +367,7 @@ public class Dino
      * insertToIndex
      **************************************************************************/
     private String insertToIndex(int index,
-                                 String dialogue, String dynamicText)
+                                    String dialogue, String dynamicText)
     {
         String retVal = dialogue.substring(0,index);
 

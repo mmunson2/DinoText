@@ -120,6 +120,8 @@ public class DinoText_Traits
 
     /***************************************************************************
      * printCreatedTraits
+     *
+     * //Todo: There's a bug here!
      **************************************************************************/
     private static void printCreatedTraits(ArrayList<ArrayList<Trait>> traits)
     {

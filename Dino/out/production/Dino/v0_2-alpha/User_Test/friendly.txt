@@ -1,0 +1,9 @@
+# Generated: 2020/07/05 22:33:00
+
+Lists Referenced: 1
+status 
+
+Static Variables: 1
+name 
+
+Hey \S[name], I think you \L[status] today!

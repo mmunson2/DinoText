@@ -66,10 +66,12 @@ public class Delimiter
         Reference ref = getReference(input, false);
         int value = ref.ordinal();
 
-        int startIndex = ESCAPE_STRING.length() + REFERENCES[ref.ordinal()].length()
+        int startIndex = ESCAPE_STRING.length() +
+                REFERENCES[ref.ordinal()].length()
                 + START_NAME.length();
 
-        int endIndex = startIndex + input.substring(startIndex).indexOf(END_NAME);
+        int endIndex = startIndex +
+                input.substring(startIndex).indexOf(END_NAME);
 
         return input.substring(startIndex, endIndex);
     }

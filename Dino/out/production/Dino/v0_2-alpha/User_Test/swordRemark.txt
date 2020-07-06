@@ -1,0 +1,9 @@
+# Generated: 2020/07/05 22:27:27
+Name: swordRemark
+Size: 3
+1: your sword is looking sharp, I'm glad you're taking care of it!
+0.0 sharpness:0.8:1.0:1.0 
+2: your sword is looking a little dull, you should sharpen it more!
+0.0 sharpness:0.4:0.8:1.0 
+3: where did you find that? The dung heap?
+0.0 sharpness:0.0:0.4:1.0 
