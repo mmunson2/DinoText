@@ -2,8 +2,16 @@ package DinoParser.List;
 
 import DinoParser.ListParser;
 
-import java.util.ArrayList;
-
+/*******************************************************************************
+ * List
+ *
+ * This class represents a List of ListEntries, each of which can contain a
+ * list of traits.
+ *
+ * @author Matthew Munson
+ * Date: 6/29/2020
+ * @version 0.25-alpha
+ ******************************************************************************/
 public class List
 {
     private String name;
@@ -11,13 +19,17 @@ public class List
     private ListEntry[] list;
     private Distribution distribution;
 
-
+    /***************************************************************************
+     * List Constructor
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public List(ListParser parser)
     {
         this.name = parser.getName();
         this.list = parser.getList();
 
-        double weights[] = new double[this.list.length];
+        double[] weights = new double[this.list.length];
 
         for(int i = 0; i < this.list.length; i++)
         {
@@ -29,11 +41,22 @@ public class List
     }
 
 
+    /***************************************************************************
+     * getName
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public String getName()
     {
         return this.name;
     }
 
+
+    /***************************************************************************
+     * initializeTraits
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public void initializeTraits(String[] allTraits)
     {
         for(int i = 0; i < this.list.length; i++)
@@ -42,6 +65,11 @@ public class List
         }
     }
 
+    /***************************************************************************
+     * updateTraits
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public void updateTraits(double[] allTraits)
     {
         double[] weights = new double[this.list.length];
@@ -56,6 +84,11 @@ public class List
     }
 
 
+    /***************************************************************************
+     * getEntry
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public String getEntry()
     {
         int index = this.distribution.sample();
@@ -63,7 +96,11 @@ public class List
         return this.list[index].getListEntry();
     }
 
-
+    /***************************************************************************
+     * toString
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public String toString()
     {
         StringBuilder builder = new StringBuilder();

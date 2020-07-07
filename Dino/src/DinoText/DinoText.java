@@ -15,7 +15,7 @@ import java.util.*;
  *
  * @author Matthew Munson
  * Date: 6/17/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
  *
  * Command line proof of concept for a dynamic text creation tool. Organized
  * into three phases:
@@ -31,6 +31,7 @@ import java.util.*;
  * 3) Write to file. The dialogue and list files are written as text files.
  * These will be viewable using a separate command line program.
  *
+ * @since 0.25-alpha
  ******************************************************************************/
 public class DinoText
 {
@@ -47,6 +48,7 @@ public class DinoText
      *
      * @param args Currently unused
      *
+     * @since 0.25-alpha
      **************************************************************************/
     public static void main(String[] args)
     {
@@ -96,6 +98,7 @@ public class DinoText
      *
      * @return A string representing multiple lines of user dialogue
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private static String getUserDialogue()
     {
@@ -136,6 +139,7 @@ public class DinoText
      *
      * @return A string representing the intended name of the dialogue file.
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private static String promptDialogueName()
     {
@@ -144,8 +148,7 @@ public class DinoText
         String name = keyboard.next();
         keyboard.nextLine();
 
-        if(name.length() < 4
-                || !name.substring(name.length() - 4).equals(".txt"))
+        if(name.length() < 4 || !name.endsWith(".txt"))
         {
             name += ".txt";
         }
@@ -171,6 +174,7 @@ public class DinoText
      * @param nextLine A string that may contain an escape character
      * //Todo: Update doc
      * //Todo: Move to different class
+     * @since 0.25-alpha
      **************************************************************************/
     private static void recursiveEscapeHandler(String nextLine)
     {
@@ -231,6 +235,7 @@ public class DinoText
      *
      * @param list The List to be initialized by the user.
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private static void populateList(DinoList list)
     {
@@ -286,6 +291,8 @@ public class DinoText
 
     /***************************************************************************
      * populateProbability
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private static void populateProbability(DinoList list)
     {
@@ -309,6 +316,8 @@ public class DinoText
 
     /***************************************************************************
      * listFileExists
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private static boolean listFileExists(String dialogueName, String listName)
     {
@@ -323,6 +332,8 @@ public class DinoText
 
     /***************************************************************************
      * promptOverwrite
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private static boolean promptOverwrite(DinoList list)
     {
@@ -352,6 +363,7 @@ public class DinoText
      *
      * Prints some instructions for the user.
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private static void printIntroText()
     {

@@ -12,7 +12,9 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 7/2/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
+ *
+ * Methods for entering trait information from the command line.
  *
  ******************************************************************************/
 public class DinoText_Traits
@@ -21,6 +23,8 @@ public class DinoText_Traits
 
     /***************************************************************************
      * populateTraits
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     static void populateTraits(DinoList list)
     {
@@ -44,35 +48,9 @@ public class DinoText_Traits
             int listChoice = promptNumberMenu(list.size());
             listChoice -= 1; //Convert to array indexing
 
-            boolean useExisting = false;
-            int traitCount = getTraitCount(traits);
+            Trait nextTrait = promptTrait();
 
-            if(traitCount > 0)
-            {
-                useExisting = promptYesNo("Use existing trait?");
-            }
-
-            if(useExisting) // Use existing Trait
-            {
-                System.out.println("Created Traits:");
-                printCreatedTraits(traits);
-
-                System.out.println("Enter trait number to apply to \""
-                        + list.getEntry(listChoice).getListEntry() + "\"");
-
-                int userChoice = promptNumberMenu(traitCount);
-                userChoice -= 1; //Convert to array indexing
-
-                Trait nextTrait = getTraitFromNumber(traits, userChoice);
-
-                traits.get(listChoice).add(nextTrait);
-            }
-            else //Create new Trait
-            {
-                Trait nextTrait = promptTrait();
-
-                traits.get(listChoice).add(nextTrait);
-            }
+            traits.get(listChoice).add(nextTrait);
 
 
             boolean moreTraits = promptYesNo("Add more traits?");
@@ -104,43 +82,9 @@ public class DinoText_Traits
     }
 
     /***************************************************************************
-     * getTraitCount
-     **************************************************************************/
-    private static int getTraitCount(ArrayList<ArrayList<Trait>> traits)
-    {
-        int sum = 0;
-
-        for(int i = 0; i < traits.size(); i++)
-        {
-            sum += traits.get(i).size();
-        }
-
-        return sum;
-    }
-
-    /***************************************************************************
-     * printCreatedTraits
-     *
-     * //Todo: There's a bug here!
-     **************************************************************************/
-    private static void printCreatedTraits(ArrayList<ArrayList<Trait>> traits)
-    {
-        int counter = 1;
-
-        for(int i = 0; i < traits.size(); i++)
-        {
-            for (int j = 0; j < traits.get(i).size(); j++)
-            {
-                System.out.print(counter + ": ");
-                System.out.println(traits.get(i).get(j).toString());
-
-                counter++;
-            }
-        }
-    }
-
-    /***************************************************************************
      * printTraitLine
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private static void printTraitLine(ArrayList<Trait> traitList)
     {
@@ -155,27 +99,12 @@ public class DinoText_Traits
     }
 
     /***************************************************************************
-     * getTraitFromNumber
-     **************************************************************************/
-    private static Trait getTraitFromNumber(ArrayList<ArrayList<Trait>> traits,
-                                            int index)
-    {
-        int counter = 0;
-
-
-        for(int i = 0; i < traits.size(); i++)
-        {
-            if(counter + traits.get(i).size() > index)
-            {
-                return traits.get(i).get(index - i);
-            }
-        }
-
-        return null;
-    }
-
-    /***************************************************************************
      * promptTrait
+     *
+     * Note that min and max are hard coded to 0-100 to make command line
+     * entry less tedious.
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private static Trait promptTrait()
     {
@@ -191,12 +120,16 @@ public class DinoText_Traits
                 System.out.println("Enter the lowest possible value on your " +
                         "trait's scale");
 
-                double min = keyboard.nextDouble();
+                //double min = keyboard.nextDouble();
+                double min = 0;
+                System.out.println(min);
 
                 System.out.println("Enter the largest possible value on your " +
                         "trait's scale");
 
-                double max = keyboard.nextDouble();
+                //double max = keyboard.nextDouble();
+                double max = 100;
+                System.out.println(max);
 
                 if(max <= min)
                 {
@@ -252,6 +185,8 @@ public class DinoText_Traits
 
     /***************************************************************************
      * printList
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private static void printList(DinoList list,
                                   ArrayList<ArrayList<Trait>> traits)

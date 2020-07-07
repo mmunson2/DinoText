@@ -2,6 +2,19 @@ package DinoParser.List;
 
 import java.util.Random;
 
+
+/*******************************************************************************
+ * Distribution Class
+ *
+ * This class is used to create a weighted distribution. It takes in a double
+ * array containing the weights of each element. When sampled, it returns an
+ * integer representing the array position corresponding to the weight.
+ *
+ * @author Matthew Munson
+ * Date: 7/6/2020
+ * @version 0.25-alpha
+ *
+ ******************************************************************************/
 public class Distribution
 {
     private double[] indices;
@@ -9,7 +22,15 @@ public class Distribution
 
     private Random random;
 
-    public Distribution(double[] weights)
+    /***************************************************************************
+     * Distribution Constructor
+     *
+     * Takes in weights as a double array. Initializes the indices array, which
+     * ranges from 0 to the sum of all weights.
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
+    Distribution(double[] weights)
     {
         this.random = new Random();
         this.indices = new double[weights.length];
@@ -21,7 +42,17 @@ public class Distribution
         }
     }
 
-    public int sample()
+    /***************************************************************************
+     * Sample
+     *
+     * Gets a random element with probability based on the inputted weights.
+     *
+     * @return An integer representing the array index corresponding to the
+     *         input weight.
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
+    int sample()
     {
         double sample = random.nextDouble();
         sample *= this.sum;
@@ -36,22 +67,4 @@ public class Distribution
 
         return -1;
     }
-
-
-    public static void main(String[] args)
-    {
-        double[] weights = {1.0, 5.0, 10.0};
-
-        Distribution testDistribution = new Distribution(weights);
-
-        for(int i = 0; i < 10; i++)
-        {
-            System.out.println(testDistribution.sample());
-        }
-
-    }
-
-
-
-
 }

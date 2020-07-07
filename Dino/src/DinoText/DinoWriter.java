@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Matthew Munson
  * Date: 6/18/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
  *
  * File interface for the DinoText dynamic text creation tool. Handles both
  * List and Dialogue file writes with separate methods.
@@ -40,7 +40,7 @@ class DinoWriter
      *
      * @param list The List to write to file.
      *
-     *
+     * @since 0.25-alpha
      **************************************************************************/
     void writeListToFile(DinoList list)
     {
@@ -83,6 +83,8 @@ class DinoWriter
      * @param dialogue The dialogue String to write
      * @param lists The set of DinoLists linked to the dialogue
      *
+     *
+     * @since 0.25-alpha
      * //Todo: Update doc
      * //Todo: Refactor with Set-writing method
      **************************************************************************/
@@ -150,6 +152,8 @@ class DinoWriter
      * Writes the generation time and date to the top of the file.
      *
      * Referenced: https://www.javatpoint.com/java-get-current-date
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void writeDate() throws IOException
     {

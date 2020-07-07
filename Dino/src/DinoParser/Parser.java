@@ -7,7 +7,9 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
+ *
+ * This class provides static methods to assist in the parsing of files.
  *
  ******************************************************************************/
 class Parser
@@ -16,6 +18,7 @@ class Parser
     /***************************************************************************
      * getNextLine
      *
+     * @since 0.25-alpha
      **************************************************************************/
     static String getNextLine(Scanner dialogueIn)
     {

@@ -10,9 +10,11 @@ import java.util.ArrayList;
  *
  * @author Matthew Munson
  * Date: 6/17/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
  *
- * A variable length list used in the creation of dynamic text lists.
+ * This class is used in the creation of a List to be written to file. It
+ * differs from the DinoParser List class primarily in that it can expand
+ * dynamically.
  *
  ******************************************************************************/
 public class DinoList
@@ -21,11 +23,12 @@ public class DinoList
     private ArrayList<ListEntry> list;
     private boolean skipWrite = false;
 
-
     /***************************************************************************
      * Constructor
      *
      * A list is created by defining its name
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public DinoList(String name)
     {
@@ -36,6 +39,8 @@ public class DinoList
 
     /***************************************************************************
      * setSkipWrite
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     void setSkipWrite(boolean skipWrite)
     {
@@ -44,6 +49,8 @@ public class DinoList
 
     /***************************************************************************
      * skipWrite
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     boolean skipWrite()
     {
@@ -54,6 +61,8 @@ public class DinoList
      * add
      *
      * Simple wrapper for ArrayList functions
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public void add(String entry)
     {
@@ -65,6 +74,8 @@ public class DinoList
      * getName
      *
      * Returns the name of the list
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public String getName()
     {
@@ -73,11 +84,15 @@ public class DinoList
 
     /***************************************************************************
      * setName
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public void setName(String name) { this.name = name; }
 
     /***************************************************************************
      * size
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public int size()
     {
@@ -86,6 +101,8 @@ public class DinoList
 
     /***************************************************************************
      * getEntry
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public ListEntry getEntry(int index)
     {
@@ -102,6 +119,8 @@ public class DinoList
 
     /***************************************************************************
      * setProbability
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     public void setProbability(int index, double probability)
     {
@@ -121,6 +140,8 @@ public class DinoList
      *
      * Checks two lists for equality, first by their names, then by their
      * contents.
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     @Override
     public boolean equals(Object other)
@@ -142,6 +163,8 @@ public class DinoList
      * hashCode
      *
      * Based on the list name. Overridden for use in a Set structure.
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     @Override
     public int hashCode()
@@ -154,6 +177,8 @@ public class DinoList
      *
      * Warning: This toString is used to write the List to file. Changing
      * its order may require changes to the ListParser Class.
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     @Override
     public String toString() {
