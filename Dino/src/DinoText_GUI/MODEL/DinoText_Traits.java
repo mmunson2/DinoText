@@ -1,7 +1,7 @@
-package DinoText;
+package DinoText_GUI.MODEL;
 
 import DinoParser.List.Trait;
-import static DinoText.DinoText_Util.*;
+import static DinoText_GUI.MODEL.DinoText_Util.*;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

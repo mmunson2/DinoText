@@ -1,10 +1,11 @@
-package DinoText;
+package DinoText_GUI.MODEL;
 
 import DinoParser.Delimiter.Delimiter;
 import DinoParser.Delimiter.Reference;
+import DinoText_GUI.MODEL.DinoList;
 
-import static DinoText.DinoText_Traits.*;
-import static DinoText.DinoText_Util.*;
+import static DinoText_GUI.MODEL.DinoText_Traits.*;
+import static DinoText_GUI.MODEL.DinoText_Util.*;
 
 import java.io.File;
 import java.nio.file.Paths;
