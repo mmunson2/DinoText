@@ -1,5 +1,13 @@
 package DinoParser.List;
 
+
+/*******************************************************************************
+ * ListEntry Class
+ *
+ * @author Matthew Munson
+ * Date: 6/29/2020
+ * @version 0.25-alpha
+ ******************************************************************************/
 public class ListEntry
 {
     private String listEntry;
@@ -74,19 +82,36 @@ public class ListEntry
         }
     }
 
+    /***************************************************************************
+     * setBaseProbability
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public void setBaseProbability(double baseProbability)
     {
         this.baseProbability = baseProbability;
     }
 
+    /***************************************************************************
+     * getBaseProbability
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public double getBaseProbability()
     {
         return this.baseProbability;
     }
 
+    /***************************************************************************
+     * setTraits
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public void setTraits(Trait[] traits)
     {
-        this.traits = traits;
+        this.traits = new Trait[traits.length];
+        System.arraycopy(traits, 0,
+                this.traits, 0, traits.length);
     }
 
 
@@ -115,8 +140,18 @@ public class ListEntry
         }
     }
 
+    /***************************************************************************
+     * getUpdatedProbability
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public double getUpdatedProbability(double[] allTraits)
     {
+        if(this.traits == null)
+        {
+            return this.baseProbability;
+        }
+
         double sum = 0;
         int count = 0;
 

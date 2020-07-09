@@ -1,55 +1,62 @@
 package DinoParser.List;
 
 import DinoParser.ListParser;
-import org.apache.commons.math3.distribution.*;
-import org.apache.commons.math3.util.Pair;
 
-import java.util.ArrayList;
-
+/*******************************************************************************
+ * List
+ *
+ * This class represents a List of ListEntries, each of which can contain a
+ * list of traits.
+ *
+ * @author Matthew Munson
+ * Date: 6/29/2020
+ * @version 0.25-alpha
+ ******************************************************************************/
 public class List
 {
     private String name;
 
     private ListEntry[] list;
-    private EnumeratedDistribution<String> distribution;
+    private Distribution distribution;
 
-
+    /***************************************************************************
+     * List Constructor
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public List(ListParser parser)
     {
         this.name = parser.getName();
         this.list = parser.getList();
 
-        java.util.List<Pair<String, Double>> pairs = new ArrayList<>();
-
-        boolean nonZero = false;
+        double[] weights = new double[this.list.length];
 
         for(int i = 0; i < this.list.length; i++)
         {
-            Pair<String, Double> nextPair =
-                    new Pair<String, Double>(this.list[i].getListEntry(),
-                            this.list[i].getBaseProbability());
+            weights[i] = this.list[i].getBaseProbability();
 
-            pairs.add(nextPair);
-
-            if(this.list[i].getBaseProbability() != 0)
-                nonZero = true;
         }
 
-        if(!nonZero) //Can't have all zeros in EnumeratedDistribution
-        {
-            pairs.add(new Pair<String, Double>("NO_ACTIVE", 1.0));
-        }
-
-
-        this.distribution = new EnumeratedDistribution<>(pairs);
+        this.distribution = new Distribution(weights);
     }
 
 
+    /***************************************************************************
+     * getName
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public String getName()
     {
         return this.name;
     }
 
+
+    /***************************************************************************
+     * initializeTraits
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public void initializeTraits(String[] allTraits)
     {
         for(int i = 0; i < this.list.length; i++)
@@ -58,50 +65,42 @@ public class List
         }
     }
 
+    /***************************************************************************
+     * updateTraits
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public void updateTraits(double[] allTraits)
     {
-        java.util.List<Pair<String, Double>> pairs = new ArrayList<>();
-
-        boolean nonZero = false;
+        double[] weights = new double[this.list.length];
 
         for(int i = 0; i < this.list.length; i++)
         {
-            double probability = this.list[i].getUpdatedProbability(allTraits);
-
-            if(probability != 0)
-            {
-                nonZero = true;
-            }
-
-            String entry = this.list[i].getListEntry();
-
-            Pair<String, Double> nextPair =
-                    new Pair<String, Double>(entry,probability);
-
-            pairs.add(nextPair);
-
-        }
-
-        if(!nonZero) //Can't have all zeros in EnumeratedDistribution
-        {
-            pairs.add(new Pair<String, Double>("NO_ACTIVE", 1.0));
+            weights[i] = this.list[i].getUpdatedProbability(allTraits);
         }
 
 
-        this.distribution = new EnumeratedDistribution<>(pairs);
+        this.distribution = new Distribution(weights);
     }
 
 
-
-
+    /***************************************************************************
+     * getEntry
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public String getEntry()
     {
-        return this.distribution.sample();
+        int index = this.distribution.sample();
+
+        return this.list[index].getListEntry();
     }
 
-
-
-
+    /***************************************************************************
+     * toString
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     public String toString()
     {
         StringBuilder builder = new StringBuilder();

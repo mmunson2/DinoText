@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 6/21/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
  *
  * A simple demonstration of the Dino API, allowing the user to specify
  * a dialogue file and view as many random dialogue combinations as they
@@ -27,6 +27,7 @@ public class DinoViewer
     /***************************************************************************
      * main
      *
+     * @since 0.25-alpha
      **************************************************************************/
     public static void main(String[] args)
     {

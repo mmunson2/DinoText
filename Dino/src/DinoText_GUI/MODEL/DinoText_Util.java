@@ -1,4 +1,4 @@
-package DinoText_GUI.MODEL;
+package DinoText;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,7 +8,9 @@ import java.util.Scanner;
  *
  * @author Matthew Munson
  * Date: 7/2/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
+ *
+ * Methods that prompt the user for information.
  *
  ******************************************************************************/
 public class DinoText_Util
@@ -17,6 +19,8 @@ public class DinoText_Util
 
     /***************************************************************************
      * promptNumberMenu
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     static int promptNumberMenu(int choices)
     {
@@ -55,6 +59,8 @@ public class DinoText_Util
 
     /***************************************************************************
      * promptYesNo
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     static boolean promptYesNo(String message)
     {

@@ -17,13 +17,12 @@ import java.util.Set;
 /*******************************************************************************
  * DialogueParser
  *
+ * This class is used to extract information from dialogue files. Its data is
+ * then retrieved and stored by a Dino Object.
+ *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.2-alpha
- *
- * Used to extract the contents of a dialogue file and the list files connected
- * to it.
- *
+ * @version 0.25-alpha
  ******************************************************************************/
 class DialogueParser
 {
@@ -31,21 +30,26 @@ class DialogueParser
     private List[] lists;
     private Set<String> traitNames;
 
-    private String dialogue;
+    private final String dialogue;
     private String[] staticVars;
 
     private int[][] indices;
 
-    private File parentDirectory;
+    private final File parentDirectory;
 
 
     /***************************************************************************
-     * DialogueParser
+     * DialogueParser Constructor
      *
      * Initializes instance variables and performs all file operations
      *
-     * @param path The dialogue file path
+     * Construction of the DialogueParser Object is likely the most expensive
+     * operation in the entire Dino sequence because of the file access. If
+     * a large amount of DialogueParser Objects need to be created, they
+     * should be initialized during a loading sequence.
      *
+     * @param path The dialogue file path
+     * @since 0.25-alpha
      **************************************************************************/
     DialogueParser(String path)
     {
@@ -74,10 +78,14 @@ class DialogueParser
     /***************************************************************************
      * getDialogue
      *
-     * Returns modified dialogue String. \L[NAME] has been replaced with \.
-     * The indices array must be used to insert list entries into the
-     * dialogue.
+     * To simplify the String appending process in Dino, all References
+     * (eg. \L[NAME], \S[player]) have been replaced with a single escape
+     * character. The indices array is responsible for tracking the location
+     * of each Reference.
      *
+     * @return The modified dialogue String
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     String getDialogue()
     {
@@ -87,12 +95,14 @@ class DialogueParser
     /***************************************************************************
      * getListArray
      *
-     * • First dimension corresponds to the list number. This is determined
-     *   by the order of the list names in the dialogue file
+     * Returns an Array of List Objects representing all of the Lists referenced
+     * in the dialogue file.
      *
-     * • Second dimension corresponds to elements inside the list. This is
-     *   what should be substituted into the text.
+     * Note: returned Array is not a deep copy!
      *
+     * @return the List Array
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     List[] getListArray()
     {
@@ -102,18 +112,76 @@ class DialogueParser
     /***************************************************************************
      * getIndices
      *
-     * • Ordered list that contains the list number, then the index in the
-     *   modified dialogue String where the list element should be inserted.
+     * The indices array contains the reference type, list or variable number,
+     * and position within the dialogue file. The array is organized as follows:
+     * ____________________________________
+     * |        |   0    |    1    |      |
+     * | index  |  LIST  |  STATIC | .... |
+     * |        |        |         |      |
+     * ------------------------------------
+     * |        | LIST   | STATIC  |      |
+     * |   0    | index1 | index1  | ...  |
+     * |        | List#  | Static# |      |
+     * ------------------------------------
+     * |        | LIST   | STATIC  |      |
+     * |   1    | index1 | index1  | ...  |
+     * |        | StrPos | StrPos  |      |
+     * ------------------------------------
+     * |        | LIST   | STATIC  |      |
+     * |   2    | index2 | index2  | ...  |
+     * |        | List#  | Static# |      |
+     * ------------------------------------
+     * |        |        |         |      |
+     * |   3    |  ...   |   ...   | ...  |
+     * |        |        |         |      |
+     * ------------------------------------
      *
-     *   • Example: for an indices array of size 4:
-     *          • indices[0] = list number of first reference
-     *          • indices[1] = index of first reference in dialogue String
-     *          • indices[2] = list number of second reference
-     *          • indices[3] = index of second reference in dialogue String
+     * The first dimension of the array corresponds to the Reference ordinal
+     * (e.g. LIST, STATIC). Each entry is provided two spaces within the indices
+     * array. The first corresponds to the list or variable number. The second
+     * is the location of the entry in the dialogue file.
      *
+     * Note: Array is not a deep copy!
+     *
+     * @return the indices array
+     * @since 0.25-alpha
      **************************************************************************/
     int[][] getIndices() { return this.indices; }
 
+
+    /***************************************************************************
+     * getStaticVars
+     *
+     * The staticVars array holds the name of each static variable, as well
+     * as the String attached to it. For instance, a static variable might be
+     * named "player", and at runtime could be assigned "Dino."
+     *
+     * The staticVars Array is organized as follows:
+     * ____________________________
+     * |        |   0    |    1   |
+     * | index  |Variable|Variable|
+     * |        |  Name  |  Value |
+     * ----------------------------
+     * |        |Variable|Variable|
+     * |   0    |   1    |   1    |
+     * |        |  Name  |  Value |
+     * ----------------------------
+     * |        |Variable|Variable|
+     * |   1    |   2    |   2    |
+     * |        |  Name  |  Value |
+     * ----------------------------
+     * |        |        |        |
+     * |   ...  |   ...  |   ...  |
+     * |        |        |        |
+     * ----------------------------
+     *
+     * Note that each value is initialized to the name. This is intended to
+     * assist the developer in identifying any static variables that are not
+     * initialized.
+     *
+     * @return the staticVars array
+     * @since 0.25-alpha
+     **************************************************************************/
     String[][] getStaticVars()
     {
         String[][] retVal = new String[staticVars.length][2];
@@ -121,25 +189,35 @@ class DialogueParser
         for(int i = 0; i < retVal.length; i++)
         {
             retVal[i][0] = this.staticVars[i];
-            retVal[i][1] = this.staticVars[i];
+            retVal[i][1] = this.staticVars[i]; //Initialize value to name
         }
 
         return retVal;
     }
 
+    /***************************************************************************
+     * getTraitNames
+     *
+     * The traitNames array holds the names of all traits in all lists contained
+     * in the Dialogue Object. This entire array can be passed into each
+     * List Object when updating values.
+     *
+     * @return The traitNames String array
+     *
+     * @since 0.25-alpha
+     **************************************************************************/
     String[] getTraitNames()
     {
         return Arrays.copyOf(this.traitNames.toArray(),
                 this.traitNames.size(), String[].class);
     }
 
-
     /***************************************************************************
      * initializeIndices
      *
      * • Creates the indices array and fills it with -1. 0 is a valid list
      *   number and index so it needs to be negative.
-     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void initializeIndices(String dialogue)
     {
@@ -188,6 +266,7 @@ class DialogueParser
      * • Initializing newStringIndex is a bit of an odd quirk about this
      *   method. We normally
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private String formatDialogue(String dialouge)
     {
@@ -251,6 +330,8 @@ class DialogueParser
 
     /***************************************************************************
      * getNameIndex
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private int getNameIndex(Reference ref, String name)
     {
@@ -302,6 +383,7 @@ class DialogueParser
      *      • indices[i + 1] = the index where the list contents should go
      * • The indices array MUST be in the order that the list references occur!
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private void addIndex(Reference ref, String name, int index)
     {
@@ -310,21 +392,6 @@ class DialogueParser
         switch(ref)
         {
             case LIST:
-
-                int listNumber = getNameIndex(ref, name);
-
-                for(int i = 0; i < indices[refIndex].length; i += 2)
-                {
-                    if(this.indices[refIndex][i] == -1)
-                    {
-                        this.indices[refIndex][i] = listNumber;
-                        this.indices[refIndex][i + 1] = index;
-                        break;
-                    }
-                }
-
-                break;
-
             case STATIC:
 
                 int staticListNumber = getNameIndex(ref, name);
@@ -356,6 +423,7 @@ class DialogueParser
      *
      * • List file names must be their name + ".txt".
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private void initializeLists()
     {
@@ -418,6 +486,8 @@ class DialogueParser
 
     /***************************************************************************
      * initializeStaticVars
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void initializeStaticVars()
     {
@@ -462,6 +532,7 @@ class DialogueParser
     /***************************************************************************
      * getListCount
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private int getListCount()
     {
@@ -482,6 +553,7 @@ class DialogueParser
     /***************************************************************************
      * initializeDialogue
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private void initializeDialogue(String path)
     {

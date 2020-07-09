@@ -8,12 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/DinoText_Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/DinoText_Dialogue_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText_Dialogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText_Dialogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoText_Dialogue_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoText_Dialogue_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoText_Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/DinoText_Dialogue_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Traits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Traits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

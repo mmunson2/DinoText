@@ -9,12 +9,51 @@ import DinoParser.List.List;
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
  *
  * The Dino API allows for dynamic text to be quickly generated and returned
  * for display.
  *
  * //Todo: Allow user to set lowerBounds and upperBounds
+ *
+ * _____________________________________________________________________________
+ * indices Array Organization
+ *
+ * The indices array stores the index locations of escape characters within the
+ * dialogue String. List entries and static variables are inserted to these
+ * indices to create dynamic dialogue.
+ *
+ * The first dimension of the array corresponds to the Reference enum ordinal.
+ * As of v0.25-alpha, there is only LIST and STATIC at indices 0 and 1. Each
+ * element within the indices array takes up two array positions. The first
+ * corresponds to the list index or static variable index. The second is the
+ * actual position within the dialogue String.
+ *
+ * ____________________________________
+ * |        |   0    |    1    |      |
+ * | index  |  LIST  |  STATIC | .... |
+ * |        |        |         |      |
+ * ------------------------------------
+ * |        | LIST   | STATIC  |      |
+ * |   0    | index1 | index1  | ...  |
+ * |        | List#  | Static# |      |
+ * ------------------------------------
+ * |        | LIST   | STATIC  |      |
+ * |   1    | index1 | index1  | ...  |
+ * |        | StrPos | StrPos  |      |
+ * ------------------------------------
+ * |        | LIST   | STATIC  |      |
+ * |   2    | index2 | index2  | ...  |
+ * |        | List#  | Static# |      |
+ * ------------------------------------
+ * |        |        |         |      |
+ * |   3    |  ...   |   ...   | ...  |
+ * |        |        |         |      |
+ * ------------------------------------
+ *
+ * _____________________________________________________________________________
+ *
+ *
  *
  ******************************************************************************/
 public class Dino
@@ -39,7 +78,7 @@ public class Dino
      * a load sequence if possible.
      *
      * @param path Path to the dialogue file to be processed.
-     *
+     * @since 0.25-alpha
      **************************************************************************/
     public Dino(String path)
     {
@@ -74,6 +113,7 @@ public class Dino
      * Generates randomized dialogue and returns it ready for display.
      *
      * @return A string containing the randomized dialogue
+     * @since 0.25-alpha
      **************************************************************************/
     public String getDialogue()
     {
@@ -126,6 +166,7 @@ public class Dino
      * @param value The String to set the static variable to
      *
      * @return true if set. False if no matching variable name
+     * @since 0.25-alpha
      **************************************************************************/
     public boolean setStaticVariable(String name, String value)
     {
@@ -151,6 +192,7 @@ public class Dino
      * @param value The String to set the static variable to
      *
      * @return true if set. False if the index is out of bounds
+     * @since 0.25-alpha
      **************************************************************************/
     public boolean setStaticVariable(int index, String value)
     {
@@ -171,6 +213,7 @@ public class Dino
      * Gets the number of static variables.
      *
      * @return The number of static variables
+     * @since 0.25-alpha
      **************************************************************************/
     public int getStaticVariableCount()
     {
@@ -186,6 +229,7 @@ public class Dino
      *
      * @return The name of the static variable if in range. "OUT_OF_BOUNDS" if
      * the index is out of range.
+     * @since 0.25-alpha
      **************************************************************************/
     public String getStaticVariableName(int index)
     {
@@ -205,6 +249,7 @@ public class Dino
      * Finds a trait with a matching name and sets its value to what's given.
      *
      * @return true if successfully set, false otherwise.
+     * @since 0.25-alpha
      **************************************************************************/
     public boolean setTraitValue(String name, double value)
     {
@@ -227,6 +272,7 @@ public class Dino
      * Finds a trait with a matching index and sets its value to what's given.
      *
      * @return true if successfully set, false otherwise.
+     * @since 0.25-alpha
      **************************************************************************/
     public boolean setTraitValue(int index, double value)
     {
@@ -248,6 +294,7 @@ public class Dino
      * Sets all trait values at once - much more efficient!!
      *
      * @return true if successfully set, false otherwise.
+     * @since 0.25-alpha
      **************************************************************************/
     public boolean setTraitValues(double[] values)
     {
@@ -273,10 +320,11 @@ public class Dino
      * Gets the name of the trait at the given index
      *
      * @return The trait name, OUT_OF_BOUNDS for invalid index
+     * @since 0.25-alpha
      **************************************************************************/
     public String getTraitName(int index)
     {
-        if(index < 0 || index >= this.staticVars.length)
+        if(index < 0 || index >= this.traitVals.length)
         {
             return "OUT_OF_BOUNDS";
         }
@@ -292,6 +340,7 @@ public class Dino
      * gets the number of traits
      *
      * @return the number of traits in the dialogue
+     * @since 0.25-alpha
      **************************************************************************/
     public int getTraitCount()
     {
@@ -301,6 +350,8 @@ public class Dino
 
     /***************************************************************************
      * updateTraits
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void updateTraits()
     {
@@ -312,6 +363,8 @@ public class Dino
 
     /***************************************************************************
      * setAbsoluteTraitVal
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void setAbsoluteTraitVal(int index, double newValue)
     {
@@ -323,6 +376,8 @@ public class Dino
 
     /***************************************************************************
      * updateListIndices
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void updateListIndices(int[] indices, int insert, int length)
     {
@@ -337,6 +392,8 @@ public class Dino
 
     /***************************************************************************
      * updateStaticIndices
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void updateStaticIndicies(int[] indices, int insert, int length)
     {
@@ -351,6 +408,8 @@ public class Dino
 
     /***************************************************************************
      * getRefIndices
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private int[] getRefIndices(Reference ref)
     {
@@ -365,9 +424,11 @@ public class Dino
 
     /***************************************************************************
      * insertToIndex
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private String insertToIndex(int index,
-                                 String dialogue, String dynamicText)
+                                    String dialogue, String dynamicText)
     {
         String retVal = dialogue.substring(0,index);
 
@@ -380,6 +441,8 @@ public class Dino
 
     /***************************************************************************
      * getRandomLine
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private String getRandomLine(int listNumber)
     {

@@ -1,12 +1,12 @@
 package DinoParser.List;
 
-/***************************************************************************
+/*******************************************************************************
  * Trait Class
  *
  * @author Matthew Munson
  * Date: 6/29/2020
- * @version 0.2-alpha
- **************************************************************************/
+ * @version 0.25-alpha
+ ******************************************************************************/
 public class Trait
 {
     private String name;
@@ -52,7 +52,7 @@ public class Trait
      **************************************************************************/
     public double getProbability(double traitVal)
     {
-        if(traitVal > lowerBound && traitVal < upperBound)
+        if(traitVal >= lowerBound && traitVal <= upperBound)
         {
             return probability;
         }

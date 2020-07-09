@@ -2,10 +2,8 @@ package DinoParser;
 
 import DinoParser.List.ListEntry;
 import DinoParser.List.Trait;
-import DinoParser.Parser;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -17,7 +15,10 @@ import java.util.Set;
  *
  * @author Matthew Munson
  * Date: 6/20/2020
- * @version 0.2-alpha
+ * @version 0.25-alpha
+ *
+ * This class is used to extract information from List files. Data is then
+ * accessed by the DialogueParser class.
  *
  ******************************************************************************/
 public class ListParser
@@ -28,10 +29,10 @@ public class ListParser
     private ListEntry[] list;
     private Set<String> traitNames;
 
-
     /***************************************************************************
      * ListParser
      *
+     * @since 0.25-alpha
      **************************************************************************/
     public ListParser(File file)
     {
@@ -107,6 +108,8 @@ public class ListParser
 
     /***************************************************************************
      * setTraitNames
+     *
+     * @since 0.25-alpha
      **************************************************************************/
     private void setTraitNames()
     {
@@ -135,6 +138,7 @@ public class ListParser
     /***************************************************************************
      * getName
      *
+     * @since 0.25-alpha
      **************************************************************************/
      public String getName()
     {
@@ -144,6 +148,7 @@ public class ListParser
     /***************************************************************************
      * getList
      *
+     * @since 0.25-alpha
      **************************************************************************/
      public ListEntry[] getList()
     {
@@ -154,6 +159,7 @@ public class ListParser
     /***************************************************************************
      * initialize
      *
+     * @since 0.25-alpha
      **************************************************************************/
     private void initialize(File file)
     {
