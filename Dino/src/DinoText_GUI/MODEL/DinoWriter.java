@@ -1,4 +1,4 @@
-package DinoText;
+package DinoText_GUI.MODEL;
 
 import java.io.FileWriter;
 import java.io.IOException;

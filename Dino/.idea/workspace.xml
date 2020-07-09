@@ -8,10 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Traits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Traits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoText_Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -199,38 +197,6 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="DinoTest_Lists - 2020.07.02 at 18h 54m 04s.xml">
-      <configuration name="DinoTest_Lists" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists_T2_listOnly - 2020.07.02 at 18h 55m 21s.xml">
-      <configuration name="DinoTest_Lists.T2_listOnly" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists_T2_listOnly - 2020.07.02 at 18h 58m 12s.xml">
-      <configuration name="DinoTest_Lists.T2_listOnly" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists_T2_listOnly - 2020.07.02 at 18h 58m 24s.xml">
-      <configuration name="DinoTest_Lists.T2_listOnly" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists_T2_listOnly - 2020.07.02 at 18h 58m 45s.xml">
-      <configuration name="DinoTest_Lists.T2_listOnly" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists_T2_listOnly - 2020.07.02 at 19h 00m 15s.xml">
-      <configuration name="DinoTest_Lists.T2_listOnly" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists - 2020.07.03 at 02h 11m 55s.xml">
-      <configuration name="DinoTest_Lists" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists - 2020.07.03 at 02h 12m 32s.xml">
-      <configuration name="DinoTest_Lists" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Lists - 2020.07.03 at 02h 14m 08s.xml">
-      <configuration name="DinoTest_Lists" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="DinoTest_Static - 2020.07.03 at 02h 22m 41s.xml">
-      <configuration name="DinoTest_Static" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -245,6 +211,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bug fixes and unit tests for static pass through" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="381" y="272" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594260657794">
+      <screen x="0" y="0" width="1851" height="1234" />
+    </state>
+    <state x="381" y="272" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1594260657794" />
     <state x="775" y="506" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1593775822287">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -253,22 +223,22 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593775972114" />
-    <state width="1808" height="346" key="GridCell.Tab.0.bottom" timestamp="1594191229312">
+    <state width="1808" height="346" key="GridCell.Tab.0.bottom" timestamp="1594260514023">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1594191229312" />
-    <state width="1808" height="346" key="GridCell.Tab.0.center" timestamp="1594191229311">
+    <state width="1808" height="346" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1594260514023" />
+    <state width="1808" height="346" key="GridCell.Tab.0.center" timestamp="1594260514023">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1594191229311" />
-    <state width="1808" height="346" key="GridCell.Tab.0.left" timestamp="1594191229311">
+    <state width="1808" height="346" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1594260514023" />
+    <state width="1808" height="346" key="GridCell.Tab.0.left" timestamp="1594260514022">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1594191229311" />
-    <state width="1808" height="346" key="GridCell.Tab.0.right" timestamp="1594191229312">
+    <state width="1808" height="346" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1594260514022" />
+    <state width="1808" height="346" key="GridCell.Tab.0.right" timestamp="1594260514023">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state width="1808" height="346" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1594191229312" />
+    <state width="1808" height="346" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1594260514023" />
     <state x="622" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1594094936682">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -288,7 +258,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DinoParser/List/List.java</url>
-          <line>90</line>
+          <line>82</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
