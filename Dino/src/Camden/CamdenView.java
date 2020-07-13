@@ -65,4 +65,7 @@ public class CamdenView extends JFrame {
         linesSpinner.setValue(numLines);
     }
 
+    public Component getJpanel() {
+        return panel;
+    }
 }
