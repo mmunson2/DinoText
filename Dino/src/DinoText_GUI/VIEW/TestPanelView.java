@@ -15,21 +15,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class TestPanelView extends JInternalFrame {
+public class TestPanelView{
     private JButton jButton_getTime;
     private JTextPane jTextPane_currentTime;
     private JPanel jPanel_testPanel;
-
-    public TestPanelView() {
-        this.setContentPane(jPanel_testPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    public TestPanelView(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
-        super(title, true, true, true, true);
-        this.setContentPane(jPanel_testPanel);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
 
     /*************************************
@@ -39,6 +28,12 @@ public class TestPanelView extends JInternalFrame {
         jButton_getTime.addActionListener(listenForjButton_getTime);
     }
 
+    /*************************************
+     * GETTER
+     ************************************/
+    public JPanel getjPanel_testPanel() {
+        return jPanel_testPanel;
+    }
     /*************************************
      * SET TEXT
      ************************************/
