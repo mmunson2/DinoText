@@ -12,6 +12,7 @@ public class Table_View extends JFrame {
     private JTextField listName;
     private JLabel entryCount;
     private JButton increment;
+    private JTabbedPane listPane;
 
     public Table_View() {
         this.setContentPane(panel1);
@@ -23,6 +24,9 @@ public class Table_View extends JFrame {
         this.listTable.setShowHorizontalLines(true);
         this.listTable.setGridColor(Color.DARK_GRAY);
 
+        listPane.add(this.listTable);
+        listPane.add(this.listTable);
+        
     }
 
     public void setTableModel(TableModel tableModel) {
