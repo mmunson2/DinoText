@@ -8,11 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_JTabbedPane_Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Dialogue/DinoText_Dialogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Dialogue/DinoText_Dialogue.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_JTabbedPane_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_JTabbedPane_Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,7 @@
       <recent name="$PROJECT_DIR$/../Resources/v0_15-alpha" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Table_GUI">
+  <component name="RunManager" selected="Application.DinoText_Dialogue">
     <configuration name="DinoText_Dialogue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue" />
       <module name="Dino" />
@@ -177,8 +177,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Table_GUI" />
         <item itemvalue="Application.DinoText_Dialogue" />
+        <item itemvalue="Application.Table_GUI" />
         <item itemvalue="Application.Table_View" />
         <item itemvalue="JUnit.DinoTest_Lists" />
         <item itemvalue="Application.DinoViewer" />

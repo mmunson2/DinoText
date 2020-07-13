@@ -23,10 +23,6 @@ public class Table_View extends JFrame {
         this.listTable.getTableHeader().setBackground(Color.LIGHT_GRAY);
         this.listTable.setShowHorizontalLines(true);
         this.listTable.setGridColor(Color.DARK_GRAY);
-
-        listPane.add(this.listTable);
-        listPane.add(this.listTable);
-        
     }
 
     public void setTableModel(TableModel tableModel) {

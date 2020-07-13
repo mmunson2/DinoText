@@ -5,7 +5,7 @@ import javax.swing.event.ChangeListener;
 
 public class Table_JTabbedPane_Model implements SingleSelectionModel
 {
-    
+
     @Override
     public int getSelectedIndex() {
         return 0;
