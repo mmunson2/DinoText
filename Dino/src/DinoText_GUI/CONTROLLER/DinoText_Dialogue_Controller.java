@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 public class DinoText_Dialogue_Controller {
 
@@ -39,6 +40,9 @@ public class DinoText_Dialogue_Controller {
         dinoGUIView.addButtonjToolBar_topBar(temp);
         temp = new JButton("Delete Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_DeleteDynamicList());
+        dinoGUIView.addButtonjToolBar_topBar(temp);
+        temp = new JButton("Write to File");
+        temp.addActionListener(new listener_jPopupMenu_listInsertion_WriteToFile());
         dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
@@ -125,10 +129,11 @@ public class DinoText_Dialogue_Controller {
     class listener_jPopupMenu_listInsertion_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
+            //TODO Table_Controller.createList(listName)?
             dinoGUIView.insertButtonjTextPane(listName, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //TODO
+                    //TODO Table_Controller.openList(listName)?
                 }
             }, Color.yellow);
             dinoGUIView.addItemjPopupMenu_listInsertion(listName, new listener_jPopupMenu_listInsertion_SelectExistingList(listName));
@@ -138,10 +143,11 @@ public class DinoText_Dialogue_Controller {
     class listener_jPopupMenu_listInsertion_SelectExistingList implements ActionListener {
         private String listName;
 
-        listener_jPopupMenu_listInsertion_SelectExistingList(String name){
+        listener_jPopupMenu_listInsertion_SelectExistingList(String name) {
             super();
             listName = name;
         }
+
         public void actionPerformed(ActionEvent e) {
             dinoGUIView.insertButtonjTextPane(listName, dinoGUIView.getButton(listName).getAction(), Color.yellow); //TODO this button may not link to the right name
         }
@@ -150,7 +156,16 @@ public class DinoText_Dialogue_Controller {
     class listener_jPopupMenu_listInsertion_DeleteDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
+            System.out.println(dinoGUIView.getText_jTextPane_dialogueInput());
             //TODO dinoGUIView.removeButtonjPopupMenu(dinoGUIView.getButton(listName)); CONCURRENT MODIFICATION EXCEPTION
+        }
+    }
+
+    class listener_jPopupMenu_listInsertion_WriteToFile implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            for (JButton button : dinoGUIView.getAllButtons()) {
+                System.out.println(button.getText());
+            }
         }
     }
 
