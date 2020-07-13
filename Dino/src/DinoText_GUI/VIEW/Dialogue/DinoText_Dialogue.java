@@ -10,6 +10,9 @@
  *****************************************************************************************/
 package DinoText_GUI.VIEW.Dialogue;
 
+import Camden.CamdenController;
+import Camden.CamdenModel;
+import Camden.CamdenView;
 import DinoText_GUI.CONTROLLER.DinoText_Dialogue_Controller;
 import DinoText_GUI.CONTROLLER.Table_Controller;
 import DinoText_GUI.CONTROLLER.TestPanelController;
@@ -32,6 +35,10 @@ public class DinoText_Dialogue {
     private static Table_View table_view;
     private static Table_Controller table_controller;
 
+    private static CamdenModel camdenModel;
+    private static CamdenView camdenView;
+    private static CamdenController camdenController;
+
     public static void main(String[] args) {
         JFrame jFrame_dinoText = new JFrame();
 
@@ -43,10 +50,15 @@ public class DinoText_Dialogue {
         table_view = new Table_View();
         table_controller = new Table_Controller(table_model, table_view);
 
+        camdenModel = new CamdenModel();
+        camdenView = new CamdenView();
+        camdenController = new CamdenController(camdenModel,camdenView);
+
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());
         jFrame_dinoText.getContentPane().add(dinoGUIView.getjPanel_dialogueEditor(), BorderLayout.CENTER);
-        // JFrame.add(Table_View.getJPanel?)
+        jFrame_dinoText.getContentPane().add(camdenView.getJpanel(),BorderLayout.EAST);
+        jFrame_dinoText.getContentPane().add(table_view.getPanel1(),BorderLayout.SOUTH);
         jFrame_dinoText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame_dinoText.setSize(600, 580);
         jFrame_dinoText.pack();

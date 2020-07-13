@@ -62,4 +62,7 @@ public class Table_View extends JFrame {
     }
 
 
+    public Component getPanel1() {
+        return panel1;
+    }
 }
