@@ -1,56 +1,59 @@
 package DinoText_GUI.VIEW;
 
+import org.apache.commons.math3.ode.events.EventHandler;
+
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.ArrayList;
 
-public class DinoText_Dialogue_View extends JInternalFrame {
-
+public class DinoText_Dialogue_View {
     private JPanel jPanel_dialogueEditor;
-
     private JTextField jTextField_input;
-
     private JScrollPane jScrollPane_dialogueInput;
-
-
-
-
-
-
+    private JPopupMenu jPopupMenu_listInsertion;
     private JTextPane jTextPane_dialogueInput;
-
     private JLabel jLabel_instructions;
+    private JToolBar jToolBar_topBar;
+    private ArrayList<JButton> listButtons;
 
 
     public DinoText_Dialogue_View() {
-        this.setContentPane(jPanel_dialogueEditor);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        listButtons = new ArrayList<JButton>();
+        jPopupMenu_listInsertion = new JPopupMenu();
+        jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
+
+        initializejToolBar_topBar();
     }
 
-    public DinoText_Dialogue_View(String title, boolean resizable, boolean closable, boolean maximizable, boolean iconifiable) {
-        super(title, true, true, true, true);
-        this.setContentPane(jPanel_dialogueEditor);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    /*************************************
+     * JTOOLBAR
+     ************************************/
+    private void initializejToolBar_topBar() {
+        jToolBar_topBar.add(new JComboBox(new String[] { "Save", "New", "Preview" }));
     }
 
+    public void addButtonjToolBar_topBar(JButton button) {
+        jToolBar_topBar.add(button);
+    }
 
     /*************************************
      * ACTION LISTENERS
      ************************************/
-    public void addjTextField_inputListener(ActionListener listenForjTextField_input) {
-        jTextField_input.addActionListener(listenForjTextField_input);
+    public void editListenerjTextField_input(ActionListener listenForjTextField_input, boolean bool) {
+        if (bool) jTextField_input.addActionListener(listenForjTextField_input);
+        else jTextField_input.removeActionListener(listenForjTextField_input);
     }
 
-    public void removejTextField_inputListener(ActionListener listenForjTextField_input) {
-        jTextField_input.removeActionListener(listenForjTextField_input);
+    public void addListenerjTextPane_dialogueInput(MouseAdapter mouseAdapter) {
+        jTextPane_dialogueInput.addMouseListener(mouseAdapter);
     }
 
     /*************************************
-     * SET TEXT
+     * SETTER
      ************************************/
     public void setText_jTextField_input(String input) {
         jTextField_input.setText(input);
@@ -61,14 +64,35 @@ public class DinoText_Dialogue_View extends JInternalFrame {
     }
 
     /*************************************
-     * GET TEXT
+     * GETTER
      ************************************/
+    public JPanel getjPanel_dialogueEditor() {
+        return jPanel_dialogueEditor;
+    }
     public String getText_jTextField_input() {
         return jTextField_input.getText();
     }
 
     public String getText_jTextPane_dialogueInput() {
         return jTextPane_dialogueInput.getText();
+    }
+
+    public JPopupMenu getjPopupMenu_listInsertion() {
+        jPopupMenu_listInsertion.setInvoker(jTextPane_dialogueInput);
+        return jPopupMenu_listInsertion;
+    }
+
+    public Component getjTextPane_dialogueInput() {
+        return jTextPane_dialogueInput;
+    }
+
+    public JButton getButton(String name) {
+        for( JButton button : listButtons){
+            if (button.getName().equals(name)){
+                return button;
+            }
+        }
+        return null;
     }
 
 
@@ -84,6 +108,7 @@ public class DinoText_Dialogue_View extends JInternalFrame {
     public void setVisiblejTextField_input(boolean bool) {
         jTextField_input.setVisible(bool);
     }
+
 
     /*************************************
      * FOCUS REQUEST
@@ -121,17 +146,43 @@ public class DinoText_Dialogue_View extends JInternalFrame {
         // TODO: 7/6/2020
     }
 
+    public void insertButtonjTextPane(String listName, ActionListener actionListener, Color color){
+        JButton newList = new JButton(listName);
+        newList.setName(listName);
+        newList.setText(listName);
+        newList.addActionListener(actionListener);
+        newList.setBackground(color);
+        jTextPane_dialogueInput.insertComponent(newList);
+        listButtons.add(newList);
+    }
+
     /*************************************
      * POPUP MENU
      ************************************/
-    class jPopupMenu_ListInsertion extends JPopupMenu {
-        JMenuItem anItem;
-        public jPopupMenu_ListInsertion() {
-            addItems();
-        }
+    public void setInvokerjPopupMenu_listInsertion(Component invoker) {
+        jPopupMenu_listInsertion.setInvoker(invoker);
     }
 
-    private void addItems() {
+    public void addItemjPopupMenu_listInsertion(String listName, ActionListener action) {
+        JMenuItem item = new JMenuItem("Insert New " + listName);
+        jPopupMenu_listInsertion.add(item);
+        item.addActionListener(action);
+    }
 
+    public void showjPopupMenu_listInsertion(MouseEvent e) {
+        jPopupMenu_listInsertion.show(e.getComponent(), e.getX(), e.getY());
+    }
+
+    public String requestListNamejOptionPane_listInsertion() {JTextArea textArea = new JTextArea();
+        String listName = JOptionPane.showInputDialog("List Name: ");
+        return listName;
+    }
+
+    public void removeButtonjPopupMenu(JButton button) {
+        for (JButton jb : listButtons) {
+            if (jb.equals(button)) {
+                listButtons.remove(jb);
+            }
+        }
     }
 }
