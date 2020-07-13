@@ -42,7 +42,7 @@ public class DinoList
      *
      * @since 0.25-alpha
      **************************************************************************/
-    void setSkipWrite(boolean skipWrite)
+    public void setSkipWrite(boolean skipWrite)
     {
         this.skipWrite = skipWrite;
     }
@@ -67,6 +67,25 @@ public class DinoList
     public void add(String entry)
     {
         list.add(new ListEntry(entry, 1, null));
+    }
+
+
+    /***************************************************************************
+     * setEntry
+     *
+     * Allows editing of list contents
+     *
+     * @since 0.3-alpha
+     **************************************************************************/
+    public void setEntry(int index, String entry)
+    {
+        ListEntry listEntry = this.list.get(index);
+        listEntry.setListEntry(entry);
+    }
+
+    public double getProbability(int index)
+    {
+        return this.list.get(index).getBaseProbability();
     }
 
 

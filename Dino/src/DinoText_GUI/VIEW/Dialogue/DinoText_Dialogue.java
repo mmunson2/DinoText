@@ -8,13 +8,12 @@
  * ███   ▄███ ███    ███    ███ ███▌    ▄ ███    ███   ███    ███ ███    ███   ███    ███
  * ████████▀  █▀     ███    █▀  █████▄▄██  ▀██████▀    ████████▀  ████████▀    ██████████
  *****************************************************************************************/
-package DinoText_GUI;
+package DinoText_GUI.VIEW.Dialogue;
 
 import DinoText_GUI.CONTROLLER.DinoText_Dialogue_Controller;
 import DinoText_GUI.CONTROLLER.TestPanelController;
-import DinoText_GUI.MODEL.DinoText_Dialogue_Model;
+import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
 import DinoText_GUI.MODEL.TestPanelModel;
-import DinoText_GUI.VIEW.DinoText_Dialogue_View;
 import DinoText_GUI.VIEW.TestPanelView;
 
 import javax.swing.*;
@@ -26,7 +25,7 @@ public class DinoText_Dialogue {
     private static DinoText_Dialogue_View dinoGUIView;
     private static DinoText_Dialogue_Controller dinoGUIController;
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         JFrame jFrame_dinoText = new JFrame();
         JDesktopPane jDesktopPane_dinoText = new JDesktopPane();
 

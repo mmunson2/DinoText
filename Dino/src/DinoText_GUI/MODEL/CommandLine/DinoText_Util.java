@@ -1,4 +1,4 @@
-package DinoText_GUI.MODEL;
+package DinoText_GUI.MODEL.CommandLine;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

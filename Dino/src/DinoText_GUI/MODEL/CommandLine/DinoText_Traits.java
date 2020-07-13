@@ -1,7 +1,9 @@
-package DinoText_GUI.MODEL;
+package DinoText_GUI.MODEL.CommandLine;
 
 import DinoParser.List.Trait;
-import static DinoText_GUI.MODEL.DinoText_Util.*;
+import DinoText_GUI.MODEL.DinoList;
+
+import static DinoText_GUI.MODEL.CommandLine.DinoText_Util.*;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;

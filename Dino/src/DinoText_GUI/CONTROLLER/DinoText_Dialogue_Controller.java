@@ -1,10 +1,9 @@
 package DinoText_GUI.CONTROLLER;
 
-import DinoText_GUI.MODEL.DinoText_Dialogue_Model;
-import DinoText_GUI.VIEW.DinoText_Dialogue_View;
+import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
+import DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue_View;
 
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Highlighter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

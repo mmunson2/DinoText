@@ -1,4 +1,4 @@
-package DinoText_GUI.VIEW;
+package DinoText_GUI.VIEW.Dialogue;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -15,10 +15,6 @@ public class DinoText_Dialogue_View extends JInternalFrame {
     private JTextField jTextField_input;
 
     private JScrollPane jScrollPane_dialogueInput;
-
-
-
-
 
 
     private JTextPane jTextPane_dialogueInput;
@@ -126,6 +122,7 @@ public class DinoText_Dialogue_View extends JInternalFrame {
      ************************************/
     class jPopupMenu_ListInsertion extends JPopupMenu {
         JMenuItem anItem;
+
         public jPopupMenu_ListInsertion() {
             addItems();
         }

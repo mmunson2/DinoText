@@ -23,12 +23,12 @@ import java.util.Set;
  *
  * //Todo: Place list files in the same directory as dialogue when path specified
  ******************************************************************************/
-class DinoWriter
+public class DinoWriter
 {
 
     private FileWriter writer;
 
-    DinoWriter() {}
+    public DinoWriter() {}
 
     /***************************************************************************
      * writeListToFile
@@ -42,7 +42,7 @@ class DinoWriter
      *
      * @since 0.25-alpha
      **************************************************************************/
-    void writeListToFile(DinoList list)
+    public void writeListToFile(DinoList list)
     {
         if(list.skipWrite())
             return;
@@ -88,7 +88,7 @@ class DinoWriter
      * //Todo: Update doc
      * //Todo: Refactor with Set-writing method
      **************************************************************************/
-    void writeDialogueToFile(String path, String dialogue,
+    public void writeDialogueToFile(String path, String dialogue,
                                     Set<DinoList> lists, Set<String> staticVars)
     {
         try

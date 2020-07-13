@@ -12,9 +12,10 @@
 package DinoText_GUI.VIEW;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class TestPanelView extends JInternalFrame{
+public class TestPanelView extends JInternalFrame {
     private JButton jButton_getTime;
     private JTextPane jTextPane_currentTime;
     private JPanel jPanel_testPanel;

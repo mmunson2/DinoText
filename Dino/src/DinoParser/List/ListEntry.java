@@ -83,6 +83,17 @@ public class ListEntry
     }
 
     /***************************************************************************
+     * setListEntry
+     *
+     * @since 0.3-alpha
+     **************************************************************************/
+    public void setListEntry(String listEntry)
+    {
+        this.listEntry = listEntry;
+    }
+
+
+    /***************************************************************************
      * setBaseProbability
      *
      * @since 0.25-alpha

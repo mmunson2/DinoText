@@ -1,4 +1,7 @@
-package DinoText_GUI.MODEL;
+package DinoText_GUI.MODEL.Dialogue;
+
+import DinoText_GUI.MODEL.DinoList;
+import DinoText_GUI.MODEL.DinoWriter;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
