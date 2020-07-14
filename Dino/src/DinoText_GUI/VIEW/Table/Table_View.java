@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class Table_View extends JFrame {
 
-    private JPanel panel1;
     private JTable listTable;
     private JTextField listName;
     private JLabel entryCount;
     private JButton increment;
+    private JPanel panel1;
 
     public Table_View()
     {
