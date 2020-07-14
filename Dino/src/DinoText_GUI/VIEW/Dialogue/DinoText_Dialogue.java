@@ -46,7 +46,7 @@ public class DinoText_Dialogue {
 
         dinoGUIModel = new DinoText_Dialogue_Model();
         dinoGUIView = new DinoText_Dialogue_View();
-        dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView);
+        dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView, camdenController);
 
         table_manager = new Table_Manager();
         table_view = new Table_TabbedPane();
