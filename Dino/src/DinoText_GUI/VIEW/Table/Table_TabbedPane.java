@@ -13,6 +13,16 @@ public class Table_TabbedPane extends JFrame{
     ArrayList<Table_View> tables = new ArrayList<>();
     Table_View activeTable;
 
+    public Table_TabbedPane()
+    {
+        activeTable = new Table_View();
+        listPane.add(activeTable.getPanel());
+        listPane.setTitleAt(0, "Untitled List");
+
+        tables.add(activeTable);
+
+    }
+
     public void setTableModel(TableModel tableModel) {
         activeTable.setTableModel(tableModel);
     }
@@ -50,7 +60,7 @@ public class Table_TabbedPane extends JFrame{
 
 
     public Component getPanel1() {
-        return this.listPane;
+        return this.panel1;
     }
 
 
