@@ -41,7 +41,7 @@ public class DinoText_Dialogue_Controller {
      * JTOOLBAR
      ************************************/
     private void initializejToolBar() {
-        JMenu menu = new JMenu("Menu");
+        JMenu menu = new JMenu("File");
         JMenuItem menuItem = new JMenuItem();
         menuItem.setText("Save");
         menuItem.addActionListener(new listener_JMenuItem_Save());
