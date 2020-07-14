@@ -134,6 +134,12 @@ public class Table_Controller
         addListeners();
     }
 
+    public void writeToFile()
+    {
+        this.manager.writeToFile();
+    }
+
+
     /***************************************************************************
      * Inner Class: Tab Switch Listener
      *

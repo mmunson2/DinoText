@@ -1,6 +1,7 @@
 package DinoText_GUI.CONTROLLER;
 
 import Camden.CamdenController;
+import DinoParser.Dino;
 import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
 import DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue_View;
 
@@ -20,6 +21,9 @@ public class DinoText_Dialogue_Controller {
     private DinoText_Dialogue_View dinoGUIView;
     private CamdenController camdenController;
     private Table_Controller table_controller;
+
+    //Todo: Find a better way to do this
+    private String mostRecentSaved = null;
 
     public DinoText_Dialogue_Controller(DinoText_Dialogue_Model model, DinoText_Dialogue_View view, CamdenController camdenController, Table_Controller table_controller) {
         dinoGUIModel = model;
@@ -73,15 +77,23 @@ public class DinoText_Dialogue_Controller {
         //dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
+    /*************************************
+     * SAVE
+     ************************************/
     class listener_JMenuItem_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(dinoGUIView.getText_jTextPane_dialogueInput());
 
-            dinoGUIModel.setName(JOptionPane.showInputDialog("Dialogue File Name: "));
+            String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+
+            dinoGUIModel.setName(fileName);
+            mostRecentSaved = fileName;
+
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
             dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIModel.writeToFile();
+
+            table_controller.writeToFile();
         }
     }
 
@@ -95,6 +107,24 @@ public class DinoText_Dialogue_Controller {
     class listener_JMenuItem_Preview implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(mostRecentSaved == null)
+            {
+                String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+
+                dinoGUIModel.setName(fileName);
+                mostRecentSaved = fileName;
+
+                dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.writeToFile();
+
+                table_controller.writeToFile();
+            }
+
+            Dino dino = new Dino(mostRecentSaved);
+            camdenController.setDialogue(dino.getDialogue());
+
+
             if (camdenController.panelIsVisible()) {
                 camdenController.setPanelVisible(false);
             } else {

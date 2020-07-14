@@ -1,0 +1,11 @@
+# Generated: 2020/07/14 04:14:18
+Name: adjectives
+Size: 4
+1: long
+100.0 
+2: lengthy
+100.0 
+3: tedious
+80.0 
+4: awful
+40.0 

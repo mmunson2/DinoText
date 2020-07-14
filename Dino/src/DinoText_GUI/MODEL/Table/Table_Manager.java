@@ -55,4 +55,12 @@ public class Table_Manager
         this.currentModel.fireTableDataChanged();
     }
 
+    public void writeToFile()
+    {
+        for(Table_Model list : this.lists)
+        {
+            list.writeToFile();
+        }
+    }
+
 }

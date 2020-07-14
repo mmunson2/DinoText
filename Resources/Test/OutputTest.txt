@@ -1,0 +1,8 @@
+# Generated: 2020/07/14 04:08:47
+
+Lists Referenced: 1
+adjectives 
+
+Static Variables: 0
+
+This is a \L[adjectives] test

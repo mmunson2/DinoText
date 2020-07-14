@@ -2,6 +2,7 @@ package DinoText_GUI.MODEL.Table;
 
 
 import DinoText_GUI.MODEL.DinoList;
+import DinoText_GUI.MODEL.DinoWriter;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -64,6 +65,12 @@ public class Table_Model extends AbstractTableModel
     public String getName()
     {
         return this.list.getName();
+    }
+
+    public void writeToFile()
+    {
+        DinoWriter writer = new DinoWriter();
+        writer.writeListToFile(this.list);
     }
 
     /***************************************************************************

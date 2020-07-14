@@ -26,7 +26,7 @@ public class DinoText_Dialogue_Model {
             recursiveEscapeHandler(userDialogue);
         }
 
-        dialogue = builder.toString();
+        dialogue = userDialogue;
     }
 
     public void setName(String name) { this.name = name; }
@@ -49,10 +49,6 @@ public class DinoText_Dialogue_Model {
         DinoWriter writer = new DinoWriter();
 
         writer.writeDialogueToFile(name, dialogue, new LinkedHashSet<>(lists), new LinkedHashSet<String>());
-
-        for (DinoList list : lists) {
-            writer.writeListToFile(list);
-        }
     }
 
     /***************************************************************************
