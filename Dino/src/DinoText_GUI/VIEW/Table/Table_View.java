@@ -48,8 +48,18 @@ public class Table_View {
         this.increment.addActionListener(l);
     }
 
+    public void removeIncrementListener(ActionListener l)
+    {
+        this.increment.removeActionListener(l);
+    }
+
     public void addListNameListener(ActionListener l) {
         this.listName.addActionListener(l);
+    }
+
+    public void removeListNameListener(ActionListener l)
+    {
+        this.listName.removeActionListener(l);
     }
 
     public void updateTable() {

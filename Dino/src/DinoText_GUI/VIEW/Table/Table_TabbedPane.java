@@ -10,17 +10,34 @@ public class Table_TabbedPane extends JFrame{
     private JTabbedPane listPane;
     private JPanel panel1;
 
-    ArrayList<Table_View> tables = new ArrayList<>();
-    Table_View activeTable;
+    private ArrayList<Table_View> tables = new ArrayList<>();
+    private Table_View activeTable;
+    private int activeIndex;
 
     public Table_TabbedPane()
     {
         activeTable = new Table_View();
         listPane.add(activeTable.getPanel());
-        listPane.setTitleAt(0, "Untitled List");
+        this.activeIndex = 0;
+        listPane.setTitleAt(activeIndex, "Untitled List");
 
         tables.add(activeTable);
 
+    }
+
+    public void addList(String name)
+    {
+        this.activeTable = new Table_View();
+        this.activeTable.setListName(name);
+        this.activeIndex = this.tables.size();
+
+        this.tables.add(activeIndex, activeTable);
+    }
+
+    public void switchList(int index)
+    {
+        this.activeIndex = index;
+        this.activeTable = this.tables.get(index);
     }
 
     public void setTableModel(TableModel tableModel) {
@@ -49,8 +66,18 @@ public class Table_TabbedPane extends JFrame{
         this.activeTable.addIncrementListener(l);
     }
 
+    public void removeIncrementListener(ActionListener l)
+    {
+        this.activeTable.removeIncrementListener(l);
+    }
+
     public void addListNameListener(ActionListener l) {
         this.activeTable.addIncrementListener(l);
+    }
+
+    public void removeListNameListener(ActionListener l)
+    {
+        this.activeTable.removeListNameListener(l);
     }
 
     public void updateTable() {
