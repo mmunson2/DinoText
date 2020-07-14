@@ -20,6 +20,5 @@ public class CamdenTest
         String str = "The quick brown fox ran extremely quickly and jumped over the lazy dog in order to escape from the crazed beast that was chasing it.";
 
         controller.setDialogue(str);
-        controller.update();
     }
 }
