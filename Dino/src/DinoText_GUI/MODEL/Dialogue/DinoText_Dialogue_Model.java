@@ -15,7 +15,7 @@ public class DinoText_Dialogue_Model {
 
     private DinoList currentList;
 
-    private static Set<DinoList> dupCheckSet = new LinkedHashSet<DinoList>();
+    private static Set<DinoList> dupCheckSet = new LinkedHashSet<>();
     private static ArrayList<DinoList> lists = new ArrayList<>();
 
     public String newDialogue(String userDialogue) {
@@ -62,7 +62,10 @@ public class DinoText_Dialogue_Model {
         }
     }
 
-    public void writeToFile() {
+    public void writeToFile(String text) {
+        System.out.println("Test: ");
+        System.out.println(this.dialogue);
+
         DinoWriter writer = new DinoWriter();
 
         writer.writeDialogueToFile(name, dialogue, new LinkedHashSet<>(lists), new LinkedHashSet<String>());

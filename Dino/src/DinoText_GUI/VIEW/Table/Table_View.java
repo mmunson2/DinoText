@@ -15,6 +15,10 @@ public class Table_View {
     private JButton increment;
     private JPanel panel1;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Table_View()
     {
         this.listTable.getTableHeader().setOpaque(false);
@@ -24,43 +28,81 @@ public class Table_View {
 
     }
 
+    /***************************************************************************
+     * setTableModel
+     *
+     **************************************************************************/
     public void setTableModel(TableModel tableModel) {
         this.listTable.setModel(tableModel);
     }
 
+    /***************************************************************************
+     * setListName
+     *
+     **************************************************************************/
     public void setListName(String text) {
         this.listName.setText(text);
     }
 
+    /***************************************************************************
+     * getEntryCount
+     *
+     **************************************************************************/
     public int getEntryCount() {
         return Integer.parseInt(entryCount.getText());
     }
 
+    /***************************************************************************
+     * setEntryCount
+     *
+     **************************************************************************/
     public void setEntryCount(int count) {
         this.entryCount.setText("" + count);
     }
 
+    /***************************************************************************
+     * getListName
+     *
+     **************************************************************************/
     public String getListName() {
         return this.listName.getText();
     }
 
+    /***************************************************************************
+     * addIncrementListener
+     *
+     **************************************************************************/
     public void addIncrementListener(ActionListener l) {
         this.increment.addActionListener(l);
     }
 
+    /***************************************************************************
+     * removeIncrementListener
+     *
+     **************************************************************************/
     public void removeIncrementListener(ActionListener l)
     {
         this.increment.removeActionListener(l);
     }
 
+    /***************************************************************************
+     * addListNameListener
+     *
+     **************************************************************************/
     public void addListNameListener(ActionListener l) {
         this.listName.addActionListener(l);
     }
 
+    /***************************************************************************
+     * removeListNameListener
+     *
+     **************************************************************************/
     public void removeListNameListener(ActionListener l)
     {
         this.listName.removeActionListener(l);
     }
+
+
 
     public void updateTable() {
         this.listTable.updateUI();

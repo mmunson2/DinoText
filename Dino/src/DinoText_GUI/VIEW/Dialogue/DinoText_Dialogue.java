@@ -44,10 +44,6 @@ public class DinoText_Dialogue {
     public static void main(String[] args) {
         JFrame jFrame_dinoText = new JFrame();
 
-        dinoGUIModel = new DinoText_Dialogue_Model();
-        dinoGUIView = new DinoText_Dialogue_View();
-        dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView, camdenController);
-
         table_manager = new Table_Manager();
         table_view = new Table_TabbedPane();
         table_controller = new Table_Controller(table_manager, table_view);
@@ -59,22 +55,18 @@ public class DinoText_Dialogue {
 
         dinoGUIModel = new DinoText_Dialogue_Model();
         dinoGUIView = new DinoText_Dialogue_View();
-        dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView, camdenController);
-//
-//        table_model = new Table_Model();
-//        table_view = new Table_TabbedPane();
-//        table_controller = new Table_Controller(table_model, table_view);
-
+        dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView, camdenController, table_controller);
 
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());
         jFrame_dinoText.getContentPane().add(dinoGUIView.getjPanel_dialogueEditor(), BorderLayout.CENTER);
         jFrame_dinoText.getContentPane().add(camdenView.getJpanel(),BorderLayout.EAST);
-     //   jFrame_dinoText.getContentPane().add(table_view.getPanel1(),BorderLayout.SOUTH);
+        jFrame_dinoText.getContentPane().add(table_view.getPanel1(),BorderLayout.SOUTH);
         jFrame_dinoText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame_dinoText.setSize(600, 580);
         jFrame_dinoText.pack();
         jFrame_dinoText.setVisible(true);
+
     }
 
     public String getDialogueText() {

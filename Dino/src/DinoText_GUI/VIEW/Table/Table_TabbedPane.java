@@ -1,6 +1,7 @@
 package DinoText_GUI.VIEW.Table;
 
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -12,73 +13,139 @@ public class Table_TabbedPane extends JFrame{
 
     private ArrayList<Table_View> tables = new ArrayList<>();
     private Table_View activeTable;
-    private int activeIndex;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Table_TabbedPane()
     {
         activeTable = new Table_View();
         listPane.add(activeTable.getPanel());
-        this.activeIndex = 0;
-        listPane.setTitleAt(activeIndex, "Untitled List");
+        listPane.setTitleAt(this.getSelectedIndex(), "Untitled List");
+        this.activeTable.setListName("Untitled List");
 
         tables.add(activeTable);
-
     }
 
+    /***************************************************************************
+     * addList
+     *
+     **************************************************************************/
     public void addList(String name)
     {
         this.activeTable = new Table_View();
         this.activeTable.setListName(name);
-        this.activeIndex = this.tables.size();
 
-        this.tables.add(activeIndex, activeTable);
+        this.tables.add(this.tables.size(), activeTable);
+        this.listPane.addTab(name, this.activeTable.getPanel());
+        this.listPane.setSelectedIndex(this.tables.size() - 1);
     }
 
+    /***************************************************************************
+     * getSelectedIndex
+     *
+     **************************************************************************/
+    public int getSelectedIndex()
+    {
+        return this.listPane.getSelectedIndex();
+    }
+
+    /***************************************************************************
+     * switchList
+     *
+     **************************************************************************/
     public void switchList(int index)
     {
-        this.activeIndex = index;
         this.activeTable = this.tables.get(index);
+        this.listPane.setSelectedIndex(index);
     }
 
+    /***************************************************************************
+     * setTableModel
+     *
+     **************************************************************************/
     public void setTableModel(TableModel tableModel) {
         activeTable.setTableModel(tableModel);
     }
 
-
-    public void setListPaneModel(SingleSelectionModel paneModel)
-    {
-        this.listPane.setModel(paneModel);
-    }
-
+    /***************************************************************************
+     * setListName
+     *
+     **************************************************************************/
     public void setListName(String text) {
         this.activeTable.setListName(text);
+        listPane.setTitleAt(this.getSelectedIndex(), text);
     }
 
+    /***************************************************************************
+     * setEntryCount
+     *
+     **************************************************************************/
     public void setEntryCount(int count) {
         this.activeTable.setEntryCount(count);
     }
 
+    /***************************************************************************
+     * getListName
+     *
+     **************************************************************************/
     public String getListName() {
         return this.activeTable.getListName();
     }
 
+    /***************************************************************************
+     * addIncrementListener
+     *
+     **************************************************************************/
     public void addIncrementListener(ActionListener l) {
         this.activeTable.addIncrementListener(l);
     }
 
+    /***************************************************************************
+     * removeIncrementListener
+     *
+     **************************************************************************/
     public void removeIncrementListener(ActionListener l)
     {
         this.activeTable.removeIncrementListener(l);
     }
 
+    /***************************************************************************
+     * addListNameListener
+     *
+     **************************************************************************/
     public void addListNameListener(ActionListener l) {
-        this.activeTable.addIncrementListener(l);
+        this.activeTable.addListNameListener(l);
     }
 
+    /***************************************************************************
+     * removeListNameListener
+     *
+     **************************************************************************/
     public void removeListNameListener(ActionListener l)
     {
         this.activeTable.removeListNameListener(l);
     }
+
+    /***************************************************************************
+     * addTabSwitchListener
+     *
+     **************************************************************************/
+    public void addTabSwitchListener(ChangeListener l)
+    {
+        this.listPane.addChangeListener(l);
+    }
+
+    /***************************************************************************
+     * removeTabSwitchListener
+     *
+     **************************************************************************/
+    public void removeTabSwitchListener(ChangeListener l)
+    {
+        this.listPane.removeChangeListener(l);
+    }
+
 
     public void updateTable() {
         this.activeTable.updateTable();

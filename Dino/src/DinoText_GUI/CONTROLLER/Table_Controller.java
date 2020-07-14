@@ -13,7 +13,10 @@ import javax.swing.event.TableModelListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/*******************************************************************************
+ * Table Controller
+ *
+ ******************************************************************************/
 public class Table_Controller
 {
     private Table_Manager manager;
@@ -27,6 +30,10 @@ public class Table_Controller
     private listener_tabSwitch tabSwitchListener;
 
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Table_Controller(Table_Manager manager, Table_TabbedPane view)
     {
         this.manager = manager;
@@ -43,9 +50,15 @@ public class Table_Controller
         this.tableModelListener = new listener_tableModel();
         this.tabSwitchListener = new listener_tabSwitch();
 
+        this.view.addTabSwitchListener(tabSwitchListener);
+
         addListeners();
     }
 
+    /***************************************************************************
+     * addListeners
+     *
+     **************************************************************************/
     public void addListeners()
     {
         this.view.addIncrementListener(incrementListener);
@@ -55,31 +68,52 @@ public class Table_Controller
         model.addTableModelListener(tableModelListener);
     }
 
+    /***************************************************************************
+     * removeListeners
+     *
+     **************************************************************************/
     public void removeListeners()
     {
         this.view.removeIncrementListener(incrementListener);
-        this.view.removeIncrementListener(listNameListener);
+        this.view.removeListNameListener(listNameListener);
 
         Table_Model model = manager.getCurrentModel();
         model.removeTableModelListener(tableModelListener);
     }
 
+    /***************************************************************************
+     * addList - noArg
+     *
+     **************************************************************************/
     public void addList()
     {
         addList("untitledList", null);
     }
 
+    /***************************************************************************
+     * addList - String overload
+     *
+     **************************************************************************/
     public void addList(String name)
     {
         addList(name, null);
     }
 
+    /***************************************************************************
+     * addList - String and entries overload
+     *
+     **************************************************************************/
     public void addList(String name, String[] entries)
     {
         if(entries == null)
         {
+            System.out.println("Adding a list");
+            removeListeners();
             this.manager.addModel(name);
             this.view.addList(name);
+            this.view.setTableModel(this.manager.getCurrentModel());
+            view.setEntryCount(manager.getCurrentModel().getRowCount());
+            addListeners();
         }
         else
         {
@@ -88,17 +122,36 @@ public class Table_Controller
         }
     }
 
-    class listener_tabSwitch implements ActionListener
+    /***************************************************************************
+     * switchToIndex
+     *
+     **************************************************************************/
+    public void switchToIndex(int index)
     {
+        removeListeners();
+        this.manager.switchModel(index);
+        this.view.switchList(index);
+        addListeners();
+    }
 
-
+    /***************************************************************************
+     * Inner Class: Tab Switch Listener
+     *
+     **************************************************************************/
+    class listener_tabSwitch implements ChangeListener
+    {
         @Override
-        public void actionPerformed(ActionEvent e) {
-
+        public void stateChanged(ChangeEvent e)
+        {
+            switchToIndex(view.getSelectedIndex());
         }
     }
 
 
+    /***************************************************************************
+     * Inner Class: Increment Row Listener
+     *
+     **************************************************************************/
     class listener_increment implements ActionListener {
 
         @Override
@@ -109,6 +162,10 @@ public class Table_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class: Table Model Listener
+     *
+     **************************************************************************/
     class listener_tableModel implements TableModelListener {
 
         @Override
@@ -118,6 +175,10 @@ public class Table_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class: List Name Listener
+     *
+     **************************************************************************/
     class listener_listName implements ActionListener
     {
         @Override

@@ -61,6 +61,11 @@ public class Table_Model extends AbstractTableModel
         this.list.setName(listName);
     }
 
+    public String getName()
+    {
+        return this.list.getName();
+    }
+
     /***************************************************************************
      * getRowCount
      *

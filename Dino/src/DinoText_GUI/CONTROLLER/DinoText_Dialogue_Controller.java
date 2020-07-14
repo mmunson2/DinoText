@@ -18,11 +18,13 @@ public class DinoText_Dialogue_Controller {
     private DinoText_Dialogue_Model dinoGUIModel;
     private DinoText_Dialogue_View dinoGUIView;
     private CamdenController camdenController;
+    private Table_Controller table_controller;
 
-    public DinoText_Dialogue_Controller(DinoText_Dialogue_Model model, DinoText_Dialogue_View view, CamdenController camdenController) {
+    public DinoText_Dialogue_Controller(DinoText_Dialogue_Model model, DinoText_Dialogue_View view, CamdenController camdenController, Table_Controller table_controller) {
         dinoGUIModel = model;
         dinoGUIView = view;
         this.camdenController = camdenController;
+        this.table_controller = table_controller;
 
         initialize();
     }
@@ -73,7 +75,7 @@ public class DinoText_Dialogue_Controller {
     class listener_JMenuItem_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            
         }
     }
 
@@ -112,14 +114,14 @@ public class DinoText_Dialogue_Controller {
             String currentListName = dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIView.setText_jTextPane_dialogueInput("");
             dinoGUIView.setVisibleTSDialogueInput(false);
-            populateList();
+            populateList(currentListName);
         }
     }
 
     /*************************************
      * POPULATE LIST
      ************************************/
-    private void populateList() {
+    private void populateList(String name) {
         dinoGUIView.setVisiblejTextField_input(true);
         dinoGUIView.setFocusjTextField_input();
     }
@@ -134,10 +136,16 @@ public class DinoText_Dialogue_Controller {
 
     class listener_jTextField_input_nameDialogue implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            dinoGUIModel.nameDialogue(dinoGUIView.getText_jTextField_input());
+
+            String text = dinoGUIView.getText_jTextField_input();
+
+            System.out.println(text);
+
+            dinoGUIModel.nameDialogue(text);
             dinoGUIView.editListenerjTextField_input(new listener_jTextField_input_nameDialogue(), false);
             dinoGUIView.setVisiblejTextField_input(false);
             dinoGUIView.setText_jTextField_input("");
+
             writeToFile();
         }
     }
@@ -153,7 +161,7 @@ public class DinoText_Dialogue_Controller {
     class listener_jTextField_input_writeToFile implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             dinoGUIView.setVisiblejTextField_input(false);
-            dinoGUIModel.writeToFile();
+            dinoGUIModel.writeToFile(dinoGUIView.getText_jTextField_input());
             newDialogue();
         }
     }
@@ -185,6 +193,8 @@ public class DinoText_Dialogue_Controller {
                 }
             }, Color.yellow);
             dinoGUIView.addItemjPopupMenu_listInsertion(listName, new listener_jPopupMenu_listInsertion_SelectExistingList(listName));
+
+            table_controller.addList(listName);
         }
     }
 
@@ -212,7 +222,7 @@ public class DinoText_Dialogue_Controller {
     class listener_jPopupMenu_listInsertion_WriteToFile implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (JButton button : dinoGUIView.getAllButtons()) {
-                System.out.println(button.getText());
+                //System.out.println(button.getText());
             }
         }
     }
