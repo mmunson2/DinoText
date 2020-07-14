@@ -65,6 +65,17 @@ public class CamdenView extends JFrame {
         linesSpinner.setValue(numLines);
     }
 
+    // ihsan added
+
+    public void setPanelVisible(boolean bool) {
+        panel.setVisible(bool);
+        SwingUtilities.getWindowAncestor(panel).pack();
+    }
+
+    public boolean panelIsVisible() {
+        return panel.isVisible();
+    }
+
     public Component getJpanel() {
         return panel;
     }

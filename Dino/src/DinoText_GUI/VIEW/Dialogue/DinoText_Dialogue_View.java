@@ -24,19 +24,17 @@ public class DinoText_Dialogue_View {
         listButtons = new ArrayList<JButton>();
         jPopupMenu_listInsertion = new JPopupMenu();
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
-
-        initializejToolBar_topBar();
     }
 
     /*************************************
      * JTOOLBAR
      ************************************/
-    private void initializejToolBar_topBar() {
-        jToolBar_topBar.add(new JComboBox(new String[]{"Save", "New", "Preview"}));
-    }
-
     public void addButtonjToolBar_topBar(JButton button) {
         jToolBar_topBar.add(button);
+    }
+
+    public void addJMenujToolBar_topBar(JMenuBar menu) {
+        jToolBar_topBar.add(menu);
     }
 
     /*************************************

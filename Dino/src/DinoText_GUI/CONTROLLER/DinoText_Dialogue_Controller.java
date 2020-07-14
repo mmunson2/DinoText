@@ -1,5 +1,6 @@
 package DinoText_GUI.CONTROLLER;
 
+import Camden.CamdenController;
 import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
 import DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue_View;
 
@@ -16,10 +17,12 @@ public class DinoText_Dialogue_Controller {
 
     private DinoText_Dialogue_Model dinoGUIModel;
     private DinoText_Dialogue_View dinoGUIView;
+    private CamdenController camdenController;
 
-    public DinoText_Dialogue_Controller(DinoText_Dialogue_Model model, DinoText_Dialogue_View view) {
+    public DinoText_Dialogue_Controller(DinoText_Dialogue_Model model, DinoText_Dialogue_View view, CamdenController camdenController) {
         dinoGUIModel = model;
         dinoGUIView = view;
+        this.camdenController = camdenController;
 
         initialize();
     }
@@ -35,17 +38,62 @@ public class DinoText_Dialogue_Controller {
      * JTOOLBAR
      ************************************/
     private void initializejToolBar() {
+        JMenu menu = new JMenu("Menu");
+        JMenuItem menuItem = new JMenuItem();
+        menuItem.setText("Save");
+        menuItem.addActionListener(new listener_JMenuItem_Save());
+        menu.add(menuItem);
+
+        menuItem = new JMenuItem();
+        menuItem.setText("New");
+        menuItem.addActionListener(new listener_JMenuItem_New());
+        menu.add(menuItem);
+
+        menuItem = new JMenuItem();
+        menuItem.setText("Preview");
+        menuItem.addActionListener(new listener_JMenuItem_Preview());
+        menu.add(menuItem);
+
+        JMenuBar jMenuBar = new JMenuBar();
+        jMenuBar.add(menu);
+
+        dinoGUIView.addJMenujToolBar_topBar(jMenuBar);
+
         JButton temp = new JButton("Insert Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
         dinoGUIView.addButtonjToolBar_topBar(temp);
         temp = new JButton("Delete Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_DeleteDynamicList());
-        dinoGUIView.addButtonjToolBar_topBar(temp);
+        //dinoGUIView.addButtonjToolBar_topBar(temp);
         temp = new JButton("Write to File");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_WriteToFile());
         dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
+    class listener_JMenuItem_Save implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    class listener_JMenuItem_New implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    class listener_JMenuItem_Preview implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (camdenController.panelIsVisible()) {
+                camdenController.setPanelVisible(false);
+            } else {
+                camdenController.setPanelVisible(true);
+            }
+        }
+    }
     /*************************************
      * NEW DIALOGUE
      ************************************/

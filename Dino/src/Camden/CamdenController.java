@@ -1,5 +1,8 @@
 package Camden;
 
+import DinoText_GUI.CONTROLLER.DinoText_Dialogue_Controller;
+
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
@@ -10,6 +13,7 @@ public class CamdenController
 {
     private CamdenModel model;
     private CamdenView view;
+    private DinoText_Dialogue_Controller dinoText_dialogue_controller;
 
     public CamdenController(CamdenModel model, CamdenView view)
     {
@@ -25,6 +29,8 @@ public class CamdenController
 
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
+
+        this.dinoText_dialogue_controller = dinoText_dialogue_controller;
     }
 
     public void setDialogue(String str)
@@ -104,5 +110,13 @@ public class CamdenController
             setPage(1);
             update();
         }
+    }
+
+    //ihsan added
+
+    public void setPanelVisible(boolean bool) { view.setPanelVisible(bool); }
+
+    public boolean panelIsVisible() {
+        return view.isVisible();
     }
 }

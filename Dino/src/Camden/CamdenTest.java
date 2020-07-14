@@ -1,10 +1,13 @@
 package Camden;
 
+import DinoText_GUI.CONTROLLER.DinoText_Dialogue_Controller;
+
 public class CamdenTest
 {
     private static CamdenModel model;
     private static CamdenView view;
     private static CamdenController controller;
+    private static DinoText_Dialogue_Controller dinoText_dialogue_controller;
 
     public static void main(String[] args)
     {
