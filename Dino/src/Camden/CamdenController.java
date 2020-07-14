@@ -1,5 +1,7 @@
 package Camden;
 
+import DinoText_GUI.CONTROLLER.DinoText_Dialogue_Controller;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
@@ -11,6 +13,8 @@ public class CamdenController
     private CamdenModel model;
     private CamdenView view;
 
+    private DinoText_Dialogue_Controller dinoText_dialogue_controller;
+
     public CamdenController(CamdenModel model, CamdenView view)
     {
         this.model = model;
@@ -18,19 +22,21 @@ public class CamdenController
 
         this.view.nextButtonListener(new nextButtonListener());
         this.view.prevButtonListener(new prevButtonListener());
-        this.view.setPageCounter(this.model.getCurrentPage());
 
         this.view.setCharactersSpinner(this.model.getCharsPerLine());
         this.view.charactersSpinnerListener(new charactersSpinnerListener());
 
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
+
+        this.dinoText_dialogue_controller = dinoText_dialogue_controller;
     }
 
     public void setDialogue(String str)
     {
         model.setText(str);
         model.formatText();
+        update();
     }
 
     public void update()
@@ -38,12 +44,13 @@ public class CamdenController
         model.formatText();
         ArrayList<String> pages = model.getPages();
         view.setTextPane(pages.get(model.getCurrentPage() - 1));
+        setPage(model.getCurrentPage());
     }
 
     private void setPage(int i)
     {
         model.setCurrentPage(i);
-        view.setPageCounter(i);
+        view.setPageCounter(i + " / " + model.getNumPages());
     }
 
     class nextButtonListener implements ActionListener
@@ -104,5 +111,12 @@ public class CamdenController
             setPage(1);
             update();
         }
+    }
+
+    //ihsan added
+    public void setPanelVisible(boolean bool) { view.setPanelVisible(bool); }
+
+    public boolean panelIsVisible() {
+        return view.isVisible();
     }
 }

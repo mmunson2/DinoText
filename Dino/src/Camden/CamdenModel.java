@@ -37,9 +37,9 @@ public class CamdenModel
     public int getLinesPerPage() { return linesPerPage; }
 
     // setters
-    public void setCurrentPage(int i) { currentPage = i; }
-
     public void setText(String str) { this.text = str; }
+
+    public void setCurrentPage(int i) { currentPage = i; }
 
     public void setCharsPerLine(int i) { charPerLine = i; }
 

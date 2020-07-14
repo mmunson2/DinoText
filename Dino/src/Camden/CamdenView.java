@@ -2,10 +2,14 @@ package Camden;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class CamdenView extends JFrame {
+public class CamdenView extends JFrame
+{
     private JPanel panel;
     private JTextPane textPane;
     private JButton nextButton;
@@ -15,11 +19,17 @@ public class CamdenView extends JFrame {
     private JSpinner linesSpinner;
     private JSpinner fontSizeSpinner;
 
-    public CamdenView() {
+    public CamdenView()
+    {
         this.setContentPane(panel);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 500);
         this.setTitle("Dialogue Preview");
+
+        StyledDocument doc = pageCounter.getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
     }
 
     // listeners
@@ -31,9 +41,7 @@ public class CamdenView extends JFrame {
         prevButton.addActionListener(actionListener);
     }
 
-    public void charactersSpinnerListener(ChangeListener changeListener) {
-        charactersSpinner.addChangeListener(changeListener);
-    }
+    public void charactersSpinnerListener(ChangeListener changeListener) { charactersSpinner.addChangeListener(changeListener); }
 
     public void linesSpinnerListener(ChangeListener changeListener) {
         linesSpinner.addChangeListener(changeListener);
@@ -53,9 +61,7 @@ public class CamdenView extends JFrame {
         textPane.setText(str);
     }
 
-    public void setPageCounter(int page) {
-        pageCounter.setText(Integer.toString(page));
-    }
+    public void setPageCounter(String page) { pageCounter.setText(page); }
 
     public void setCharactersSpinner(int numChar) {
         charactersSpinner.setValue(numChar);
@@ -63,6 +69,16 @@ public class CamdenView extends JFrame {
 
     public void setLinesSpinner(int numLines) {
         linesSpinner.setValue(numLines);
+    }
+
+    // ihsan added
+    public void setPanelVisible(boolean bool) {
+        panel.setVisible(bool);
+        SwingUtilities.getWindowAncestor(panel).pack();
+    }
+
+    public boolean panelIsVisible() {
+        return panel.isVisible();
     }
 
     public Component getJpanel() {
