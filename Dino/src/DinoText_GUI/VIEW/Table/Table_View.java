@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Table_View extends JFrame {
+public class Table_View {
 
     private JTable listTable;
     private JTextField listName;
@@ -17,9 +17,6 @@ public class Table_View extends JFrame {
 
     public Table_View()
     {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(600, 580);
-
         this.listTable.getTableHeader().setOpaque(false);
         this.listTable.getTableHeader().setBackground(Color.LIGHT_GRAY);
         this.listTable.setShowHorizontalLines(true);
@@ -59,5 +56,10 @@ public class Table_View extends JFrame {
         this.listTable.updateUI();
     }
 
+
+    public Component getPanel()
+    {
+        return this.panel1;
+    }
 
 }
