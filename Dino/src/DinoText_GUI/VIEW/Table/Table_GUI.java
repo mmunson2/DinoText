@@ -9,12 +9,12 @@ public class Table_GUI
 {
     private static Table_Model model;
     private static Table_Controller controller;
-    private static Table_View view;
+    private static Table_TabbedPane view;
 
     public static void main(String[] args)
     {
         model = new Table_Model();
-        view = new Table_View();
+        view = new Table_TabbedPane();
         controller = new Table_Controller(model, view);
 
         view.setVisible(true);

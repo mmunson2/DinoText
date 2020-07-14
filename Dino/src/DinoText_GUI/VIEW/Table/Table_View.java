@@ -5,17 +5,18 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Table_View extends JFrame {
+
     private JPanel panel1;
     private JTable listTable;
     private JTextField listName;
     private JLabel entryCount;
     private JButton increment;
-    private JTabbedPane listPane;
 
-    public Table_View() {
-        this.setContentPane(panel1);
+    public Table_View()
+    {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 580);
 
@@ -23,6 +24,7 @@ public class Table_View extends JFrame {
         this.listTable.getTableHeader().setBackground(Color.LIGHT_GRAY);
         this.listTable.setShowHorizontalLines(true);
         this.listTable.setGridColor(Color.DARK_GRAY);
+
     }
 
     public void setTableModel(TableModel tableModel) {
@@ -58,7 +60,4 @@ public class Table_View extends JFrame {
     }
 
 
-    public Component getPanel1() {
-        return panel1;
-    }
 }

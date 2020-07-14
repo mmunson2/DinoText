@@ -19,6 +19,7 @@ import DinoText_GUI.CONTROLLER.TestPanelController;
 import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
 import DinoText_GUI.MODEL.Table.Table_Model;
 import DinoText_GUI.MODEL.TestPanelModel;
+import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 import DinoText_GUI.VIEW.Table.Table_View;
 import DinoText_GUI.VIEW.TestPanelView;
 
@@ -32,7 +33,7 @@ public class DinoText_Dialogue {
     private static DinoText_Dialogue_Controller dinoGUIController;
 
     private static Table_Model table_model;
-    private static Table_View table_view;
+    private static Table_TabbedPane table_view;
     private static Table_Controller table_controller;
 
     private static CamdenModel camdenModel;
@@ -47,7 +48,7 @@ public class DinoText_Dialogue {
         dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView);
 
         table_model = new Table_Model();
-        table_view = new Table_View();
+        table_view = new Table_TabbedPane();
         table_controller = new Table_Controller(table_model, table_view);
 
         camdenModel = new CamdenModel();

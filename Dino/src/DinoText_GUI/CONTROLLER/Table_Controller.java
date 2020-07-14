@@ -1,6 +1,7 @@
 package DinoText_GUI.CONTROLLER;
 
 import DinoText_GUI.MODEL.Table.Table_Model;
+import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 import DinoText_GUI.VIEW.Table.Table_View;
 
 import javax.swing.*;
@@ -15,9 +16,9 @@ import java.awt.event.ActionListener;
 public class Table_Controller
 {
     private Table_Model model;
-    private Table_View view;
+    private Table_TabbedPane view;
 
-    public Table_Controller(Table_Model model, Table_View view)
+    public Table_Controller(Table_Model model, Table_TabbedPane view)
     {
         this.model = model;
         this.view = view;

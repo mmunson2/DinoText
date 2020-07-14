@@ -2,17 +2,29 @@ package DinoText_GUI.MODEL.Table;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
+import java.util.ArrayList;
 
 public class Table_JTabbedPane_Model implements SingleSelectionModel
 {
+    ArrayList<Table_Model> tables = new ArrayList<>();
+    int currentIndex = 0;
+
+    public Table_JTabbedPane_Model()
+    {
+        tables.add(new Table_Model());
+
+    }
+
 
     @Override
     public int getSelectedIndex() {
-        return 0;
+        return currentIndex;
     }
 
     @Override
     public void setSelectedIndex(int index) {
+
+
 
     }
 
