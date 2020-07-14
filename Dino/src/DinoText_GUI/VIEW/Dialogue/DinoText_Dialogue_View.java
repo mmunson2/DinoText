@@ -8,20 +8,23 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DinoText_Dialogue_View {
     private JPanel jPanel_dialogueEditor;
-    private JTextField jTextField_input;
     private JScrollPane jScrollPane_dialogueInput;
     private JPopupMenu jPopupMenu_listInsertion;
     private JTextPane jTextPane_dialogueInput;
     private JLabel jLabel_instructions;
     private JToolBar jToolBar_topBar;
     private ArrayList<JButton> listButtons;
+    private HashSet<String> listNames;
 
 
     public DinoText_Dialogue_View() {
         listButtons = new ArrayList<JButton>();
+        listNames = new HashSet<String>();
         jPopupMenu_listInsertion = new JPopupMenu();
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
     }
@@ -40,10 +43,6 @@ public class DinoText_Dialogue_View {
     /*************************************
      * ACTION LISTENERS
      ************************************/
-    public void editListenerjTextField_input(ActionListener listenForjTextField_input, boolean bool) {
-        if (bool) jTextField_input.addActionListener(listenForjTextField_input);
-        else jTextField_input.removeActionListener(listenForjTextField_input);
-    }
 
     public void addListenerjTextPane_dialogueInput(MouseAdapter mouseAdapter) {
         jTextPane_dialogueInput.addMouseListener(mouseAdapter);
@@ -52,9 +51,6 @@ public class DinoText_Dialogue_View {
     /*************************************
      * SETTER
      ************************************/
-    public void setText_jTextField_input(String input) {
-        jTextField_input.setText(input);
-    }
 
     public void setText_jTextPane_dialogueInput(String input) {
         jTextPane_dialogueInput.setText(input);
@@ -65,10 +61,6 @@ public class DinoText_Dialogue_View {
      ************************************/
     public JPanel getjPanel_dialogueEditor() {
         return jPanel_dialogueEditor;
-    }
-
-    public String getText_jTextField_input() {
-        return jTextField_input.getText();
     }
 
     public String getText_jTextPane_dialogueInput() {
@@ -106,11 +98,6 @@ public class DinoText_Dialogue_View {
         jScrollPane_dialogueInput.setVisible(bool);
     }
 
-    public void setVisiblejTextField_input(boolean bool) {
-        jTextField_input.setVisible(bool);
-    }
-
-
     /*************************************
      * FOCUS REQUEST
      ************************************/
@@ -118,34 +105,9 @@ public class DinoText_Dialogue_View {
         jTextPane_dialogueInput.requestFocusInWindow();
     }
 
-    public void setFocusjTextField_input() {
-        jTextField_input.requestFocusInWindow();
-    }
-
-
     /*************************************
      * MISC
      ************************************/
-    public void highlightWord(String wordToFind, Color color) throws BadLocationException {
-        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
-                new DefaultHighlighter.DefaultHighlightPainter(color);
-
-        String dialogueInputText = jTextPane_dialogueInput.getText();
-
-        String words[] = dialogueInputText.split(" ");
-
-        for (String word : words) {
-            if (word.equals(wordToFind)) {
-                highlighter.addHighlight(dialogueInputText.indexOf(word), word.length(),
-                        highlightPainter);
-            }
-        }
-    }
-
-    public void dehighlightWord(String wordToFind) {
-        // TODO: 7/6/2020
-    }
 
     public void insertButtonjTextPane(String listName, ActionListener actionListener, Color color) {
         AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
@@ -173,6 +135,13 @@ public class DinoText_Dialogue_View {
 //            e.printStackTrace();
 //        }
 
+    }
+
+    public HashSet<String> getSetListNames() {
+        for (JButton jb : listButtons) {
+            listNames.add(jb.getName());
+        }
+        return listNames;
     }
 
     /*************************************

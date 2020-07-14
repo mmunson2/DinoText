@@ -4,6 +4,7 @@ import DinoText_GUI.MODEL.DinoList;
 import DinoText_GUI.MODEL.DinoWriter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -13,12 +14,12 @@ public class DinoText_Dialogue_Model {
 
     private String dialogue;
 
-    private DinoList currentList;
+    private static HashSet<String> listNames;
 
     private static Set<DinoList> dupCheckSet = new LinkedHashSet<>();
     private static ArrayList<DinoList> lists = new ArrayList<>();
 
-    public String newDialogue(String userDialogue) {
+    public void newDialogue(String userDialogue) {
         StringBuilder builder = new StringBuilder();
 
         if (userDialogue.contains("\\")) {
@@ -26,32 +27,11 @@ public class DinoText_Dialogue_Model {
         }
 
         dialogue = builder.toString();
-
-        currentList = lists.get(0);
-
-        return currentList.getName();
     }
 
-    public void populateList(String listItem) {
-        currentList.add(listItem);
-    }
+    public void setName(String name) { this.name = name; }
 
-    public String getCurrentList() {
-        return currentList.toString();
-    }
-
-    public String getCurrentListName() {
-        return currentList.getName();
-    }
-
-    public boolean hasNextList() {
-        return (lists.indexOf(currentList) < lists.size() - 1);
-    }
-
-    public void incrementList() {
-        currentList = lists.get(lists.indexOf(currentList) + 1);
-    }
-
+    public void setListNames(HashSet<String> set) { listNames = set; }
 
     public void nameDialogue(String dialogueName) {
         name = dialogueName;
@@ -62,7 +42,7 @@ public class DinoText_Dialogue_Model {
         }
     }
 
-    public void writeToFile(String text) {
+    public void writeToFile() {
         System.out.println("Test: ");
         System.out.println(this.dialogue);
 

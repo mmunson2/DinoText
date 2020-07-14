@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class DinoText_Dialogue_Controller {
 
@@ -69,13 +70,18 @@ public class DinoText_Dialogue_Controller {
         //dinoGUIView.addButtonjToolBar_topBar(temp);
         temp = new JButton("Write to File");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_WriteToFile());
-        dinoGUIView.addButtonjToolBar_topBar(temp);
+        //dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
     class listener_JMenuItem_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            System.out.println(dinoGUIView.getText_jTextPane_dialogueInput());
+
+            dinoGUIModel.setName(JOptionPane.showInputDialog("Dialogue File Name: "));
+            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+            dinoGUIModel.writeToFile();
         }
     }
 
@@ -96,74 +102,13 @@ public class DinoText_Dialogue_Controller {
             }
         }
     }
+
     /*************************************
      * NEW DIALOGUE
      ************************************/
     private void newDialogue() {
         dinoGUIView.setVisibleTSDialogueInput(true);
         dinoGUIView.setFocusTSDialogueInput();
-    }
-
-    public void highlightWord(String word, Color color) throws BadLocationException {
-        dinoGUIView.highlightWord(word, color);
-
-    }
-
-    class listener_jButton_submit_newDialogue implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            String currentListName = dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-            dinoGUIView.setText_jTextPane_dialogueInput("");
-            dinoGUIView.setVisibleTSDialogueInput(false);
-            populateList(currentListName);
-        }
-    }
-
-    /*************************************
-     * POPULATE LIST
-     ************************************/
-    private void populateList(String name) {
-        dinoGUIView.setVisiblejTextField_input(true);
-        dinoGUIView.setFocusjTextField_input();
-    }
-
-    /*************************************
-     * NAME DIALOGUE
-     ************************************/
-    private void nameDialogue() {
-        dinoGUIView.setFocusjTextField_input();
-        dinoGUIView.editListenerjTextField_input(new listener_jTextField_input_nameDialogue(), true);
-    }
-
-    class listener_jTextField_input_nameDialogue implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-
-            String text = dinoGUIView.getText_jTextField_input();
-
-            System.out.println(text);
-
-            dinoGUIModel.nameDialogue(text);
-            dinoGUIView.editListenerjTextField_input(new listener_jTextField_input_nameDialogue(), false);
-            dinoGUIView.setVisiblejTextField_input(false);
-            dinoGUIView.setText_jTextField_input("");
-
-            writeToFile();
-        }
-    }
-
-
-    /*************************************
-     * WRITE TO FILE
-     ************************************/
-    private void writeToFile() {
-        dinoGUIView.editListenerjTextField_input(new listener_jTextField_input_writeToFile(), true);
-    }
-
-    class listener_jTextField_input_writeToFile implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            dinoGUIView.setVisiblejTextField_input(false);
-            dinoGUIModel.writeToFile(dinoGUIView.getText_jTextField_input());
-            newDialogue();
-        }
     }
 
     /*************************************
@@ -186,15 +131,18 @@ public class DinoText_Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
             //TODO Table_Controller.createList(listName)?
-            dinoGUIView.insertButtonjTextPane(listName, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //TODO Table_Controller.openList(listName)?
-                }
-            }, Color.yellow);
-            dinoGUIView.addItemjPopupMenu_listInsertion(listName, new listener_jPopupMenu_listInsertion_SelectExistingList(listName));
+            if (listName != null) {
+                dinoGUIView.insertButtonjTextPane(listName, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //TODO Table_Controller.openList(listName)?
+                    }
+                }, Color.yellow);
 
-            table_controller.addList(listName);
+                dinoGUIView.addItemjPopupMenu_listInsertion(listName, new listener_jPopupMenu_listInsertion_SelectExistingList(listName));
+
+                table_controller.addList(listName);
+            }
         }
     }
 
@@ -221,10 +169,18 @@ public class DinoText_Dialogue_Controller {
 
     class listener_jPopupMenu_listInsertion_WriteToFile implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (JButton button : dinoGUIView.getAllButtons()) {
-                //System.out.println(button.getText());
-            }
         }
+
     }
 
+
+    /*************************************
+     * GETTERS
+     ************************************/
+    public HashSet<String> getSetListNames() {
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        return dinoGUIView.getSetListNames();
+    }
+
+    public String getText_jTextPane_dialogueInput() { return dinoGUIView.getText_jTextPane_dialogueInput(); }
 }

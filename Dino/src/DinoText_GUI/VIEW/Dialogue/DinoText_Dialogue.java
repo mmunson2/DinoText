@@ -68,12 +68,4 @@ public class DinoText_Dialogue {
         jFrame_dinoText.setVisible(true);
 
     }
-
-    public String getDialogueText() {
-        return dinoGUIView.getText_jTextPane_dialogueInput();
-    }
-
-    public void highlightWord(String word, Color color) throws BadLocationException {
-        dinoGUIController.highlightWord(word, color);
-    }
 }
