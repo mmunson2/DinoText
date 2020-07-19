@@ -1,5 +1,7 @@
 package DinoText_GUI.MODEL.Display;
 
+import DinoParser.Dino;
+
 import java.util.ArrayList;
 
 /*******************************************************************************
@@ -9,7 +11,6 @@ import java.util.ArrayList;
 public class Text_Display_Model
 {
     private String text;
-
     private ArrayList<String> pages;
 
     private int currentPage;
@@ -17,6 +18,8 @@ public class Text_Display_Model
 
     private int charPerLine;
     private int linesPerPage;
+
+    private Dino dino;
 
     /***************************************************************************
      * Constructor
@@ -31,6 +34,15 @@ public class Text_Display_Model
 
         this.currentPage = 1;
         this.numPages = 1;
+    }
+
+    /***************************************************************************
+     * generate New Text
+     **************************************************************************/
+    public void generateNewText()
+    {
+        this.text = dino.getDialogue();
+        this.formatText();
     }
 
     /***************************************************************************
@@ -57,6 +69,22 @@ public class Text_Display_Model
      * get Lines Per Page
      **************************************************************************/
     public int getLinesPerPage() { return linesPerPage; }
+
+    /***************************************************************************
+     * Get Dino
+     **************************************************************************/
+    public Dino getDino()
+    {
+        return this.dino;
+    }
+
+    /***************************************************************************
+     * Set Dino
+     **************************************************************************/
+    public void setDino(Dino dino)
+    {
+        this.dino = dino;
+    }
 
     /***************************************************************************
      * Set Text

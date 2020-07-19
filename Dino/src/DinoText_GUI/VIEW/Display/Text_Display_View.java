@@ -21,7 +21,7 @@ public class Text_Display_View extends JFrame
     private JTextPane pageCounter;
     private JSpinner charactersSpinner;
     private JSpinner linesSpinner;
-    private JSpinner fontSizeSpinner;
+    private JButton generateNewButton;
 
     /***************************************************************************
      * Constructor
@@ -38,6 +38,16 @@ public class Text_Display_View extends JFrame
         SimpleAttributeSet center = new SimpleAttributeSet();
         StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
+    }
+
+
+    /***************************************************************************
+     * Listener - Next Button
+     *
+     **************************************************************************/
+    public void add_generateNew_button_listener(ActionListener actionListener)
+    {
+        this.generateNewButton.addActionListener(actionListener);
     }
 
     /***************************************************************************

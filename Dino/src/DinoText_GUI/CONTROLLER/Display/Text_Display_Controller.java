@@ -19,8 +19,6 @@ public class Text_Display_Controller
     private Text_Display_Model model;
     private Text_Display_View view;
 
-    private Dino dino;
-
     /***************************************************************************
      * Constructor
      *
@@ -38,6 +36,8 @@ public class Text_Display_Controller
 
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
+
+        this.view.add_generateNew_button_listener(new generateNewListener());
     }
 
     /***************************************************************************
@@ -57,8 +57,20 @@ public class Text_Display_Controller
      **************************************************************************/
     public void setDino(Dino dino)
     {
-        this.dino = dino;
+        this.model.setDino(dino);
+        this.generateNewText();
     }
+
+    /***************************************************************************
+     * Generate New Text
+     *
+     **************************************************************************/
+    public void generateNewText()
+    {
+        this.model.generateNewText();
+        this.update();
+    }
+
 
     /***************************************************************************
      * update
@@ -80,6 +92,19 @@ public class Text_Display_Controller
     {
         model.setCurrentPage(i);
         view.setPageCounter(i + " / " + model.getNumPages());
+    }
+
+    /***************************************************************************
+     * Generate New Button
+     *
+     **************************************************************************/
+    class generateNewListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            generateNewText();
+        }
     }
 
     /***************************************************************************

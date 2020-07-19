@@ -143,7 +143,7 @@ public class Dialogue_Controller {
             }
 
             Dino dino = new Dino(mostRecentSaved);
-            textDisplayController.setDialogue(dino.getDialogue());
+            textDisplayController.setDino(dino);
 
 
             if (textDisplayController.panelIsVisible()) {
