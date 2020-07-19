@@ -114,15 +114,18 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+            
+            if(fileName != null)
+            {
+                dinoGUIModel.setName(fileName);
+                mostRecentSaved = fileName;
 
-            dinoGUIModel.setName(fileName);
-            mostRecentSaved = fileName;
+                dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.writeToFile();
 
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-            dinoGUIModel.writeToFile();
-
-            table_controller.writeToFile();
+                table_controller.writeToFile();
+            }
         }
     }
 
