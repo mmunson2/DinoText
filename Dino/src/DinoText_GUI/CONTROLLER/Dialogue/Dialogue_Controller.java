@@ -121,7 +121,7 @@ public class Dialogue_Controller {
                 mostRecentSaved = fileName;
 
                 dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
                 dinoGUIModel.writeToFile();
 
                 table_controller.writeToFile();
@@ -165,7 +165,7 @@ public class Dialogue_Controller {
                 mostRecentSaved = fileName;
 
                 dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
                 dinoGUIModel.writeToFile();
 
                 table_controller.writeToFile();
@@ -313,7 +313,7 @@ public class Dialogue_Controller {
             mostRecentSaved = fileName;
 
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIModel.writeToFile();
 
             table_controller.writeToFile();
