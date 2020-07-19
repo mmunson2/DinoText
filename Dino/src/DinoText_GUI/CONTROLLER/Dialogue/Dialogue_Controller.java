@@ -237,7 +237,10 @@ public class Dialogue_Controller {
                 dinoGUIView.addItemjPopupMenu_listInsertion(listName, new listener_jPopupMenu_listInsertion_SelectExistingList(listName));
 
                 table_controller.addList(listName);
+
             }
+
+            dinoGUIView.setFocusTSDialogueInput();
         }
     }
 
@@ -254,16 +257,18 @@ public class Dialogue_Controller {
         }
 
         public void actionPerformed(ActionEvent e) {
-            if(dinoGUIView.getSetListNames().contains(varName))
-            dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
+            if (dinoGUIView.getSetListNames().contains(varName))
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
             else {
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
             }
+
+            dinoGUIView.setFocusTSDialogueInput();
         }
     }
 
     /***************************************************************************
-     * Delete Dynamic List
+     * Insert Static Variable
      *
      **************************************************************************/
     class listener_jPopupMenu_listInsertion_InsertStaticVariable implements ActionListener {
@@ -280,6 +285,8 @@ public class Dialogue_Controller {
                 dinoGUIView.addItemjPopupMenu_listInsertion(varName, new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
 
                 dinoGUIModel.addStaticVar(varName);
+
+                dinoGUIView.setFocusTSDialogueInput();
             }
         }
     }
@@ -288,7 +295,7 @@ public class Dialogue_Controller {
      * Write To File
      *
      **************************************************************************/
-    public void saveDialogueFile(){
+    public void saveDialogueFile() {
         String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
 
         dinoGUIModel.setName(fileName);
