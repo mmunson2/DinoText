@@ -179,7 +179,7 @@ public class Dialogue_View {
      ************************************/
 
     /***************************************************************************
-     * insert Button to JTextPane (Dynamic List)
+     * insert Button to JTextPane (Static Variable)
      **************************************************************************/
     public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
         AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
@@ -209,7 +209,7 @@ public class Dialogue_View {
 
     }
     /***************************************************************************
-     * insert Button to JTextPane (Static Var)
+     * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
         AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();

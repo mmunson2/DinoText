@@ -91,6 +91,31 @@ public class DinoWriter
     public void writeDialogueToFile(String path, String dialogue,
                                     Set<DinoList> lists, Set<String> staticVars)
     {
+        String[] listsStringArray = new String[lists.size()];
+
+        int index = 0;
+        for(DinoList list: lists)
+        {
+            listsStringArray[index] = list.getName();
+            index++;
+        }
+
+        String[] staticVarsStringArray = new String[staticVars.size()];
+        index = 0;
+        for(String staticVar: staticVars)
+        {
+            staticVarsStringArray[index] = staticVar;
+            index++;
+        }
+
+        
+        writeDialogueToFile(path, dialogue,
+                listsStringArray, staticVarsStringArray);
+    }
+
+    public void writeDialogueToFile(String path, String dialogue,
+                                    String[] lists, String[] staticVars)
+    {
         try
         {
             this.writer = new FileWriter(path);
@@ -99,13 +124,13 @@ public class DinoWriter
 
             //Write lists to file
             this.writer.write(
-                    "\nLists Referenced: " + lists.size() + "\n");
+                    "\nLists Referenced: " + lists.length + "\n");
 
-            for(DinoList list : lists)
+            for(String list : lists)
             {
                 builder.setLength(0);
 
-                builder.append(list.getName());
+                builder.append(list);
                 builder.append(" ");
 
                 this.writer.write(builder.toString());
@@ -116,7 +141,7 @@ public class DinoWriter
             //Write Static Variables to File:
             this.writer.write(
                     "\nStatic Variables: " +
-                            staticVars.size() + "\n");
+                            staticVars.length + "\n");
 
             for(String var : staticVars)
             {
@@ -143,8 +168,11 @@ public class DinoWriter
         }
 
         System.out.println("> Successfully wrote to " + path);
-
     }
+
+
+
+
 
 
 

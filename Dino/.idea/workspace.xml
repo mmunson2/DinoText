@@ -9,7 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Dialogue/Dialogue_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Dialogue/Dialogue_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue/Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue/Dialogue_View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +203,7 @@
       <workItem from="1594722508610" duration="3283000" />
       <workItem from="1594753253194" duration="1000" />
       <workItem from="1595123990295" duration="4825000" />
-      <workItem from="1595155605247" duration="3417000" />
+      <workItem from="1595155605247" duration="4767000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>
