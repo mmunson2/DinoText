@@ -97,9 +97,6 @@ public class Dialogue_Controller {
         JButton temp = new JButton("Insert Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
         dinoGUIView.addButtonjToolBar_topBar(temp);
-        temp = new JButton("Insert Static Variable");
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
-        dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
     /***************************************************************************
