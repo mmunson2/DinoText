@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
+import java.util.Set;
 
 /*******************************************************************************
  * Dialogue Controller
@@ -92,6 +93,10 @@ public class Dialogue_Controller {
 
         JButton temp = new JButton("Insert Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
+        dinoGUIView.addButtonjToolBar_topBar(temp);
+
+        temp = new JButton("Insert Static Variable");
+        temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
         dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
@@ -320,22 +325,88 @@ public class Dialogue_Controller {
         }
     }
 
+    /***************************************************************************
+     * SETTERS
+     **************************************************************************/
+    /***************************************************************************
+     * set ListNames
+     *
+     **************************************************************************/
+    public void setListNames(Set<String> newListNames) {
+        dinoGUIModel.setListNames(newListNames);
+    }
+
+    /***************************************************************************
+     * set staticVars
+     *
+     **************************************************************************/
+    public void setStaticVars(Set<String> newVars) {
+        dinoGUIModel.setStaticVars(newVars);
+    }
+
+    /***************************************************************************
+     * set Dialogue
+     *
+     **************************************************************************/
+    public void setDialogue(String newDialogue) {
+        dinoGUIModel.setDialogue(newDialogue);
+    }
+
+    /***************************************************************************
+     * set Dialogue Name
+     *
+     **************************************************************************/
+    public void setDialogueName(String newName) {
+        dinoGUIModel.setName(newName);
+    }
+
+
+    /***************************************************************************
+     * GETTERS
+     **************************************************************************/
 
     /***************************************************************************
      * get ListNames
      *
      **************************************************************************/
-    public HashSet<String> getSetListNames() {
+    public Set<String> getSetListNames() {
         dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        return dinoGUIView.getSetListNames();
+        return dinoGUIModel.getListNames();
+    }
+
+    public String[] getArrayListName() {
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
+    }
+
+    /***************************************************************************
+     * get staticVars
+     *
+     **************************************************************************/
+    public Set<String> getSetStaticVars() {
+        return dinoGUIModel.getStaticVars();
+    }
+
+    public String[] getArrayStaticVars() {
+        return dinoGUIModel.getStaticVars().toArray(new String[dinoGUIModel.getStaticVars().size()]);
+
     }
 
     /***************************************************************************
      * get Dialogue
      *
      **************************************************************************/
-    public String getText_jTextPane_dialogueInput() {
-        return dinoGUIView.getText_jTextPane_dialogueInput();
+    public String getDialogue() {
+        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        return dinoGUIModel.getDialogue();
+    }
+
+    /***************************************************************************
+     * get Dialogue Name
+     *
+     **************************************************************************/
+    public String getDialogueName() {
+        return dinoGUIModel.getName();
     }
 
 }
