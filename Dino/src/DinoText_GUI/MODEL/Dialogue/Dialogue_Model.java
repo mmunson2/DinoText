@@ -18,11 +18,10 @@ public class Dialogue_Model {
 
     private String dialogue;
 
-    private static HashSet<String> listNames;
-
     private static Set<DinoList> dupCheckSet = new LinkedHashSet<>();
     private static ArrayList<DinoList> lists = new ArrayList<>();
     private static Set<String> staticVars = new LinkedHashSet<>();
+    private Set<String> listNames = new LinkedHashSet<>();
 
 
     /***************************************************************************
@@ -84,7 +83,6 @@ public class Dialogue_Model {
      *
      **************************************************************************/
     public void writeToFile() {
-        System.out.println("Test: ");
         System.out.println(this.dialogue);
 
         DinoWriter writer = new DinoWriter();
