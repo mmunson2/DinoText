@@ -134,8 +134,7 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Preview implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(mostRecentSaved == null)
-            {
+            if (mostRecentSaved == null) {
                 String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
 
                 dinoGUIModel.setName(fileName);
@@ -195,6 +194,7 @@ public class Dialogue_Controller {
     private void initializejPopupMenu() {
         dinoGUIView.setInvokerjPopupMenu_listInsertion(dinoGUIView.getjTextPane_dialogueInput());
         dinoGUIView.addItemjPopupMenu_listInsertion("Insert Dynamic List", new listener_jPopupMenu_listInsertion_InsertDynamicList());
+        dinoGUIView.addItemjPopupMenu_listInsertion("Insert Static Variable", new listener_jPopupMenu_listInsertion_InsertStaticVariable());
         dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 if (SwingUtilities.isRightMouseButton(me)) {
@@ -203,6 +203,8 @@ public class Dialogue_Controller {
             }
 
         });
+
+
     }
 
     /***************************************************************************
@@ -233,15 +235,19 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     class listener_jPopupMenu_listInsertion_SelectExistingList implements ActionListener {
-        private String listName;
+        private String varName;
 
         listener_jPopupMenu_listInsertion_SelectExistingList(String name) {
             super();
-            listName = name;
+            varName = name;
         }
 
         public void actionPerformed(ActionEvent e) {
-            dinoGUIView.insertButtonjTextPane_DynamicList(listName, dinoGUIView.getButton(listName).getAction(), Color.yellow); //TODO this button may not link to the right name
+            if(dinoGUIView.getSetListNames().contains(varName))
+            dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
+            else {
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
+            }
         }
     }
 
@@ -291,6 +297,8 @@ public class Dialogue_Controller {
      * get Dialogue
      *
      **************************************************************************/
-    public String getText_jTextPane_dialogueInput() { return dinoGUIView.getText_jTextPane_dialogueInput(); }
+    public String getText_jTextPane_dialogueInput() {
+        return dinoGUIView.getText_jTextPane_dialogueInput();
+    }
 
 }

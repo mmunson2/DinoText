@@ -23,6 +23,7 @@ public class Dialogue_View {
     private JLabel jLabel_instructions;
     private JToolBar jToolBar_topBar;
     private ArrayList<JButton> listButtons;
+    private ArrayList<JButton> staticVarButtons;
     private HashSet<String> listNames;
     private JDialog jDialog_Preferences = new JDialog();
     private JOptionPane jOptionPane_Preferences = new JOptionPane("Preferences");
@@ -38,6 +39,7 @@ public class Dialogue_View {
         // END TODO
 
         listButtons = new ArrayList<JButton>();
+        staticVarButtons = new ArrayList<JButton>();
         listNames = new HashSet<String>();
         jPopupMenu_listInsertion = new JPopupMenu();
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
@@ -121,8 +123,17 @@ public class Dialogue_View {
     /***************************************************************************
      * get Button
      **************************************************************************/
-    public JButton getButton(String name) {
+    public JButton getListButton(String name) {
         for (JButton button : listButtons) {
+            if (button.getName().equals(name)) {
+                return button;
+            }
+        }
+        return null;
+    }
+
+    public JButton getStaticVarButton(String name) {
+        for (JButton button : staticVarButtons) {
             if (button.getName().equals(name)) {
                 return button;
             }
@@ -133,8 +144,12 @@ public class Dialogue_View {
     /***************************************************************************
      * get all buttons
      **************************************************************************/
-    public ArrayList<JButton> getAllButtons() {
+    public ArrayList<JButton> getAllListButtons() {
         return listButtons;
+    }
+
+    public ArrayList<JButton> getAllStaticVarButtons() {
+        return staticVarButtons;
     }
 
     /*************************************
@@ -185,7 +200,7 @@ public class Dialogue_View {
         newList.addActionListener(actionListener);
         newList.setBackground(color);
         jTextPane_dialogueInput.insertComponent(newList);
-        listButtons.add(newList);
+        staticVarButtons.add(newList);
 //
 //        try {
 //            jTextPane_dialogueInput.getDocument().insertString(caretPos + (varName.length() + 5), "\b", null);
