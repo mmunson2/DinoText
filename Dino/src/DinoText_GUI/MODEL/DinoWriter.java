@@ -13,7 +13,7 @@ import java.util.Set;
  *
  * @author Matthew Munson
  * Date: 6/18/2020
- * @version 0.25-alpha
+ * @version 0.4-alpha
  *
  * File interface for the DinoText dynamic text creation tool. Handles both
  * List and Dialogue file writes with separate methods.
@@ -84,9 +84,7 @@ public class DinoWriter
      * @param lists The set of DinoLists linked to the dialogue
      *
      *
-     * @since 0.25-alpha
-     * //Todo: Update doc
-     * //Todo: Refactor with Set-writing method
+     * @since 0.4-beta
      **************************************************************************/
     public void writeDialogueToFile(String path, String dialogue,
                                     Set<DinoList> lists, Set<String> staticVars)
@@ -113,6 +111,21 @@ public class DinoWriter
                 listsStringArray, staticVarsStringArray);
     }
 
+    /***************************************************************************
+     * writeDialogueToFile
+     *
+     * Writes a dialogue file given its name, dialogue String, and Set of
+     * linked DinoLists.
+     *
+     * See Examples/DialogueDemo.txt for formatting example
+     *
+     * @param path File path to the dialogue
+     * @param dialogue The dialogue String to write
+     * @param lists List Names
+     * @param staticVars Static Variable Names
+     *
+     * @since 0.4-beta
+     **************************************************************************/
     public void writeDialogueToFile(String path, String dialogue,
                                     String[] lists, String[] staticVars)
     {
