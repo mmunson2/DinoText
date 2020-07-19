@@ -63,9 +63,11 @@ public class Dialogue_Controller {
      **************************************************************************/
     private void initializejToolBar() {
         JMenu menu = new JMenu("File");
-        JMenuItem menuItem = new JMenuItem();
-        menuItem.setText("Save");
-        menuItem.addActionListener(new listener_JMenuItem_Save());
+        JMenuItem menuItem;
+
+        menuItem = new JMenuItem();
+        menuItem.setText("New");
+        menuItem.addActionListener(new listener_JMenuItem_New());
         menu.add(menuItem);
 
         menuItem = new JMenuItem();
@@ -74,20 +76,14 @@ public class Dialogue_Controller {
         menu.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("New");
-        menuItem.addActionListener(new listener_JMenuItem_New());
+        menuItem.setText("Save");
+        menuItem.addActionListener(new listener_JMenuItem_Save());
         menu.add(menuItem);
 
         menuItem = new JMenuItem();
         menuItem.setText("Preview");
         menuItem.addActionListener(new listener_JMenuItem_Preview());
         menu.add(menuItem);
-
-        menuItem = new JMenuItem();
-        menuItem.setText("Preferences");
-        menuItem.addActionListener(new listener_JMenuItem_Preferences());
-        menu.add(menuItem);
-
 
         JMenuBar jMenuBar = new JMenuBar();
         jMenuBar.add(menu);
