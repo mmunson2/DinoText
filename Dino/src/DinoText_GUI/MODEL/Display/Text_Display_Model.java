@@ -42,7 +42,6 @@ public class Text_Display_Model
     public void generateNewText()
     {
         this.text = dino.getDialogue();
-        this.formatText();
     }
 
     /***************************************************************************
