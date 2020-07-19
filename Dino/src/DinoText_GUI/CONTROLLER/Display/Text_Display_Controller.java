@@ -1,6 +1,6 @@
 package DinoText_GUI.CONTROLLER.Display;
 
-import DinoText_GUI.CONTROLLER.Dialouge.DinoText_Dialogue_Controller;
+import DinoParser.Dino;
 import DinoText_GUI.MODEL.Display.Text_Display_Model;
 import DinoText_GUI.VIEW.Display.Text_Display_View;
 
@@ -15,7 +15,7 @@ public class Text_Display_Controller
     private Text_Display_Model model;
     private Text_Display_View view;
 
-    private DinoText_Dialogue_Controller dinoText_dialogue_controller;
+    private Dino dino;
 
     public Text_Display_Controller(Text_Display_Model model, Text_Display_View view)
     {
@@ -30,8 +30,6 @@ public class Text_Display_Controller
 
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
-
-        this.dinoText_dialogue_controller = dinoText_dialogue_controller;
     }
 
     public void setDialogue(String str)
@@ -39,6 +37,11 @@ public class Text_Display_Controller
         model.setText(str);
         model.formatText();
         update();
+    }
+
+    public void setDino(Dino dino)
+    {
+        this.dino = dino;
     }
 
     public void update()
