@@ -14,7 +14,7 @@ import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
 import DinoText_GUI.MODEL.Display.Text_Display_Model;
 import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
 import DinoText_GUI.VIEW.Display.Text_Display_View;
-import DinoText_GUI.CONTROLLER.Dialouge.Dialogue_Controller;
+import DinoText_GUI.CONTROLLER.Dialogue.Dialogue_Controller;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
 import DinoText_GUI.MODEL.Table.Table_Manager;

@@ -1,4 +1,4 @@
-package DinoText_GUI.CONTROLLER.Dialouge;
+package DinoText_GUI.CONTROLLER.Dialogue;
 
 import DinoParser.Dino;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
@@ -73,6 +73,12 @@ public class Dialogue_Controller {
         menuItem.addActionListener(new listener_JMenuItem_Preview());
         menu.add(menuItem);
 
+        menuItem = new JMenuItem();
+        menuItem.setText("Preferences");
+        menuItem.addActionListener(new listener_JMenuItem_Preferences());
+        menu.add(menuItem);
+
+
         JMenuBar jMenuBar = new JMenuBar();
         jMenuBar.add(menu);
 
@@ -81,9 +87,9 @@ public class Dialogue_Controller {
         JButton temp = new JButton("Insert Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
         dinoGUIView.addButtonjToolBar_topBar(temp);
-        temp = new JButton("Delete Dynamic List");
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_DeleteDynamicList());
-        //dinoGUIView.addButtonjToolBar_topBar(temp);
+        temp = new JButton("Insert Static Variable");
+        temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
+        dinoGUIView.addButtonjToolBar_topBar(temp);
         temp = new JButton("Write to File");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_WriteToFile());
         //dinoGUIView.addButtonjToolBar_topBar(temp);
@@ -155,6 +161,25 @@ public class Dialogue_Controller {
     }
 
     /***************************************************************************
+     * Dropdown Menu - Preferences
+     *
+     **************************************************************************/
+    private class listener_JMenuItem_Preferences implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dinoGUIView.setVisiblejDialog_Preferences(true);
+        }
+    }
+
+    /***************************************************************************
+     * set jOptionPane_Preferences
+     * use this to pass in the JOptionPane from another class
+     **************************************************************************/
+    public void setjOptionPane_Preferences(JOptionPane pane) {
+        dinoGUIView.setjOptionPane_Preferences(pane);
+    }
+
+    /***************************************************************************
      * newDialogue
      *
      **************************************************************************/
@@ -189,7 +214,7 @@ public class Dialogue_Controller {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
             //TODO Table_Controller.createList(listName)?
             if (listName != null) {
-                dinoGUIView.insertButtonjTextPane(listName, new ActionListener() {
+                dinoGUIView.insertButtonjTextPane_DynamicList(listName, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         //TODO Table_Controller.openList(listName)?
@@ -216,7 +241,7 @@ public class Dialogue_Controller {
         }
 
         public void actionPerformed(ActionEvent e) {
-            dinoGUIView.insertButtonjTextPane(listName, dinoGUIView.getButton(listName).getAction(), Color.yellow); //TODO this button may not link to the right name
+            dinoGUIView.insertButtonjTextPane_DynamicList(listName, dinoGUIView.getButton(listName).getAction(), Color.yellow); //TODO this button may not link to the right name
         }
     }
 
@@ -224,11 +249,21 @@ public class Dialogue_Controller {
      * Delete Dynamic List
      *
      **************************************************************************/
-    class listener_jPopupMenu_listInsertion_DeleteDynamicList implements ActionListener {
+    class listener_jPopupMenu_listInsertion_InsertStaticVariable implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
-            System.out.println(dinoGUIView.getText_jTextPane_dialogueInput());
-            //TODO dinoGUIView.removeButtonjPopupMenu(dinoGUIView.getButton(listName)); CONCURRENT MODIFICATION EXCEPTION
+            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
+            if (varName != null) {
+                dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //TODO Table_Controller.openList(listName)?
+                    }
+                }, Color.red);
+
+                dinoGUIView.addItemjPopupMenu_listInsertion(varName, new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
+
+                dinoGUIModel.addStaticVar(varName);
+            }
         }
     }
 
@@ -257,4 +292,5 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     public String getText_jTextPane_dialogueInput() { return dinoGUIView.getText_jTextPane_dialogueInput(); }
+
 }

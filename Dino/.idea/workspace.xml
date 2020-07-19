@@ -12,10 +12,11 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/Test/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/Test/adjectives.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/Test/unnamedList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/Test/unnamedList.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Display/Text_Display_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Display/Text_Display_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/Test/adjectives.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test/adjectives.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/Test/unnamedList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test/unnamedList.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Dialouge/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Dialogue/Dialogue_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Dialogue/Dialogue_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue/Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue/Dialogue_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Text_Display_View_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Text_Display_View_Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,33 +70,49 @@
       <recent name="DinoParser.List" />
       <recent name="DinoParser" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="DinoParser" />
       <recent name="DinoParser.List" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue" />
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table" />
+      <recent name="$PROJECT_DIR$/../Test_Resources/Static_Tests" />
+      <recent name="$PROJECT_DIR$/../Test_Resources/List_Tests" />
+      <recent name="$PROJECT_DIR$/../Resources/v0_15-alpha" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../Resources" />
       <recent name="$PROJECT_DIR$/META-INF" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display" />
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW" />
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue" />
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table" />
-      <recent name="$PROJECT_DIR$/../Test_Resources/Static_Tests" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="DinoText_GUI.CONTROLLER.Dialogue" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DinoText">
     <configuration name="DinoText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DinoText_GUI.DinoText" />
       <module name="Dino" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DinoText_GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DinoText_Dialogue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue" />
+      <module name="Dino" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Resources/Test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText_GUI.DinoText" />
+          <option name="PATTERN" value="DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,20 +152,7 @@
       <module name="Dino" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText_GUI.DinoText" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Table_View" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.VIEW.Table_View" />
-      <module name="Dino" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DinoText_GUI.VIEW.Display.*" />
+          <option name="PATTERN" value="DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,20 +173,20 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.DinoText_Dialogue" />
       <item itemvalue="Application.DinoViewer" />
-      <item itemvalue="Application.Table_GUI" />
-      <item itemvalue="Application.Table_View" />
       <item itemvalue="Application.DinoViewer_GUI" />
+      <item itemvalue="Application.Table_GUI" />
       <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="Application.DinoText" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DinoText" />
-        <item itemvalue="Application.DinoViewer" />
+        <item itemvalue="Application.DinoText_Dialogue" />
         <item itemvalue="Application.DinoViewer_GUI" />
+        <item itemvalue="Application.DinoViewer" />
         <item itemvalue="Application.Table_GUI" />
-        <item itemvalue="Application.Table_View" />
       </list>
     </recent_temporary>
   </component>
@@ -205,9 +209,7 @@
       <workItem from="1594604957457" duration="1885000" />
       <workItem from="1594707387735" duration="1763000" />
       <workItem from="1594712706761" duration="6341000" />
-      <workItem from="1594722508610" duration="3283000" />
-      <workItem from="1594753253194" duration="1000" />
-      <workItem from="1595123990295" duration="4825000" />
+      <workItem from="1594722508610" duration="2838000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>
@@ -241,11 +243,11 @@
     </state>
     <state x="296" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1594724404907" />
     <state x="381" y="272" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1594260657794" />
-    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser" timestamp="1595126960800">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="685" y="223" key="#com.intellij.ide.util.MemberChooser" timestamp="1595144274947">
+      <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1595126960800" />
-    <state x="685" y="223" key="#com.intellij.ide.util.MemberChooser/0.0.1851.1234@0.0.1851.1234" timestamp="1594720523510" />
+    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1594707692063" />
+    <state x="685" y="223" key="#com.intellij.ide.util.MemberChooser/0.0.1851.1234@0.0.1851.1234" timestamp="1595144274947" />
     <state x="457" y="247" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1594550773409">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -258,10 +260,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="490" y="326" width="460" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1594684676349" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595125174855">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594458671308">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1595125174855" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1594458671308" />
     <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593775972114">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -270,51 +272,51 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1398" height="294" key="GridCell.Tab.0.bottom" timestamp="1595135297615">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1808" height="347" key="GridCell.Tab.0.bottom" timestamp="1595148174939">
+      <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
-    <state width="1398" height="294" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595135297615" />
-    <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1594722687988" />
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594725188351" />
+    <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595148174939" />
     <state width="1398" height="112" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594682617235" />
-    <state width="1398" height="294" key="GridCell.Tab.0.center" timestamp="1595135297614">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1808" height="347" key="GridCell.Tab.0.center" timestamp="1595148174938">
+      <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="294" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595135297614" />
-    <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1594722687987" />
+    <state width="1398" height="231" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1594725188349" />
+    <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595148174938" />
     <state width="1398" height="112" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594682617233" />
-    <state width="1398" height="294" key="GridCell.Tab.0.left" timestamp="1595135297614">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1808" height="347" key="GridCell.Tab.0.left" timestamp="1595148174938">
+      <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
-    <state width="1398" height="294" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595135297614" />
+    <state width="1398" height="231" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1594725188347" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
-    <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1594722687987" />
+    <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595148174938" />
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594555527645" />
-    <state width="1398" height="294" key="GridCell.Tab.0.right" timestamp="1595135297615">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1808" height="347" key="GridCell.Tab.0.right" timestamp="1595148174939">
+      <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="294" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595135297615" />
-    <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1594722687987" />
+    <state width="1398" height="231" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1594725188350" />
+    <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595148174939" />
     <state width="1398" height="112" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594682617234" />
-    <state width="1398" height="294" key="GridCell.Tab.1.bottom" timestamp="1595135297617">
+    <state width="1398" height="294" key="GridCell.Tab.1.bottom" timestamp="1594723969494">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595135297617" />
-    <state width="1398" height="294" key="GridCell.Tab.1.center" timestamp="1595135297616">
+    <state width="1398" height="294" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1594723969494" />
+    <state width="1398" height="294" key="GridCell.Tab.1.center" timestamp="1594723969493">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1595135297616" />
-    <state width="1398" height="294" key="GridCell.Tab.1.left" timestamp="1595135297616">
+    <state width="1398" height="294" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1594723969493" />
+    <state width="1398" height="294" key="GridCell.Tab.1.left" timestamp="1594723969493">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1595135297616" />
-    <state width="1398" height="294" key="GridCell.Tab.1.right" timestamp="1595135297617">
+    <state width="1398" height="294" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1594723969493" />
+    <state width="1398" height="294" key="GridCell.Tab.1.right" timestamp="1594723969494">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595135297617" />
+    <state width="1398" height="294" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1594723969494" />
     <state x="388" y="172" key="GuiDesigner.FormSource.Dialog" timestamp="1594552740690">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -324,10 +326,10 @@
     </state>
     <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594624011807" />
     <state x="284" y="86" key="SettingsEditor/0.0.1851.1234@0.0.1851.1234" timestamp="1594624318706" />
-    <state x="622" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1594094936682">
+    <state x="622" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1595142884388">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
-    <state x="622" y="441" key="com.intellij.ide.util.TipDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1594094936682" />
+    <state x="622" y="441" key="com.intellij.ide.util.TipDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1595142884388" />
     <state x="734" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594698498861">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -340,10 +342,11 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="633" y="245" key="refactoring.ChangeSignatureDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1594699294007" />
-    <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1594707534136">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="495" y="269" width="862" height="927" key="search.everywhere.popup" timestamp="1595147131085">
+      <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1594707534136" />
+    <state x="495" y="269" width="862" height="927" key="search.everywhere.popup/0.0.1851.1234@0.0.1851.1234" timestamp="1595147131085" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
