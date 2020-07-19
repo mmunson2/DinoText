@@ -3,10 +3,15 @@ package DinoText_GUI.CONTROLLER.Dialogue;
 import DinoParser.Dino;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
+import DinoText_GUI.DinoText;
 import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
+import DinoText_GUI.MODEL.Table.Table_Manager;
+import DinoText_GUI.MODEL.Table.Table_Model;
 import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
+import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 
 import javax.swing.*;
+import javax.swing.text.TableView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,6 +69,11 @@ public class Dialogue_Controller {
         menu.add(menuItem);
 
         menuItem = new JMenuItem();
+        menuItem.setText("Open");
+        menuItem.addActionListener(new listener_JMenuItem_Open());
+        menu.add(menuItem);
+
+        menuItem = new JMenuItem();
         menuItem.setText("New");
         menuItem.addActionListener(new listener_JMenuItem_New());
         menu.add(menuItem);
@@ -90,9 +100,6 @@ public class Dialogue_Controller {
         temp = new JButton("Insert Static Variable");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
         dinoGUIView.addButtonjToolBar_topBar(temp);
-        temp = new JButton("Write to File");
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_WriteToFile());
-        //dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
     /***************************************************************************
@@ -102,28 +109,32 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
-            String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-
-            dinoGUIModel.setName(fileName);
-            mostRecentSaved = fileName;
-
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-            dinoGUIModel.writeToFile();
-
-            table_controller.writeToFile();
+            saveDialogueFile();
         }
     }
 
     /***************************************************************************
-     * New
+     * Dropdown Menu - Open
+     *
+     **************************************************************************/
+    class listener_JMenuItem_Open implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            //TODO: implement file open
+        }
+    }
+
+    /***************************************************************************
+     * Dropdown Menu - New
      *
      **************************************************************************/
     class listener_JMenuItem_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            saveDialogueFile();
+            JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
+            jFrame.setVisible(false);
+            DinoText.main(null);
         }
     }
 
@@ -277,10 +288,17 @@ public class Dialogue_Controller {
      * Write To File
      *
      **************************************************************************/
-    class listener_jPopupMenu_listInsertion_WriteToFile implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-        }
+    public void saveDialogueFile(){
+        String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
 
+        dinoGUIModel.setName(fileName);
+        mostRecentSaved = fileName;
+
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        dinoGUIModel.writeToFile();
+
+        table_controller.writeToFile();
     }
 
 

@@ -1,3 +1,11 @@
-# Generated: 2020/07/14 03:20:58
+# Generated: 2020/07/19 02:41:44
 Name: Adjective
-Size: 0
+Size: 4
+1: good
+0.0 
+2: 
+0.0 
+3: 
+0.0 
+4: 
+0.0 
