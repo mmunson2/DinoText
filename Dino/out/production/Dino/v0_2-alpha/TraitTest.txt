@@ -1,9 +1,0 @@
-# Generated: 2020/07/03 01:30:00
-
-Lists Referenced: 1
-swordComment 
-
-Static Variables: 1
-player 
-
-Oh hi \S[player], \L[swordComment]

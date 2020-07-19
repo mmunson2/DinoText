@@ -25,7 +25,7 @@ public class Table_Model extends AbstractTableModel
      **************************************************************************/
     public Table_Model()
     {
-        this.list = new DinoList("unnamedList");
+        this.list = new DinoList("Untitled List");
 
         for(int i = 0; i < DEFAULT_ROWS; i++)
         {

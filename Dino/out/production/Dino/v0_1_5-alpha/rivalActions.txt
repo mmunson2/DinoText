@@ -1,6 +1,0 @@
-# Generated: 2020/06/26 02:49:34
-Name: rivalActions
-Size: 3
-1: looking for a fight!
-2: out causing trouble!
-3: looking for you!

@@ -120,7 +120,16 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Open implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //TODO: implement file open
+            String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+
+            dinoGUIModel.setName(fileName);
+            mostRecentSaved = fileName;
+
+            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+            dinoGUIModel.writeToFile();
+
+            table_controller.writeToFile();
         }
     }
 
@@ -152,6 +161,19 @@ public class Dialogue_Controller {
             if (dinoGUIModel.getName() != null) {
                 Dino dino = new Dino(mostRecentSaved);
                 textDisplayController.setDino(dino);
+            if(mostRecentSaved == null)
+            {
+                String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+
+                dinoGUIModel.setName(fileName);
+                mostRecentSaved = fileName;
+
+                dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.writeToFile();
+
+                table_controller.writeToFile();
+            }
 
 
                 if (textDisplayController.panelIsVisible()) {

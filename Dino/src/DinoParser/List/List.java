@@ -93,6 +93,11 @@ public class List
     {
         int index = this.distribution.sample();
 
+        if(index == -1)
+        {
+            return "";
+        }
+
         return this.list[index].getListEntry();
     }
 

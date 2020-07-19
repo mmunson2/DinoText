@@ -55,12 +55,52 @@ public class Table_Manager
         this.currentModel.fireTableDataChanged();
     }
 
+    /***************************************************************************
+     * Write To File
+     *
+     **************************************************************************/
     public void writeToFile()
     {
         for(Table_Model list : this.lists)
         {
             list.writeToFile();
         }
+    }
+
+    /***************************************************************************
+     * Get Current List Index
+     *
+     **************************************************************************/
+    public int getCurrentListIndex()
+    {
+        return this.lists.indexOf(currentModel);
+    }
+
+    /***************************************************************************
+     * Get List Index From Name
+     *
+     **************************************************************************/
+    public int getListIndexFromName(String name)
+    {
+        for(int i = 0; i < lists.size(); i++)
+        {
+            if(name.equals(lists.get(i).getName()))
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+
+    /***************************************************************************
+     * Get Size
+     *
+     **************************************************************************/
+    public int getSize()
+    {
+        return this.lists.size();
     }
 
 }

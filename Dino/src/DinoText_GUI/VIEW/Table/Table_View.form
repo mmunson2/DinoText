@@ -26,8 +26,9 @@
           <component id="fcf8" class="javax.swing.JTable" binding="listTable">
             <constraints/>
             <properties>
-              <showHorizontalLines value="false"/>
-              <toolTipText value="This is a tooltip"/>
+              <showHorizontalLines value="true"/>
+              <showVerticalLines value="true"/>
+              <toolTipText value=""/>
             </properties>
             <clientProperties>
               <html.disable class="java.lang.Boolean" value="false"/>

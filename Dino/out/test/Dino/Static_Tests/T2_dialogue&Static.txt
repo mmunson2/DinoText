@@ -1,9 +1,0 @@
-# Generated: 2020/07/03 02:19:59
-
-Lists Referenced: 0
-
-
-Static Variables: 1
-T2_Static1 
-
-\S[T2_Static1] is a test

@@ -56,38 +56,12 @@ public class Table_Controller
     }
 
     /***************************************************************************
-     * addListeners
-     *
-     **************************************************************************/
-    public void addListeners()
-    {
-        this.view.addIncrementListener(incrementListener);
-        this.view.addListNameListener(listNameListener);
-
-        Table_Model model = manager.getCurrentModel();
-        model.addTableModelListener(tableModelListener);
-    }
-
-    /***************************************************************************
-     * removeListeners
-     *
-     **************************************************************************/
-    public void removeListeners()
-    {
-        this.view.removeIncrementListener(incrementListener);
-        this.view.removeListNameListener(listNameListener);
-
-        Table_Model model = manager.getCurrentModel();
-        model.removeTableModelListener(tableModelListener);
-    }
-
-    /***************************************************************************
      * addList - noArg
      *
      **************************************************************************/
     public void addList()
     {
-        addList("untitledList", null);
+        addList("Untitled List", null);
     }
 
     /***************************************************************************
@@ -105,22 +79,61 @@ public class Table_Controller
      **************************************************************************/
     public void addList(String name, String[] entries)
     {
-        if(entries == null)
+        if(entries == null) //Creating a list from scratch
         {
-            System.out.println("Adding a list");
-            removeListeners();
-            this.manager.addModel(name);
-            this.view.addList(name);
-            this.view.setTableModel(this.manager.getCurrentModel());
-            view.setEntryCount(manager.getCurrentModel().getRowCount());
-            addListeners();
+            if(this.manager.getCurrentModel().getName().equals("Untitled List")
+            && this.manager.getSize() == 1)
+            {
+                this.renameList(name);
+            }
+            else
+            {
+                removeListeners();
+                this.manager.addModel(name);
+                this.view.addList(name);
+                this.view.setTableModel(this.manager.getCurrentModel());
+                view.setEntryCount(manager.getCurrentModel().getRowCount());
+                addListeners();
+            }
         }
-        else
+        else //Creating a list from an array of Strings
         {
             System.err.println("Matthew didn't implement this yet :(");
             System.exit(-1);
         }
     }
+
+    /***************************************************************************
+     * rename List
+     *
+     **************************************************************************/
+    public void renameList(String newName)
+    {
+        this.manager.getCurrentModel().setName(newName);
+        this.view.setListName(newName);
+    }
+
+    /***************************************************************************
+     * rename List - listIndex overload
+     *
+     **************************************************************************/
+    public void renameList(String newName, int listIndex)
+    {
+        if(listIndex != this.manager.getCurrentListIndex())
+            this.switchToIndex(listIndex);
+
+        renameList(newName);
+    }
+
+    /***************************************************************************
+     * rename List - String, String overload
+     *
+     **************************************************************************/
+    public void renameList(String newName, String oldName)
+    {
+        renameList(newName, manager.getListIndexFromName(oldName));
+    }
+
 
     /***************************************************************************
      * switchToIndex
@@ -152,7 +165,6 @@ public class Table_Controller
             switchToIndex(view.getSelectedIndex());
         }
     }
-
 
     /***************************************************************************
      * Inner Class: Increment Row Listener
@@ -189,8 +201,33 @@ public class Table_Controller
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            manager.getCurrentModel().setName(view.getListName());
+            renameList(view.getListName());
         }
+    }
+
+    /***************************************************************************
+     * addListeners
+     **************************************************************************/
+    private void addListeners()
+    {
+        this.view.addIncrementListener(incrementListener);
+        this.view.addListNameListener(listNameListener);
+
+        Table_Model model = manager.getCurrentModel();
+        model.addTableModelListener(tableModelListener);
+    }
+
+    /***************************************************************************
+     * removeListeners
+     *
+     **************************************************************************/
+    private void removeListeners()
+    {
+        this.view.removeIncrementListener(incrementListener);
+        this.view.removeListNameListener(listNameListener);
+
+        Table_Model model = manager.getCurrentModel();
+        model.removeTableModelListener(tableModelListener);
     }
 
 

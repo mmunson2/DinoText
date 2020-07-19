@@ -1,8 +1,0 @@
-# Generated: 2020/06/21 20:59:10
-Name: verbpastnegative
-Size: 5
-1: lost
-2: broke
-3: forgot
-4: misplace
-5: stepped on

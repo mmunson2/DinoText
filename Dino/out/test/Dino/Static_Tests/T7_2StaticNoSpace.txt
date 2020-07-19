@@ -1,9 +1,0 @@
-# Generated: 2020/07/03 02:21:58
-
-Lists Referenced: 0
-
-
-Static Variables: 2
-T7_Static1 T7_Static2 
-
-\S[T7_Static1]\S[T7_Static2]

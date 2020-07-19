@@ -1,6 +1,0 @@
-# Generated: 2020/06/26 02:49:34
-Name: adjectives
-Size: 3
-1: beautiful
-2: perfect
-3: gorgeous
