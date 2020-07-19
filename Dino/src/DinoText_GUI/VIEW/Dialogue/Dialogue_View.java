@@ -23,17 +23,43 @@ public class Dialogue_View {
     private JLabel jLabel_instructions;
     private JToolBar jToolBar_topBar;
     private ArrayList<JButton> listButtons;
+    private ArrayList<JButton> staticVarButtons;
     private HashSet<String> listNames;
+    private JDialog jDialog_Preferences = new JDialog();
+    private JOptionPane jOptionPane_Preferences = new JOptionPane("Preferences");
 
     /***************************************************************************
      * Constructor
      *
      **************************************************************************/
     public Dialogue_View() {
+        // TODO: DELETE WHEN PREFERENCES MENU IMPLEMENTED
+        jDialog_Preferences.setContentPane(jOptionPane_Preferences);
+        jDialog_Preferences.pack();
+        // END TODO
+
         listButtons = new ArrayList<JButton>();
+        staticVarButtons = new ArrayList<JButton>();
         listNames = new HashSet<String>();
         jPopupMenu_listInsertion = new JPopupMenu();
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
+    }
+
+    /***************************************************************************
+     * set jOptionPane_Preferences
+     * use this to pass in the JOptionPane from another class
+     **************************************************************************/
+    public void setjOptionPane_Preferences(JOptionPane pane) {
+        jOptionPane_Preferences = pane;
+        jDialog_Preferences.setContentPane(jOptionPane_Preferences);
+        jDialog_Preferences.pack();
+    }
+
+    /***************************************************************************
+     * set visibility of jOptionPane_Preferences
+     **************************************************************************/
+    public void setVisiblejDialog_Preferences(boolean bool) {
+        jDialog_Preferences.setVisible(bool);
     }
 
     /***************************************************************************
@@ -97,8 +123,17 @@ public class Dialogue_View {
     /***************************************************************************
      * get Button
      **************************************************************************/
-    public JButton getButton(String name) {
+    public JButton getListButton(String name) {
         for (JButton button : listButtons) {
+            if (button.getName().equals(name)) {
+                return button;
+            }
+        }
+        return null;
+    }
+
+    public JButton getStaticVarButton(String name) {
+        for (JButton button : staticVarButtons) {
             if (button.getName().equals(name)) {
                 return button;
             }
@@ -109,8 +144,12 @@ public class Dialogue_View {
     /***************************************************************************
      * get all buttons
      **************************************************************************/
-    public ArrayList<JButton> getAllButtons() {
+    public ArrayList<JButton> getAllListButtons() {
         return listButtons;
+    }
+
+    public ArrayList<JButton> getAllStaticVarButtons() {
+        return staticVarButtons;
     }
 
     /*************************************
@@ -141,9 +180,39 @@ public class Dialogue_View {
      ************************************/
 
     /***************************************************************************
-     * insert Button to JTextPane
+     * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
-    public void insertButtonjTextPane(String listName, ActionListener actionListener, Color color) {
+    public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
+        AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
+        SimpleAttributeSet set = new SimpleAttributeSet();
+        StyleConstants.setFontSize(set, 0);
+
+        int caretPos = jTextPane_dialogueInput.getCaretPosition();
+        try {
+            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\S[" + varName + "]", set); //TODO: How are we representing static vars?
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
+
+        JButton newList = new JButton(varName);
+        newList.setName(varName);
+        newList.setText(varName);
+        newList.addActionListener(actionListener);
+        newList.setBackground(color);
+        jTextPane_dialogueInput.insertComponent(newList);
+        staticVarButtons.add(newList);
+//
+//        try {
+//            jTextPane_dialogueInput.getDocument().insertString(caretPos + (varName.length() + 5), "\b", null);
+//        } catch (BadLocationException e) {
+//            e.printStackTrace();
+//        }
+
+    }
+    /***************************************************************************
+     * insert Button to JTextPane (Static Var)
+     **************************************************************************/
+    public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
         AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
         SimpleAttributeSet set = new SimpleAttributeSet();
         StyleConstants.setFontSize(set, 0);

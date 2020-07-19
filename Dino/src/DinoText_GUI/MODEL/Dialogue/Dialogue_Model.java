@@ -22,6 +22,17 @@ public class Dialogue_Model {
 
     private static Set<DinoList> dupCheckSet = new LinkedHashSet<>();
     private static ArrayList<DinoList> lists = new ArrayList<>();
+    private static Set<String> staticVars = new LinkedHashSet<>();
+
+
+    /***************************************************************************
+     * addStaticVar
+     *
+     **************************************************************************/
+    public void addStaticVar(String name) {
+        staticVars.add(name);
+    }
+
 
     /***************************************************************************
      * newDialogue
@@ -42,6 +53,12 @@ public class Dialogue_Model {
      *
      **************************************************************************/
     public void setName(String name) { this.name = name; }
+
+    /***************************************************************************
+     * getName
+     *
+     **************************************************************************/
+    public String getName() { return name; }
 
     /***************************************************************************
      * setListNames
@@ -72,7 +89,7 @@ public class Dialogue_Model {
 
         DinoWriter writer = new DinoWriter();
 
-        writer.writeDialogueToFile(name, dialogue, new LinkedHashSet<>(lists), new LinkedHashSet<String>());
+        writer.writeDialogueToFile(name, dialogue, new LinkedHashSet<>(lists), staticVars);
     }
 
     /***************************************************************************
