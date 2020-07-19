@@ -3,8 +3,8 @@ package DinoText_GUI.CONTROLLER.Dialouge;
 import DinoParser.Dino;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
-import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
-import DinoText_GUI.VIEW.Dialogue.DinoText_Dialogue_View;
+import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
+import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,17 +14,25 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
 
-public class DinoText_Dialogue_Controller {
+/*******************************************************************************
+ * Dialogue Controller
+ *
+ ******************************************************************************/
+public class Dialogue_Controller {
 
-    private DinoText_Dialogue_Model dinoGUIModel;
-    private DinoText_Dialogue_View dinoGUIView;
+    private Dialogue_Model dinoGUIModel;
+    private Dialogue_View dinoGUIView;
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
 
     //Todo: Find a better way to do this
     private String mostRecentSaved = null;
 
-    public DinoText_Dialogue_Controller(DinoText_Dialogue_Model model, DinoText_Dialogue_View view, Text_Display_Controller textDisplayController, Table_Controller table_controller) {
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
+    public Dialogue_Controller(Dialogue_Model model, Dialogue_View view, Text_Display_Controller textDisplayController, Table_Controller table_controller) {
         dinoGUIModel = model;
         dinoGUIView = view;
         this.textDisplayController = textDisplayController;
@@ -33,6 +41,10 @@ public class DinoText_Dialogue_Controller {
         initialize();
     }
 
+    /***************************************************************************
+     * Initialize
+     *
+     **************************************************************************/
     private void initialize() {
         initializejPopupMenu();
         initializejToolBar();
@@ -40,9 +52,10 @@ public class DinoText_Dialogue_Controller {
     }
 
 
-    /*************************************
-     * JTOOLBAR
-     ************************************/
+    /***************************************************************************
+     * Initialize JToolBar
+     *
+     **************************************************************************/
     private void initializejToolBar() {
         JMenu menu = new JMenu("File");
         JMenuItem menuItem = new JMenuItem();
@@ -76,9 +89,10 @@ public class DinoText_Dialogue_Controller {
         //dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
-    /*************************************
-     * SAVE
-     ************************************/
+    /***************************************************************************
+     * Dropdown Menu - Save
+     *
+     **************************************************************************/
     class listener_JMenuItem_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -96,6 +110,10 @@ public class DinoText_Dialogue_Controller {
         }
     }
 
+    /***************************************************************************
+     * New
+     *
+     **************************************************************************/
     class listener_JMenuItem_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -103,6 +121,10 @@ public class DinoText_Dialogue_Controller {
         }
     }
 
+    /***************************************************************************
+     * Dropdown Menu - Preview
+     *
+     **************************************************************************/
     class listener_JMenuItem_Preview implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -132,17 +154,19 @@ public class DinoText_Dialogue_Controller {
         }
     }
 
-    /*************************************
-     * NEW DIALOGUE
-     ************************************/
+    /***************************************************************************
+     * newDialogue
+     *
+     **************************************************************************/
     private void newDialogue() {
         dinoGUIView.setVisibleTSDialogueInput(true);
         dinoGUIView.setFocusTSDialogueInput();
     }
 
-    /*************************************
-     * POPUP MENU
-     ************************************/
+    /***************************************************************************
+     * Initialize Dropdown Menu
+     *
+     **************************************************************************/
     private void initializejPopupMenu() {
         dinoGUIView.setInvokerjPopupMenu_listInsertion(dinoGUIView.getjTextPane_dialogueInput());
         dinoGUIView.addItemjPopupMenu_listInsertion("Insert Dynamic List", new listener_jPopupMenu_listInsertion_InsertDynamicList());
@@ -156,6 +180,10 @@ public class DinoText_Dialogue_Controller {
         });
     }
 
+    /***************************************************************************
+     * Insert Dynamic List
+     *
+     **************************************************************************/
     class listener_jPopupMenu_listInsertion_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
@@ -175,6 +203,10 @@ public class DinoText_Dialogue_Controller {
         }
     }
 
+    /***************************************************************************
+     * Select Existing List
+     *
+     **************************************************************************/
     class listener_jPopupMenu_listInsertion_SelectExistingList implements ActionListener {
         private String listName;
 
@@ -188,6 +220,10 @@ public class DinoText_Dialogue_Controller {
         }
     }
 
+    /***************************************************************************
+     * Delete Dynamic List
+     *
+     **************************************************************************/
     class listener_jPopupMenu_listInsertion_DeleteDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
@@ -196,6 +232,10 @@ public class DinoText_Dialogue_Controller {
         }
     }
 
+    /***************************************************************************
+     * Write To File
+     *
+     **************************************************************************/
     class listener_jPopupMenu_listInsertion_WriteToFile implements ActionListener {
         public void actionPerformed(ActionEvent e) {
         }
@@ -203,13 +243,18 @@ public class DinoText_Dialogue_Controller {
     }
 
 
-    /*************************************
-     * GETTERS
-     ************************************/
+    /***************************************************************************
+     * get ListNames
+     *
+     **************************************************************************/
     public HashSet<String> getSetListNames() {
         dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
         return dinoGUIView.getSetListNames();
     }
 
+    /***************************************************************************
+     * get Dialogue
+     *
+     **************************************************************************/
     public String getText_jTextPane_dialogueInput() { return dinoGUIView.getText_jTextPane_dialogueInput(); }
 }

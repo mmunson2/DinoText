@@ -8,7 +8,11 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class DinoText_Dialogue_Model {
+/*******************************************************************************
+ * Dialogue Model
+ *
+ ******************************************************************************/
+public class Dialogue_Model {
 
     private String name;
 
@@ -19,6 +23,10 @@ public class DinoText_Dialogue_Model {
     private static Set<DinoList> dupCheckSet = new LinkedHashSet<>();
     private static ArrayList<DinoList> lists = new ArrayList<>();
 
+    /***************************************************************************
+     * newDialogue
+     *
+     **************************************************************************/
     public void newDialogue(String userDialogue) {
         StringBuilder builder = new StringBuilder();
 
@@ -29,10 +37,22 @@ public class DinoText_Dialogue_Model {
         dialogue = userDialogue;
     }
 
+    /***************************************************************************
+     * setName
+     *
+     **************************************************************************/
     public void setName(String name) { this.name = name; }
 
+    /***************************************************************************
+     * setListNames
+     *
+     **************************************************************************/
     public void setListNames(HashSet<String> set) { listNames = set; }
 
+    /***************************************************************************
+     * nameDialogue
+     *
+     **************************************************************************/
     public void nameDialogue(String dialogueName) {
         name = dialogueName;
 
@@ -42,6 +62,10 @@ public class DinoText_Dialogue_Model {
         }
     }
 
+    /***************************************************************************
+     * writeToFile
+     *
+     **************************************************************************/
     public void writeToFile() {
         System.out.println("Test: ");
         System.out.println(this.dialogue);

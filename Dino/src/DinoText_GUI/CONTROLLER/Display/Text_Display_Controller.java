@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/*******************************************************************************
+ * Text_Display_Controller
+ *
+ ******************************************************************************/
 public class Text_Display_Controller
 {
     private Text_Display_Model model;
@@ -17,6 +21,10 @@ public class Text_Display_Controller
 
     private Dino dino;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Text_Display_Controller(Text_Display_Model model, Text_Display_View view)
     {
         this.model = model;
@@ -32,6 +40,10 @@ public class Text_Display_Controller
         this.view.linesSpinnerListener(new linesSpinnerListener());
     }
 
+    /***************************************************************************
+     * setDialogue
+     *
+     **************************************************************************/
     public void setDialogue(String str)
     {
         model.setText(str);
@@ -39,11 +51,19 @@ public class Text_Display_Controller
         update();
     }
 
+    /***************************************************************************
+     * setDino
+     *
+     **************************************************************************/
     public void setDino(Dino dino)
     {
         this.dino = dino;
     }
 
+    /***************************************************************************
+     * update
+     *
+     **************************************************************************/
     public void update()
     {
         model.formatText();
@@ -52,12 +72,20 @@ public class Text_Display_Controller
         setPage(model.getCurrentPage());
     }
 
+    /***************************************************************************
+     * setPage
+     *
+     **************************************************************************/
     private void setPage(int i)
     {
         model.setCurrentPage(i);
         view.setPageCounter(i + " / " + model.getNumPages());
     }
 
+    /***************************************************************************
+     * Next Button
+     *
+     **************************************************************************/
     class nextButtonListener implements ActionListener
     {
         @Override
@@ -75,6 +103,10 @@ public class Text_Display_Controller
         }
     }
 
+    /***************************************************************************
+     * Previous Button
+     *
+     **************************************************************************/
     class prevButtonListener implements ActionListener
     {
         @Override
@@ -91,6 +123,10 @@ public class Text_Display_Controller
         }
     }
 
+    /***************************************************************************
+     * Character Count Spinner
+     *
+     **************************************************************************/
     class charactersSpinnerListener implements ChangeListener
     {
         @Override
@@ -104,6 +140,10 @@ public class Text_Display_Controller
         }
     }
 
+    /***************************************************************************
+     * Line Count Spinner
+     *
+     **************************************************************************/
     class linesSpinnerListener implements ChangeListener
     {
         @Override
@@ -118,9 +158,16 @@ public class Text_Display_Controller
         }
     }
 
-    //ihsan added
+    /***************************************************************************
+     * setPanelVisible
+     *
+     **************************************************************************/
     public void setPanelVisible(boolean bool) { view.setPanelVisible(bool); }
 
+    /***************************************************************************
+     * panelIsVisible
+     *
+     **************************************************************************/
     public boolean panelIsVisible() {
         return view.isVisible();
     }

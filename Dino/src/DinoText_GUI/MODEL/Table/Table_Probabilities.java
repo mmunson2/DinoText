@@ -2,6 +2,10 @@ package DinoText_GUI.MODEL.Table;
 
 import java.util.ArrayList;
 
+/*******************************************************************************
+ * Table Probabilities
+ *
+ ******************************************************************************/
 public class Table_Probabilities
 {
     ArrayList<Double> weights = new ArrayList<>();

@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DinoText_Dialogue_View {
+/*******************************************************************************
+ * Dialogue View
+ *
+ ******************************************************************************/
+public class Dialogue_View {
     private JPanel jPanel_dialogueEditor;
     private JScrollPane jScrollPane_dialogueInput;
     private JPopupMenu jPopupMenu_listInsertion;
@@ -21,61 +25,78 @@ public class DinoText_Dialogue_View {
     private ArrayList<JButton> listButtons;
     private HashSet<String> listNames;
 
-
-    public DinoText_Dialogue_View() {
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
+    public Dialogue_View() {
         listButtons = new ArrayList<JButton>();
         listNames = new HashSet<String>();
         jPopupMenu_listInsertion = new JPopupMenu();
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
     }
 
-    /*************************************
-     * JTOOLBAR
-     ************************************/
+    /***************************************************************************
+     * add button to toolbar
+     **************************************************************************/
     public void addButtonjToolBar_topBar(JButton button) {
         jToolBar_topBar.add(button);
     }
 
+    /***************************************************************************
+     * add menu to toolbar
+     **************************************************************************/
     public void addJMenujToolBar_topBar(JMenuBar menu) {
         jToolBar_topBar.add(menu);
     }
 
-    /*************************************
-     * ACTION LISTENERS
-     ************************************/
-
+    /***************************************************************************
+     * Listener - Dialouge Input
+     *
+     **************************************************************************/
     public void addListenerjTextPane_dialogueInput(MouseAdapter mouseAdapter) {
         jTextPane_dialogueInput.addMouseListener(mouseAdapter);
     }
 
-    /*************************************
-     * SETTER
-     ************************************/
-
+    /***************************************************************************
+     * set dialogue ext
+     **************************************************************************/
     public void setText_jTextPane_dialogueInput(String input) {
         jTextPane_dialogueInput.setText(input);
     }
 
-    /*************************************
-     * GETTER
-     ************************************/
+    /***************************************************************************
+     * get dialogue editor
+     **************************************************************************/
     public JPanel getjPanel_dialogueEditor() {
         return jPanel_dialogueEditor;
     }
 
+    /***************************************************************************
+     * get text
+     **************************************************************************/
     public String getText_jTextPane_dialogueInput() {
         return jTextPane_dialogueInput.getText();
     }
 
+    /***************************************************************************
+     * get dropdown menu
+     **************************************************************************/
     public JPopupMenu getjPopupMenu_listInsertion() {
         jPopupMenu_listInsertion.setInvoker(jTextPane_dialogueInput);
         return jPopupMenu_listInsertion;
     }
 
+    /***************************************************************************
+     * get text pane
+     **************************************************************************/
     public Component getjTextPane_dialogueInput() {
         return jTextPane_dialogueInput;
     }
 
+    /***************************************************************************
+     * get Button
+     **************************************************************************/
     public JButton getButton(String name) {
         for (JButton button : listButtons) {
             if (button.getName().equals(name)) {
@@ -85,6 +106,9 @@ public class DinoText_Dialogue_View {
         return null;
     }
 
+    /***************************************************************************
+     * get all buttons
+     **************************************************************************/
     public ArrayList<JButton> getAllButtons() {
         return listButtons;
     }
@@ -93,6 +117,9 @@ public class DinoText_Dialogue_View {
      * SET VISIBILITY
      ************************************/
 
+    /***************************************************************************
+     * Make dialogue input visible
+     **************************************************************************/
     public void setVisibleTSDialogueInput(boolean bool) {
         jTextPane_dialogueInput.setVisible(bool);
         jScrollPane_dialogueInput.setVisible(bool);
@@ -101,6 +128,10 @@ public class DinoText_Dialogue_View {
     /*************************************
      * FOCUS REQUEST
      ************************************/
+
+    /***************************************************************************
+     * setFocus
+     **************************************************************************/
     public void setFocusTSDialogueInput() {
         jTextPane_dialogueInput.requestFocusInWindow();
     }
@@ -109,6 +140,9 @@ public class DinoText_Dialogue_View {
      * MISC
      ************************************/
 
+    /***************************************************************************
+     * insert Button to JTextPane
+     **************************************************************************/
     public void insertButtonjTextPane(String listName, ActionListener actionListener, Color color) {
         AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
         SimpleAttributeSet set = new SimpleAttributeSet();
@@ -137,6 +171,10 @@ public class DinoText_Dialogue_View {
 
     }
 
+    /***************************************************************************
+     * Get List Names
+     *
+     **************************************************************************/
     public HashSet<String> getSetListNames() {
         for (JButton jb : listButtons) {
             listNames.add(jb.getName());
@@ -147,26 +185,47 @@ public class DinoText_Dialogue_View {
     /*************************************
      * POPUP MENU
      ************************************/
+
+    /***************************************************************************
+     * set popup menu invoker
+     *
+     **************************************************************************/
     public void setInvokerjPopupMenu_listInsertion(Component invoker) {
         jPopupMenu_listInsertion.setInvoker(invoker);
     }
 
+    /***************************************************************************
+     * add item to popup menu
+     *
+     **************************************************************************/
     public void addItemjPopupMenu_listInsertion(String listName, ActionListener action) {
         JMenuItem item = new JMenuItem("Insert New " + listName);
         jPopupMenu_listInsertion.add(item);
         item.addActionListener(action);
     }
 
+    /***************************************************************************
+     * show popup menu
+     *
+     **************************************************************************/
     public void showjPopupMenu_listInsertion(MouseEvent e) {
         jPopupMenu_listInsertion.show(e.getComponent(), e.getX(), e.getY());
     }
 
+    /***************************************************************************
+     * Request list name
+     *
+     **************************************************************************/
     public String requestListNamejOptionPane_listInsertion() {
         JTextArea textArea = new JTextArea();
         String listName = JOptionPane.showInputDialog("List Name: ");
         return listName;
     }
 
+    /***************************************************************************
+     * Remove button from popup menu
+     *
+     **************************************************************************/
     public void removeButtonjPopupMenu(JButton button) {
         for (JButton jb : listButtons) {
             if (jb.equals(button)) {

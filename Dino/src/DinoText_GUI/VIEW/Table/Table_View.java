@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/*******************************************************************************
+ * Table View
+ *
+ ******************************************************************************/
 public class Table_View {
 
     private JTable listTable;
@@ -101,14 +105,17 @@ public class Table_View {
     {
         this.listName.removeActionListener(l);
     }
-
-
-
+    
+    /***************************************************************************
+     * Update Table
+     **************************************************************************/
     public void updateTable() {
         this.listTable.updateUI();
     }
 
-
+    /***************************************************************************
+     * get Panel
+     **************************************************************************/
     public Component getPanel()
     {
         return this.panel1;

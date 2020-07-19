@@ -8,24 +8,29 @@
  * ███   ▄███ ███    ███    ███ ███▌    ▄ ███    ███   ███    ███ ███    ███   ███    ███
  * ████████▀  █▀     ███    █▀  █████▄▄██  ▀██████▀    ████████▀  ████████▀    ██████████
  *****************************************************************************************/
-package DinoText_GUI.VIEW.Dialogue;
+package DinoText_GUI;
 
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
 import DinoText_GUI.MODEL.Display.Text_Display_Model;
+import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
 import DinoText_GUI.VIEW.Display.Text_Display_View;
-import DinoText_GUI.CONTROLLER.Dialouge.DinoText_Dialogue_Controller;
+import DinoText_GUI.CONTROLLER.Dialouge.Dialogue_Controller;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
-import DinoText_GUI.MODEL.Dialogue.DinoText_Dialogue_Model;
+import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
 import DinoText_GUI.MODEL.Table.Table_Manager;
 import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class DinoText_Dialogue {
-    private static DinoText_Dialogue_Model dinoGUIModel;
-    private static DinoText_Dialogue_View dinoGUIView;
-    private static DinoText_Dialogue_Controller dinoGUIController;
+/*******************************************************************************
+ * Main Class
+ *
+ ******************************************************************************/
+public class DinoText {
+    private static Dialogue_Model dinoGUIModel;
+    private static Dialogue_View dinoGUIView;
+    private static Dialogue_Controller dinoGUIController;
 
     private static Table_Manager table_manager;
     private static Table_TabbedPane table_view;
@@ -34,6 +39,7 @@ public class DinoText_Dialogue {
     private static Text_Display_Model textDisplayModel;
     private static Text_Display_View textDisplayView;
     private static Text_Display_Controller textDisplayController;
+
 
     public static void main(String[] args) {
         JFrame jFrame_dinoText = new JFrame();
@@ -47,9 +53,9 @@ public class DinoText_Dialogue {
         textDisplayController = new Text_Display_Controller(textDisplayModel, textDisplayView);
         textDisplayView.setPanelVisible(false);
 
-        dinoGUIModel = new DinoText_Dialogue_Model();
-        dinoGUIView = new DinoText_Dialogue_View();
-        dinoGUIController = new DinoText_Dialogue_Controller(dinoGUIModel, dinoGUIView, textDisplayController, table_controller);
+        dinoGUIModel = new Dialogue_Model();
+        dinoGUIView = new Dialogue_View();
+        dinoGUIController = new Dialogue_Controller(dinoGUIModel, dinoGUIView, textDisplayController, table_controller);
 
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());

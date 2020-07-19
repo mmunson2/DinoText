@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/*******************************************************************************
+ * Table TabbedPane
+ *
+ ******************************************************************************/
 public class Table_TabbedPane extends JFrame{
     private JTabbedPane listPane;
     private JPanel panel1;

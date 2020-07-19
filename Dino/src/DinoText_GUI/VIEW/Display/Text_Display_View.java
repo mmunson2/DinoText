@@ -8,6 +8,10 @@ import javax.swing.text.StyledDocument;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/*******************************************************************************
+ * Text Display View
+ *
+ ******************************************************************************/
 public class Text_Display_View extends JFrame
 {
     private JPanel panel;
@@ -19,6 +23,10 @@ public class Text_Display_View extends JFrame
     private JSpinner linesSpinner;
     private JSpinner fontSizeSpinner;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Text_Display_View()
     {
         this.setContentPane(panel);
@@ -32,55 +40,103 @@ public class Text_Display_View extends JFrame
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
     }
 
-    // listeners
+    /***************************************************************************
+     * Listener - Next Button
+     *
+     **************************************************************************/
     public void nextButtonListener(ActionListener actionListener) {
         nextButton.addActionListener(actionListener);
     }
 
+    /***************************************************************************
+     * Listener - Previous Button
+     *
+     **************************************************************************/
     public void prevButtonListener(ActionListener actionListener) {
         prevButton.addActionListener(actionListener);
     }
 
+    /***************************************************************************
+     * Listener - Character Spinner
+     *
+     **************************************************************************/
     public void charactersSpinnerListener(ChangeListener changeListener) { charactersSpinner.addChangeListener(changeListener); }
 
+    /***************************************************************************
+     * Listener - Lines Spinner
+     *
+     **************************************************************************/
     public void linesSpinnerListener(ChangeListener changeListener) {
         linesSpinner.addChangeListener(changeListener);
     }
 
-    // getters
+    /***************************************************************************
+     * get Chars Per Line
+     *
+     **************************************************************************/
     public int getCharsPerLine() {
         return (int) charactersSpinner.getValue();
     }
 
+    /***************************************************************************
+     * get Lines Per Page
+     *
+     **************************************************************************/
     public int getLinesPerPage() {
         return (int) linesSpinner.getValue();
     }
 
-    // setters
+    /***************************************************************************
+     * set Text Pane
+     *
+     **************************************************************************/
     public void setTextPane(String str) {
         textPane.setText(str);
     }
 
+    /***************************************************************************
+     * Set Page Counter
+     *
+     **************************************************************************/
     public void setPageCounter(String page) { pageCounter.setText(page); }
 
+    /***************************************************************************
+     * Set Character Spinner
+     *
+     **************************************************************************/
     public void setCharactersSpinner(int numChar) {
         charactersSpinner.setValue(numChar);
     }
 
+    /***************************************************************************
+     * Set Lines Spinner
+     *
+     **************************************************************************/
     public void setLinesSpinner(int numLines) {
         linesSpinner.setValue(numLines);
     }
 
-    // ihsan added
+    /***************************************************************************
+     * set PanelVisible
+     *
+     **************************************************************************/
     public void setPanelVisible(boolean bool) {
         panel.setVisible(bool);
         SwingUtilities.getWindowAncestor(panel).pack();
     }
 
+    /***************************************************************************
+     * Panel is Visible
+     *
+     **************************************************************************/
     public boolean panelIsVisible() {
         return panel.isVisible();
     }
 
+    /***************************************************************************
+     * get JPanel
+     *
+     **************************************************************************/
     public Component getJpanel() {
         return panel;
     }

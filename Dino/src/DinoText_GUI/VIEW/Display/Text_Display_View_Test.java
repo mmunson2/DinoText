@@ -1,15 +1,19 @@
 package DinoText_GUI.VIEW.Display;
 
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
-import DinoText_GUI.CONTROLLER.Dialouge.DinoText_Dialogue_Controller;
+import DinoText_GUI.CONTROLLER.Dialouge.Dialogue_Controller;
 import DinoText_GUI.MODEL.Display.Text_Display_Model;
 
-public class CamdenTest
+/*******************************************************************************
+ * Text Display Test Window
+ *
+ ******************************************************************************/
+public class Text_Display_View_Test
 {
     private static Text_Display_Model model;
     private static Text_Display_View view;
     private static Text_Display_Controller controller;
-    private static DinoText_Dialogue_Controller dinoText_dialogue_controller;
+    private static Dialogue_Controller dialogue_controller;
 
     public static void main(String[] args)
     {
