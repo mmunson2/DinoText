@@ -25,9 +25,6 @@ public class Dialogue_Controller {
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
 
-    //Todo: Find a better way to do this
-    private String mostRecentSaved = null;
-
     /***************************************************************************
      * Constructor
      *
@@ -90,6 +87,27 @@ public class Dialogue_Controller {
     }
 
     /***************************************************************************
+     * Save
+     *
+     **************************************************************************/
+    public void save()
+    {
+        String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+
+        dinoGUIModel.setName(fileName);
+
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        dinoGUIModel.writeToFile();
+
+        table_controller.writeToFile();
+
+        Dino dino = new Dino(fileName);
+        textDisplayController.setDino(dino);
+    }
+
+
+    /***************************************************************************
      * Dropdown Menu - Save
      *
      **************************************************************************/
@@ -97,16 +115,7 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-
-            dinoGUIModel.setName(fileName);
-            mostRecentSaved = fileName;
-
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-            dinoGUIModel.writeToFile();
-
-            table_controller.writeToFile();
+            save();
         }
     }
 
@@ -128,22 +137,8 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Preview implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(mostRecentSaved == null)
-            {
-                String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
 
-                dinoGUIModel.setName(fileName);
-                mostRecentSaved = fileName;
-
-                dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-                dinoGUIModel.writeToFile();
-
-                table_controller.writeToFile();
-            }
-
-            Dino dino = new Dino(mostRecentSaved);
-            textDisplayController.setDino(dino);
+            save();
 
 
             if (textDisplayController.panelIsVisible()) {
