@@ -1,6 +1,5 @@
 package DinoText_GUI.VIEW.Dialogue;
 
-import org.apache.commons.math3.ode.events.EventHandler;
 
 import javax.swing.*;
 import javax.swing.text.*;
