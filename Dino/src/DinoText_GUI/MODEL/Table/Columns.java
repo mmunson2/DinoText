@@ -8,5 +8,7 @@ public enum Columns
 {
     LIST_ENTRY,
     PROBABILITY_WEIGHT,
-    PROBABILITY
+    PROBABILITY,
+    TRAIT
+
 }

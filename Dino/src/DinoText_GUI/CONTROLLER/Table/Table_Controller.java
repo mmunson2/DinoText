@@ -106,10 +106,30 @@ public class Table_Controller
         }
         else //Creating a list from an array of Strings
         {
+
+
+
+
+
             System.err.println("Matthew didn't implement this yet :(");
             System.exit(-1);
         }
     }
+
+    public void addEntry(String entry)
+    {
+
+
+    }
+
+    public void addEntry(String entry, double probability)
+    {
+
+
+    }
+
+    
+
 
     /***************************************************************************
      * rename List

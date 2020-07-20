@@ -4,6 +4,7 @@ package DinoText_GUI.MODEL.Table;
 import DinoText_GUI.MODEL.DinoList;
 import DinoText_GUI.MODEL.DinoWriter;
 
+import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
@@ -118,8 +119,19 @@ public class Table_Model extends AbstractTableModel
      *
      **************************************************************************/
     @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        return String.class;
+    public Class<?> getColumnClass(int columnIndex)
+    {
+        Columns column = Columns.values()[columnIndex];
+
+        switch(column)
+        {
+            case TRAIT:
+                return JButton.class;
+
+            default:
+                return String.class;
+        }
+
     }
 
     /***************************************************************************
@@ -160,6 +172,8 @@ public class Table_Model extends AbstractTableModel
             case PROBABILITY:
                 return String.format("%.2f%%",
                         this.probabilities.getProbability(rowIndex));
+            case TRAIT:
+                return new JButton("Test");
 
         }
 
