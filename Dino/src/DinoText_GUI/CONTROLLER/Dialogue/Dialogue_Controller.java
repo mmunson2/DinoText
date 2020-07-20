@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -300,6 +302,8 @@ public class Dialogue_Controller
      **************************************************************************/
     class listener_jPopupMenu_listInsertion_InsertStaticVariable implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            renameList("pear", "apple");
+/*
             String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
             if (varName != null) {
                 dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
@@ -315,7 +319,7 @@ public class Dialogue_Controller
                 dinoGUIModel.addStaticVar(varName);
 
                 dinoGUIView.setFocusTSDialogueInput();
-            }
+            }*/
         }
     }
 
@@ -419,6 +423,29 @@ public class Dialogue_Controller
      **************************************************************************/
     public String getDialogueName() {
         return dinoGUIModel.getName();
+    }
+
+    /***************************************************************************
+     * rename List
+     *
+     **************************************************************************/
+    public void renameList(String newName, String oldName){
+        int oldPos = Arrays.asList(dinoGUIView.getSetListNames().toArray(new String[0])).indexOf(oldName); 
+
+        //remove oldname from dialogue
+        dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
+
+        //remove oldname from the set of list names
+        dinoGUIView.getSetListNames().remove(oldName);
+        dinoGUIView.getSetListNames().add(newName);
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+
+        //remove oldname from jpopupmenu
+        dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 2);
+
+        //add newname to jpopupmenu
+        dinoGUIView.addItemjPopupMenu_listInsertion(newName, new listener_jPopupMenu_listInsertion_SelectExistingList(newName));
+
     }
 
 }

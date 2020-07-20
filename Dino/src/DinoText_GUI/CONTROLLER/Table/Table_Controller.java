@@ -18,8 +18,7 @@ import java.awt.event.ActionListener;
  * Table Controller
  *
  ******************************************************************************/
-public class Table_Controller
-{
+public class Table_Controller {
     private Table_Manager manager;
     private int listNumber;
     private Table_TabbedPane view;
@@ -37,8 +36,7 @@ public class Table_Controller
      * Constructor
      *
      **************************************************************************/
-    public Table_Controller(Table_Manager manager, Table_TabbedPane view)
-    {
+    public Table_Controller(Table_Manager manager, Table_TabbedPane view) {
         this.manager = manager;
         this.listNumber = 0;
         this.view = view;
@@ -58,8 +56,7 @@ public class Table_Controller
         addListeners();
     }
 
-    public void setDialogue_controller(Dialogue_Controller controller)
-    {
+    public void setDialogue_controller(Dialogue_Controller controller) {
         this.dialogue_controller = controller;
     }
 
@@ -67,8 +64,7 @@ public class Table_Controller
      * addList - noArg
      *
      **************************************************************************/
-    public void addList()
-    {
+    public void addList() {
         addList("Untitled List", null);
     }
 
@@ -76,8 +72,7 @@ public class Table_Controller
      * addList - String overload
      *
      **************************************************************************/
-    public void addList(String name)
-    {
+    public void addList(String name) {
         addList(name, null);
     }
 
@@ -85,17 +80,13 @@ public class Table_Controller
      * addList - String and entries overload
      *
      **************************************************************************/
-    public void addList(String name, String[] entries)
-    {
-        if(entries == null) //Creating a list from scratch
+    public void addList(String name, String[] entries) {
+        if (entries == null) //Creating a list from scratch
         {
-            if(this.manager.getCurrentModel().getName().equals("Untitled List")
-            && this.manager.getSize() == 1)
-            {
+            if (this.manager.getCurrentModel().getName().equals("Untitled List")
+                    && this.manager.getSize() == 1) {
                 this.renameList(name);
-            }
-            else
-            {
+            } else {
                 removeListeners();
                 this.manager.addModel(name);
                 this.view.addList(name);
@@ -103,8 +94,7 @@ public class Table_Controller
                 view.setEntryCount(manager.getCurrentModel().getRowCount());
                 addListeners();
             }
-        }
-        else //Creating a list from an array of Strings
+        } else //Creating a list from an array of Strings
         {
 
 
@@ -135,8 +125,7 @@ public class Table_Controller
      * rename List
      *
      **************************************************************************/
-    public void renameList(String newName)
-    {
+    public void renameList(String newName) {
         this.manager.getCurrentModel().setName(newName);
         this.view.setListName(newName);
     }
@@ -145,9 +134,8 @@ public class Table_Controller
      * rename List - listIndex overload
      *
      **************************************************************************/
-    public void renameList(String newName, int listIndex)
-    {
-        if(listIndex != this.manager.getCurrentListIndex())
+    public void renameList(String newName, int listIndex) {
+        if (listIndex != this.manager.getCurrentListIndex())
             this.switchToIndex(listIndex);
 
         renameList(newName);
@@ -157,11 +145,9 @@ public class Table_Controller
      * rename List - String, String overload
      *
      **************************************************************************/
-    public void renameList(String newName, String oldName)
-    {
+    public void renameList(String newName, String oldName) {
         renameList(newName, manager.getListIndexFromName(oldName));
-
-        //Todo: Ihsan! This is where you should call the dialouge_controller.rename(newName, oldName)
+        dialogue_controller.renameList(newName, oldName);
     }
 
 
@@ -169,8 +155,7 @@ public class Table_Controller
      * switchToIndex
      *
      **************************************************************************/
-    public void switchToIndex(int index)
-    {
+    public void switchToIndex(int index) {
         removeListeners();
         this.manager.switchModel(index);
         this.view.switchList(index);
@@ -181,18 +166,15 @@ public class Table_Controller
      * switchToName
      *
      **************************************************************************/
-    public void switchToName(String listName)
-    {
+    public void switchToName(String listName) {
         int index = manager.getListIndexFromName(listName);
 
-        if(index != -1)
+        if (index != -1)
             switchToIndex(index);
     }
 
 
-
-    public void writeToFile()
-    {
+    public void writeToFile() {
         this.manager.writeToFile();
     }
 
@@ -201,11 +183,9 @@ public class Table_Controller
      * Inner Class: Tab Switch Listener
      *
      **************************************************************************/
-    class listener_tabSwitch implements ChangeListener
-    {
+    class listener_tabSwitch implements ChangeListener {
         @Override
-        public void stateChanged(ChangeEvent e)
-        {
+        public void stateChanged(ChangeEvent e) {
             switchToIndex(view.getSelectedIndex());
         }
     }
@@ -217,8 +197,7 @@ public class Table_Controller
     class listener_increment implements ActionListener {
 
         @Override
-        public void actionPerformed(ActionEvent e)
-        {
+        public void actionPerformed(ActionEvent e) {
             manager.getCurrentModel().addRow();
             view.setEntryCount(manager.getCurrentModel().getRowCount());
         }
@@ -231,8 +210,7 @@ public class Table_Controller
     class listener_tableModel implements TableModelListener {
 
         @Override
-        public void tableChanged(TableModelEvent e)
-        {
+        public void tableChanged(TableModelEvent e) {
             view.updateTable();
         }
     }
@@ -241,19 +219,18 @@ public class Table_Controller
      * Inner Class: List Name Listener
      *
      **************************************************************************/
-    class listener_listName implements ActionListener
-    {
+    class listener_listName implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             renameList(view.getListName());
+            renameList(view.getListName(), manager.getCurrentModel().getName());
         }
     }
 
     /***************************************************************************
      * addListeners
      **************************************************************************/
-    private void addListeners()
-    {
+    private void addListeners() {
         this.view.addIncrementListener(incrementListener);
         this.view.addListNameListener(listNameListener);
 
@@ -265,15 +242,13 @@ public class Table_Controller
      * removeListeners
      *
      **************************************************************************/
-    private void removeListeners()
-    {
+    private void removeListeners() {
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);
 
         Table_Model model = manager.getCurrentModel();
         model.removeTableModelListener(tableModelListener);
     }
-
 
 
 }

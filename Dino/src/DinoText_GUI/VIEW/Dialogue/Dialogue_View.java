@@ -250,6 +250,14 @@ public class Dialogue_View {
         return listNames;
     }
 
+    /***************************************************************************
+     * Set List Names
+     *
+     **************************************************************************/
+    public void setSetListNames(HashSet<String> newNames) {
+        listNames = newNames;
+    }
+
     /*************************************
      * POPUP MENU
      ************************************/
@@ -270,6 +278,14 @@ public class Dialogue_View {
         JMenuItem item = new JMenuItem("Insert New " + listName);
         jPopupMenu_listInsertion.add(item);
         item.addActionListener(action);
+    }
+
+    /***************************************************************************
+     * remove item to popup menu
+     *
+     **************************************************************************/
+    public void removeItemjPopupMenu_listInsertion(int oldPos) {
+        jPopupMenu_listInsertion.remove(oldPos);
     }
 
     /***************************************************************************
