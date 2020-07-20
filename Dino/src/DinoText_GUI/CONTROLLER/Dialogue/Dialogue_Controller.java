@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashSet;
+import java.util.Set;
 
 /*******************************************************************************
  * Dialogue Controller
@@ -79,17 +80,11 @@ public class Dialogue_Controller {
         menuItem.setText("Save");
         menuItem.addActionListener(new listener_JMenuItem_Save());
         menu.add(menuItem);
-        
+
         menuItem = new JMenuItem();
         menuItem.setText("Preview");
         menuItem.addActionListener(new listener_JMenuItem_Preview());
         menu.add(menuItem);
-
-        menuItem = new JMenuItem();
-        menuItem.setText("Preferences");
-        menuItem.addActionListener(new listener_JMenuItem_Preferences());
-        menu.add(menuItem);
-
 
         JMenuBar jMenuBar = new JMenuBar();
         jMenuBar.add(menu);
@@ -99,9 +94,11 @@ public class Dialogue_Controller {
         JButton temp = new JButton("Insert Dynamic List");
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
         dinoGUIView.addButtonjToolBar_topBar(temp);
-        temp = new JButton("Insert Static Variable");
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
-        dinoGUIView.addButtonjToolBar_topBar(temp);
+
+        // Note: Disabled for v0.4-beta
+        //temp = new JButton("Insert Static Variable");
+        //temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
+        //dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
     /***************************************************************************
@@ -123,6 +120,11 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+
+            if(fileName != null)
+            {
+                dinoGUIModel.setName(fileName);
+                mostRecentSaved = fileName;
 
             if(fileName != null)
             {
@@ -174,7 +176,7 @@ public class Dialogue_Controller {
                 mostRecentSaved = fileName;
 
                 dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
                 dinoGUIModel.writeToFile();
 
                 table_controller.writeToFile();
@@ -245,12 +247,14 @@ public class Dialogue_Controller {
     class listener_jPopupMenu_listInsertion_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
-            //TODO Table_Controller.createList(listName)?
+
             if (listName != null) {
                 dinoGUIView.insertButtonjTextPane_DynamicList(listName, new ActionListener() {
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //TODO Table_Controller.openList(listName)?
+                        //When a list button is pressed, change the list tab
+                        table_controller.switchToName(listName);
                     }
                 }, Color.yellow);
 
@@ -298,7 +302,8 @@ public class Dialogue_Controller {
                 dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //TODO Table_Controller.openList(listName)?
+                        //If we make a static variable menu, it should be
+                        //updated here
                     }
                 }, Color.red);
 
@@ -322,29 +327,95 @@ public class Dialogue_Controller {
             mostRecentSaved = fileName;
 
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.newDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIModel.writeToFile();
 
             table_controller.writeToFile();
         }
     }
 
+    /***************************************************************************
+     * SETTERS
+     **************************************************************************/
+    /***************************************************************************
+     * set ListNames
+     *
+     **************************************************************************/
+    public void setListNames(Set<String> newListNames) {
+        dinoGUIModel.setListNames(newListNames);
+    }
+
+    /***************************************************************************
+     * set staticVars
+     *
+     **************************************************************************/
+    public void setStaticVars(Set<String> newVars) {
+        dinoGUIModel.setStaticVars(newVars);
+    }
+
+    /***************************************************************************
+     * set Dialogue
+     *
+     **************************************************************************/
+    public void setDialogue(String newDialogue) {
+        dinoGUIModel.setDialogue(newDialogue);
+    }
+
+    /***************************************************************************
+     * set Dialogue Name
+     *
+     **************************************************************************/
+    public void setDialogueName(String newName) {
+        dinoGUIModel.setName(newName);
+    }
+
+
+    /***************************************************************************
+     * GETTERS
+     **************************************************************************/
 
     /***************************************************************************
      * get ListNames
      *
      **************************************************************************/
-    public HashSet<String> getSetListNames() {
+    public Set<String> getSetListNames() {
         dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        return dinoGUIView.getSetListNames();
+        return dinoGUIModel.getListNames();
+    }
+
+    public String[] getArrayListName() {
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
+    }
+
+    /***************************************************************************
+     * get staticVars
+     *
+     **************************************************************************/
+    public Set<String> getSetStaticVars() {
+        return dinoGUIModel.getStaticVars();
+    }
+
+    public String[] getArrayStaticVars() {
+        return dinoGUIModel.getStaticVars().toArray(new String[dinoGUIModel.getStaticVars().size()]);
+
     }
 
     /***************************************************************************
      * get Dialogue
      *
      **************************************************************************/
-    public String getText_jTextPane_dialogueInput() {
-        return dinoGUIView.getText_jTextPane_dialogueInput();
+    public String getDialogue() {
+        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        return dinoGUIModel.getDialogue();
+    }
+
+    /***************************************************************************
+     * get Dialogue Name
+     *
+     **************************************************************************/
+    public String getDialogueName() {
+        return dinoGUIModel.getName();
     }
 
 }

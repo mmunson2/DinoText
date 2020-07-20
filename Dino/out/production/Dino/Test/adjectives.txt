@@ -1,11 +1,11 @@
-# Generated: 2020/07/19 05:19:17
+# Generated: 2020/07/19 17:31:33
 Name: adjectives
 Size: 4
-1: Silly
-100.0 
-2: Long
-75.0 
-3: Difficult
-50.0 
+1: silly
+1.0 
+2: difficult
+1.0 
+3: lengthy
+1.0 
 4: 
 0.0 

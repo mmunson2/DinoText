@@ -27,7 +27,7 @@ import java.awt.*;
  * Main Class
  *
  ******************************************************************************/
-public class DinoText {
+public class DinoText implements Runnable {
     private static Dialogue_Model dinoGUIModel;
     private static Dialogue_View dinoGUIView;
     private static Dialogue_Controller dinoGUIController;
@@ -57,6 +57,8 @@ public class DinoText {
         dinoGUIView = new Dialogue_View();
         dinoGUIController = new Dialogue_Controller(dinoGUIModel, dinoGUIView, textDisplayController, table_controller);
 
+        table_controller.setDialogue_controller(dinoGUIController);
+
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());
         jFrame_dinoText.getContentPane().add(dinoGUIView.getjPanel_dialogueEditor(), BorderLayout.CENTER);
@@ -67,5 +69,10 @@ public class DinoText {
         jFrame_dinoText.pack();
         jFrame_dinoText.setVisible(true);
 
+    }
+
+    @Override
+    public void run() {
+        main(null);
     }
 }

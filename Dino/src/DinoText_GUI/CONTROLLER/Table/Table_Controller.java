@@ -1,5 +1,6 @@
 package DinoText_GUI.CONTROLLER.Table;
 
+import DinoText_GUI.CONTROLLER.Dialogue.Dialogue_Controller;
 import DinoText_GUI.MODEL.Table.Table_Manager;
 import DinoText_GUI.MODEL.Table.Table_Model;
 import DinoText_GUI.VIEW.Table.Table_TabbedPane;
@@ -29,6 +30,8 @@ public class Table_Controller
     private listener_tableModel tableModelListener;
     private listener_tabSwitch tabSwitchListener;
 
+    private Dialogue_Controller dialogue_controller;
+
 
     /***************************************************************************
      * Constructor
@@ -53,6 +56,11 @@ public class Table_Controller
         this.view.addTabSwitchListener(tabSwitchListener);
 
         addListeners();
+    }
+
+    public void setDialogue_controller(Dialogue_Controller controller)
+    {
+        this.dialogue_controller = controller;
     }
 
     /***************************************************************************
@@ -132,6 +140,8 @@ public class Table_Controller
     public void renameList(String newName, String oldName)
     {
         renameList(newName, manager.getListIndexFromName(oldName));
+
+        //Todo: Ihsan! This is where you should call the dialouge_controller.rename(newName, oldName)
     }
 
 
@@ -146,6 +156,20 @@ public class Table_Controller
         this.view.switchList(index);
         addListeners();
     }
+
+    /***************************************************************************
+     * switchToName
+     *
+     **************************************************************************/
+    public void switchToName(String listName)
+    {
+        int index = manager.getListIndexFromName(listName);
+
+        if(index != -1)
+            switchToIndex(index);
+    }
+
+
 
     public void writeToFile()
     {

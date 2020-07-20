@@ -1,11 +1,11 @@
 # Generated: 2020/07/19 17:31:33
-Name: adjectives
+Name: nouns
 Size: 4
-1: silly
+1: test
 1.0 
-2: difficult
+2: demonstration
 1.0 
-3: lengthy
-1.0 
+3: 
+0.0 
 4: 
 0.0 
