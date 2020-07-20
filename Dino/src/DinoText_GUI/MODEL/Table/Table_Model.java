@@ -178,6 +178,14 @@ public class Table_Model extends AbstractTableModel
         {
             case LIST_ENTRY:
                 this.list.setEntry(rowIndex, (String) aValue);
+
+                //Auto set probability to one when populated
+                if(this.list.getProbability(rowIndex) == 0.0)
+                {
+                    this.list.setProbability(rowIndex, 1.0);
+                    this.probabilities.updateWeight(rowIndex, 1.0);
+                }
+
                 break;
 
             case PROBABILITY_WEIGHT:

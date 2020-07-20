@@ -1,15 +1,11 @@
-# Generated: 2020/07/19 05:46:29
+# Generated: 2020/07/19 17:31:33
 Name: adjectives
-Size: 6
-1: long
+Size: 4
+1: silly
 1.0 
 2: difficult
 1.0 
-3: extended
+3: lengthy
 1.0 
-4: elongated
-1.0 
-5: expanded
-1.0 
-6: lengthy
-1.0 
+4: 
+0.0 
