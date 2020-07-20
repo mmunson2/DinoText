@@ -76,7 +76,7 @@ public class Dialogue_View {
     }
 
     /***************************************************************************
-     * Listener - Dialouge Input
+     * Listener - Dialogue Input
      *
      **************************************************************************/
     public void addListenerjTextPane_dialogueInput(MouseAdapter mouseAdapter) {
@@ -105,7 +105,7 @@ public class Dialogue_View {
     }
 
     /***************************************************************************
-     * get dropdown menu
+     * get JPopup menu
      **************************************************************************/
     public JPopupMenu getjPopupMenu_listInsertion() {
         jPopupMenu_listInsertion.setInvoker(jTextPane_dialogueInput);
@@ -318,4 +318,7 @@ public class Dialogue_View {
         }
     }
 
+    public String getSelectedText_jTextPane_dialogueInput() {
+        return jTextPane_dialogueInput.getSelectedText();
+    }
 }

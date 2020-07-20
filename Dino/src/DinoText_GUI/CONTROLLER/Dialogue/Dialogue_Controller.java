@@ -5,19 +5,15 @@ import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
 import DinoText_GUI.DinoText;
 import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
-import DinoText_GUI.MODEL.Table.Table_Manager;
-import DinoText_GUI.MODEL.Table.Table_Model;
 import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
-import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 
 import javax.swing.*;
-import javax.swing.text.TableView;
+import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,8 +22,7 @@ import java.util.Set;
  * Dialogue Controller
  *
  ******************************************************************************/
-public class Dialogue_Controller
-{
+public class Dialogue_Controller {
 
     private Dialogue_Model dinoGUIModel;
     private Dialogue_View dinoGUIView;
@@ -56,59 +51,84 @@ public class Dialogue_Controller
      **************************************************************************/
     private void initialize() {
         initializejPopupMenu();
-        initializejToolBar();
+        initializejToolBar_File();
+        initializejToolBar_Tools();
         newDialogue();
     }
 
 
     /***************************************************************************
-     * Initialize JToolBar
+     * Initialize File JToolBar
      *
      **************************************************************************/
-    private void initializejToolBar() {
-        JMenu menu = new JMenu("File");
+    private void initializejToolBar_File() {
+        JMenu file = new JMenu("File");
+        JMenuItem fileMenu;
+
+        fileMenu = new JMenuItem();
+        fileMenu.setText("New");
+        fileMenu.addActionListener(new listener_JMenuItem_File_New());
+        file.add(fileMenu);
+
+        fileMenu = new JMenuItem();
+        fileMenu.setText("Open");
+        fileMenu.addActionListener(new listener_JMenuItem_File_Open());
+        file.add(fileMenu);
+
+        fileMenu = new JMenuItem();
+        fileMenu.setText("Save");
+        fileMenu.addActionListener(new listener_JMenuItem_File_Save());
+        file.add(fileMenu);
+
+        fileMenu = new JMenuItem();
+        fileMenu.setText("Preview");
+        fileMenu.addActionListener(new listener_JMenuItem_File_Preview());
+        file.add(fileMenu);
+
+        JMenuBar jMenuBar = new JMenuBar();
+        jMenuBar.add(file);
+
+        dinoGUIView.addJMenujToolBar_topBar(jMenuBar);
+    }
+    /***************************************************************************
+     * Initialize Tools JToolBar
+     *
+     **************************************************************************/
+    private void initializejToolBar_Tools() {
+        JMenu tools = new JMenu("Tools");
         JMenuItem menuItem;
 
         menuItem = new JMenuItem();
-        menuItem.setText("New");
-        menuItem.addActionListener(new listener_JMenuItem_New());
-        menu.add(menuItem);
+        menuItem.setText("Insert Dynamic List");
+        menuItem.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
+        tools.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("Open");
-        menuItem.addActionListener(new listener_JMenuItem_Open());
-        menu.add(menuItem);
+        menuItem.setText("Inswer Static Variable");
+        menuItem.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
+        tools.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("Save");
-        menuItem.addActionListener(new listener_JMenuItem_Save());
-        menu.add(menuItem);
+        menuItem.setText("Dynamic Word Candidate Suggestion");
+        menuItem.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
+        tools.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("Preview");
-        menuItem.addActionListener(new listener_JMenuItem_Preview());
-        menu.add(menuItem);
+        menuItem.setText("Synonyms");
+        menuItem.addActionListener(new listener_JMenuItem_Tools_Synonyms());
+        tools.add(menuItem);
 
-        JMenuBar jMenuBar = new JMenuBar();
-        jMenuBar.add(menu);
+        JMenuBar toolsMenu = new JMenuBar();
+        toolsMenu.add(tools);
 
-        dinoGUIView.addJMenujToolBar_topBar(jMenuBar);
-
-        JButton temp = new JButton("Insert Dynamic List");
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
-        dinoGUIView.addButtonjToolBar_topBar(temp);
-
-        // Note: Disabled for v0.4-beta
-        //temp = new JButton("Insert Static Variable");
-        //temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
-        //dinoGUIView.addButtonjToolBar_topBar(temp);
+        dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
     }
 
     /***************************************************************************
-     * Dropdown Menu - Save
+     * File Dropdown Menu - Save
      *
      **************************************************************************/
-    class listener_JMenuItem_Save implements ActionListener {
+    class listener_JMenuItem_File_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             saveDialogueFile();
@@ -116,11 +136,10 @@ public class Dialogue_Controller
     }
 
     /***************************************************************************
-     * Dropdown Menu - Open
+     * File Dropdown Menu - Open
      *
      **************************************************************************/
-    class listener_JMenuItem_Open implements ActionListener
-    {
+    class listener_JMenuItem_File_Open implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -144,12 +163,11 @@ public class Dialogue_Controller
         }
     }
 
-        /***************************************************************************
-         * Dropdown Menu - New
-         *
-         **************************************************************************/
-    class listener_JMenuItem_New implements ActionListener
-    {
+    /***************************************************************************
+     * File Dropdown Menu - New
+     *
+     **************************************************************************/
+    class listener_JMenuItem_File_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             saveDialogueFile();
@@ -159,12 +177,11 @@ public class Dialogue_Controller
         }
     }
 
-        /***************************************************************************
-         * Dropdown Menu - Preview
-         *
-         **************************************************************************/
-    class listener_JMenuItem_Preview implements ActionListener
-    {
+    /***************************************************************************
+     * File Dropdown Menu - Preview
+     *
+     **************************************************************************/
+    class listener_JMenuItem_File_Preview implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (mostRecentSaved == null) {
@@ -198,7 +215,7 @@ public class Dialogue_Controller
     }
 
     /***************************************************************************
-     * Dropdown Menu - Preferences
+     * File Dropdown Menu - Preferences
      *
      **************************************************************************/
     private class listener_JMenuItem_Preferences implements ActionListener {
@@ -208,48 +225,12 @@ public class Dialogue_Controller
         }
     }
 
-    /***************************************************************************
-     * set jOptionPane_Preferences
-     * use this to pass in the JOptionPane from another class
-     **************************************************************************/
-    public void setjOptionPane_Preferences(JOptionPane pane) {
-        dinoGUIView.setjOptionPane_Preferences(pane);
-    }
 
     /***************************************************************************
-     * newDialogue
+     * Tools Dropdown Menu - Insert Dynamic List
      *
      **************************************************************************/
-    private void newDialogue() {
-        dinoGUIView.setVisibleTSDialogueInput(true);
-        dinoGUIView.setFocusTSDialogueInput();
-    }
-
-    /***************************************************************************
-     * Initialize Dropdown Menu
-     *
-     **************************************************************************/
-    void initializejPopupMenu() {
-        dinoGUIView.setInvokerjPopupMenu_listInsertion(dinoGUIView.getjTextPane_dialogueInput());
-        dinoGUIView.addItemjPopupMenu_listInsertion("Insert Dynamic List", new listener_jPopupMenu_listInsertion_InsertDynamicList());
-        dinoGUIView.addItemjPopupMenu_listInsertion("Insert Static Variable", new listener_jPopupMenu_listInsertion_InsertStaticVariable());
-        dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
-            public void mouseClicked(MouseEvent me) {
-                if (SwingUtilities.isRightMouseButton(me)) {
-                    dinoGUIView.showjPopupMenu_listInsertion(me);
-                }
-            }
-
-        });
-
-
-    }
-
-    /***************************************************************************
-     * Insert Dynamic List
-     *
-     **************************************************************************/
-    class listener_jPopupMenu_listInsertion_InsertDynamicList implements ActionListener {
+    class listener_JMenuItem_Tools_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
 
@@ -274,6 +255,89 @@ public class Dialogue_Controller
     }
 
     /***************************************************************************
+     * Tools Dropdown Menu - Dynamic Word Candidate Suggestion
+     *
+     **************************************************************************/
+    private class listener_JMenuItem_Tools_DynamicWordCandidateSuggestion implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String sentence = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+        }
+    }
+
+    /***************************************************************************
+     * Tools Dropdown Menu - Synonyms
+     *
+     **************************************************************************/
+    private class listener_JMenuItem_Tools_Synonyms implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+        }
+    }
+    /***************************************************************************
+     * Tools Dropdown Menu - Insert Static Variable
+     *
+     **************************************************************************/
+    class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
+            if (varName != null) {
+                dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //If we make a static variable menu, it should be
+                        //updated here
+                    }
+                }, Color.red);
+
+                dinoGUIView.addItemjPopupMenu_listInsertion(varName, new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
+
+                dinoGUIModel.addStaticVar(varName);
+
+                dinoGUIView.setFocusTSDialogueInput();
+            }
+        }
+    }
+
+    /***************************************************************************
+     * set jOptionPane_Preferences
+     * use this to pass in the JOptionPane from another class
+     **************************************************************************/
+    public void setjOptionPane_Preferences(JOptionPane pane) {
+        dinoGUIView.setjOptionPane_Preferences(pane);
+    }
+
+    /***************************************************************************
+     * newDialogue
+     *
+     **************************************************************************/
+    private void newDialogue() {
+        dinoGUIView.setVisibleTSDialogueInput(true);
+        dinoGUIView.setFocusTSDialogueInput();
+    }
+
+    /***************************************************************************
+     * Initialize JPopup Menu
+     *
+     **************************************************************************/
+    void initializejPopupMenu() {
+        dinoGUIView.setInvokerjPopupMenu_listInsertion(dinoGUIView.getjTextPane_dialogueInput());
+        dinoGUIView.addItemjPopupMenu_listInsertion("Insert Dynamic List", new listener_JMenuItem_Tools_InsertDynamicList());
+        dinoGUIView.addItemjPopupMenu_listInsertion("Insert Static Variable", new listener_JMenuItem_Tools_InsertStaticVariable());
+        dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                if (SwingUtilities.isRightMouseButton(me)) {
+                    dinoGUIView.showjPopupMenu_listInsertion(me);
+                }
+            }
+
+        });
+
+
+    }
+
+    /***************************************************************************
      * Select Existing List
      *
      **************************************************************************/
@@ -293,31 +357,6 @@ public class Dialogue_Controller
             }
 
             dinoGUIView.setFocusTSDialogueInput();
-        }
-    }
-
-    /***************************************************************************
-     * Insert Static Variable
-     *
-     **************************************************************************/
-    class listener_jPopupMenu_listInsertion_InsertStaticVariable implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
-            if (varName != null) {
-                dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        //If we make a static variable menu, it should be
-                        //updated here
-                    }
-                }, Color.red);
-
-                dinoGUIView.addItemjPopupMenu_listInsertion(varName, new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
-
-                dinoGUIModel.addStaticVar(varName);
-
-                dinoGUIView.setFocusTSDialogueInput();
-            }
         }
     }
 
@@ -427,7 +466,7 @@ public class Dialogue_Controller
      * rename List
      *
      **************************************************************************/
-    public void renameList(String newName, String oldName){
+    public void renameList(String newName, String oldName) {
         HashSet<String> temp = dinoGUIView.getSetListNames();
         int oldPos = Arrays.asList(temp.toArray(new String[0])).indexOf(oldName);
 
@@ -435,8 +474,8 @@ public class Dialogue_Controller
         dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
 
         //rename JButtons
-        for (JButton tempButton : dinoGUIView.getAllListButtons()){
-            if (tempButton.getName().equals(oldName)){
+        for (JButton tempButton : dinoGUIView.getAllListButtons()) {
+            if (tempButton.getName().equals(oldName)) {
                 tempButton.setName(newName);
                 tempButton.setText(newName);
             }
@@ -458,5 +497,4 @@ public class Dialogue_Controller
 
 
     }
-
 }
