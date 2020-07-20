@@ -40,9 +40,12 @@ public class DinoText implements Runnable {
     private static Text_Display_View textDisplayView;
     private static Text_Display_Controller textDisplayController;
 
+    private static DinoConfig config;
 
     public static void main(String[] args) {
         JFrame jFrame_dinoText = new JFrame();
+
+        config = DinoConfig.loadConfig();
 
         table_manager = new Table_Manager();
         table_view = new Table_TabbedPane();
@@ -50,7 +53,7 @@ public class DinoText implements Runnable {
 
         textDisplayModel = new Text_Display_Model();
         textDisplayView = new Text_Display_View();
-        textDisplayController = new Text_Display_Controller(textDisplayModel, textDisplayView);
+        textDisplayController = new Text_Display_Controller(textDisplayModel, textDisplayView, config);
         textDisplayView.setPanelVisible(false);
 
         dinoGUIModel = new Dialogue_Model();

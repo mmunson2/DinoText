@@ -1,3 +1,5 @@
+// Camden Brewster
+
 package DinoText_GUI.MODEL.Display;
 
 import DinoParser.Dino;
@@ -16,7 +18,7 @@ public class Text_Display_Model
     private int currentPage;
     private int numPages;
 
-    private int charPerLine;
+    private int charsPerLine;
     private int linesPerPage;
 
     private Dino dino;
@@ -29,7 +31,7 @@ public class Text_Display_Model
     {
         this.text = "";
         this.pages = new ArrayList<>();
-        this.charPerLine = 30;
+        this.charsPerLine = 30;
         this.linesPerPage = 2;
 
         this.currentPage = 1;
@@ -62,7 +64,7 @@ public class Text_Display_Model
     /***************************************************************************
      * get Chars Per Line
      **************************************************************************/
-    public int getCharsPerLine() { return charPerLine; }
+    public int getCharsPerLine() { return charsPerLine; }
 
     /***************************************************************************
      * get Lines Per Page
@@ -98,7 +100,7 @@ public class Text_Display_Model
     /***************************************************************************
      * Set Chars Per Line
      **************************************************************************/
-    public void setCharsPerLine(int i) { charPerLine = i; }
+    public void setCharsPerLine(int i) { charsPerLine = i; }
 
     /***************************************************************************
      * Set Lines Per Page
@@ -124,21 +126,74 @@ public class Text_Display_Model
         int i = 0;
         while (i < chars.length)
         {
+            //System.out.println("|" + chars[i] + "|");
+            //System.out.println("newWord: |" + newWord + "|" + " wordCharCount: " + wordCharCount + " lineCharCount: " + lineCharCount + " lineNum: " + lineNum);
+            //System.out.println("newPage: \n|" + newPage + "|\n");
+
+            // if current char is not a space, add to new word
             if (chars[i] != ' ')
             {
                 newWord += chars[i];
                 wordCharCount++;
-                i++;
             }
-
-            if (i == chars.length || chars[i] == ' ')
+            else
             {
-                if (i < chars.length)
+                // if the first word is longer than charsPerLine
+                if (lineCharCount == 0 && wordCharCount > charsPerLine && lineNum < linesPerPage)
                 {
-                    newWord += chars[i];
+                    newPage += newWord;
+                    lineCharCount = wordCharCount;
+                    newWord = "";
+                    wordCharCount = 0;
                     i++;
+                    continue;
                 }
-                if (lineCharCount + wordCharCount + 1 <= charPerLine)
+
+                // adds word to current line if it fits
+                if (lineCharCount + wordCharCount <= charsPerLine)
+                {
+                    newPage += newWord;
+                    lineCharCount += wordCharCount;
+                    newWord = "";
+                    wordCharCount = 0;
+                }
+                // goes to new line then adds the new word if lineNum is less than linesPerPage
+                else if (lineNum < linesPerPage)
+                {
+                    newPage += "\n";
+                    lineNum++;
+                    newPage += newWord;
+                    lineCharCount = wordCharCount;
+                    newWord = "";
+                    wordCharCount = 0;
+                }
+                // goes to a new page then adds the new word
+                else
+                {
+                    pages.add(newPage);
+                    lineNum = 1;
+                    newPage = newWord;
+                    lineCharCount = wordCharCount;
+                    newWord = "";
+                    wordCharCount = 0;
+                }
+                // adds the space only if there is room on the current line
+                if (lineCharCount < charsPerLine)
+                {
+                    newPage += chars[i];
+                    lineCharCount++;
+                }
+            }
+            i++;
+            // checking to add the last word in the String
+            if (i < chars.length)
+            {
+                continue;
+            }
+            // adding the last word using the above logic
+            else
+            {
+                if (lineCharCount + wordCharCount <= charsPerLine)
                 {
                     newPage += newWord;
                     lineCharCount += wordCharCount;
@@ -148,15 +203,20 @@ public class Text_Display_Model
                 else if (lineNum < linesPerPage)
                 {
                     newPage += "\n";
-                    lineCharCount = 0;
                     lineNum++;
+                    newPage += newWord;
+                    lineCharCount = wordCharCount;
+                    newWord = "";
+                    wordCharCount = 0;
                 }
                 else
                 {
                     pages.add(newPage);
-                    newPage = "";
-                    lineCharCount = 0;
                     lineNum = 1;
+                    newPage = newWord;
+                    lineCharCount = wordCharCount;
+                    newWord = "";
+                    wordCharCount = 0;
                 }
             }
         }

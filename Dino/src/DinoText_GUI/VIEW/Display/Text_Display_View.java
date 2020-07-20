@@ -1,11 +1,18 @@
+// Camden Brewster
+
 package DinoText_GUI.VIEW.Display;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextPane;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import java.awt.*;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 
 /*******************************************************************************
@@ -40,9 +47,8 @@ public class Text_Display_View extends JFrame
         doc.setParagraphAttributes(0, doc.getLength(), center, false);
     }
 
-
     /***************************************************************************
-     * Listener - Next Button
+     * Listener - Generate New Button
      *
      **************************************************************************/
     public void add_generateNew_button_listener(ActionListener actionListener)
