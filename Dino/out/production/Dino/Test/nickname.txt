@@ -2,10 +2,18 @@
 Name: nickname
 Size: 8
 1: buddy
+1.0
 2: bucko
+1.0
 3: pal
+1.0
 4: fella
+1.0
 5: darlin'
+1.0
 6: cutie
+1.0
 7: homie
+1.0
 8: bud
+1.0

@@ -68,6 +68,18 @@ public class Table_Manager
     }
 
     /***************************************************************************
+     * Write To File
+     *
+     **************************************************************************/
+    public void writeToFile(String name)
+    {
+        int index = this.getListIndexFromName(name);
+
+        if(index != -1)
+            this.lists.get(index).writeToFile();
+    }
+
+    /***************************************************************************
      * Get Current List Index
      *
      **************************************************************************/

@@ -1,5 +1,7 @@
 package DinoText_GUI.CONTROLLER.Table;
 
+import DinoParser.List.ListEntry;
+import DinoParser.ListParser;
 import DinoText_GUI.CONTROLLER.Dialogue.Dialogue_Controller;
 import DinoText_GUI.MODEL.Table.Table_Manager;
 import DinoText_GUI.MODEL.Table.Table_Model;
@@ -13,6 +15,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.Random;
 
 /*******************************************************************************
  * Table Controller
@@ -123,9 +127,6 @@ public class Table_Controller {
         this.manager.getCurrentModel().addEntry(entry, weight);
     }
 
-    //Todo: Open File
-
-
     /***************************************************************************
      * rename List
      *
@@ -179,19 +180,51 @@ public class Table_Controller {
     }
 
 
+    /***************************************************************************
+     * writeAllToFile
+     *
+     **************************************************************************/
     public void writeAllToFile() {
         this.manager.writeToFile();
     }
 
+    /***************************************************************************
+     * writeCurrentToFile
+     *
+     **************************************************************************/
     public void writeCurrentToFile()
     {
         this.manager.getCurrentModel().writeToFile();
     }
 
+    /***************************************************************************
+     * writeToFile
+     *
+     **************************************************************************/
     public void writeToFile(String name)
     {
+        this.manager.writeToFile(name);
+    }
 
+    //Todo: Support Traits
+    //Todo: If a list is already open, just switch the tab
+    //Todo: Implement file extensions
+    /***************************************************************************
+     * openFile
+     *
+     **************************************************************************/
+    public void openFile(String fileName)
+    {
+        ListParser parser = new ListParser(new File(fileName));
 
+        this.addList(parser.getName());
+
+        ListEntry[] entries = parser.getList();
+
+        for(int i = 0; i < entries.length; i++)
+        {
+            this.addEntry(entries[i].getListEntry(), entries[i].getBaseProbability());
+        }
     }
 
 
@@ -248,9 +281,18 @@ public class Table_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            String[] entries = {"Silly", "Long", "Difficult"};
+            File root = new File("/Users/matthewmunson/Documents/GitHub/DinoText/Resources/Lists");
+            System.out.println(root.getAbsolutePath());
 
-            addList("testList", entries);
+            String[] files = root.list();
+
+
+            Random random = new Random();
+
+            String fileName = files[random.nextInt(files.length)];
+
+            System.out.println(fileName);
+            openFile(fileName);
 
 
         }
