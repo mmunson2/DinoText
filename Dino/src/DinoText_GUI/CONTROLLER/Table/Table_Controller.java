@@ -147,6 +147,20 @@ public class Table_Controller
         addListeners();
     }
 
+    /***************************************************************************
+     * switchToName
+     *
+     **************************************************************************/
+    public void switchToName(String listName)
+    {
+        int index = manager.getListIndexFromName(listName);
+
+        if(index != -1)
+            switchToIndex(index);
+    }
+
+
+
     public void writeToFile()
     {
         this.manager.writeToFile();

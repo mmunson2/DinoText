@@ -95,9 +95,10 @@ public class Dialogue_Controller {
         temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertDynamicList());
         dinoGUIView.addButtonjToolBar_topBar(temp);
 
-        temp = new JButton("Insert Static Variable");
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
-        dinoGUIView.addButtonjToolBar_topBar(temp);
+        // Note: Disabled for v0.4-beta
+        //temp = new JButton("Insert Static Variable");
+        //temp.addActionListener(new listener_jPopupMenu_listInsertion_InsertStaticVariable());
+        //dinoGUIView.addButtonjToolBar_topBar(temp);
     }
 
     /***************************************************************************
@@ -241,12 +242,14 @@ public class Dialogue_Controller {
     class listener_jPopupMenu_listInsertion_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
-            //TODO Table_Controller.createList(listName)?
+
             if (listName != null) {
                 dinoGUIView.insertButtonjTextPane_DynamicList(listName, new ActionListener() {
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //TODO Table_Controller.openList(listName)?
+                        //When a list button is pressed, change the list tab
+                        table_controller.switchToName(listName);
                     }
                 }, Color.yellow);
 
@@ -294,7 +297,8 @@ public class Dialogue_Controller {
                 dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //TODO Table_Controller.openList(listName)?
+                        //If we make a static variable menu, it should be
+                        //updated here
                     }
                 }, Color.red);
 
