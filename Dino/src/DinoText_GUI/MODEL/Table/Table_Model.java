@@ -107,7 +107,6 @@ public class Table_Model extends AbstractTableModel
             this.list.setProbability(rowIndex, weight);
         }
 
-
         this.probabilities.updateWeight(rowIndex, weight);
         this.fireTableDataChanged();
     }

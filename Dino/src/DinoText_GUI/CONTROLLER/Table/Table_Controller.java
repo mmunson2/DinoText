@@ -86,43 +86,40 @@ public class Table_Controller {
      *
      **************************************************************************/
     public void addList(String name, String[] entries) {
-        if (entries == null) //Creating a list from scratch
+
+        //If this is the first list, just rename Untitled List
+        if (this.manager.getCurrentModel().getName().equals("Untitled List")
+                && this.manager.getSize() == 1) {
+            this.renameList(name);
+        }
+        else //Otherwise make a whole new list
         {
-            if (this.manager.getCurrentModel().getName().equals("Untitled List")
-                    && this.manager.getSize() == 1) {
-                this.renameList(name);
-            } else {
-                removeListeners();
-                this.manager.addModel(name);
-                this.view.addList(name);
-                this.view.setTableModel(this.manager.getCurrentModel());
-                view.setEntryCount(manager.getCurrentModel().getRowCount());
-                addListeners();
+            removeListeners();
+            this.manager.addModel(name);
+            this.view.addList(name);
+            this.view.setTableModel(this.manager.getCurrentModel());
+            view.setEntryCount(manager.getCurrentModel().getRowCount());
+            addListeners();
+        }
+
+        //If there are entries, add them
+        if(entries != null)
+        {
+            for(int i = 0; i < entries.length; i++)
+            {
+                this.addEntry(entries[i]);
             }
-        } else //Creating a list from an array of Strings
-        {
-
-
-
-
-
-            System.err.println("Matthew didn't implement this yet :(");
-            System.exit(-1);
         }
     }
 
-    //Todo
     public void addEntry(String entry)
     {
-        this.manager.getCurrentModel().addEntry("TestEntry", 1.0);
-
+        this.manager.getCurrentModel().addEntry(entry, 1.0);
     }
 
-    //Todo
-    public void addEntry(String entry, double probability)
+    public void addEntry(String entry, double weight)
     {
-
-
+        this.manager.getCurrentModel().addEntry(entry, weight);
     }
 
     //Todo: Open File
@@ -238,7 +235,12 @@ public class Table_Controller {
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            addEntry("Test Entry");
+
+            String[] entries = {"Silly", "Long", "Difficult"};
+
+            addList("testList", entries);
+
+            
         }
     }
 
