@@ -84,6 +84,7 @@ public class Table_Controller {
     /***************************************************************************
      * addList - String and entries overload
      *
+     * //Todo: Ihsan! This is the method you should hook up to dinodictionary
      **************************************************************************/
     public void addList(String name, String[] entries) {
 
@@ -178,8 +179,19 @@ public class Table_Controller {
     }
 
 
-    public void writeToFile() {
+    public void writeAllToFile() {
         this.manager.writeToFile();
+    }
+
+    public void writeCurrentToFile()
+    {
+        this.manager.getCurrentModel().writeToFile();
+    }
+
+    public void writeToFile(String name)
+    {
+
+
     }
 
 
@@ -240,7 +252,7 @@ public class Table_Controller {
 
             addList("testList", entries);
 
-            
+
         }
     }
 

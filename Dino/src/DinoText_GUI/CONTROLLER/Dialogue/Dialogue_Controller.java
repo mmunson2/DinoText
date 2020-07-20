@@ -5,21 +5,15 @@ import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
 import DinoText_GUI.DinoText;
 import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
-import DinoText_GUI.MODEL.Table.Table_Manager;
-import DinoText_GUI.MODEL.Table.Table_Model;
 import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
-import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 
 import javax.swing.*;
-import javax.swing.text.TableView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 
 /*******************************************************************************
@@ -138,7 +132,7 @@ public class Dialogue_Controller
                     dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
                     dinoGUIModel.writeToFile();
 
-                    table_controller.writeToFile();
+                    table_controller.writeAllToFile();
                 }
             }
         }
@@ -184,7 +178,7 @@ public class Dialogue_Controller
                     dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
                     dinoGUIModel.writeToFile();
 
-                    table_controller.writeToFile();
+                    table_controller.writeAllToFile();
                 }
 
 
@@ -337,7 +331,7 @@ public class Dialogue_Controller
             dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIModel.writeToFile();
 
-            table_controller.writeToFile();
+            table_controller.writeAllToFile();
         }
     }
 
