@@ -1,8 +1,8 @@
-# Generated: 2020/07/19 22:38:46
+# Generated: 2020/07/20 13:18:18
 
 Lists Referenced: 1
-adjectives 
+testList 
 
 Static Variables: 0
 
-This is a \L[adjectives] test
+\L[testList] 

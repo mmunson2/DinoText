@@ -18,6 +18,7 @@ public class Table_View {
     private JLabel entryCount;
     private JButton increment;
     private JPanel panel1;
+    private JButton debugButton;
 
     /***************************************************************************
      * Constructor
@@ -105,7 +106,19 @@ public class Table_View {
     {
         this.listName.removeActionListener(l);
     }
-    
+
+    public void addDebugListener(ActionListener l)
+    {
+        this.debugButton.addActionListener(l);
+    }
+
+    public void removeDebugListener(ActionListener l)
+    {
+        this.debugButton.removeActionListener(l);
+    }
+
+
+
     /***************************************************************************
      * Update Table
      **************************************************************************/

@@ -150,6 +150,16 @@ public class Table_TabbedPane extends JFrame{
         this.listPane.removeChangeListener(l);
     }
 
+    public void addDebugListener(ActionListener l)
+    {
+        this.activeTable.addDebugListener(l);
+    }
+
+    public void removeDebugListener(ActionListener l)
+    {
+        this.activeTable.removeDebugListener(l);
+    }
+
 
     public void updateTable() {
         this.activeTable.updateTable();

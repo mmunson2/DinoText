@@ -29,6 +29,9 @@ public class Table_Controller {
     private listener_tableModel tableModelListener;
     private listener_tabSwitch tabSwitchListener;
 
+    private listener_debug debugListener;
+
+
     private Dialogue_Controller dialogue_controller;
 
 
@@ -50,6 +53,8 @@ public class Table_Controller {
         this.listNameListener = new listener_listName();
         this.tableModelListener = new listener_tableModel();
         this.tabSwitchListener = new listener_tabSwitch();
+
+        this.debugListener = new listener_debug();
 
         this.view.addTabSwitchListener(tabSwitchListener);
 
@@ -81,44 +86,43 @@ public class Table_Controller {
      *
      **************************************************************************/
     public void addList(String name, String[] entries) {
-        if (entries == null) //Creating a list from scratch
+
+        //If this is the first list, just rename Untitled List
+        if (this.manager.getCurrentModel().getName().equals("Untitled List")
+                && this.manager.getSize() == 1) {
+            this.renameList(name);
+        }
+        else //Otherwise make a whole new list
         {
-            if (this.manager.getCurrentModel().getName().equals("Untitled List")
-                    && this.manager.getSize() == 1) {
-                this.renameList(name);
-            } else {
-                removeListeners();
-                this.manager.addModel(name);
-                this.view.addList(name);
-                this.view.setTableModel(this.manager.getCurrentModel());
-                view.setEntryCount(manager.getCurrentModel().getRowCount());
-                addListeners();
+            removeListeners();
+            this.manager.addModel(name);
+            this.view.addList(name);
+            this.view.setTableModel(this.manager.getCurrentModel());
+            view.setEntryCount(manager.getCurrentModel().getRowCount());
+            addListeners();
+        }
+
+        //If there are entries, add them
+        if(entries != null)
+        {
+            for(int i = 0; i < entries.length; i++)
+            {
+                this.addEntry(entries[i]);
             }
-        } else //Creating a list from an array of Strings
-        {
-
-
-
-
-
-            System.err.println("Matthew didn't implement this yet :(");
-            System.exit(-1);
         }
     }
 
     public void addEntry(String entry)
     {
-        
-
+        this.manager.getCurrentModel().addEntry(entry, 1.0);
     }
 
-    public void addEntry(String entry, double probability)
+    public void addEntry(String entry, double weight)
     {
-
-
+        this.manager.getCurrentModel().addEntry(entry, weight);
     }
 
-    
+    //Todo: Open File
 
 
     /***************************************************************************
@@ -227,12 +231,27 @@ public class Table_Controller {
         }
     }
 
+    class listener_debug implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            String[] entries = {"Silly", "Long", "Difficult"};
+
+            addList("testList", entries);
+
+            
+        }
+    }
+
     /***************************************************************************
      * addListeners
      **************************************************************************/
     private void addListeners() {
         this.view.addIncrementListener(incrementListener);
         this.view.addListNameListener(listNameListener);
+
+        this.view.addDebugListener(debugListener);
 
         Table_Model model = manager.getCurrentModel();
         model.addTableModelListener(tableModelListener);
@@ -245,6 +264,8 @@ public class Table_Controller {
     private void removeListeners() {
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);
+
+        this.view.removeDebugListener(debugListener);
 
         Table_Model model = manager.getCurrentModel();
         model.removeTableModelListener(tableModelListener);

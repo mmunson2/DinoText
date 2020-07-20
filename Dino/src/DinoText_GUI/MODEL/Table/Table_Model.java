@@ -63,16 +63,54 @@ public class Table_Model extends AbstractTableModel
         this.list.setName(listName);
     }
 
+    /***************************************************************************
+     * getName
+     *
+     **************************************************************************/
     public String getName()
     {
         return this.list.getName();
     }
 
+    /***************************************************************************
+     * writeToFile
+     *
+     **************************************************************************/
     public void writeToFile()
     {
         DinoWriter writer = new DinoWriter();
         writer.writeListToFile(this.list);
     }
+
+    /***************************************************************************
+     * addEntry
+     *
+     **************************************************************************/
+    public void addEntry(String entry, double weight)
+    {
+        int rowIndex = nextEmptyRow();
+        int entryColumn = Columns.LIST_ENTRY.ordinal();
+        int weightColumn = Columns.PROBABILITY_WEIGHT.ordinal();
+
+        if(rowIndex == -1) //Need to add a row
+        {
+            this.addRow();
+            rowIndex = this.entryCount - 1;
+
+
+            this.list.setEntry(rowIndex, entry);
+            this.list.setProbability(rowIndex, weight);
+        }
+        else //Add to existing entry
+        {
+            this.list.setEntry(rowIndex, entry);
+            this.list.setProbability(rowIndex, weight);
+        }
+
+        this.probabilities.updateWeight(rowIndex, weight);
+        this.fireTableDataChanged();
+    }
+
 
     /***************************************************************************
      * getRowCount
@@ -121,17 +159,7 @@ public class Table_Model extends AbstractTableModel
     @Override
     public Class<?> getColumnClass(int columnIndex)
     {
-        Columns column = Columns.values()[columnIndex];
-
-        switch(column)
-        {
-            case TRAIT:
-                return JButton.class;
-
-            default:
-                return String.class;
-        }
-
+        return String.class;
     }
 
     /***************************************************************************
@@ -172,9 +200,6 @@ public class Table_Model extends AbstractTableModel
             case PROBABILITY:
                 return String.format("%.2f%%",
                         this.probabilities.getProbability(rowIndex));
-            case TRAIT:
-                return new JButton("Test");
-
         }
 
         return null;
@@ -191,13 +216,18 @@ public class Table_Model extends AbstractTableModel
         switch(column)
         {
             case LIST_ENTRY:
-                this.list.setEntry(rowIndex, (String) aValue);
+                String entry = (String) aValue;
 
-                //Auto set probability to one when populated
-                if(this.list.getProbability(rowIndex) == 0.0)
+                double currentWeight = (Double) this.getValueAt(rowIndex,
+                        Columns.PROBABILITY_WEIGHT.ordinal());
+
+                if(currentWeight == 0)
                 {
-                    this.list.setProbability(rowIndex, 1.0);
-                    this.probabilities.updateWeight(rowIndex, 1.0);
+                    this.addEntry(entry, 1.0);
+                }
+                else
+                {
+                    this.addEntry(entry, currentWeight);
                 }
 
                 break;
@@ -243,4 +273,29 @@ public class Table_Model extends AbstractTableModel
     public void removeTableModelListener(TableModelListener l) {
         super.removeTableModelListener(l);
     }
+
+    /***************************************************************************
+     * nextEmptyRow
+     *
+     *
+     * Returns -1 if there's no empty rows
+     **************************************************************************/
+    private int nextEmptyRow()
+    {
+        for(int i = 0; i < this.entryCount; i++)
+        {
+            String entry = (String) this.getValueAt(i,
+                    Columns.LIST_ENTRY.ordinal());
+
+
+            double probability = (Double)
+                    this.getValueAt(i, Columns.PROBABILITY_WEIGHT.ordinal());
+
+            if(entry.equals("") && probability == 0.0)
+                return i;
+        }
+
+        return -1;
+    }
+
 }
