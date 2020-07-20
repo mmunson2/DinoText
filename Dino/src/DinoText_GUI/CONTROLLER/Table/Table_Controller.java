@@ -29,6 +29,9 @@ public class Table_Controller {
     private listener_tableModel tableModelListener;
     private listener_tabSwitch tabSwitchListener;
 
+    private listener_debug debugListener;
+
+
     private Dialogue_Controller dialogue_controller;
 
 
@@ -50,6 +53,8 @@ public class Table_Controller {
         this.listNameListener = new listener_listName();
         this.tableModelListener = new listener_tableModel();
         this.tabSwitchListener = new listener_tabSwitch();
+
+        this.debugListener = new listener_debug();
 
         this.view.addTabSwitchListener(tabSwitchListener);
 
@@ -106,19 +111,21 @@ public class Table_Controller {
         }
     }
 
+    //Todo
     public void addEntry(String entry)
     {
-        
+        this.manager.getCurrentModel().addEntry("TestEntry", 1.0);
 
     }
 
+    //Todo
     public void addEntry(String entry, double probability)
     {
 
 
     }
 
-    
+    //Todo: Open File
 
 
     /***************************************************************************
@@ -227,12 +234,22 @@ public class Table_Controller {
         }
     }
 
+    class listener_debug implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            addEntry("Test Entry");
+        }
+    }
+
     /***************************************************************************
      * addListeners
      **************************************************************************/
     private void addListeners() {
         this.view.addIncrementListener(incrementListener);
         this.view.addListNameListener(listNameListener);
+
+        this.view.addDebugListener(debugListener);
 
         Table_Model model = manager.getCurrentModel();
         model.addTableModelListener(tableModelListener);
@@ -245,6 +262,8 @@ public class Table_Controller {
     private void removeListeners() {
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);
+
+        this.view.removeDebugListener(debugListener);
 
         Table_Model model = manager.getCurrentModel();
         model.removeTableModelListener(tableModelListener);
