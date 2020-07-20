@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="DinoText" />
+      <artifact name="DinoText:jar" />
       <artifact name="DinoViewer" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DinoViewer/DinoViewer.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,6 +204,7 @@
       <workItem from="1594753253194" duration="1000" />
       <workItem from="1595123990295" duration="4825000" />
       <workItem from="1595155605247" duration="4767000" />
+      <workItem from="1595206539028" duration="475000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>
@@ -236,11 +238,15 @@
     </state>
     <state x="296" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1594724404907" />
     <state x="381" y="272" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1594260657794" />
-    <state x="685" y="223" key="#com.intellij.ide.util.MemberChooser" timestamp="1595197199021">
-      <screen x="0" y="0" width="1851" height="1234" />
+    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser" timestamp="1595206616424">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1595126960800" />
+    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1595206616424" />
     <state x="685" y="223" key="#com.intellij.ide.util.MemberChooser/0.0.1851.1234@0.0.1851.1234" timestamp="1595197199021" />
+    <state x="470" y="279" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1595207012137">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="470" y="279" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1440.900@0.0.1440.900" timestamp="1595207012137" />
     <state x="457" y="247" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1594550773409">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -265,59 +271,59 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom" timestamp="1595204828241">
+    <state width="1398" height="255" key="GridCell.Tab.0.bottom" timestamp="1595205236700">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595204828241" />
+    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595205236700" />
     <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595199771664" />
     <state width="1398" height="112" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594682617235" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center" timestamp="1595204828232">
+    <state width="1398" height="255" key="GridCell.Tab.0.center" timestamp="1595205236700">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595204828232" />
+    <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595205236700" />
     <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595199771664" />
     <state width="1398" height="112" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594682617233" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left" timestamp="1595204828229">
+    <state width="1398" height="255" key="GridCell.Tab.0.left" timestamp="1595205236699">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595204828229" />
+    <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595205236699" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
     <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595199771664" />
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594555527645" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right" timestamp="1595204828236">
+    <state width="1398" height="255" key="GridCell.Tab.0.right" timestamp="1595205236700">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595204828236" />
+    <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595205236700" />
     <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595199771664" />
     <state width="1398" height="112" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594682617234" />
-    <state width="1398" height="294" key="GridCell.Tab.1.bottom" timestamp="1595204198430">
+    <state width="1398" height="294" key="GridCell.Tab.1.bottom" timestamp="1595205236694">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595204198430" />
-    <state width="1398" height="294" key="GridCell.Tab.1.center" timestamp="1595204198428">
+    <state width="1398" height="294" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595205236694" />
+    <state width="1398" height="294" key="GridCell.Tab.1.center" timestamp="1595205236693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1595204198428" />
-    <state width="1398" height="294" key="GridCell.Tab.1.left" timestamp="1595204198427">
+    <state width="1398" height="294" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1595205236693" />
+    <state width="1398" height="294" key="GridCell.Tab.1.left" timestamp="1595205236693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1595204198427" />
-    <state width="1398" height="294" key="GridCell.Tab.1.right" timestamp="1595204198429">
+    <state width="1398" height="294" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1595205236693" />
+    <state width="1398" height="294" key="GridCell.Tab.1.right" timestamp="1595205236693">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="294" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595204198429" />
+    <state width="1398" height="294" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1595205236693" />
     <state x="388" y="172" key="GuiDesigner.FormSource.Dialog" timestamp="1594552740690">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="388" y="172" key="GuiDesigner.FormSource.Dialog/0.0.1440.900@0.0.1440.900" timestamp="1594552740690" />
-    <state x="284" y="86" key="SettingsEditor" timestamp="1594624318706">
-      <screen x="0" y="0" width="1851" height="1234" />
+    <state x="221" y="63" key="SettingsEditor" timestamp="1595207056012">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1594624011807" />
+    <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1595207056012" />
     <state x="284" y="86" key="SettingsEditor/0.0.1851.1234@0.0.1851.1234" timestamp="1594624318706" />
     <state x="622" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1594094936682">
       <screen x="0" y="0" width="1851" height="1234" />
@@ -347,14 +353,6 @@
           <url>file://$PROJECT_DIR$/Test/DinoParser/DinoTest_Static.java</url>
           <line>16</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java</url>
-          <line>44</line>
-          <properties class="DinoText_GUI.MODEL.Table.Table_Model" method="addRow">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

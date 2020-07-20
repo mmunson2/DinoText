@@ -27,7 +27,7 @@ import java.awt.*;
  * Main Class
  *
  ******************************************************************************/
-public class DinoText {
+public class DinoText implements Runnable {
     private static Dialogue_Model dinoGUIModel;
     private static Dialogue_View dinoGUIView;
     private static Dialogue_Controller dinoGUIController;
@@ -67,5 +67,10 @@ public class DinoText {
         jFrame_dinoText.pack();
         jFrame_dinoText.setVisible(true);
 
+    }
+
+    @Override
+    public void run() {
+        main(null);
     }
 }
