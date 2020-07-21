@@ -271,8 +271,8 @@ public class Table_Controller {
     class listener_listName implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            renameList(view.getListName());
             renameList(view.getListName(), manager.getCurrentModel().getName());
+            renameList(view.getListName());
         }
     }
 

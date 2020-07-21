@@ -243,25 +243,14 @@ public class Dialogue_Controller {
     private class listener_JMenuItem_Tools_ConvertToDynamicList implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String dynamicWord = DinoDictionary.getPartOfSpeech(dinoGUIView.getSelectedText_jTextPane_dialogueInput().trim()).get(0);
-            dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-            if (dynamicWord != null && dynamicWord.trim() != null) {
-                dinoGUIView.insertButtonjTextPane_DynamicList(dynamicWord.trim(), new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        //When a list button is pressed, change the list tab
-                        table_controller.switchToName(dynamicWord.trim());
-                    }
-                }, Color.yellow);
-
-                dinoGUIView.addItemjPopupMenu_listInsertion(dynamicWord.trim(), new listener_jPopupMenu_listInsertion_SelectExistingList(dynamicWord.trim()));
-
-                table_controller.addList(dynamicWord.trim());
-
+            String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+            if (word != null && word.trim() != null && !word.contains(" ")) {
+                new listener_JMenuItem_Tools_InsertDynamicList().actionPerformed(null);
+                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
+                table_controller.addEntry(word.trim());
+            } else {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a single word and try again.");
             }
-
-            dinoGUIView.setFocusTSDialogueInput();
         }
     }
     /***************************************************************************
