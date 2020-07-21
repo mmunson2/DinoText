@@ -1,5 +1,6 @@
 package DinoText_GUI.CONTROLLER.Dialogue;
 
+import DinoDictionary.DinoDictionary;
 import DinoParser.Dino;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
@@ -90,6 +91,7 @@ public class Dialogue_Controller {
 
         dinoGUIView.addJMenujToolBar_topBar(jMenuBar);
     }
+
     /***************************************************************************
      * Initialize Tools JToolBar
      *
@@ -104,7 +106,7 @@ public class Dialogue_Controller {
         tools.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("Inswer Static Variable");
+        menuItem.setText("Insert Static Variable");
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
         tools.add(menuItem);
 
@@ -273,8 +275,15 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+            if (word == null || word.trim().contains(" ")) {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a single word and try again.");
+            } else {
+                word = word.trim();
+                table_controller.addList(word + " Synonyms", DinoDictionary.getSynonyms(word).toArray(new String[0]));
+            }
         }
     }
+
     /***************************************************************************
      * Tools Dropdown Menu - Insert Static Variable
      *
@@ -468,33 +477,33 @@ public class Dialogue_Controller {
      **************************************************************************/
     public void renameList(String newName, String oldName) {
         HashSet<String> temp = dinoGUIView.getSetListNames();
-        int oldPos = Arrays.asList(temp.toArray(new String[0])).indexOf(oldName);
+        if (temp.contains(oldName)) {
+            int oldPos = Arrays.asList(temp.toArray(new String[0])).indexOf(oldName);
 
-        //remove oldname from dialogue
-        dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
+            //remove oldname from dialogue
+            dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
 
-        //rename JButtons
-        for (JButton tempButton : dinoGUIView.getAllListButtons()) {
-            if (tempButton.getName().equals(oldName)) {
-                tempButton.setName(newName);
-                tempButton.setText(newName);
+            //rename JButtons
+            for (JButton tempButton : dinoGUIView.getAllListButtons()) {
+                if (tempButton.getName().equals(oldName)) {
+                    tempButton.setName(newName);
+                    tempButton.setText(newName);
+                }
             }
+
+            //remove oldname from the set of list names
+            temp.remove(oldName);
+            temp.add(newName);
+            dinoGUIView.setSetListNames(temp);
+            System.out.println("Temp: " + temp);
+            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+            System.out.println(dinoGUIView.getSetListNames());
+
+            //remove oldname from jpopupmenu
+            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 2);
+
+            //add newname to jpopupmenu
+            dinoGUIView.addItemjPopupMenu_listInsertion(newName, new listener_jPopupMenu_listInsertion_SelectExistingList(newName));
         }
-
-        //remove oldname from the set of list names
-        temp.remove(oldName);
-        temp.add(newName);
-        dinoGUIView.setSetListNames(temp);
-        System.out.println("Temp: " + temp);
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        System.out.println(dinoGUIView.getSetListNames());
-
-        //remove oldname from jpopupmenu
-        dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 2);
-
-        //add newname to jpopupmenu
-        dinoGUIView.addItemjPopupMenu_listInsertion(newName, new listener_jPopupMenu_listInsertion_SelectExistingList(newName));
-
-
     }
 }
