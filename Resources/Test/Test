@@ -1,8 +1,8 @@
-# Generated: 2020/07/14 03:58:52
+# Generated: 2020/07/20 21:51:43
 
-Lists Referenced: 1
-adjectives 
+Lists Referenced: 2
+Adjective Person 
 
 Static Variables: 0
 
-This is an \L[adjectives] test
+Hello \L[Person] , are you feeling \L[Adjective] ?

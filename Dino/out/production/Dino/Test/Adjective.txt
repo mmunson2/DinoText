@@ -1,0 +1,11 @@
+# Generated: 2020/07/20 21:51:43
+Name: Adjective
+Size: 4
+1: Hungry
+1.0 
+2: Obtuse
+1.0 
+3: Upset
+1.0 
+4: 
+0.0 

@@ -318,7 +318,60 @@ public class Dialogue_View {
         }
     }
 
+    /***************************************************************************
+     * Get Selected Text
+     *
+     **************************************************************************/
     public String getSelectedText_jTextPane_dialogueInput() {
         return jTextPane_dialogueInput.getSelectedText();
+    }
+
+    /***************************************************************************
+     * Delete Selected Text
+     *
+     **************************************************************************/
+    public void deleteSelectedText_jTextPane_dialogueInput() {
+        jTextPane_dialogueInput.replaceSelection("");
+    }
+
+    /***************************************************************************
+     * Highlight Word
+     *
+     **************************************************************************/
+    public void highlightWord(String wordToFind, Color color) throws BadLocationException {
+        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
+        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
+                new DefaultHighlighter.DefaultHighlightPainter(color);
+
+        String dialogueInputText = jTextPane_dialogueInput.getText();
+
+        String words[] = dialogueInputText.split(" ");
+
+        int offset = 0;
+        for (String word : words) {
+            if (word.equals(wordToFind)) {
+                highlighter.addHighlight(offset, offset + word.length(),
+                        highlightPainter);
+            }
+            offset += word.length() + 1;
+        }
+    }
+
+    public void highlightWordInSelection(String wordToFind, Color color) throws BadLocationException {
+        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
+        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
+                new DefaultHighlighter.DefaultHighlightPainter(color);
+
+        String dialogueInputText = jTextPane_dialogueInput.getSelectedText();
+
+        String words[] = dialogueInputText.split(" ");
+        int offset = 0;
+        for (String word : words) {
+            if (word.equals(wordToFind)) {
+                highlighter.addHighlight(offset, offset + word.length(),
+                        highlightPainter);
+            }
+            offset += word.length() + 1;
+        }
     }
 }

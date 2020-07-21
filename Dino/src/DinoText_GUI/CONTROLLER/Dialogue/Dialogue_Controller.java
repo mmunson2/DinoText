@@ -1,6 +1,7 @@
 package DinoText_GUI.CONTROLLER.Dialogue;
 
 import DinoDictionary.DinoDictionary;
+import DinoDictionary.WordSuggest;
 import DinoParser.Dino;
 import DinoText_GUI.CONTROLLER.Table.Table_Controller;
 import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
@@ -8,8 +9,10 @@ import DinoText_GUI.DinoText;
 import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
 import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
 
+
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
+import javax.swing.text.BadLocationException;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -103,6 +106,11 @@ public class Dialogue_Controller {
         menuItem = new JMenuItem();
         menuItem.setText("Insert Dynamic List");
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
+        tools.add(menuItem);
+
+        menuItem = new JMenuItem();
+        menuItem.setText("Convert to Dynamic List");
+        menuItem.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
         tools.add(menuItem);
 
         menuItem = new JMenuItem();
@@ -229,6 +237,34 @@ public class Dialogue_Controller {
 
 
     /***************************************************************************
+     * Tools Dropdown Menu - Convert to Dynamic List
+     *
+     **************************************************************************/
+    private class listener_JMenuItem_Tools_ConvertToDynamicList implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String dynamicWord = DinoDictionary.getPartOfSpeech(dinoGUIView.getSelectedText_jTextPane_dialogueInput().trim()).get(0);
+            dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
+            if (dynamicWord != null && dynamicWord.trim() != null) {
+                dinoGUIView.insertButtonjTextPane_DynamicList(dynamicWord.trim(), new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //When a list button is pressed, change the list tab
+                        table_controller.switchToName(dynamicWord.trim());
+                    }
+                }, Color.yellow);
+
+                dinoGUIView.addItemjPopupMenu_listInsertion(dynamicWord.trim(), new listener_jPopupMenu_listInsertion_SelectExistingList(dynamicWord.trim()));
+
+                table_controller.addList(dynamicWord.trim());
+
+            }
+
+            dinoGUIView.setFocusTSDialogueInput();
+        }
+    }
+    /***************************************************************************
      * Tools Dropdown Menu - Insert Dynamic List
      *
      **************************************************************************/
@@ -236,19 +272,19 @@ public class Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
 
-            if (listName != null) {
-                dinoGUIView.insertButtonjTextPane_DynamicList(listName, new ActionListener() {
+            if (listName != null && listName.trim() != null) {
+                dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         //When a list button is pressed, change the list tab
-                        table_controller.switchToName(listName);
+                        table_controller.switchToName(listName.trim());
                     }
                 }, Color.yellow);
 
-                dinoGUIView.addItemjPopupMenu_listInsertion(listName, new listener_jPopupMenu_listInsertion_SelectExistingList(listName));
+                dinoGUIView.addItemjPopupMenu_listInsertion(listName.trim(), new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
 
-                table_controller.addList(listName);
+                table_controller.addList(listName.trim());
 
             }
 
@@ -264,6 +300,20 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             String sentence = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+            if (sentence == null) {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a sentence and try again.");
+            } else {
+                String[] result = WordSuggest.suggestWord(sentence);
+                for (String word : result) {
+                    dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+                    try {
+                        System.out.print(word);
+                        dinoGUIView.highlightWordInSelection(word, Color.yellow);
+                    } catch (BadLocationException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
         }
     }
 
@@ -275,7 +325,7 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-            if (word == null || word.trim().contains(" ")) {
+            if (word == null || word.trim().contains(" ") || word.trim() == null) {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a single word and try again.");
             } else {
                 word = word.trim();
@@ -291,7 +341,8 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
-            if (varName != null) {
+            if (varName != null && varName.trim() != null) {
+                varName = varName.trim();
                 dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -333,6 +384,7 @@ public class Dialogue_Controller {
     void initializejPopupMenu() {
         dinoGUIView.setInvokerjPopupMenu_listInsertion(dinoGUIView.getjTextPane_dialogueInput());
         dinoGUIView.addItemjPopupMenu_listInsertion("Insert Dynamic List", new listener_JMenuItem_Tools_InsertDynamicList());
+        dinoGUIView.addItemjPopupMenu_listInsertion("Convert to Dynamic List", new listener_JMenuItem_Tools_ConvertToDynamicList());
         dinoGUIView.addItemjPopupMenu_listInsertion("Insert Static Variable", new listener_JMenuItem_Tools_InsertStaticVariable());
         dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
@@ -506,4 +558,5 @@ public class Dialogue_Controller {
             dinoGUIView.addItemjPopupMenu_listInsertion(newName, new listener_jPopupMenu_listInsertion_SelectExistingList(newName));
         }
     }
+
 }
