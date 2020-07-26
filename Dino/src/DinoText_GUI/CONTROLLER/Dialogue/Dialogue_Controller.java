@@ -259,11 +259,11 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-            if (word != null && word.trim() != null) {
+            if (word.length() > 0 && word.trim().length() > 0) {
 
                 String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
 
-                if (listName != null && listName.trim() != null) {
+                if (listName.length() > 0 && listName.trim().length() > 0 ){
                     dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
 
                         @Override
@@ -300,7 +300,7 @@ public class Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
 
-            if (listName != null && listName.trim() != null) {
+            if (listName.length() > 0 && listName.trim().length() > 0) {
                 dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
 
                     @Override
@@ -318,6 +318,9 @@ public class Dialogue_Controller {
 
                 table_controller.addList(listName.trim());
 
+            }
+            else {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
 
             dinoGUIView.setFocusTSDialogueInput();
@@ -373,7 +376,7 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
-            if (varName != null && varName.trim() != null) {
+            if (varName.length() > 0 && varName.trim().length() > 0) {
                 varName = varName.trim();
                 dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
                     @Override
@@ -391,6 +394,9 @@ public class Dialogue_Controller {
                 dinoGUIModel.addStaticVar(varName);
 
                 dinoGUIView.setFocusTSDialogueInput();
+            }
+            else {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
         }
     }
@@ -617,6 +623,7 @@ public class Dialogue_Controller {
             tempItem.setText(newName);
             tempItem.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(newName.trim()));
             dinoGUIView.addItemjPopupMenu_listInsertion(tempItem);
+            dinoGUIView.pack();
         }
     }
 

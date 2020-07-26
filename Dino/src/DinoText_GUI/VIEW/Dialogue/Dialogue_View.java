@@ -389,4 +389,8 @@ public class Dialogue_View {
             offset += word.length() + 1;
         }
     }
+
+    public void pack() {
+        SwingUtilities.getWindowAncestor(jTextPane_dialogueInput).pack();
+    }
 }
