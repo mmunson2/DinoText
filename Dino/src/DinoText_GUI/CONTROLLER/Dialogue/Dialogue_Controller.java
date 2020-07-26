@@ -450,6 +450,11 @@ public class Dialogue_Controller {
         temp.addActionListener(new listener_JMenuItem_Tools_Synonyms());
         dinoGUIView.addItemjPopupMenu_dictionary(temp);
 
+        temp = new JMenuItem();
+        temp.setText("Remove All Highlights");
+        temp.addActionListener(new listener_JMenuItem_Tools_Dehighlight());
+        dinoGUIView.addItemjPopupMenu_dictionary(temp);
+
         dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
                 if (SwingUtilities.isRightMouseButton(me)) {
@@ -627,4 +632,15 @@ public class Dialogue_Controller {
         }
     }
 
+
+    /***************************************************************************
+     * Dehighlight all
+     *
+     **************************************************************************/
+    private class listener_JMenuItem_Tools_Dehighlight implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            dinoGUIView.dehighlightAll();
+        }
+    }
 }

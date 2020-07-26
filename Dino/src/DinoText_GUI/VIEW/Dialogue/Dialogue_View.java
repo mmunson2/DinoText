@@ -390,6 +390,11 @@ public class Dialogue_View {
         }
     }
 
+    public void dehighlightAll(){
+        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
+        highlighter.removeAllHighlights();
+    }
+
     public void pack() {
         SwingUtilities.getWindowAncestor(jTextPane_dialogueInput).pack();
     }
