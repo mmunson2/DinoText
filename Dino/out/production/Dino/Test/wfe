@@ -1,0 +1,8 @@
+# Generated: 2020/07/21 14:26:43
+
+Lists Referenced: 2
+Food Adjective Food 
+
+Static Variables: 1
+Character 
+Hello \S[Character] , would you like some\L[Food Adjective] \L[Food] ?

@@ -20,6 +20,8 @@ public class Dialogue_View {
     private JPopupMenu jPopupMenu_listInsertion;
     private JTextPane jTextPane_dialogueInput;
     private JLabel jLabel_instructions;
+    private JMenu jMenu_listInsertion;
+    private JMenu jMenu_dictionaryFunctions;
     private JToolBar jToolBar_topBar;
     private ArrayList<JButton> listButtons;
     private ArrayList<JButton> staticVarButtons;
@@ -37,10 +39,16 @@ public class Dialogue_View {
         jDialog_Preferences.pack();
         // END TODO
 
+        jPopupMenu_listInsertion = new JPopupMenu();
+        jMenu_listInsertion = new JMenu("Insert New");
+        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions");
+        jPopupMenu_listInsertion.add(jMenu_dictionaryFunctions);
+        jPopupMenu_listInsertion.add(jMenu_listInsertion);
+
         listButtons = new ArrayList<JButton>();
         staticVarButtons = new ArrayList<JButton>();
         listNames = new HashSet<String>();
-        jPopupMenu_listInsertion = new JPopupMenu();
+
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
     }
 
@@ -212,7 +220,6 @@ public class Dialogue_View {
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
-        AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
         SimpleAttributeSet set = new SimpleAttributeSet();
         StyleConstants.setFontSize(set, 0);
 
@@ -271,13 +278,21 @@ public class Dialogue_View {
     }
 
     /***************************************************************************
-     * add item to popup menu
+     * add item to popup menu - new insertion
      *
      **************************************************************************/
-    public void addItemjPopupMenu_listInsertion(String listName, ActionListener action) {
-        JMenuItem item = new JMenuItem("Insert New " + listName);
-        jPopupMenu_listInsertion.add(item);
-        item.addActionListener(action);
+    public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
+        jMenu_listInsertion.add(temp);
+        jPopupMenu_listInsertion.pack();
+    }
+
+    /***************************************************************************
+     * add item to popup menu - existing insertion
+     *
+     **************************************************************************/
+    public void addItemjPopupMenu_dictionary(JMenuItem temp) {
+        jMenu_dictionaryFunctions.add(temp);
+        jPopupMenu_listInsertion.pack();
     }
 
     /***************************************************************************

@@ -1,0 +1,9 @@
+# Generated: 2020/07/21 14:15:32
+
+Lists Referenced: 2
+Food Adjectives Food 
+
+Static Variables: 1
+Character 
+Hey there \S[Character] , you're looking kinda hungry. Want some \L[Food] ? If that's too \L[Food Adjectives]  for you, we have \L[Food]  as well.
+

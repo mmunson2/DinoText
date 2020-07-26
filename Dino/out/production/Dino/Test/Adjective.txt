@@ -1,11 +1,11 @@
-# Generated: 2020/07/20 21:51:43
+# Generated: 2020/07/21 14:31:25
 Name: Adjective
 Size: 4
-1: Hungry
+1: Sweet
 1.0 
-2: Obtuse
+2: Salty
 1.0 
-3: Upset
+3: Bitter
 1.0 
 4: 
 0.0 

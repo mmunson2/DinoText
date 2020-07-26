@@ -1,0 +1,11 @@
+# Generated: 2020/07/21 14:26:54
+Name: Food Adjective
+Size: 4
+1: 
+0.0 
+2: 
+0.0 
+3: 
+0.0 
+4: 
+0.0 

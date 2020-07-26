@@ -1,11 +1,11 @@
 # Generated: 2020/07/21 14:31:25
-Name: Adjective
+Name: Food
 Size: 4
-1: Sweet
+1: Steak
 1.0 
-2: Salty
+2: Apples
 1.0 
-3: Bitter
+3: Pie
 1.0 
 4: 
 0.0 
