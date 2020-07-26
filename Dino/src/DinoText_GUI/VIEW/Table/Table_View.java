@@ -30,7 +30,6 @@ public class Table_View {
         this.listTable.getTableHeader().setBackground(Color.LIGHT_GRAY);
         this.listTable.setShowHorizontalLines(true);
         this.listTable.setGridColor(Color.DARK_GRAY);
-
     }
 
     /***************************************************************************
