@@ -72,6 +72,10 @@ public class Trait
         return this.name;
     }
 
+    public double getLowerBound() {return this.lowerBound;}
+
+    public double getUpperBound() {return this.upperBound;}
+
 
     /***************************************************************************
      * toString

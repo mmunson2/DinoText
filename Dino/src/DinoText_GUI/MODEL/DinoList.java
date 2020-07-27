@@ -1,8 +1,10 @@
 package DinoText_GUI.MODEL;
 
 import DinoParser.List.ListEntry;
+import DinoParser.List.Trait;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 /*******************************************************************************
@@ -67,6 +69,109 @@ public class DinoList
     public void add(String entry)
     {
         list.add(new ListEntry(entry, 1, null));
+    }
+
+    /***************************************************************************
+     * addTrait
+     *
+     * Adds a trait to a list entry
+     *
+     * @since 0.5-beta
+     **************************************************************************/
+    public void addTrait(int index, Trait trait)
+    {
+        ListEntry listEntry = this.list.get(index);
+        ArrayList<Trait> currentTraits = getTraitsAsList(index);
+
+        if(currentTraits == null)
+        {
+            currentTraits = new ArrayList<>();
+        }
+
+        currentTraits.add(trait);
+
+        setTraits(index, currentTraits);
+    }
+
+    /***************************************************************************
+     * setTrait
+     *
+     * Sets a trait, using the name it had before in case it was changed,
+     * to a new Trait.
+     *
+     * @since 0.5-beta
+     **************************************************************************/
+    public void setTrait(int index, String oldTraitName, Trait trait)
+    {
+        ArrayList<Trait> currentTraits = getTraitsAsList(index);
+
+        int targetIndex = -1;
+
+        for(int i = 0; i < currentTraits.size(); i++)
+        {
+            if(currentTraits.get(i).getName().equals(oldTraitName))
+            {
+                targetIndex = i;
+                break;
+            }
+        }
+
+        if(targetIndex == -1)
+        {
+            System.err.println("Error in DinoList, Trait " + oldTraitName + " does not exist.");
+        }
+        else
+        {
+            currentTraits.set(targetIndex, trait);
+        }
+
+        setTraits(index, currentTraits);
+    }
+
+    /***************************************************************************
+     * deleteTrait
+     *
+     * Removes a trait from a ListEntry
+     *
+     * @since 0.5-beta
+     **************************************************************************/
+    public void deleteTrait(int index, String traitName)
+    {
+        ArrayList<Trait> currentTraits = getTraitsAsList(index);
+
+        int targetIndex = -1;
+        for(int i = 0; i < currentTraits.size(); i++)
+        {
+            if(currentTraits.get(i).getName().equals(traitName))
+            {
+                targetIndex = i;
+                break;
+            }
+        }
+
+        currentTraits.remove(targetIndex);
+
+        setTraits(index, currentTraits);
+    }
+
+    private ArrayList<Trait> getTraitsAsList(int index)
+    {
+        ListEntry listEntry = this.list.get(index);
+        Trait[] currentTraitArray = listEntry.getTraits();
+
+        if(currentTraitArray == null)
+        {
+            return null;
+        }
+
+        return new ArrayList(Arrays.asList(currentTraitArray));
+    }
+
+    private void setTraits(int index, ArrayList<Trait> traits)
+    {
+        ListEntry listEntry = this.list.get(index);
+
+        listEntry.setTraits(traits.toArray(new Trait[0]));
     }
 
 
