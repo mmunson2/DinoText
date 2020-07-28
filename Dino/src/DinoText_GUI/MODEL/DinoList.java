@@ -154,6 +154,18 @@ public class DinoList
         setTraits(index, currentTraits);
     }
 
+    /***************************************************************************
+     * getTraits
+     *
+     * Returns the Trait Array
+     *
+     * @since 0.5-beta
+     **************************************************************************/
+    public Trait[] getTraits(int index)
+    {
+        return this.list.get(index).getTraits();
+    }
+
     private ArrayList<Trait> getTraitsAsList(int index)
     {
         ListEntry listEntry = this.list.get(index);
