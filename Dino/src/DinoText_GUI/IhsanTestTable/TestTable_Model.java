@@ -29,7 +29,11 @@ public class TestTable_Model extends AbstractTableModel
             case 1: return rowIndex * 2;
 
             //Todo: This should return a trait array eventually
-            case 2: return "Trait Display";
+            case 2:
+                Trait[] temp = new Trait[10];
+                temp[0] = new Trait("Trait 1", 10, 100, 100);
+                temp[0] = new Trait("Trait 2", 30, 60, 100);
+                return temp;
 
         }
 

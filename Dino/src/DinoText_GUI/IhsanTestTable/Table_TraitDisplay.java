@@ -1,29 +1,42 @@
 package DinoText_GUI.IhsanTestTable;
 
+import DinoParser.List.Trait;
+import DinoText_GUI.VIEW.TraitLabel;
+
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
-public class Table_TraitDisplay extends JButton implements TableCellRenderer
-{
-    public Table_TraitDisplay()
-    {
+public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer {
+    public Table_TraitDisplay() {
         this.setOpaque(true);
     }
+
+    TraitLabel[] labelTable;
+
 
     //Todo: This is the method where you handle a trait array or something similar
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        if (isSelected) {
-            setForeground(table.getSelectionForeground());
-            setBackground(table.getSelectionBackground());
-        } else {
-            setForeground(table.getForeground());
-            setBackground(UIManager.getColor("Button.background"));
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        for (Trait trait : (Trait[]) value) {
+            panel.add(new TraitLabel(trait.getName(), trait.getLowerBound(), trait.getUpperBound()));
         }
 
-        this.setText((value == null) ? "" : value.toString());
+        TraitLabel temp = new TraitLabel("Trait", 10, 50);
 
-        return this;
+        panel.add(temp);
+
+        panel.add(new TraitLabel("Trait 2", 30, 94));
+
+
+        if (isSelected) {
+            panel.setBackground(table.getSelectionBackground());
+        } else {
+            panel.setBackground(table.getBackground());
+        }
+
+        return panel;
     }
 }
