@@ -10,4 +10,5 @@ public enum Columns
     PROBABILITY_WEIGHT,
     PROBABILITY,
     BUTTON
+
 }

@@ -1,4 +1,4 @@
-package DinoText_GUI.MatthewTestTable;
+package DinoText_GUI.IhsanTestTable;
 
 public class TestTable_Controller
 {
@@ -12,6 +12,7 @@ public class TestTable_Controller
 
         this.view.setTableModel(model);
 
+        //Todo: Info: This method binds the view to your custom trait display to the trait column
         this.view.setButtonColumn(0);
     }
 

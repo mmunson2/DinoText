@@ -1,4 +1,6 @@
-package DinoText_GUI.MatthewTestTable;
+package DinoText_GUI.IhsanTestTable;
+
+import DinoParser.List.Trait;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
@@ -26,7 +28,8 @@ public class TestTable_Model extends AbstractTableModel
 
             case 1: return rowIndex * 2;
 
-            case 2: return "Edit Button";
+            //Todo: This should return a trait array eventually
+            case 2: return "Trait Display";
 
         }
 
@@ -50,6 +53,11 @@ public class TestTable_Model extends AbstractTableModel
 
     @Override public Class<?> getColumnClass(int columnIndex)
     {
+        if(columnIndex == 2)
+        {
+            return Trait[].class;
+        }
+
         return String.class;
     }
 
