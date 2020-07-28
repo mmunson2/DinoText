@@ -18,7 +18,11 @@
       </component>
       <scrollpane id="e29f4">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="800" height="400"/>
+            <preferred-size width="800" height="400"/>
+            <maximum-size width="800" height="400"/>
+          </grid>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -26,6 +30,7 @@
           <component id="fcf8" class="javax.swing.JTable" binding="listTable">
             <constraints/>
             <properties>
+              <preferredScrollableViewportSize width="800" height="600"/>
               <showHorizontalLines value="true"/>
               <showVerticalLines value="true"/>
               <toolTipText value=""/>
