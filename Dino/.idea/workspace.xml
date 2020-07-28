@@ -98,7 +98,7 @@
       <recent name="$PROJECT_DIR$/META-INF" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Driver">
+  <component name="RunManager" selected="Application.TableExample">
     <configuration name="DemoMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DinoText_GUI.TableWindow_Demo.DemoMain" />
       <module name="Dino" />
@@ -187,9 +187,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TableExample" />
         <item itemvalue="Application.Driver" />
         <item itemvalue="Application.Driver (1)" />
-        <item itemvalue="Application.TableExample" />
         <item itemvalue="Application.DemoMain" />
         <item itemvalue="Application.DinoText" />
       </list>

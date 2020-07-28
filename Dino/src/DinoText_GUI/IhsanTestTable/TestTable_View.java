@@ -32,7 +32,6 @@ public class TestTable_View
     public void setButtonColumn(int columnIndex)
     {
         this.testTable.getColumn("Add Trait").setCellRenderer(new Table_TraitDisplay());
-        this.testTable.getColumn("Add Trait").setCellEditor(new TableButton_Model(new JCheckBox()));
     }
 
 
