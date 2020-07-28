@@ -1,5 +1,7 @@
 package DinoText_GUI.IhsanTestTable;
 
+import DinoText_GUI.MODEL.Table.Table_TraitDisplay;
+
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.*;

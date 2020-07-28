@@ -8,30 +8,34 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/Table_TraitDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/Table_TraitDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_debug.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_debug.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_increment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_increment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_listName.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_listName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_tabSwitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_tabSwitch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_tableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_tableModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/Table_TraitDisplay.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/DinoList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/DinoList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TableButton_Model$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TableButton_Model$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TableButton_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TableButton_Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TableButton_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TableButton_View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Columns.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Columns.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_Controller$listener_button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_Controller$listener_button.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestTable_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestWindow_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MatthewTestTable/TestWindow_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/Driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/Driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestTable_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestTable_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestTable_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestTable_Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestTable_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestTable_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestWindow_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/genericTable/TestWindow_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/Table_TraitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/Table_TraitDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_TabbedPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_TabbedPane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Table/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Table/Table_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/Table_TraitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_TraitDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/TestTable_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/TestTable_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/TraitPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/TraitLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/TestTable_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/TestTable_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Columns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Columns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Traits/TraitModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Traits/TraitModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_TabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_TabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/TraitLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/TraitLabel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,26 +111,13 @@
       <recent name="$PROJECT_DIR$/../Test_Resources/Static_Tests" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Driver (2)">
-    <configuration name="Driver (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.genericTable.Driver" />
+  <component name="RunManager" selected="Application.DinoText">
+    <configuration name="DinoText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.DinoText" />
       <module name="Dino" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText_GUI.genericTable.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Driver (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.IhsanTestTable.Driver" />
-      <module name="Dino" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DinoText_GUI.IhsanTestTable.*" />
+          <option name="PATTERN" value="DinoText_GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,6 +131,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="DinoText_GUI.MatthewTestTable.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.IhsanTestTable.Driver" />
+      <module name="Dino" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DinoText_GUI.MODEL.Table.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -188,18 +192,18 @@
     <list>
       <item itemvalue="Application.TableExample" />
       <item itemvalue="Application.Driver" />
-      <item itemvalue="Application.Driver (1)" />
-      <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="Application.Driver (2)" />
       <item itemvalue="Application.TraitLabel" />
+      <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="Application.DinoText" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DinoText" />
         <item itemvalue="Application.Driver (2)" />
         <item itemvalue="Application.TraitLabel" />
         <item itemvalue="Application.TableExample" />
         <item itemvalue="Application.Driver" />
-        <item itemvalue="Application.Driver (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -303,34 +307,34 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1808" height="347" key="GridCell.Tab.0.bottom" timestamp="1595911325502">
+    <state width="1808" height="347" key="GridCell.Tab.0.bottom" timestamp="1595916662342">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
     <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1595896968977" />
-    <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595911325502" />
+    <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662342" />
     <state width="1398" height="112" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594682617235" />
-    <state width="1808" height="347" key="GridCell.Tab.0.center" timestamp="1595911325501">
+    <state width="1808" height="347" key="GridCell.Tab.0.center" timestamp="1595916662341">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
     <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1595896968975" />
-    <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595911325501" />
+    <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="112" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594682617233" />
-    <state width="1808" height="347" key="GridCell.Tab.0.left" timestamp="1595911325501">
+    <state width="1808" height="347" key="GridCell.Tab.0.left" timestamp="1595916662341">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
     <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1595896968974" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
-    <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595911325501" />
+    <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594555527645" />
-    <state width="1808" height="347" key="GridCell.Tab.0.right" timestamp="1595911325501">
+    <state width="1808" height="347" key="GridCell.Tab.0.right" timestamp="1595916662341">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
     <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1595896968976" />
-    <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595911325501" />
+    <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="112" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594682617234" />
     <state width="1808" height="425" key="GridCell.Tab.1.bottom" timestamp="1595490269940">
       <screen x="0" y="0" width="1851" height="1234" />

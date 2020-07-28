@@ -62,6 +62,10 @@ public class Table_Controller {
 
         this.view.addTabSwitchListener(tabSwitchListener);
 
+        this.view.setTableModel(model);
+        this.view.setButtonColumn(0);
+
+
         addListeners();
     }
 

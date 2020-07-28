@@ -28,7 +28,7 @@ public class TraitModel
         this.weight = weight;
     }
 
-    TraitModel(Trait trait)
+    public TraitModel(Trait trait)
     {
         this.name = trait.getName();
         this.upperBound = trait.getUpperBound();

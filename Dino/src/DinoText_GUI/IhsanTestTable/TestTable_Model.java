@@ -30,9 +30,9 @@ public class TestTable_Model extends AbstractTableModel
 
             //Todo: This should return a trait array eventually
             case 2:
-                Trait[] temp = new Trait[10];
+                Trait[] temp = new Trait[2];
                 temp[0] = new Trait("Trait 1", 10, 100, 100);
-                temp[0] = new Trait("Trait 2", 30, 60, 100);
+                temp[1] = new Trait("Trait 2", 30, 60, 100);
                 return temp;
 
         }

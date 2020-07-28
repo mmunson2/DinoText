@@ -35,7 +35,7 @@ public class TraitLabel extends JLabel {
         rectWidth = (int) ((upper - lower) * MAX_WIDTH);
 
         int xStart = g.getFontMetrics().stringWidth(getText()) - g.getFontMetrics().stringWidth("...........");
-        g.setColor(Color.red);
+        g.setColor(Color.black);
         g.setStroke(new BasicStroke(2));
         g.drawLine(xStart, getHeight() / 2, xStart + MAX_WIDTH, getHeight() / 2);
         g.fillRect((int) rectStart, getHeight() / 4, (int) rectWidth, getHeight() / 2);
