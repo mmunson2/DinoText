@@ -4,11 +4,9 @@ import DinoText_GUI.MODEL.Table.Columns;
 import DinoText_GUI.MODEL.Table.TableButton_Model;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 /*******************************************************************************
  * Table View
@@ -33,6 +31,7 @@ public class Table_View {
         this.listTable.getTableHeader().setBackground(Color.LIGHT_GRAY);
         this.listTable.setShowHorizontalLines(true);
         this.listTable.setGridColor(Color.DARK_GRAY);
+        this.listTable.setRowHeight(30);
     }
 
     /***************************************************************************
@@ -41,6 +40,15 @@ public class Table_View {
      **************************************************************************/
     public void setTableModel(TableModel tableModel) {
         this.listTable.setModel(tableModel);
+    }
+
+
+    /***************************************************************************
+     * get JTable
+     **************************************************************************/
+    public JTable getJTable()
+    {
+        return listTable;
     }
 
     /***************************************************************************
@@ -172,5 +180,7 @@ public class Table_View {
     {
         return this.panel1;
     }
+
+
 
 }

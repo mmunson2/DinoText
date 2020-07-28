@@ -167,6 +167,11 @@ public class Table_Model extends AbstractTableModel
     @Override
     public Class<?> getColumnClass(int columnIndex)
     {
+        if(columnIndex == 2)
+        {
+            return Trait[].class;
+        }
+
         return String.class;
     }
 
@@ -186,7 +191,8 @@ public class Table_Model extends AbstractTableModel
                 return true;
             case PROBABILITY:
                 return false;
-
+            case TRAIT:
+                return false;
         }
 
         return false;
@@ -212,6 +218,8 @@ public class Table_Model extends AbstractTableModel
                         this.probabilities.getProbability(rowIndex));
             case ADD_TRAIT:
                 return "Add Trait";
+            case TRAIT:
+                return list.getTraits(rowIndex);
         }
 
         return null;

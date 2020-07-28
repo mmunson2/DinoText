@@ -9,7 +9,8 @@ public enum Columns
     LIST_ENTRY("List Entry"),
     PROBABILITY_WEIGHT("Probability Weight"),
     PROBABILITY("Probability"),
-    ADD_TRAIT("Add Traits");
+    ADD_TRAIT("Add Traits"),
+    TRAIT;
 
     public String header;
     Columns(String name)
