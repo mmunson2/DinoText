@@ -29,6 +29,7 @@ public class Text_Display_View extends JFrame
     private JSpinner charactersSpinner;
     private JSpinner linesSpinner;
     private JButton generateNewButton;
+    private JButton traitSettings;
 
     /***************************************************************************
      * Constructor
@@ -55,6 +56,12 @@ public class Text_Display_View extends JFrame
     {
         this.generateNewButton.addActionListener(actionListener);
     }
+
+    /***************************************************************************
+     * Listener - Trait Settings Button
+     *
+     **************************************************************************/
+    public void traitSettingsListener(ActionListener actionListener) { traitSettings.addActionListener(actionListener); }
 
     /***************************************************************************
      * Listener - Next Button

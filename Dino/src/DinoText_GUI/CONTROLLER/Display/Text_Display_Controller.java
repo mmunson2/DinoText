@@ -6,6 +6,7 @@ import DinoText_GUI.DinoConfig;
 import DinoParser.Dino;
 import DinoText_GUI.MODEL.Display.Text_Display_Model;
 import DinoText_GUI.VIEW.Display.Text_Display_View;
+import DinoText_GUI.VIEW.Display.Trait_Setting_View;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -49,6 +50,8 @@ public class Text_Display_Controller
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
 
+        this.view.traitSettingsListener(new traitSettingsListener());
+
         this.view.add_generateNew_button_listener(new generateNewListener());
     }
 
@@ -60,7 +63,7 @@ public class Text_Display_Controller
     {
         model.setText(str);
         format();
-        update();
+        updateDisplay();
     }
 
     /***************************************************************************
@@ -81,7 +84,7 @@ public class Text_Display_Controller
     {
         this.model.generateNewText();
         this.format();
-        this.update();
+        this.updateDisplay();
     }
 
     /***************************************************************************
@@ -94,14 +97,27 @@ public class Text_Display_Controller
     }
 
     /***************************************************************************
-     * update
+     * update display
      *
      **************************************************************************/
-    public void update()
+    public void updateDisplay()
     {
         ArrayList<String> pages = model.getPages();
         view.setTextPane(pages.get(model.getCurrentPage() - 1));
         setPage(model.getCurrentPage());
+    }
+
+    /***************************************************************************
+     * update config
+     *
+     **************************************************************************/
+    public void updateConfig()
+    {
+        model.setCharsPerLine(config.getCharsPerLine());
+        model.setLinesPerPage(config.getLinesPerPage());
+        format();
+        setPage(1);
+        updateDisplay();
     }
 
     /***************************************************************************
@@ -131,7 +147,7 @@ public class Text_Display_Controller
                 setPage(currentPage + 1);
             }
 
-            update();
+            updateDisplay();
         }
     }
 
@@ -151,7 +167,7 @@ public class Text_Display_Controller
                 setPage(currentPage - 1);
             }
 
-            update();
+            updateDisplay();
         }
     }
 
@@ -165,13 +181,10 @@ public class Text_Display_Controller
         public void stateChanged(ChangeEvent e)
         {
             int chars = view.getCharsPerLine();
-            model.setCharsPerLine(chars);
 
             config.setCharsPerLine(chars);
 
-            setPage(1);
-            format();
-            update();
+            updateConfig();
         }
     }
 
@@ -185,13 +198,25 @@ public class Text_Display_Controller
         public void stateChanged(ChangeEvent e)
         {
             int lines = view.getLinesPerPage();
-            model.setLinesPerPage(lines);
 
             config.setLinesPerPage(lines);
 
-            setPage(1);
-            format();
-            update();
+            updateConfig();
+        }
+    }
+
+    /***************************************************************************
+     * Trait Settings Button
+     *
+     **************************************************************************/
+    class traitSettingsListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            Trait_Setting_View window = new Trait_Setting_View(model.getDino());
+
+            window.setVisible(true);
         }
     }
 
