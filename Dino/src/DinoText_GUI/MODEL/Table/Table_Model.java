@@ -1,6 +1,7 @@
 package DinoText_GUI.MODEL.Table;
 
 
+import DinoParser.List.Trait;
 import DinoText_GUI.MODEL.DinoList;
 import DinoText_GUI.MODEL.DinoWriter;
 
@@ -72,6 +73,23 @@ public class Table_Model extends AbstractTableModel
         return this.list.getName();
     }
 
+
+    public Trait[] getTraitArray(int rowIndex)
+    {
+        return this.list.getTraits(rowIndex);
+    }
+
+    public Table_Probabilities getProbabilities()
+    {
+        return this.probabilities;
+    }
+
+    public void addTrait(int rowIndex, Trait newTrait)
+    {
+        this.list.addTrait(rowIndex, newTrait);
+    }
+
+
     /***************************************************************************
      * writeToFile
      *
@@ -139,17 +157,7 @@ public class Table_Model extends AbstractTableModel
 
         Columns column = Columns.values()[columnIndex];
 
-        switch(column)
-        {
-            case LIST_ENTRY:
-                return "List Entry:";
-            case PROBABILITY_WEIGHT:
-                return "Probability Weight:";
-            case PROBABILITY:
-                return "Probability:";
-        }
-
-        return null;
+        return column.header;
     }
 
     /***************************************************************************
@@ -174,9 +182,11 @@ public class Table_Model extends AbstractTableModel
         {
             case LIST_ENTRY:
             case PROBABILITY_WEIGHT:
+            case ADD_TRAIT:
                 return true;
             case PROBABILITY:
                 return false;
+
         }
 
         return false;
@@ -200,6 +210,8 @@ public class Table_Model extends AbstractTableModel
             case PROBABILITY:
                 return String.format("%.2f%%",
                         this.probabilities.getProbability(rowIndex));
+            case ADD_TRAIT:
+                return "Add Trait";
         }
 
         return null;

@@ -1,5 +1,8 @@
 package DinoText_GUI.VIEW.Table;
 
+import DinoText_GUI.MODEL.Table.Columns;
+import DinoText_GUI.MODEL.Table.TableButton_Model;
+
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.TableModel;
@@ -48,6 +51,13 @@ public class Table_View {
         this.listName.setText(text);
     }
 
+
+    public void initializeAddTraitButtonColumn()
+    {
+        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
+        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
+    }
+
     /***************************************************************************
      * getEntryCount
      *
@@ -71,6 +81,12 @@ public class Table_View {
     public String getListName() {
         return this.listName.getText();
     }
+
+    public int getSelectedRow()
+    {
+        return this.listTable.getSelectedRow();
+    }
+
 
     /***************************************************************************
      * addIncrementListener
@@ -115,6 +131,30 @@ public class Table_View {
     {
         this.debugButton.removeActionListener(l);
     }
+
+    public void addTraitButtonListener(ActionListener l)
+    {
+        TableButton_Model model =
+                (TableButton_Model) this.listTable.getColumn(Columns.ADD_TRAIT.header).getCellEditor();
+
+        if(model == null)
+        {
+            System.err.println("Model is null :/");
+        }
+        else
+        {
+            model.addButtonListener(l);
+        }
+    }
+
+    public void removeTraitButtonListener(ActionListener l)
+    {
+        TableButton_Model model =
+                (TableButton_Model) this.listTable.getColumn(Columns.ADD_TRAIT.header).getCellEditor();
+
+        model.removeButtonListener(l);
+    }
+
 
 
 

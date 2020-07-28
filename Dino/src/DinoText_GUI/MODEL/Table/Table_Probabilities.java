@@ -11,7 +11,7 @@ public class Table_Probabilities
     ArrayList<Double> weights = new ArrayList<>();
     double sum = 0;
 
-    Table_Probabilities()
+    public Table_Probabilities()
     {
         for(int i = 0; i < Table_Model.DEFAULT_ROWS; i++)
         {
@@ -19,26 +19,35 @@ public class Table_Probabilities
         }
     }
 
-    void addWeight(double weight)
+    public Table_Probabilities(Table_Probabilities copy)
+    {
+        if(copy != null)
+        {
+            this.weights = new ArrayList<>(copy.weights);
+            this.sum = copy.sum;
+        }
+    }
+
+    public void addWeight(double weight)
     {
         weights.add(weight);
         sum += weight;
     }
 
-    void removeWeight(int index)
+    public void removeWeight(int index)
     {
         sum -= weights.get(index);
         weights.remove(index);
     }
 
-    void updateWeight(int index, double weight)
+    public void updateWeight(int index, double weight)
     {
         sum -= weights.get(index);
         weights.set(index, weight);
         sum += weights.get(index);
     }
 
-    double getProbability(int index)
+    public double getProbability(int index)
     {
         if(sum == 0)
         {

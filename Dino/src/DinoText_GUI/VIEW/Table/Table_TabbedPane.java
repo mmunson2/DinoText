@@ -98,6 +98,9 @@ public class Table_TabbedPane extends JFrame{
         return this.activeTable.getListName();
     }
 
+    public int getSelectedRow() {return this.activeTable.getSelectedRow();}
+
+
     /***************************************************************************
      * addIncrementListener
      *
@@ -158,6 +161,21 @@ public class Table_TabbedPane extends JFrame{
     public void removeDebugListener(ActionListener l)
     {
         this.activeTable.removeDebugListener(l);
+    }
+
+    public void addTraitButtonListener(ActionListener l)
+    {
+        this.activeTable.addTraitButtonListener(l);
+    }
+
+    public void removeTraitButtonListener(ActionListener l)
+    {
+        this.activeTable.removeTraitButtonListener(l);
+    }
+
+    public void initializeAddTraitButtonColumn()
+    {
+        this.activeTable.initializeAddTraitButtonColumn();
     }
 
 

@@ -1,12 +1,16 @@
 package DinoText_GUI.CONTROLLER.Table;
 
 import DinoParser.List.ListEntry;
+import DinoParser.List.Trait;
 import DinoParser.ListParser;
 import DinoText_GUI.CONTROLLER.Dialogue.Dialogue_Controller;
 import DinoText_GUI.MODEL.Table.Table_Manager;
 import DinoText_GUI.MODEL.Table.Table_Model;
+import DinoText_GUI.MODEL.Table.Table_Probabilities;
+import DinoText_GUI.MODEL.Table.TraitCreator.TraitCreator_Model;
 import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 import DinoText_GUI.VIEW.Table.Table_View;
+import DinoText_GUI.VIEW.Table.Trait.TraitCreator_View;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -32,6 +36,7 @@ public class Table_Controller {
     private listener_listName listNameListener;
     private listener_tableModel tableModelListener;
     private listener_tabSwitch tabSwitchListener;
+    private listener_addTraitButton traitButtonListener;
 
     private listener_debug debugListener;
 
@@ -57,11 +62,13 @@ public class Table_Controller {
         this.listNameListener = new listener_listName();
         this.tableModelListener = new listener_tableModel();
         this.tabSwitchListener = new listener_tabSwitch();
+        this.traitButtonListener = new listener_addTraitButton();
 
         this.debugListener = new listener_debug();
 
         this.view.addTabSwitchListener(tabSwitchListener);
 
+        this.view.initializeAddTraitButtonColumn();
         addListeners();
     }
 
@@ -88,7 +95,7 @@ public class Table_Controller {
     /***************************************************************************
      * addList - String and entries overload
      *
-     * //Todo: Ihsan! This is the method you should hook up to dinodictionary
+     *
      **************************************************************************/
     public void addList(String name, String[] entries) {
 
@@ -106,6 +113,8 @@ public class Table_Controller {
             view.setEntryCount(manager.getCurrentModel().getRowCount());
             addListeners();
         }
+
+        this.view.initializeAddTraitButtonColumn();
 
         //If there are entries, add them
         if(entries != null)
@@ -298,12 +307,46 @@ public class Table_Controller {
         }
     }
 
+    class listener_addTraitButton implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            int row = view.getSelectedRow();
+            Table_Probabilities probabilities =
+                    manager.getCurrentModel().getProbabilities();
+
+            TraitCreator_View traitView = new TraitCreator_View();
+
+            TraitCreator_Model traitModel = new TraitCreator_Model();
+            traitModel.setProbabilities(probabilities);
+            traitModel.setRowIndex(row);
+
+            TraitCreator_Controller traitController =
+                    new TraitCreator_Controller(traitModel, traitView);
+
+            int result = JOptionPane.showConfirmDialog(null, traitView.getPanel(), "Create Trait",JOptionPane.OK_CANCEL_OPTION);
+
+            if(result == JOptionPane.OK_OPTION)
+            {
+                Trait newTrait = traitModel.getTrait();
+                manager.getCurrentModel().addTrait(row, newTrait);
+                System.out.println("Trait Added");
+            }
+            else
+            {
+                System.out.println("Cancelled");
+            }
+        }
+    }
+
     /***************************************************************************
      * addListeners
      **************************************************************************/
     private void addListeners() {
         this.view.addIncrementListener(incrementListener);
         this.view.addListNameListener(listNameListener);
+        this.view.addTraitButtonListener(traitButtonListener);
 
         this.view.addDebugListener(debugListener);
 
@@ -318,6 +361,7 @@ public class Table_Controller {
     private void removeListeners() {
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);
+        this.view.removeTraitButtonListener(traitButtonListener);
 
         this.view.removeDebugListener(debugListener);
 
