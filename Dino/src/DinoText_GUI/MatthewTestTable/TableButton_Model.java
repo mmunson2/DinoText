@@ -46,7 +46,7 @@ public class TableButton_Model extends DefaultCellEditor
     public Object getCellEditorValue()
     {
         if (isPushed) {
-
+            //Not doing anything here currently, handled by ActionListener
         }
         isPushed = false;
         return label;

@@ -3,6 +3,7 @@ package DinoText_GUI.MatthewTestTable;
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class TestTable_View
 {
@@ -33,6 +34,18 @@ public class TestTable_View
     {
         this.testTable.getColumn("Add Trait").setCellRenderer(new TableButton_View());
         this.testTable.getColumn("Add Trait").setCellEditor(new TableButton_Model(new JCheckBox()));
+    }
+
+    public void setButtonListener(ActionListener l)
+    {
+        TableButton_Model model = (TableButton_Model) this.testTable.getColumn("Add Trait").getCellEditor();
+
+        model.addButtonListener(l);
+    }
+
+    public int getSelectedRow()
+    {
+        return this.testTable.getSelectedRow();
     }
 
 
