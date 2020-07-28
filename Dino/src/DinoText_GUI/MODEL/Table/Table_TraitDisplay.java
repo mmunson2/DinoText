@@ -1,8 +1,8 @@
 package DinoText_GUI.MODEL.Table;
 
 import DinoParser.List.Trait;
-import DinoText_GUI.MODEL.Traits.TraitModel;
-import DinoText_GUI.VIEW.TraitLabel;
+import DinoText_GUI.MODEL.Table.Traits.TraitModel;
+import DinoText_GUI.VIEW.Table.TraitLabel;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;

@@ -192,15 +192,13 @@
     <list>
       <item itemvalue="Application.TableExample" />
       <item itemvalue="Application.Driver" />
-      <item itemvalue="Application.Driver (2)" />
       <item itemvalue="Application.TraitLabel" />
-      <item itemvalue="JUnit.Unnamed" />
       <item itemvalue="Application.DinoText" />
+      <item itemvalue="JUnit.Unnamed" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DinoText" />
-        <item itemvalue="Application.Driver (2)" />
         <item itemvalue="Application.TraitLabel" />
         <item itemvalue="Application.TableExample" />
         <item itemvalue="Application.Driver" />

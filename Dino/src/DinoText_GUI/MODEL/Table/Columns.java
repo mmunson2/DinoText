@@ -10,7 +10,7 @@ public enum Columns
     PROBABILITY_WEIGHT("Probability Weight"),
     PROBABILITY("Probability"),
     ADD_TRAIT("Add Traits"),
-    TRAIT;
+    TRAIT("Traits");
 
     public String header;
     Columns(String name)

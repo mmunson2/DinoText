@@ -1,5 +1,6 @@
 package DinoText_GUI.VIEW.Table;
 
+import DinoText_GUI.MODEL.Table.Columns;
 import DinoText_GUI.MODEL.Table.Table_TraitDisplay;
 
 import javax.swing.*;
@@ -197,6 +198,6 @@ public class Table_TabbedPane extends JFrame{
      **************************************************************************/
     public void setButtonColumn(int columnIndex)
     {
-        this.activeTable.getJTable().getColumn("Trait").setCellRenderer(new Table_TraitDisplay());
+        this.activeTable.getJTable().getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
     }
 }
