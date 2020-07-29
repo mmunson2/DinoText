@@ -1,6 +1,7 @@
 package DinoText_GUI.MODEL.Table;
 
 import DinoParser.List.Trait;
+import DinoText_GUI.MODEL.DinoList;
 import DinoText_GUI.MODEL.Table.Traits.TraitModel;
 import DinoText_GUI.VIEW.Table.TraitLabel;
 
@@ -33,5 +34,21 @@ public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer 
         }
 
         return panel;
+    }
+
+    public static void updateTraitDisplay(Table_Model model) {
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        DinoList list = model.getDinoList();
+
+        for (int i = 0; i < list.size(); i++) {
+
+            if (list.getTraits(i) != null) {
+                for (Trait t :list.getTraits(i)) {
+                    TraitModel trait = new TraitModel(t);
+                    panel.add(new TraitLabel(trait.getName(), trait.getLowerBound(), trait.getUpperBound()));
+                }
+            }
+        }
     }
 }

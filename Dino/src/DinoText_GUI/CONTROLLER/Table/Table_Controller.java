@@ -7,10 +7,12 @@ import DinoText_GUI.CONTROLLER.Dialogue.Dialogue_Controller;
 import DinoText_GUI.MODEL.Table.Table_Manager;
 import DinoText_GUI.MODEL.Table.Table_Model;
 import DinoText_GUI.MODEL.Table.Table_Probabilities;
+import DinoText_GUI.MODEL.Table.Table_TraitDisplay;
 import DinoText_GUI.MODEL.Table.TraitCreator.TraitCreator_Model;
 import DinoText_GUI.VIEW.Table.Table_TabbedPane;
 import DinoText_GUI.VIEW.Table.Table_View;
 import DinoText_GUI.VIEW.Table.Trait.TraitCreator_View;
+//import com.sun.tools.javac.util.Name;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -271,6 +273,7 @@ public class Table_Controller {
 
         @Override
         public void tableChanged(TableModelEvent e) {
+            Table_TraitDisplay.updateTraitDisplay(manager.getCurrentModel());
             view.updateTable();
         }
     }
