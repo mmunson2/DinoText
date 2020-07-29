@@ -237,18 +237,7 @@ public class Table_Model extends AbstractTableModel
             case LIST_ENTRY:
                 String entry = (String) aValue;
 
-                double currentWeight = (Double) this.getValueAt(rowIndex,
-                        Columns.PROBABILITY_WEIGHT.ordinal());
-
-                if(currentWeight == 0)
-                {
-                    this.addEntry(entry, 1.0);
-                }
-                else
-                {
-                    this.addEntry(entry, currentWeight);
-                }
-
+                setListEntry(rowIndex, entry);
                 break;
 
             case PROBABILITY_WEIGHT:
@@ -264,8 +253,7 @@ public class Table_Model extends AbstractTableModel
                     weight = 0;
                 }
 
-                this.list.setProbability(rowIndex, weight);
-                this.probabilities.updateWeight(rowIndex, weight);
+                setProbability(rowIndex, weight);
 
                 break;
 
@@ -292,6 +280,75 @@ public class Table_Model extends AbstractTableModel
     public void removeTableModelListener(TableModelListener l) {
         super.removeTableModelListener(l);
     }
+
+    public void setProbability(int rowIndex, double weight)
+    {
+        double currentWeight = (Double) this.getValueAt(rowIndex,
+                Columns.PROBABILITY_WEIGHT.ordinal());
+
+        String currentEntry = (String) this.getValueAt(rowIndex, Columns.LIST_ENTRY.ordinal());
+
+        if(!currentEntry.equals(""))
+        {
+            this.list.setProbability(rowIndex, weight);
+            this.probabilities.updateWeight(rowIndex, weight);
+        }
+        else if(currentWeight != 0)
+        {
+            this.list.setProbability(rowIndex, weight);
+            this.probabilities.updateWeight(rowIndex, weight);
+        }
+        else
+        {
+            addEntry(currentEntry, weight);
+        }
+
+        //this.list.setProbability(rowIndex, weight);
+        //this.probabilities.updateWeight(rowIndex, weight);
+    }
+
+    /***************************************************************************
+     * setListEntry
+     *
+     * Making a change to the list entry logic? Congratulations! You've been
+     * chosen for the setListEntry test program:
+     *
+     * 1) Create a list in a blank row where you'd expect the entry to go
+     * 2) Create a list in a blank row out of order
+     * 3) Set a list entry that has text so that it's blank
+     * 4) Set a blank list entry so that it stays blank
+     * 5) Repeat #4 in an out-of-order position
+     * 6) Set the probability of a row first, then set its entry
+     *
+     **************************************************************************/
+    public void setListEntry(int rowIndex, String newEntry)
+    {
+        double currentWeight = (Double) this.getValueAt(rowIndex,
+                Columns.PROBABILITY_WEIGHT.ordinal());
+
+        String currentEntry = (String) this.getValueAt(rowIndex, Columns.LIST_ENTRY.ordinal());
+
+        if(newEntry.equals("")) //Setting a row to blank also unsets probability
+        {
+            this.list.setEntry(rowIndex, newEntry);
+            this.list.setProbability(rowIndex, 0);
+            //Todo: update the table so it stays ordered
+        }
+        else if(!currentEntry.equals("")) //If the row wasn't blank, don't add a newline
+        {
+            this.list.setEntry(rowIndex, newEntry);
+        }
+        else if(currentWeight == 0) //If the row is blank and currentWeight 0, set the weight to 1
+        {
+            this.addEntry(newEntry, 1.0);
+            //Todo: Only do this if there aren't any traits
+        }
+        else //If the probability was already set, don't mess with it
+        {
+            this.list.setEntry(rowIndex, newEntry);
+        }
+    }
+
 
     /***************************************************************************
      * nextEmptyRow

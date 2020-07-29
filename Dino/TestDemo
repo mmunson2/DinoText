@@ -1,8 +1,8 @@
-# Generated: 2020/07/28 19:32:11
+# Generated: 2020/07/29 08:38:05
 
 Lists Referenced: 2
-dummy adjectives 
+adjectives dummyList 
 
 Static Variables: 0
 
-This is a \L[adjectives] test.\L[dummy] 
+This is a \L[adjectives] test. \L[dummyList] 
