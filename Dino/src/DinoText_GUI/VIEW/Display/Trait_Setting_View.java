@@ -38,6 +38,14 @@ public class Trait_Setting_View extends JFrame
             tss.sliderListener(new sliderListener(i));
             this.sliders.add(tss);
         }
+        /*
+        for (int i = 0; i < 20; i++)
+        {
+            Trait_Setting_Slider tss = new Trait_Setting_Slider("trait" + i, 0, 100);
+            tss.sliderListener(new sliderListener(i));
+            this.sliders.add(tss);
+        }
+        */
 
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         for (int i = 0; i < this.sliders.size(); i++)
@@ -62,8 +70,9 @@ public class Trait_Setting_View extends JFrame
         @Override
         public void stateChanged(ChangeEvent e)
         {
-            double value = sliders.get(index).getValue() / sliders.get(index).getMax();
+            double value = (double) sliders.get(index).getValue() / sliders.get(index).getMax();
             dino.setTraitValue(index, value);
+            //System.out.println("Changing trait " + index + " to " + value);
         }
     }
 }
