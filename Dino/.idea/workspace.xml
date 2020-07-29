@@ -6,19 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config" beforeDir="false" afterPath="$PROJECT_DIR$/config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_TraitDisplay.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_TraitDisplay.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_TabbedPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_TabbedPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoParser/Dino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoParser/Dino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_View.java" afterDir="false" />
-    </list>
+    <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +51,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propGUI" />
@@ -218,7 +206,7 @@
       <workItem from="1595787994022" duration="7047000" />
       <workItem from="1595888662650" duration="6296000" />
       <workItem from="1595975988991" duration="3402000" />
-      <workItem from="1595983103983" duration="3375000" />
+      <workItem from="1595983103983" duration="3683000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>
@@ -346,10 +334,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="388" y="172" key="GuiDesigner.FormSource.Dialog/0.0.1440.900@0.0.1440.900" timestamp="1594552740690" />
-    <state x="221" y="63" key="SettingsEditor" timestamp="1595279628977">
+    <state x="221" y="63" key="SettingsEditor" timestamp="1595990248908">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1595279628977" />
+    <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1595990248908" />
     <state x="284" y="86" key="SettingsEditor/0.0.1851.1234@0.0.1851.1234" timestamp="1594624318706" />
     <state x="622" y="441" key="com.intellij.ide.util.TipDialog" timestamp="1595710494914">
       <screen x="0" y="0" width="1851" height="1234" />
