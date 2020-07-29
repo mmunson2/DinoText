@@ -3,10 +3,13 @@ package DinoText_GUI.CONTROLLER.Table;
 import DinoText_GUI.MODEL.Table.TraitCreator.TraitCreator_Model;
 import DinoText_GUI.VIEW.Table.Trait.TraitCreator_View;
 
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class TraitCreator_Controller
 {
@@ -17,6 +20,8 @@ public class TraitCreator_Controller
     lowerBoundSlider_listener lowerBoundListener;
     upperBoundSlider_listener upperBoundListener;
     traitWeight_listener traitWeightListener;
+    traitName_focusListener traitNameFocusListener;
+
 
     TraitCreator_Controller(TraitCreator_Model model, TraitCreator_View view)
     {
@@ -27,6 +32,7 @@ public class TraitCreator_Controller
         this.lowerBoundListener = new lowerBoundSlider_listener();
         this.upperBoundListener = new upperBoundSlider_listener();
         this.traitWeightListener = new traitWeight_listener();
+        this.traitNameFocusListener = new traitName_focusListener();
 
         addListeners();
 
@@ -35,6 +41,12 @@ public class TraitCreator_Controller
         this.view.setUpperBoundSlider(this.model.getUpperBound());
         this.view.setTraitWeight(this.model.getWeight());
         this.view.setDisplayProbability(this.model.getProbability());
+    }
+
+    public void finalizeTrait() {
+        String traitName = view.getTraitName();
+        model.setName(traitName);
+        view.setTraitName(traitName);
     }
 
     class traitName_listener implements ActionListener
@@ -107,12 +119,27 @@ public class TraitCreator_Controller
     }
 
 
+    private class traitName_focusListener implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            JTextField textField = (JTextField) e.getSource();
+            textField.select(0, textField.getText().length());
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+
+        }
+    }
+
+
     private void addListeners()
     {
         this.view.addTraitNameListener(traitListener);
         this.view.addLowerBoundSliderListener(lowerBoundListener);
         this.view.addUpperBoundSliderListener(upperBoundListener);
         this.view.addWeightListener(traitWeightListener);
+        this.view.addTraitNameFocusListener(traitNameFocusListener);
     }
 
     private void removeListeners()
@@ -122,12 +149,5 @@ public class TraitCreator_Controller
         this.view.removeUpperBoundSliderListener(upperBoundListener);
         this.view.removeWeightListener(traitWeightListener);
     }
-
-
-
-
-
-
-
 
 }

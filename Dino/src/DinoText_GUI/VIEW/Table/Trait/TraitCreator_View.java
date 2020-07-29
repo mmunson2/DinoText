@@ -3,6 +3,7 @@ package DinoText_GUI.VIEW.Table.Trait;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 
 public class TraitCreator_View {
     private JTextField traitName;
@@ -114,6 +115,8 @@ public class TraitCreator_View {
     {
         this.traitWeight.removeActionListener(l);
     }
+
+    public void addTraitNameFocusListener(FocusListener l) { this.traitName.addFocusListener(l); }
 
 
 

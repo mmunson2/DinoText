@@ -272,7 +272,6 @@ public class Table_Controller {
 
         @Override
         public void tableChanged(TableModelEvent e) {
-
             view.updateTable();
         }
     }
@@ -333,9 +332,11 @@ public class Table_Controller {
 
             if(result == JOptionPane.OK_OPTION)
             {
+                traitController.finalizeTrait();
                 Trait newTrait = traitModel.getTrait();
                 manager.getCurrentModel().addTrait(row, newTrait);
                 System.out.println("Trait Added");
+                SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
             }
             else
             {

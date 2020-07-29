@@ -55,28 +55,4 @@ public class TraitLabel extends JLabel {
         text += "              ";
         setText(text);
     }
-
-    public static void main(String args[]) {
-        JFrame frame = new JFrame();
-        JPanel panel = new JPanel(new GridLayout(1,0));
-
-        TraitLabel label = new TraitLabel();
-        TraitLabel label2 = new TraitLabel();
-
-
-        label.setTextWithChart("TRAIT");
-        label2.setTextWithChart("TRAIT 2");
-
-
-        panel.add(label);
-        panel.add(label2);
-        frame.setContentPane(panel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 580);
-        frame.pack();
-        frame.setVisible(true);
-
-        label.setBounds(0, 100);
-        label2.setBounds(10, 60);
-    }
 }
