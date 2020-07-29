@@ -105,7 +105,6 @@ public class Table_Controller {
         if (this.manager.getCurrentModel().getName().equals("Untitled List")
                 && this.manager.getSize() == 1) {
             this.renameList(name);
-            this.view.initializeAddTraitButtonColumn();
         }
         else //Otherwise make a whole new list
         {
@@ -114,10 +113,10 @@ public class Table_Controller {
             this.view.addList(name);
             this.view.setTableModel(this.manager.getCurrentModel());
             view.setEntryCount(manager.getCurrentModel().getRowCount());
-            this.view.initializeAddTraitButtonColumn();
-
             addListeners();
         }
+
+        this.view.initializeAddTraitButtonColumn();
 
         //If there are entries, add them
         if(entries != null)
@@ -272,7 +271,6 @@ public class Table_Controller {
 
         @Override
         public void tableChanged(TableModelEvent e) {
-
             view.updateTable();
         }
     }
@@ -356,7 +354,6 @@ public class Table_Controller {
 
         Table_Model model = manager.getCurrentModel();
         model.addTableModelListener(tableModelListener);
-        System.out.println("Added Listeners");
     }
 
     /***************************************************************************
@@ -364,14 +361,14 @@ public class Table_Controller {
      *
      **************************************************************************/
     private void removeListeners() {
-        this.view.removeTraitButtonListener(traitButtonListener);
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);
+        this.view.removeTraitButtonListener(traitButtonListener);
 
         this.view.removeDebugListener(debugListener);
+
         Table_Model model = manager.getCurrentModel();
         model.removeTableModelListener(tableModelListener);
-        System.out.println("Removed Listeners");
     }
 
 
