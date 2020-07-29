@@ -4,6 +4,7 @@ import DinoText_GUI.MODEL.Table.Columns;
 import DinoText_GUI.MODEL.Table.TableButton_Model;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -62,8 +63,15 @@ public class Table_View {
 
     public void initializeAddTraitButtonColumn()
     {
-        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
-        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
+        try {
+            this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
+            this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
+        }
+        catch(Exception e)
+        {
+
+        }
+
     }
 
     /***************************************************************************
@@ -142,8 +150,15 @@ public class Table_View {
 
     public void addTraitButtonListener(ActionListener l)
     {
-        TableButton_Model model =
-                (TableButton_Model) this.listTable.getColumn(Columns.ADD_TRAIT.header).getCellEditor();
+        TableButton_Model model = null;
+
+        try {
+            model = (TableButton_Model) this.listTable.getColumn(Columns.ADD_TRAIT.header).getCellEditor();
+        }
+        catch(Exception e)
+        {
+            
+        }
 
         if(model == null)
         {
@@ -157,8 +172,24 @@ public class Table_View {
 
     public void removeTraitButtonListener(ActionListener l)
     {
-        TableButton_Model model =
-                (TableButton_Model) this.listTable.getColumn(Columns.ADD_TRAIT.header).getCellEditor();
+        System.out.println("Column count: " + this.listTable.getColumnCount());
+
+        TableColumn column = null;
+
+        try {
+            column = this.listTable.getColumn(Columns.ADD_TRAIT.header);
+        }
+        catch(IllegalArgumentException e)
+        {
+        }
+
+        if(column == null)
+        {
+            System.err.println("Column is null :/");
+            return;
+        }
+
+        TableButton_Model model = (TableButton_Model) column.getCellEditor();
 
         model.removeButtonListener(l);
     }
