@@ -317,5 +317,4 @@ public class Table_Model extends AbstractTableModel
 
         return -1;
     }
-
 }
