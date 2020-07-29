@@ -39,7 +39,7 @@ public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer 
     public static void updateTraitDisplay(Table_Model model) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        DinoList list = model.getDinoList();
+        DinoList list = model.list;
 
         for (int i = 0; i < list.size(); i++) {
 
