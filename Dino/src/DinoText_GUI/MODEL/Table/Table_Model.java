@@ -190,7 +190,6 @@ public class Table_Model extends AbstractTableModel
             case ADD_TRAIT:
                 return true;
             case PROBABILITY:
-                return false;
             case TRAIT:
                 return false;
         }
