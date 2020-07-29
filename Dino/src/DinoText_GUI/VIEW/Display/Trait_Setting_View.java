@@ -17,6 +17,11 @@ public class Trait_Setting_View extends JFrame
     private ArrayList<Trait_Setting_Slider> sliders;
     private Dino dino;
 
+    public Dino getDino()
+    {
+        return this.dino;
+    }
+
     public Trait_Setting_View(Dino dino)
     {
         this.dino = dino;
@@ -70,7 +75,8 @@ public class Trait_Setting_View extends JFrame
         @Override
         public void stateChanged(ChangeEvent e)
         {
-            double value = (double) sliders.get(index).getValue() / sliders.get(index).getMax();
+            //double value = (double) sliders.get(index).getValue() / sliders.get(index).getMax();
+            double value = (double) sliders.get(index).getValue();
             dino.setTraitValue(index, value);
             //System.out.println("Changing trait " + index + " to " + value);
         }

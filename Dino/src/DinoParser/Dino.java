@@ -101,7 +101,7 @@ public class Dino
 
         for(int i = 0; i < this.traitVals.length; i++)
         {
-            this.upperBounds[i] = 100;
+            this.upperBounds[i] = 1;
             this.lowerBounds[i] = 0;
         }
 

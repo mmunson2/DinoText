@@ -23,6 +23,7 @@ public class Text_Display_Controller
     private Text_Display_Model model;
     private Text_Display_View view;
     private DinoConfig config;
+    private Trait_Setting_View window = null;
 
     /***************************************************************************
      * Constructor
@@ -214,7 +215,7 @@ public class Text_Display_Controller
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            Trait_Setting_View window = new Trait_Setting_View(model.getDino());
+            window = new Trait_Setting_View(model.getDino());
 
             window.setVisible(true);
         }
