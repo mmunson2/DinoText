@@ -11,13 +11,10 @@ import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
 
 
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
+import javax.swing.text.*;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -54,6 +51,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void initialize() {
+        dinoGUIView.addKeyListenerjTextPane_dialogueInput(new listener_JPanel_dialogueInput_backspace());
         initializejPopupMenu();
         initializejToolBar_File();
         initializejToolBar_ListTools();
@@ -263,7 +261,7 @@ public class Dialogue_Controller {
 
                 String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
 
-                if (listName.length() > 0 && listName.trim().length() > 0 ){
+                if (listName.length() > 0 && listName.trim().length() > 0) {
                     dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
 
                         @Override
@@ -318,8 +316,7 @@ public class Dialogue_Controller {
 
                 table_controller.addList(listName.trim());
 
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
 
@@ -394,8 +391,7 @@ public class Dialogue_Controller {
                 dinoGUIModel.addStaticVar(varName);
 
                 dinoGUIView.setFocusTSDialogueInput();
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
         }
@@ -463,7 +459,7 @@ public class Dialogue_Controller {
             }
 
         });
-        
+
     }
 
     /***************************************************************************
@@ -642,5 +638,43 @@ public class Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             dinoGUIView.dehighlightAll();
         }
+    }
+
+    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
+        @Override
+        public void keyTyped(KeyEvent e) {
+            if (e.getKeyCode() == 8) {
+
+            }
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == 8) {
+
+                System.out.println(StyleConstants.getFontSize(new SimpleAttributeSet(dinoGUIView.getjTextPane_dialogueInput().getInputAttributes())));
+
+                while (StyleConstants.getFontSize(new SimpleAttributeSet(dinoGUIView.getjTextPane_dialogueInput().getInputAttributes())) == 0) {
+                    
+                    System.out.println(StyleConstants.getFontSize(new SimpleAttributeSet(dinoGUIView.getjTextPane_dialogueInput().getCharacterAttributes())));
+
+
+                    JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
+                    JTextComponent component = (JTextComponent) dinoGUIView.getjTextPane_dialogueInput();
+                    try {
+                        pane.getDocument().insertString(component.getCaretPosition(), "\b", null);
+                        System.out.println(component.getCaretPosition());
+                    } catch (BadLocationException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+
     }
 }
