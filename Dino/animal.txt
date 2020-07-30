@@ -1,11 +1,11 @@
 # Generated: 2020/07/30 02:44:05
-Name: adjective
+Name: animal
 Size: 4
-1: happy
+1: cow
 1.0 
-2: creepy
+2: monkey
 1.0 
-3: dumb
+3: iguana
 1.0 
-4: freaky
+4: baboon
 1.0 

@@ -649,19 +649,43 @@ public class Dialogue_Controller {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == 8) {
-                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
-                JTextComponent component = (JTextComponent) pane;
+                boolean space = false;
+                boolean first = false;
 
-                while (StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
-                    System.out.println("first: "+ pane.getCaretPosition());
+
+                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
+
+                if (pane.getText().length() > 0) {
 
                     try {
-                        pane.getDocument().remove(pane.getCaretPosition(),1);
+                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
+                            System.out.println("] found");
+                            pane.setCaretPosition(pane.getCaretPosition() - 2);
+                            space = true;
+                            first = true;
+                        }
                     } catch (BadLocationException ex) {
+                        ex.printStackTrace();
                     }
 
-                    pane.setCaretPosition(pane.getCaretPosition() - 1);
-                    System.out.println(pane.getCaretPosition());
+                    while (StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
+                        if(first) {
+                            pane.setCaretPosition(pane.getCaretPosition() + 1);
+                            first = false;
+                        }
+
+
+                        try {
+                            pane.getDocument().remove(pane.getCaretPosition(), 1);
+                        } catch (BadLocationException ex) {
+                        }
+
+                        pane.setCaretPosition(pane.getCaretPosition() - 1);
+                    }
+
+                        if (space)
+                            pane.setCaretPosition(pane.getCaretPosition() + 1);
+
                 }
             }
         }
