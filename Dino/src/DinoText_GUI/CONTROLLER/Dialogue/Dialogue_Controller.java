@@ -643,37 +643,31 @@ public class Dialogue_Controller {
     private class listener_JPanel_dialogueInput_backspace implements KeyListener {
         @Override
         public void keyTyped(KeyEvent e) {
-            if (e.getKeyCode() == 8) {
-
-            }
         }
+
 
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == 8) {
+                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
+                JTextComponent component = (JTextComponent) pane;
 
-                System.out.println(StyleConstants.getFontSize(new SimpleAttributeSet(dinoGUIView.getjTextPane_dialogueInput().getInputAttributes())));
+                while (StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
+                    System.out.println("first: "+ pane.getCaretPosition());
 
-                while (StyleConstants.getFontSize(new SimpleAttributeSet(dinoGUIView.getjTextPane_dialogueInput().getInputAttributes())) == 0) {
-                    
-                    System.out.println(StyleConstants.getFontSize(new SimpleAttributeSet(dinoGUIView.getjTextPane_dialogueInput().getCharacterAttributes())));
-
-
-                    JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
-                    JTextComponent component = (JTextComponent) dinoGUIView.getjTextPane_dialogueInput();
                     try {
-                        pane.getDocument().insertString(component.getCaretPosition(), "\b", null);
-                        System.out.println(component.getCaretPosition());
+                        pane.getDocument().remove(pane.getCaretPosition(),1);
                     } catch (BadLocationException ex) {
-                        ex.printStackTrace();
                     }
+
+                    pane.setCaretPosition(pane.getCaretPosition() - 1);
+                    System.out.println(pane.getCaretPosition());
                 }
             }
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-
         }
 
     }
