@@ -41,13 +41,13 @@ public class Dialogue_View {
 
         jPopupMenu_listInsertion = new JPopupMenu();
         jMenu_listInsertion = new JMenu("Insert New");
-        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions");
+        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions ");
         jPopupMenu_listInsertion.add(jMenu_dictionaryFunctions);
         jPopupMenu_listInsertion.add(jMenu_listInsertion);
 
-        listButtons = new ArrayList<JButton>();
-        staticVarButtons = new ArrayList<JButton>();
-        listNames = new HashSet<String>();
+        listButtons = new ArrayList<>();
+        staticVarButtons = new ArrayList<>();
+        listNames = new HashSet<>();
 
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
     }
