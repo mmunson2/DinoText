@@ -10,15 +10,16 @@
  *****************************************************************************************/
 package DinoText_GUI;
 
-import DinoText_GUI.CONTROLLER.Display.Text_Display_Controller;
-import DinoText_GUI.MODEL.Display.Text_Display_Model;
-import DinoText_GUI.VIEW.Dialogue.Dialogue_View;
-import DinoText_GUI.VIEW.Display.Text_Display_View;
-import DinoText_GUI.CONTROLLER.Dialogue.Dialogue_Controller;
-import DinoText_GUI.CONTROLLER.Table.Table_Controller;
-import DinoText_GUI.MODEL.Dialogue.Dialogue_Model;
-import DinoText_GUI.MODEL.Table.Table_Manager;
-import DinoText_GUI.VIEW.Table.Table_TabbedPane;
+import DinoText_GUI.DISPLAY_MODULE.DisplayController.Text_Display_Controller;
+import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
+import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
+import DinoText_GUI.DISPLAY_MODULE.DisplayView.Text_Display_View;
+import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
+import DinoText_GUI.TABLE_MODULE.Table_Controller.Table_Controller;
+import DinoText_GUI.DIALOGUE_MODULE.DialogueModel.Dialogue_Model;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
+import DinoText_GUI.TABLE_MODULE.Table_View.Table_TabbedPane;
+import DinoText_GUI.Util.DinoConfig;
 
 import javax.swing.*;
 import java.awt.*;

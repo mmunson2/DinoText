@@ -8,12 +8,138 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/TableButton_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/TableButton_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Probabilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Probabilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_TraitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_TraitDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST_DINOTEXT.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST_DINOTEXT.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST_DINOVIEWER.MF" beforeDir="false" afterPath="$PROJECT_DIR$/META-INF/MANIFEST_DINOVIEWER.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/DialogueParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/DialogueParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/DinoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/DinoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/DinoTest_Lists.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/DinoTest_Lists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/DinoTest_Static.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/DinoTest_Static.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/List/ListEntryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/List/ListEntryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/List/ListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/List/ListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/List/TraitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/List/TraitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/ListParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/ListParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/DinoParser/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/ParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_File_New.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_File_Open.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_File_Preview.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_File_Save.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Preferences.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_ConvertToDynamicList$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_ConvertToDynamicList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_Dehighlight.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_DynamicWordCandidateSuggestion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_InsertDynamicList$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_InsertDynamicList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_InsertStaticVariable$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_InsertStaticVariable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JMenuItem_Tools_Synonyms.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_JPanel_dialogueInput_backspace.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller$listener_jPopupMenu_listInsertion_SelectExistingList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller$charactersSpinnerListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller$generateNewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller$linesSpinnerListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller$nextButtonListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller$prevButtonListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller$traitSettingsListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_addTraitButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_debug.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_increment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_listName.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_tabSwitch.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller$listener_tableModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/Table_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller$lowerBoundSlider_listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller$traitName_focusListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller$traitName_listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller$traitWeight_listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller$upperBoundSlider_listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DinoText.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DinoText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/IhsanTestTable/TestTable_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/CommandLine/DinoText$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/CommandLine/DinoText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/CommandLine/DinoText_Traits.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/CommandLine/DinoText_Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Dialogue/Dialogue_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/DinoList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/DinoWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Display/Text_Display_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Columns.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/TableButton_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Manager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_Probabilities.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Table_TraitDisplay.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/TraitCreator/TraitCreator_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/MODEL/Table/Traits/TraitModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Dialogue/Dialogue_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Display/Text_Display_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Display/Text_Display_View_Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Display/Trait_Setting_Slider.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Display/Trait_Setting_View$sliderListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Display/Trait_Setting_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/TableButton_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_TabbedPane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Table_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/Trait/TraitCreator_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/VIEW/Table/TraitLabel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/Delimiter/Delimiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/Delimiter/Delimiter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/Delimiter/Reference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/Delimiter/Reference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/DialogueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/DialogueParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/Dino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/Dino.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/List/Distribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/List/Distribution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/List/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/List/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/List/ListEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/List/ListEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/List/Trait.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/List/Trait.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/ListParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/ListParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoParser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Display/Text_Display_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Table/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Table/TraitCreator_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/TestTable_Model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/IhsanTestTable/TestTable_View.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/CommandLine/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandLine/DinoV0_2/DinoText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/CommandLine/DinoText_Traits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandLine/DinoV0_2/DinoText_Traits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/CommandLine/DinoText_Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandLine/DinoV0_2/DinoText_Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Dialogue/Dialogue_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Display/Text_Display_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayModel/Text_Display_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Columns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Columns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/TableButton_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_Probabilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Probabilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Table_TraitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/Table_TraitDisplay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/TraitCreator/TraitCreator_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/MODEL/Table/Traits/TraitModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/TraitModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue/Dialogue_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue/Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Text_Display_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Text_Display_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Text_Display_View_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_Slider.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_Slider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/TableButton_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_TabbedPane.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_TabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Trait/TraitCreator_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/Trait/TraitCreator_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table/TraitLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/TraitLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoViewer/DinoViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CommandLine/DinoViewer/DinoViewer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,24 +195,24 @@
       <recent name="DinoParser.List" />
       <recent name="DinoParser" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display" />
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW" />
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Dialogue" />
-      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Table" />
-      <recent name="$PROJECT_DIR$/../Test_Resources/Static_Tests" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="DinoParser" />
       <recent name="DinoParser.List" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../Resources/Lists" />
       <recent name="$PROJECT_DIR$/../Resources" />
       <recent name="$PROJECT_DIR$/META-INF" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator" />
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View" />
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView" />
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display" />
+      <recent name="$PROJECT_DIR$/src/DinoText_GUI/VIEW" />
     </key>
   </component>
   <component name="RunManager" selected="Application.DinoText">
@@ -96,7 +222,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Resources" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="DinoText_GUI.*" />
+          <option name="PATTERN" value="DinoText_GUI.Util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,7 +284,7 @@
     </configuration>
     <configuration name="Unnamed" type="JUnit" factoryName="JUnit">
       <module name="Dino" />
-      <option name="PACKAGE_NAME" value="DinoParser" />
+      <option name="PACKAGE_NAME" value="Dino" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -218,7 +344,7 @@
       <workItem from="1595983103983" duration="4078000" />
       <workItem from="1596036474026" duration="3740000" />
       <workItem from="1596174046839" duration="645000" />
-      <workItem from="1596234365471" duration="3088000" />
+      <workItem from="1596234365471" duration="4652000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>
@@ -274,14 +400,18 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="775" y="506" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593775822287" />
+    <state x="244" y="381" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1596239345813">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="244" y="381" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1440.900@0.0.1440.900" timestamp="1596239345813" />
     <state x="490" y="326" width="460" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594684676349">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="490" y="326" width="460" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1440.900@0.0.1440.900" timestamp="1594684676349" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595125174855">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596239161016">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1595125174855" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1440.900@0.0.1440.900" timestamp="1596239161016" />
     <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593775972114">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -290,36 +420,36 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom" timestamp="1596237023305">
+    <state width="1398" height="255" key="GridCell.Tab.0.bottom" timestamp="1596239284245">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596237023305" />
+    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596239284245" />
     <state width="1808" height="313" key="GridCell.Tab.0.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662342" />
     <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596040574569" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center" timestamp="1596237023302">
+    <state width="1398" height="255" key="GridCell.Tab.0.center" timestamp="1596239284244">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596237023302" />
+    <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596239284244" />
     <state width="1808" height="313" key="GridCell.Tab.0.center/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596040574567" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left" timestamp="1596237023302">
+    <state width="1398" height="255" key="GridCell.Tab.0.left" timestamp="1596239284243">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596237023302" />
+    <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596239284243" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
     <state width="1808" height="313" key="GridCell.Tab.0.left/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596040574566" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right" timestamp="1596237023303">
+    <state width="1398" height="255" key="GridCell.Tab.0.right" timestamp="1596239284245">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596237023303" />
+    <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596239284245" />
     <state width="1808" height="313" key="GridCell.Tab.0.right/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596040574568" />
@@ -391,17 +521,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Test/DinoParser/DinoTest_Static.java</url>
+          <url>file://$PROJECT_DIR$/Test/Dino/DinoTest_Static.java</url>
           <line>16</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DinoText_GUI/CONTROLLER/Dialogue/Dialogue_Controller.java</url>
+          <url>file://$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java</url>
           <line>563</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DinoText_GUI/VIEW/Display/Trait_Setting_View.java</url>
+          <url>file://$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.java</url>
           <line>79</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
