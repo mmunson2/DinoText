@@ -5,7 +5,6 @@ import DinoParser.List.Trait;
 import DinoText_GUI.MODEL.DinoList;
 import DinoText_GUI.MODEL.DinoWriter;
 
-import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
@@ -74,21 +73,32 @@ public class Table_Model extends AbstractTableModel
     }
 
 
+    /***************************************************************************
+     * getTraitArray
+     *
+     **************************************************************************/
     public Trait[] getTraitArray(int rowIndex)
     {
         return this.list.getTraits(rowIndex);
     }
 
+    /***************************************************************************
+     * getProbabilities
+     *
+     **************************************************************************/
     public Table_Probabilities getProbabilities()
     {
         return this.probabilities;
     }
 
+    /***************************************************************************
+     * addTrait
+     *
+     **************************************************************************/
     public void addTrait(int rowIndex, Trait newTrait)
     {
         this.list.addTrait(rowIndex, newTrait);
     }
-
 
     /***************************************************************************
      * writeToFile
@@ -107,23 +117,16 @@ public class Table_Model extends AbstractTableModel
     public void addEntry(String entry, double weight)
     {
         int rowIndex = nextEmptyRow();
-        int entryColumn = Columns.LIST_ENTRY.ordinal();
-        int weightColumn = Columns.PROBABILITY_WEIGHT.ordinal();
 
         if(rowIndex == -1) //Need to add a row
         {
             this.addRow();
             rowIndex = this.entryCount - 1;
-
-
-            this.list.setEntry(rowIndex, entry);
-            this.list.setProbability(rowIndex, weight);
         }
-        else //Add to existing entry
-        {
-            this.list.setEntry(rowIndex, entry);
-            this.list.setProbability(rowIndex, weight);
-        }
+
+        //Add to existing entry
+        this.list.setEntry(rowIndex, entry);
+        this.list.setProbability(rowIndex, weight);
 
         this.probabilities.updateWeight(rowIndex, weight);
         this.fireTableDataChanged();
@@ -167,16 +170,18 @@ public class Table_Model extends AbstractTableModel
     @Override
     public Class<?> getColumnClass(int columnIndex)
     {
-        if(columnIndex == 2)
+        if(columnIndex == Columns.TRAIT.ordinal())
         {
             return Trait[].class;
         }
-
-        return String.class;
+        else
+        {
+            return String.class;
+        }
     }
 
     /***************************************************************************
-     * isCellEdiable
+     * isCellEditable
      *
      **************************************************************************/
     @Override
@@ -236,8 +241,8 @@ public class Table_Model extends AbstractTableModel
         {
             case LIST_ENTRY:
                 String entry = (String) aValue;
-
                 setListEntry(rowIndex, entry);
+
                 break;
 
             case PROBABILITY_WEIGHT:
@@ -253,12 +258,8 @@ public class Table_Model extends AbstractTableModel
                     weight = 0;
                 }
 
-                setProbability(rowIndex, weight);
+                setWeight(rowIndex, weight);
 
-                break;
-
-            case PROBABILITY:
-                System.out.println("How did we get here?");
                 break;
         }
     }
@@ -281,30 +282,38 @@ public class Table_Model extends AbstractTableModel
         super.removeTableModelListener(l);
     }
 
-    public void setProbability(int rowIndex, double weight)
+    /***************************************************************************
+     * setWeight
+     *
+     * Logic for setting the weight of a given row.
+     *
+     * Behavior:
+     * • If a user sets the weight of a random row in the table, use
+     * addEntry() to move the new row to the top of the table.
+     * • If a user sets the weight of any other row, just update the value.
+     *
+     **************************************************************************/
+    public void setWeight(int rowIndex, double weight)
     {
+        //Crash out if someone does something dumb
+        assert(rowIndex >= 0 && rowIndex < Columns.values().length);
+
         double currentWeight = (Double) this.getValueAt(rowIndex,
                 Columns.PROBABILITY_WEIGHT.ordinal());
 
-        String currentEntry = (String) this.getValueAt(rowIndex, Columns.LIST_ENTRY.ordinal());
+        String currentEntry = (String) this.getValueAt(rowIndex,
+                Columns.LIST_ENTRY.ordinal());
 
-        if(!currentEntry.equals(""))
-        {
-            this.list.setProbability(rowIndex, weight);
-            this.probabilities.updateWeight(rowIndex, weight);
-        }
-        else if(currentWeight != 0)
-        {
-            this.list.setProbability(rowIndex, weight);
-            this.probabilities.updateWeight(rowIndex, weight);
-        }
-        else
+
+        if(currentEntry.equals("") && currentWeight == 0)
         {
             addEntry(currentEntry, weight);
         }
-
-        //this.list.setProbability(rowIndex, weight);
-        //this.probabilities.updateWeight(rowIndex, weight);
+        else
+        {
+            this.list.setProbability(rowIndex, weight);
+            this.probabilities.updateWeight(rowIndex, weight);
+        }
     }
 
     /***************************************************************************
@@ -362,7 +371,6 @@ public class Table_Model extends AbstractTableModel
         {
             String entry = (String) this.getValueAt(i,
                     Columns.LIST_ENTRY.ordinal());
-
 
             double probability = (Double)
                     this.getValueAt(i, Columns.PROBABILITY_WEIGHT.ordinal());

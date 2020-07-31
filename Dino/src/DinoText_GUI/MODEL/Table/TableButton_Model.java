@@ -6,12 +6,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.activation.ActivationInstantiator;
 
+/*******************************************************************************
+ * Table Button Model
+ *
+ ******************************************************************************/
 public class TableButton_Model extends DefaultCellEditor
 {
     protected JButton button;
     private String label;
     private boolean isPushed;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public TableButton_Model(JCheckBox checkBox)
     {
         super(checkBox);
@@ -19,6 +27,10 @@ public class TableButton_Model extends DefaultCellEditor
         button.setOpaque(true);
     }
 
+    /***************************************************************************
+     * Get Table Cell Editor Component
+     *
+     **************************************************************************/
     @Override
     public Component getTableCellEditorComponent(
             JTable table, Object value, boolean isSelected, int row, int column)
@@ -36,6 +48,10 @@ public class TableButton_Model extends DefaultCellEditor
         return button;
     }
 
+    /***************************************************************************
+     * Get Cell Editor Value
+     *
+     **************************************************************************/
     @Override
     public Object getCellEditorValue()
     {
@@ -46,6 +62,10 @@ public class TableButton_Model extends DefaultCellEditor
         return label;
     }
 
+    /***************************************************************************
+     * Stop Cell Editing
+     *
+     **************************************************************************/
     @Override
     public boolean stopCellEditing()
     {
@@ -53,16 +73,28 @@ public class TableButton_Model extends DefaultCellEditor
         return super.stopCellEditing();
     }
 
+    /***************************************************************************
+     * Add Button Listener
+     *
+     **************************************************************************/
     public void addButtonListener(ActionListener l)
     {
         this.button.addActionListener(l);
     }
 
+    /***************************************************************************
+     * Remove Button Listener
+     *
+     **************************************************************************/
     public void removeButtonListener(ActionListener l)
     {
         this.button.removeActionListener(l);
     }
 
+    /***************************************************************************
+     * Set Label
+     *
+     **************************************************************************/
     public void setLabel(String label)
     {
         this.label = label;

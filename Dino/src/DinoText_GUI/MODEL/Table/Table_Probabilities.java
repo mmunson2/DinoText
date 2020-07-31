@@ -11,6 +11,10 @@ public class Table_Probabilities
     ArrayList<Double> weights = new ArrayList<>();
     double sum = 0;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Table_Probabilities()
     {
         for(int i = 0; i < Table_Model.DEFAULT_ROWS; i++)
@@ -19,6 +23,10 @@ public class Table_Probabilities
         }
     }
 
+    /***************************************************************************
+     * Copy Constructor
+     *
+     **************************************************************************/
     public Table_Probabilities(Table_Probabilities copy)
     {
         if(copy != null)
@@ -28,18 +36,30 @@ public class Table_Probabilities
         }
     }
 
+    /***************************************************************************
+     * Add Weight
+     *
+     **************************************************************************/
     public void addWeight(double weight)
     {
         weights.add(weight);
         sum += weight;
     }
 
+    /***************************************************************************
+     * Remove Weight
+     *
+     **************************************************************************/
     public void removeWeight(int index)
     {
         sum -= weights.get(index);
         weights.remove(index);
     }
 
+    /***************************************************************************
+     * Update Weight
+     *
+     **************************************************************************/
     public void updateWeight(int index, double weight)
     {
         sum -= weights.get(index);
@@ -47,6 +67,10 @@ public class Table_Probabilities
         sum += weights.get(index);
     }
 
+    /***************************************************************************
+     * Get Probability
+     *
+     **************************************************************************/
     public double getProbability(int index)
     {
         if(sum == 0)
@@ -56,7 +80,4 @@ public class Table_Probabilities
 
         return (weights.get(index) / sum) * 100;
     }
-
-
-
 }

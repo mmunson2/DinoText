@@ -1,0 +1,11 @@
+# Generated: 2020/07/31 15:57:42
+Name: adjectives
+Size: 4
+1: silly
+1.0 
+2: difficult
+1.0 
+3: 
+0.0 
+4: 
+0.0 

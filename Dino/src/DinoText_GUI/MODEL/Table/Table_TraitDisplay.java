@@ -9,11 +9,24 @@ import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 
+/*******************************************************************************
+ * Table Trait Display
+ *
+ ******************************************************************************/
 public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer {
+
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Table_TraitDisplay() {
         this.setOpaque(true);
     }
 
+
+    /***************************************************************************
+     * Get Table Cell Renderer Component
+     *
+     **************************************************************************/
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -36,6 +49,10 @@ public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer 
         return panel;
     }
 
+    /***************************************************************************
+     * Update Trait Display
+     *
+     **************************************************************************/
     public static void updateTraitDisplay(Table_Model model) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
