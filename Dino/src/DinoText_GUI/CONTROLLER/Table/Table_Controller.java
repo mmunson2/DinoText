@@ -69,6 +69,8 @@ public class Table_Controller {
         this.view.addTabSwitchListener(tabSwitchListener);
 
         this.view.initializeAddTraitButtonColumn();
+        this.view.addTraitButtonListener(traitButtonListener);
+        
         this.view.setTableModel(model);
         this.view.setButtonColumn(0);
         addListeners();
@@ -118,6 +120,8 @@ public class Table_Controller {
 
             addListeners();
         }
+
+        this.view.addTraitButtonListener(traitButtonListener);
 
         //If there are entries, add them
         if(entries != null)
@@ -351,13 +355,11 @@ public class Table_Controller {
     private void addListeners() {
         this.view.addIncrementListener(incrementListener);
         this.view.addListNameListener(listNameListener);
-        this.view.addTraitButtonListener(traitButtonListener);
 
         this.view.addDebugListener(debugListener);
 
         Table_Model model = manager.getCurrentModel();
         model.addTableModelListener(tableModelListener);
-        System.out.println("Added Listeners");
     }
 
     /***************************************************************************
@@ -365,14 +367,13 @@ public class Table_Controller {
      *
      **************************************************************************/
     private void removeListeners() {
-        this.view.removeTraitButtonListener(traitButtonListener);
+        //this.view.removeTraitButtonListener(traitButtonListener);
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);
 
         this.view.removeDebugListener(debugListener);
         Table_Model model = manager.getCurrentModel();
         model.removeTableModelListener(tableModelListener);
-        System.out.println("Removed Listeners");
     }
 
 
