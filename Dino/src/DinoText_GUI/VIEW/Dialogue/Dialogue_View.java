@@ -41,13 +41,13 @@ public class Dialogue_View {
 
         jPopupMenu_listInsertion = new JPopupMenu();
         jMenu_listInsertion = new JMenu("Insert New");
-        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions");
+        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions ");
         jPopupMenu_listInsertion.add(jMenu_dictionaryFunctions);
         jPopupMenu_listInsertion.add(jMenu_listInsertion);
 
-        listButtons = new ArrayList<JButton>();
-        staticVarButtons = new ArrayList<JButton>();
-        listNames = new HashSet<String>();
+        listButtons = new ArrayList<>();
+        staticVarButtons = new ArrayList<>();
+        listNames = new HashSet<>();
 
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
     }
@@ -91,6 +91,10 @@ public class Dialogue_View {
         jTextPane_dialogueInput.addMouseListener(mouseAdapter);
     }
 
+    public void addKeyListenerjTextPane_dialogueInput(KeyListener keyListener) {
+        jTextPane_dialogueInput.addKeyListener(keyListener);
+    }
+
     /***************************************************************************
      * set dialogue ext
      **************************************************************************/
@@ -123,7 +127,7 @@ public class Dialogue_View {
     /***************************************************************************
      * get text pane
      **************************************************************************/
-    public Component getjTextPane_dialogueInput() {
+    public JTextPane getjTextPane_dialogueInput() {
         return jTextPane_dialogueInput;
     }
 
@@ -190,7 +194,6 @@ public class Dialogue_View {
      * insert Button to JTextPane (Static Variable)
      **************************************************************************/
     public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
-        AttributeSet current = jTextPane_dialogueInput.getParagraphAttributes();
         SimpleAttributeSet set = new SimpleAttributeSet();
         StyleConstants.setFontSize(set, 0);
 
@@ -224,6 +227,7 @@ public class Dialogue_View {
         StyleConstants.setFontSize(set, 0);
 
         int caretPos = jTextPane_dialogueInput.getCaretPosition();
+
         try {
             jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\L[" + listName + "]", set);
         } catch (BadLocationException e) {
