@@ -115,4 +115,20 @@ public class Table_Manager
         return this.lists.size();
     }
 
+    /***************************************************************************
+     * has List
+     *
+     **************************************************************************/
+    public boolean hasList(String name)
+    {
+        for(Table_Model model : lists)
+        {
+            if(model.getName().equals(name))
+                return true;
+        }
+
+        return false;
+    }
+
+
 }

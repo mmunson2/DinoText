@@ -70,7 +70,7 @@ public class Table_Controller {
 
         this.view.initializeAddTraitButtonColumn();
         this.view.addTraitButtonListener(traitButtonListener);
-        
+
         this.view.setTableModel(model);
         this.view.setButtonColumn(0);
         addListeners();
@@ -103,11 +103,18 @@ public class Table_Controller {
      **************************************************************************/
     public void addList(String name, String[] entries) {
 
+        //Check if the list already exists
+        if(this.manager.hasList(name))
+        {
+            //Not doing anything currently!
+        }
         //If this is the first list, just rename Untitled List
-        if (this.manager.getCurrentModel().getName().equals("Untitled List")
+        else if (this.manager.getCurrentModel().getName().equals("Untitled List")
                 && this.manager.getSize() == 1) {
             this.renameList(name);
             this.view.initializeAddTraitButtonColumn();
+
+            this.view.addTraitButtonListener(traitButtonListener);
         }
         else //Otherwise make a whole new list
         {
@@ -119,9 +126,9 @@ public class Table_Controller {
             this.view.initializeAddTraitButtonColumn();
 
             addListeners();
-        }
 
-        this.view.addTraitButtonListener(traitButtonListener);
+            this.view.addTraitButtonListener(traitButtonListener);
+        }
 
         //If there are entries, add them
         if(entries != null)
