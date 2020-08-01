@@ -335,6 +335,26 @@ public class Dino
     }
 
     /***************************************************************************
+     * getTraitValue -- Added by Camden for Trait Settings Sliders
+     *
+     * Gets the name of the trait at the given index
+     *
+     * @return The trait value, -1 for invalid index
+     * @since 0.5
+     **************************************************************************/
+    public double getTraitValue(int index)
+    {
+        if(index < 0 || index >= this.traitVals.length)
+        {
+            return -1;
+        }
+        else
+        {
+            return this.traitVals[index];
+        }
+    }
+
+    /***************************************************************************
      * getTraitCount
      *
      * gets the number of traits

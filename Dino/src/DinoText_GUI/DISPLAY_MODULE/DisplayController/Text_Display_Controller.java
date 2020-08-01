@@ -51,6 +51,7 @@ public class Text_Display_Controller
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
 
+        // setting up trait settings listener
         this.view.traitSettingsListener(new traitSettingsListener());
 
         this.view.add_generateNew_button_listener(new generateNewListener());
@@ -215,9 +216,16 @@ public class Text_Display_Controller
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            window = new Trait_Setting_View(model.getDino());
+            if (window == null)
+            {
+                window = new Trait_Setting_View(model.getDino());
+            }
 
-            window.setVisible(true);
+            if (!window.isVisible())
+            {
+                window = new Trait_Setting_View(model.getDino());
+                window.setVisible(true);
+            }
         }
     }
 

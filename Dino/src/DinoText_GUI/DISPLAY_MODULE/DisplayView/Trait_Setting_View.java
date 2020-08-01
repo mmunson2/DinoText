@@ -17,40 +17,37 @@ public class Trait_Setting_View extends JFrame
     private ArrayList<Trait_Setting_Slider> sliders;
     private Dino dino;
 
-    public Dino getDino()
-    {
-        return this.dino;
-    }
-
     public Trait_Setting_View(Dino dino)
     {
-        this.dino = dino;
-        this.sliders = new ArrayList<>();
-
         this.setContentPane(content);
-        //this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setAlwaysOnTop(true);
         this.setSize(300, 300);
         this.setTitle("Trait Settings");
+
+        this.dino = dino;
+        this.sliders = new ArrayList<>();
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         JScrollPane scroller = new JScrollPane(panel);
         scroller.setPreferredSize(new Dimension(300, 300));
 
+        // build the sliders array from the dino object
         for (int i = 0; i < this.dino.getTraitCount(); i++)
         {
-            Trait_Setting_Slider tss = new Trait_Setting_Slider(this.dino.getTraitName(i), 0, 100);
+            int value = (int) this.dino.getTraitValue(i);
+            Trait_Setting_Slider tss = new Trait_Setting_Slider(this.dino.getTraitName(i), 0, 100, value);
             tss.sliderListener(new sliderListener(i));
             this.sliders.add(tss);
         }
-        /*
-        for (int i = 0; i < 20; i++)
+
+        /* build fake sliders array for testing
+        for (int i = 0; i < 100; i++)
         {
-            Trait_Setting_Slider tss = new Trait_Setting_Slider("trait" + i, 0, 100);
+            Trait_Setting_Slider tss = new Trait_Setting_Slider("trait" + i, 0, 100, i);
             tss.sliderListener(new sliderListener(i));
             this.sliders.add(tss);
-        }
-        */
+        }*/
 
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         for (int i = 0; i < this.sliders.size(); i++)
@@ -59,9 +56,7 @@ public class Trait_Setting_View extends JFrame
             panel.add(Box.createRigidArea(new Dimension(0, 5)));
         }
         panel.add(Box.createRigidArea(new Dimension(0, 5)));
-
-        panel.add(Box.createVerticalGlue());
-
+        //panel.add(Box.createVerticalGlue());
         this.content.add(scroller, BorderLayout.CENTER);
     }
 
@@ -75,10 +70,8 @@ public class Trait_Setting_View extends JFrame
         @Override
         public void stateChanged(ChangeEvent e)
         {
-            //double value = (double) sliders.get(index).getValue() / sliders.get(index).getMax();
-            double value = (double) sliders.get(index).getValue();
+            double value = sliders.get(index).getValue();
             dino.setTraitValue(index, value);
-            //System.out.println("Changing trait " + index + " to " + value);
         }
     }
 }
