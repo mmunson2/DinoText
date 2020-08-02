@@ -1,5 +1,6 @@
 package DinoText_GUI.Util;
 
+import Dino.FileTypes;
 import DinoText_GUI.Util.DinoList;
 
 import java.io.FileWriter;
@@ -49,7 +50,7 @@ public class DinoWriter
         if(list.skipWrite())
             return;
 
-        String fileName = list.getName() + ".txt";
+        String fileName = list.getName() + FileTypes.LIST_EXTENSION;
 
         try
         {

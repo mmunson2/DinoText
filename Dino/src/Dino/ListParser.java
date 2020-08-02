@@ -41,7 +41,7 @@ public class ListParser
         Scanner stringScan;
 
         initialize(file);
-        this.name = name.substring(0,name.length() - 4);
+        this.name = name.substring(0,name.length() - FileTypes.LIST_EXTENSION.length());
 
         //Unused currently, sanity check? Remove entirely?
         String nameLine = Parser.getNextLine(fileScanner);

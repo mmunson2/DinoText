@@ -457,7 +457,7 @@ class DialogueParser
 
             ListParser parser = new ListParser(new File(
                     Paths.get(parentDirectory.toString(),
-                            nextList).toString() + ".txt"));
+                            nextList).toString() + FileTypes.LIST_EXTENSION));
 
 
             lists[listIndex] = new List(parser);
