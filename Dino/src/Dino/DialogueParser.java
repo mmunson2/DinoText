@@ -68,6 +68,10 @@ public class DialogueParser
         while(dialogueIn.hasNextLine())
         {
             String nextLine = Parser.getNextLine(dialogueIn);
+
+            if(nextLine == null)
+                break;
+            
             builder.append(nextLine);
             builder.append('\n');
         }

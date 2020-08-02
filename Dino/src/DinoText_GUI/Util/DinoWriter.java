@@ -127,7 +127,7 @@ public class DinoWriter
      * @param lists List Names
      * @param staticVars Static Variable Names
      *
-     * @since 0.4-beta
+     * @since 0.5-beta
      **************************************************************************/
     public void writeDialogueToFile(String path, String dialogue,
                                     String[] lists, String[] staticVars)

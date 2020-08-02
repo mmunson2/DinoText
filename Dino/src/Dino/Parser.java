@@ -26,6 +26,11 @@ class Parser
 
         while(true)
         {
+            if(!dialogueIn.hasNext())
+            {
+                return null;
+            }
+
             nextLine = dialogueIn.nextLine();
 
             if(nextLine.length() > 0 && nextLine.charAt(0) != '#')
