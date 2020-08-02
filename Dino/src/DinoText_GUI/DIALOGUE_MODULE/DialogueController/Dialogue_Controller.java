@@ -172,16 +172,12 @@ public class Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             String fileName = JOptionPane.showInputDialog("Open File Name: ");
 
-            if(fileName == null) //Cancelled operation
+            if (fileName == null) //Cancelled operation
             {
                 return;
-            }
-            else if(FileTypes.hasListExtension(fileName))
-            {
+            } else if (FileTypes.hasListExtension(fileName)) {
                 table_controller.openFile(fileName);
-            }
-            else if (FileTypes.hasDialogueExtension(fileName))
-            {
+            } else if (FileTypes.hasDialogueExtension(fileName)) {
                 String dialogueName = FileTypes.trimDialogueExtension(fileName);
 
                 DialogueParser parser = new DialogueParser(fileName);
@@ -190,27 +186,30 @@ public class Dialogue_Controller {
 
                 List[] lists = parser.getListArray();
                 //Todo: Take these list names and put it wherever you keep them
+                int j = 0;
+                System.out.println("Previous size: " + dinoGUIModel.getListNames().size());
+                for (List list : lists) {
+                    dinoGUIModel.getListNames().add(list.getName());
+                    j++;
+                }
+                System.out.println("Next size: " + dinoGUIModel.getListNames().size());
                 String[] listNames = new String[lists.length];
 
-                for(int i = 0; i < lists.length; i++)
-                {
+                for (int i = 0; i < lists.length; i++) {
                     listNames[i] = lists[i].getName();
                 }
 
-                for(int i = 0; i < listNames.length; i++)
-                {
+                for (int i = 0; i < listNames.length; i++) {
                     String listFileName = listNames[i] +
                             FileTypes.LIST_EXTENSION;
 
                     table_controller.openFile(listFileName);
                 }
-            }
-            else //File type not recognized
+            } else //File type not recognized
             {
                 JOptionPane.showMessageDialog(null,
                         "Could not open file: " + fileName);
             }
-
 
 
             if (fileName != null) {
@@ -296,36 +295,39 @@ public class Dialogue_Controller {
     private class listener_JMenuItem_Tools_ConvertToDynamicList implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-            if (word.length() > 0 && word.trim().length() > 0) {
+            if (dinoGUIView.getSelectedText_jTextPane_dialogueInput() != null) {
+                String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
 
-                String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
+                if (word.length() > 0 && word.trim().length() > 0) {
 
-                if (listName.length() > 0 && listName.trim().length() > 0) {
-                    dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
+                    String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
 
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            //When a list button is pressed, change the list tab
-                            table_controller.switchToName(listName.trim());
-                        }
-                    }, Color.yellow);
+                    if (listName.length() > 0 && listName.trim().length() > 0) {
+                        dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
 
-                    JMenuItem temp = new JMenuItem();
-                    temp.setText(listName.trim());
-                    temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
-                    dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                //When a list button is pressed, change the list tab
+                                table_controller.switchToName(listName.trim());
+                            }
+                        }, Color.yellow);
 
-                    table_controller.addList(listName.trim());
+                        JMenuItem temp = new JMenuItem();
+                        temp.setText(listName.trim());
+                        temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
+                        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
 
+                        table_controller.addList(listName.trim());
+
+                    }
+
+                    dinoGUIView.setFocusTSDialogueInput();
+
+                    dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
+                    table_controller.addEntry(word.trim());
+                } else {
+                    JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a word/sentence and try again.");
                 }
-
-                dinoGUIView.setFocusTSDialogueInput();
-
-                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-                table_controller.addEntry(word.trim());
-            } else {
-                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a word/sentence and try again.");
             }
         }
     }
@@ -709,7 +711,7 @@ public class Dialogue_Controller {
                     }
 
                     while (StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
-                        if(first) {
+                        if (first) {
                             pane.setCaretPosition(pane.getCaretPosition() + 1);
                             first = false;
                         }
@@ -723,8 +725,8 @@ public class Dialogue_Controller {
                         pane.setCaretPosition(pane.getCaretPosition() - 1);
                     }
 
-                        if (space)
-                            pane.setCaretPosition(pane.getCaretPosition() + 1);
+                    if (space)
+                        pane.setCaretPosition(pane.getCaretPosition() + 1);
 
                 }
             }
