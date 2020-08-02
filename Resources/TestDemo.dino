@@ -1,8 +1,10 @@
-# Generated: 2020/08/02 01:43:41
+# Generated: 2020/08/02 13:00:40
 
 Lists Referenced: 2
-nouns adjectives 
+silly nouns
+stupid adjectives
+
 
 Static Variables: 0
 
-This is a \L[adjectives] \L[nouns] 
+This is a \L[stupid adjectives] \L[silly nouns] 

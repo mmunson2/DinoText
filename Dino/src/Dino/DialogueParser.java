@@ -447,39 +447,18 @@ public class DialogueParser
             return;
         }
 
-        String listNames = Parser.getNextLine(dialogueIn);
-
-        stringScan = new Scanner(listNames);
-        int listIndex = 0;
-
-        while(this.lists.length > 0 && stringScan.hasNext())
+        for(int i = 0; i < listCount; i++)
         {
-            if(listIndex > lists.length)
-            {
-                System.err.println("DialogueParser Warning: " +
-                        "List references exceed size");
-                break;
-            }
-
-            String nextList = stringScan.next();
+            String listName = Parser.getNextLine(dialogueIn);
 
             ListParser parser = new ListParser(new File(
                     Paths.get(parentDirectory.toString(),
-                            nextList).toString() + FileTypes.LIST_EXTENSION));
+                            listName).toString() + FileTypes.LIST_EXTENSION));
 
-
-            lists[listIndex] = new List(parser);
+            lists[i] = new List(parser);
 
             this.traitNames.addAll(parser.getTraitNames());
 
-            listIndex++;
-        }
-
-
-        if(listIndex != lists.length)
-        {
-            System.out.println("DialogueParser Warning: " +
-                    "Size exceeds list references ");
         }
 
         for(List list: lists)

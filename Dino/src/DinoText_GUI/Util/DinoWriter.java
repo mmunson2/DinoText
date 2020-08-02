@@ -152,7 +152,7 @@ public class DinoWriter
                 builder.setLength(0);
 
                 builder.append(list);
-                builder.append(" ");
+                builder.append("\n");
 
                 this.writer.write(builder.toString());
             }

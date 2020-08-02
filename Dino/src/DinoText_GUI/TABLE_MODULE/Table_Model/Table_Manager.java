@@ -87,6 +87,22 @@ public class Table_Manager
     }
 
     /***************************************************************************
+     * Get List Names
+     *
+     **************************************************************************/
+    public String[] getListNames()
+    {
+        String[] retVal = new String[this.lists.size()];
+
+        for(int i = 0; i < this.lists.size(); i++)
+        {
+            retVal[i] = this.lists.get(i).getName();
+        }
+
+        return retVal;
+    }
+
+    /***************************************************************************
      * Get List Index From Name
      *
      **************************************************************************/
