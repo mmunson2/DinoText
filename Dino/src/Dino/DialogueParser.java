@@ -51,7 +51,7 @@ public class DialogueParser
      * should be initialized during a loading sequence.
      *
      * @param path The dialogue file path
-     * @since 0.25-alpha
+     * @since 0.5-beta
      **************************************************************************/
     public DialogueParser(String path)
     {
@@ -71,7 +71,7 @@ public class DialogueParser
 
             if(nextLine == null)
                 break;
-            
+
             builder.append(nextLine);
             builder.append('\n');
         }

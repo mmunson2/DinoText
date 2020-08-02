@@ -255,6 +255,14 @@ public class Table_Controller {
 
         ListParser parser = new ListParser(new File(fileName));
 
+        String name = parser.getName();
+
+        if(manager.hasList(name))
+        {
+            //Todo: Make this overwrite the existing list
+            return;
+        }
+        
         this.addList(parser.getName());
 
         ListEntry[] entries = parser.getList();

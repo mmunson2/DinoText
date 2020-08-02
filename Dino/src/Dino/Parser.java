@@ -18,7 +18,7 @@ class Parser
     /***************************************************************************
      * getNextLine
      *
-     * @since 0.25-alpha
+     * @since 0.5-beta
      **************************************************************************/
     static String getNextLine(Scanner dialogueIn)
     {
