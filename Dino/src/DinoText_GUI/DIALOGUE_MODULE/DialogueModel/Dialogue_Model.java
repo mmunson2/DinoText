@@ -1,5 +1,6 @@
 package DinoText_GUI.DIALOGUE_MODULE.DialogueModel;
 
+import Dino.FileTypes;
 import DinoText_GUI.Util.DinoWriter;
 
 import java.util.HashSet;
@@ -75,8 +76,6 @@ public class Dialogue_Model {
      *
      **************************************************************************/
     public void writeToFile() {
-        System.out.println(this.dialogue);
-
         DinoWriter writer = new DinoWriter();
 
         writer.writeDialogueToFile(name, dialogue, listNames.toArray(new String[listNames.size()]), staticVars.toArray(new String[staticVars.size()]));

@@ -3,6 +3,10 @@ package DinoText_GUI.DIALOGUE_MODULE.DialogueController;
 import DinoDictionary.DinoDictionary;
 import DinoDictionary.WordSuggest;
 import Dino.Dino;
+import Dino.FileTypes;
+import Dino.DialogueParser;
+import Dino.List.List;
+
 import DinoText_GUI.TABLE_MODULE.Table_Controller.Table_Controller;
 import DinoText_GUI.DISPLAY_MODULE.DisplayController.Text_Display_Controller;
 import DinoText_GUI.DinoText;
@@ -166,22 +170,58 @@ public class Dialogue_Controller {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
+            String fileName = JOptionPane.showInputDialog("Open File Name: ");
+
+            if(fileName == null) //Cancelled operation
+            {
+                return;
+            }
+            else if(FileTypes.hasListExtension(fileName))
+            {
+                table_controller.openFile(fileName);
+            }
+            else if (FileTypes.hasDialogueExtension(fileName))
+            {
+                String dialogueName = FileTypes.trimDialogueExtension(fileName);
+
+                DialogueParser parser = new DialogueParser(fileName);
+                //Todo: Take this dialogue String and put it into the view
+                String dialogue = parser.getUnformattedDialogue();
+
+                List[] lists = parser.getListArray();
+                //Todo: Take these list names and put it wherever you keep them
+                String[] listNames = new String[lists.length];
+
+                for(int i = 0; i < lists.length; i++)
+                {
+                    listNames[i] = lists[i].getName();
+                }
+
+                for(int i = 0; i < listNames.length; i++)
+                {
+                    String listFileName = listNames[i] +
+                            FileTypes.LIST_EXTENSION;
+
+                    table_controller.openFile(listFileName);
+                }
+            }
+            else //File type not recognized
+            {
+                JOptionPane.showMessageDialog(null,
+                        "Could not open file: " + fileName);
+            }
+
+
 
             if (fileName != null) {
                 dinoGUIModel.setName(fileName);
                 mostRecentSaved = fileName;
 
-                if (fileName != null) {
-                    dinoGUIModel.setName(fileName);
-                    mostRecentSaved = fileName;
+                dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+                dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                dinoGUIModel.writeToFile();
 
-                    dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                    dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-                    dinoGUIModel.writeToFile();
-
-                    table_controller.writeAllToFile();
-                }
+                table_controller.writeAllToFile();
             }
         }
     }
@@ -459,7 +499,6 @@ public class Dialogue_Controller {
             }
 
         });
-
     }
 
     /***************************************************************************
@@ -492,6 +531,7 @@ public class Dialogue_Controller {
     public void saveDialogueFile() {
         String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
         if (fileName != null) {
+
             dinoGUIModel.setName(fileName);
             mostRecentSaved = fileName;
 

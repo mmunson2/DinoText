@@ -24,13 +24,15 @@ import java.util.Set;
  * Date: 6/20/2020
  * @version 0.25-alpha
  ******************************************************************************/
-class DialogueParser
+public class DialogueParser
 {
     private Scanner dialogueIn;
     private List[] lists;
     private Set<String> traitNames;
 
     private final String dialogue;
+    private final String unformattedDialogue;
+
     private String[] staticVars;
 
     private int[][] indices;
@@ -51,7 +53,7 @@ class DialogueParser
      * @param path The dialogue file path
      * @since 0.25-alpha
      **************************************************************************/
-    DialogueParser(String path)
+    public DialogueParser(String path)
     {
         File file = (new File(path)).getAbsoluteFile();
         this.parentDirectory = file.getParentFile();
@@ -72,6 +74,7 @@ class DialogueParser
 
         initializeIndices(builder.toString());
 
+        this.unformattedDialogue = builder.toString();
         this.dialogue = formatDialogue(builder.toString());
     }
 
@@ -87,9 +90,14 @@ class DialogueParser
      *
      * @since 0.25-alpha
      **************************************************************************/
-    String getDialogue()
+    public String getDialogue()
     {
         return this.dialogue;
+    }
+
+    public String getUnformattedDialogue()
+    {
+        return this.unformattedDialogue;
     }
 
     /***************************************************************************
@@ -104,7 +112,7 @@ class DialogueParser
      *
      * @since 0.25-alpha
      **************************************************************************/
-    List[] getListArray()
+    public List[] getListArray()
     {
         return this.lists;
     }
@@ -146,7 +154,7 @@ class DialogueParser
      * @return the indices array
      * @since 0.25-alpha
      **************************************************************************/
-    int[][] getIndices() { return this.indices; }
+    public int[][] getIndices() { return this.indices; }
 
 
     /***************************************************************************
@@ -182,7 +190,7 @@ class DialogueParser
      * @return the staticVars array
      * @since 0.25-alpha
      **************************************************************************/
-    String[][] getStaticVars()
+    public String[][] getStaticVars()
     {
         String[][] retVal = new String[staticVars.length][2];
 
@@ -206,7 +214,7 @@ class DialogueParser
      *
      * @since 0.25-alpha
      **************************************************************************/
-    String[] getTraitNames()
+    public String[] getTraitNames()
     {
         return Arrays.copyOf(this.traitNames.toArray(),
                 this.traitNames.size(), String[].class);

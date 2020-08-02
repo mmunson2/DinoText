@@ -82,6 +82,11 @@ public class Dino
      **************************************************************************/
     public Dino(String path)
     {
+        if(!FileTypes.hasDialogueExtension(path))
+        {
+            path += FileTypes.DIALOGUE_EXTENSION;
+        }
+
         DialogueParser parser = new DialogueParser(path);
         this.dialogue = parser.getDialogue();
         this.lists = parser.getListArray();

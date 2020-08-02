@@ -1,5 +1,6 @@
 package DinoText_GUI.TABLE_MODULE.Table_Controller;
 
+import Dino.FileTypes;
 import Dino.List.ListEntry;
 import Dino.List.Trait;
 import Dino.ListParser;
@@ -238,6 +239,15 @@ public class Table_Controller {
      **************************************************************************/
     public void openFile(String fileName)
     {
+        if(!FileTypes.hasListExtension(fileName))
+        {
+            System.err.println("Could not open " + fileName);
+
+            JOptionPane.showMessageDialog(null, "Could not open " + fileName);
+
+            return;
+        }
+
         ListParser parser = new ListParser(new File(fileName));
 
         this.addList(parser.getName());

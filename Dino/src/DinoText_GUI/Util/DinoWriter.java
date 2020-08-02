@@ -134,6 +134,11 @@ public class DinoWriter
     {
         try
         {
+            if(!FileTypes.hasDialogueExtension(path))
+            {
+                path += FileTypes.DIALOGUE_EXTENSION;
+            }
+
             this.writer = new FileWriter(path);
             StringBuilder builder = new StringBuilder();
             writeDate();
