@@ -1,6 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.Table_Model;
 
 
+import Dino.List.ListEntry;
 import Dino.List.Trait;
 import DinoText_GUI.Util.DinoList;
 import DinoText_GUI.Util.DinoWriter;
@@ -115,11 +116,22 @@ public class Table_Model extends AbstractTableModel
         writer.writeListToFile(this.list);
     }
 
+
+    public void addEntry(String entry, double weight)
+    {
+        this.addEntry(entry, weight, null);
+    }
+
+    public void addEntry(ListEntry listEntry)
+    {
+        this.addEntry(listEntry.getListEntry(), listEntry.getBaseProbability(), listEntry.getTraits());
+    }
+
     /***************************************************************************
      * addEntry
      *
      **************************************************************************/
-    public void addEntry(String entry, double weight)
+    public void addEntry(String entry, double weight, Trait[] traits)
     {
         int rowIndex = nextEmptyRow();
 
@@ -134,8 +146,18 @@ public class Table_Model extends AbstractTableModel
         this.list.setProbability(rowIndex, weight);
 
         this.probabilities.updateWeight(rowIndex, weight);
+
+        if(traits != null)
+        {
+            for(Trait trait : traits)
+            {
+                this.addTrait(rowIndex, trait);
+            }
+        }
+
         this.fireTableDataChanged();
     }
+
 
 
     /***************************************************************************

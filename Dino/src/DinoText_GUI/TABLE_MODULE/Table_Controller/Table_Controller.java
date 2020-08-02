@@ -156,6 +156,11 @@ public class Table_Controller {
         this.manager.getCurrentModel().addEntry(entry, weight);
     }
 
+    public void addEntry(ListEntry listEntry)
+    {
+        this.manager.getCurrentModel().addEntry(listEntry);
+    }
+
     /***************************************************************************
      * rename List
      *
@@ -262,14 +267,14 @@ public class Table_Controller {
             //Todo: Make this overwrite the existing list
             return;
         }
-        
+
         this.addList(parser.getName());
 
         ListEntry[] entries = parser.getList();
 
-        for(int i = 0; i < entries.length; i++)
+        for(ListEntry entry : entries)
         {
-            this.addEntry(entries[i].getListEntry(), entries[i].getBaseProbability());
+            this.addEntry(entry);
         }
     }
 
