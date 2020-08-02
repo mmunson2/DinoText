@@ -141,6 +141,11 @@ public class Table_Controller {
         }
     }
 
+    public String[] getListNames()
+    {
+        return this.manager.getListNames();
+    }
+
     public void addEntry(String entry)
     {
         this.manager.getCurrentModel().addEntry(entry, 1.0);

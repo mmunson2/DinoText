@@ -7,10 +7,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Dino/DinoTest_Lists.java" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Dino/DinoTest_Lists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/TestDemo.dino" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/TestDemo.dino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/adjectives.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/adjectives.dlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/nouns.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/nouns.dlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dino/DialogueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/DialogueParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Resources/TestDemo.dino" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/TestDemo.dino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/Untitled List.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Untitled List.dlist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Resources/adjectives.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/adjectives.dlist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Resources/nouns.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/nouns.dlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T1_dialogueOnly.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T2_List1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T2_listOnly.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T3_List1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T3_dialogue&amp;List.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T4_List1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T4_list&amp;Dialogue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T5_List1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T5_dialogue&amp;List&amp;Dialogue.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T6_2ListsSameRef.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T6_List1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T7_2Lists2Ref.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T7_List1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Test_Resources/T7_List2.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +80,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propGUI" />
@@ -102,37 +126,11 @@
       </method>
     </configuration>
     <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.MatthewTestTable.Driver" />
-      <module name="Dino" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DinoText_GUI.MatthewTestTable.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DinoText_GUI.IhsanTestTable.Driver" />
       <module name="Dino" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="DinoText_GUI.MODEL.Table.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TableExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="DinoText_GUI.TableWindow_Demo_2.TableExample" />
-      <module name="Dino" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="DinoText_GUI.TableWindow_Demo_2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,6 +151,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DinoTest_Lists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dino" />
+      <useClassPathOnly />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dino.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dino" />
+      <option name="MAIN_CLASS_NAME" value="Dino.DinoTest_Lists" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Test_Resources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DinoTest_Lists.T1_DialogueOnly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dino" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dino.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dino" />
+      <option name="MAIN_CLASS_NAME" value="Dino.DinoTest_Lists" />
+      <option name="METHOD_NAME" value="T1_DialogueOnly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DinoTest_Lists.T2_listOnly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dino" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Dino.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Dino" />
+      <option name="MAIN_CLASS_NAME" value="Dino.DinoTest_Lists" />
+      <option name="METHOD_NAME" value="T2_listOnly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="JUnit" factoryName="JUnit">
       <module name="Dino" />
       <option name="PACKAGE_NAME" value="Dino" />
@@ -167,17 +216,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.DinoText" />
-      <item itemvalue="Application.Driver" />
-      <item itemvalue="Application.TableExample" />
       <item itemvalue="Application.TraitLabel" />
       <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="JUnit.DinoTest_Lists" />
+      <item itemvalue="JUnit.DinoTest_Lists.T1_DialogueOnly" />
+      <item itemvalue="JUnit.DinoTest_Lists.T2_listOnly" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DinoText" />
+        <item itemvalue="JUnit.DinoTest_Lists.T2_listOnly" />
+        <item itemvalue="JUnit.DinoTest_Lists.T1_DialogueOnly" />
+        <item itemvalue="JUnit.DinoTest_Lists" />
         <item itemvalue="Application.TraitLabel" />
-        <item itemvalue="Application.TableExample" />
-        <item itemvalue="Application.Driver" />
       </list>
     </recent_temporary>
   </component>
@@ -217,7 +268,8 @@
       <workItem from="1596174046839" duration="645000" />
       <workItem from="1596234365471" duration="4844000" />
       <workItem from="1596325618513" duration="2178000" />
-      <workItem from="1596347742948" duration="6611000" />
+      <workItem from="1596347742948" duration="6807000" />
+      <workItem from="1596393334608" duration="2766000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>
@@ -246,14 +298,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Bug fixes and unit tests for static pass through" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="208" y="31" key="#Project_Structure" timestamp="1595280407914">
+    <state x="208" y="31" key="#Project_Structure" timestamp="1596397781731">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="208" y="31" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1595280407914" />
-    <state x="296" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596236084308">
+    <state x="208" y="31" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1596397781731" />
+    <state x="296" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596397914541">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="296" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1596236084308" />
+    <state x="296" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1596397914541" />
     <state x="381" y="272" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1594260657794" />
     <state x="685" y="216" key="#com.intellij.ide.util.MemberChooser" timestamp="1596084715149">
       <screen x="0" y="0" width="1851" height="1194" />
@@ -293,61 +345,61 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom" timestamp="1596357676667">
+    <state width="1398" height="274" key="GridCell.Tab.0.bottom" timestamp="1596398196421">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
-    <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596357676667" />
+    <state width="1398" height="274" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596398196421" />
     <state width="1808" height="313" key="GridCell.Tab.0.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662342" />
     <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596040574569" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center" timestamp="1596357676666">
+    <state width="1398" height="274" key="GridCell.Tab.0.center" timestamp="1596398196420">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596357676666" />
+    <state width="1398" height="274" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596398196420" />
     <state width="1808" height="313" key="GridCell.Tab.0.center/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596040574567" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left" timestamp="1596357676665">
+    <state width="1398" height="274" key="GridCell.Tab.0.left" timestamp="1596398196420">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
-    <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596357676665" />
+    <state width="1398" height="274" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596398196420" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
     <state width="1808" height="313" key="GridCell.Tab.0.left/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596040574566" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right" timestamp="1596357676666">
+    <state width="1398" height="274" key="GridCell.Tab.0.right" timestamp="1596398196421">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
-    <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596357676666" />
+    <state width="1398" height="274" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596398196421" />
     <state width="1808" height="313" key="GridCell.Tab.0.right/0.0.1851.1194@0.0.1851.1194" timestamp="1596105297567" />
     <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596040574568" />
-    <state width="1398" height="30" key="GridCell.Tab.1.bottom" timestamp="1596349674396">
+    <state width="1398" height="274" key="GridCell.Tab.1.bottom" timestamp="1596398196423">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="30" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596349674396" />
+    <state width="1398" height="274" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596398196423" />
     <state width="1808" height="425" key="GridCell.Tab.1.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="406" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1595989778556" />
-    <state width="1398" height="30" key="GridCell.Tab.1.center" timestamp="1596349674392">
+    <state width="1398" height="274" key="GridCell.Tab.1.center" timestamp="1596398196422">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="30" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1596349674392" />
+    <state width="1398" height="274" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1596398196422" />
     <state width="1808" height="425" key="GridCell.Tab.1.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="406" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1595989778555" />
-    <state width="1398" height="30" key="GridCell.Tab.1.left" timestamp="1596349674391">
+    <state width="1398" height="274" key="GridCell.Tab.1.left" timestamp="1596398196422">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="30" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1596349674391" />
+    <state width="1398" height="274" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1596398196422" />
     <state width="1808" height="425" key="GridCell.Tab.1.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="406" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1595989778555" />
-    <state width="1398" height="30" key="GridCell.Tab.1.right" timestamp="1596349674394">
+    <state width="1398" height="274" key="GridCell.Tab.1.right" timestamp="1596398196423">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="30" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1596349674394" />
+    <state width="1398" height="274" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1596398196423" />
     <state width="1808" height="425" key="GridCell.Tab.1.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="406" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1595989778555" />
     <state x="388" y="172" key="GuiDesigner.FormSource.Dialog" timestamp="1594552740690">

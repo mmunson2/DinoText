@@ -112,6 +112,7 @@ public class Creator_Controller
 
             model.setWeight(value);
             view.setTraitWeight(value);
+            view.setDisplayProbability(model.getProbability());
         }
     }
 
