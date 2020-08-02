@@ -3,6 +3,7 @@ package DinoText_GUI.TABLE_MODULE.Table_View;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.Table_Buttons.TableButton_View;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Columns;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.Table_Buttons.TableButton_Model;
+import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay.Table_TraitDisplay;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
@@ -71,6 +72,7 @@ public class Table_View {
     {
         try {
             this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
+            this.listTable.getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
             this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
         }
         catch(Exception e)

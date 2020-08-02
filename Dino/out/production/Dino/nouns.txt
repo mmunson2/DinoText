@@ -1,9 +1,9 @@
-# Generated: 2020/07/31 15:57:42
+# Generated: 2020/08/01 16:56:47
 Name: nouns
 Size: 4
 1: test
 1.0 
-2: demonstration
+2: demo
 1.0 
 3: 
 0.0 
