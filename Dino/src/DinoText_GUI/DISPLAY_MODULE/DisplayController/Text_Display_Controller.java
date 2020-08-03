@@ -2,12 +2,11 @@
 
 package DinoText_GUI.DISPLAY_MODULE.DisplayController;
 
-import DinoText_GUI.DISPLAY_MODULE.TraitSetWindow.Trait_Set_Controller;
 import DinoText_GUI.Util.DinoConfig;
 import Dino.Dino;
 import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
 import DinoText_GUI.DISPLAY_MODULE.DisplayView.Text_Display_View;
-import DinoText_GUI.DISPLAY_MODULE.TraitSetWindow.Trait_Set_View;
+import DinoText_GUI.DISPLAY_MODULE.DisplayView.Trait_Setting_View;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -24,7 +23,7 @@ public class Text_Display_Controller
     private Text_Display_Model model;
     private Text_Display_View view;
     private DinoConfig config;
-    private Trait_Set_Controller controller = null;
+    private Trait_Setting_View window = null;
 
     /***************************************************************************
      * Constructor
@@ -217,15 +216,15 @@ public class Text_Display_Controller
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            if (controller == null)
+            if (window == null)
             {
-                controller = new Trait_Set_Controller(model.getDino());
+                window = new Trait_Setting_View(model.getDino());
             }
 
-            if (!controller.isVisible())
+            if (!window.isVisible())
             {
-                controller = new Trait_Set_Controller(model.getDino());
-                controller.setVisible(true);
+                window = new Trait_Setting_View(model.getDino());
+                window.setVisible(true);
             }
         }
     }

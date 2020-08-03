@@ -345,7 +345,7 @@ public class Dino
      * Gets the name of the trait at the given index
      *
      * @return The trait value, -1 for invalid index
-     * @since 0.5-beta
+     * @since 0.5
      **************************************************************************/
     public double getTraitValue(int index)
     {
@@ -357,19 +357,6 @@ public class Dino
         {
             return this.traitVals[index];
         }
-    }
-
-    /***************************************************************************
-     * getTraitValues
-     *
-     * Gets the name of the trait at the given index
-     *
-     * @return The trait value array
-     * @since 0.5-beta
-     **************************************************************************/
-    public double[] getTraitValues()
-    {
-        return this.traitVals;
     }
 
     /***************************************************************************
