@@ -48,24 +48,4 @@ public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer 
 
         return panel;
     }
-
-    /***************************************************************************
-     * Update Trait Display
-     *
-     **************************************************************************/
-    public static void updateTraitDisplay(Table_Model model) {
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-        DinoList list = model.getList();
-
-        for (int i = 0; i < list.size(); i++) {
-
-            if (list.getTraits(i) != null) {
-                for (Trait t :list.getTraits(i)) {
-                    TraitModel trait = new TraitModel(t);
-                    panel.add(new TraitLabel(trait.getName(), trait.getLowerBound(), trait.getUpperBound()));
-                }
-            }
-        }
-    }
 }
