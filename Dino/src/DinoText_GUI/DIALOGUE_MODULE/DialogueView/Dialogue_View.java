@@ -335,23 +335,12 @@ public class Dialogue_View {
         }
     }
 
-
-
     /***************************************************************************
      * Get Selected Text
      *
      **************************************************************************/
     public String getSelectedText_jTextPane_dialogueInput() {
         return jTextPane_dialogueInput.getSelectedText();
-    }
-
-    /***************************************************************************
-     * Set Selected Text
-     *
-     **************************************************************************/
-    public void setSelectedText_jTextPane_dialogueInput(int start, int end) {
-        jTextPane_dialogueInput.setSelectionStart(start);
-        jTextPane_dialogueInput.setSelectionEnd(end);
     }
 
     /***************************************************************************
@@ -406,14 +395,6 @@ public class Dialogue_View {
     public void dehighlightAll(){
         Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
         highlighter.removeAllHighlights();
-    }
-
-    /***************************************************************************
-     * Set Caret Position
-     *
-     **************************************************************************/
-    public void setCaret_jTextPane_dialogueInput(int pos) {
-        jTextPane_dialogueInput.setCaretPosition(pos);
     }
 
     public void pack() {
