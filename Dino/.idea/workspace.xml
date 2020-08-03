@@ -8,40 +8,26 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/Dino/Dino.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/Dino/Dino.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_New.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_New.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_Open.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_Open.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_Preview.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_Preview.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_Save.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_File_Save.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Preferences.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Preferences.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_ConvertToDynamicList$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_ConvertToDynamicList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_ConvertToDynamicList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_Dehighlight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_Dehighlight.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_DynamicWordCandidateSuggestion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_DynamicWordCandidateSuggestion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_InsertDynamicList$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_InsertDynamicList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_InsertDynamicList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_InsertStaticVariable$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_InsertStaticVariable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_InsertStaticVariable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_Synonyms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JMenuItem_Tools_Synonyms.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JPanel_dialogueInput_backspace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_JPanel_dialogueInput_backspace.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_jPopupMenu_listInsertion_SelectExistingList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller$listener_jPopupMenu_listInsertion_SelectExistingList.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$charactersSpinnerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$charactersSpinnerListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$generateNewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$generateNewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$linesSpinnerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$linesSpinnerListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$nextButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$nextButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$prevButtonListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$prevButtonListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$traitSettingsListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller$traitSettingsListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View$sliderListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View$sliderListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode$TextWithMnemonic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/com/intellij/uiDesigner/core/SupportCode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/CompareTest.dino" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/CompareTest.dino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/TestDemo.dino" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/TestDemo.dino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/adjectives.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/adjectives.dlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Resources/silly nouns.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/silly nouns.dlist" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,37 +340,37 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1808" height="604" key="GridCell.Tab.0.bottom" timestamp="1596467740046">
+    <state width="1808" height="203" key="GridCell.Tab.0.bottom" timestamp="1596472549014">
       <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
     <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1596401115463" />
-    <state width="1808" height="604" key="GridCell.Tab.0.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1596467740046" />
+    <state width="1808" height="203" key="GridCell.Tab.0.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1596472549014" />
     <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662342" />
     <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596040574569" />
-    <state width="1808" height="604" key="GridCell.Tab.0.center" timestamp="1596467740046">
+    <state width="1808" height="203" key="GridCell.Tab.0.center" timestamp="1596472549014">
       <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
     <state width="1398" height="255" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1596401115455" />
-    <state width="1808" height="604" key="GridCell.Tab.0.center/0.0.1851.1194@0.0.1851.1194" timestamp="1596467740046" />
+    <state width="1808" height="203" key="GridCell.Tab.0.center/0.0.1851.1194@0.0.1851.1194" timestamp="1596472549014" />
     <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596040574567" />
-    <state width="1808" height="604" key="GridCell.Tab.0.left" timestamp="1596467740045">
+    <state width="1808" height="203" key="GridCell.Tab.0.left" timestamp="1596472549014">
       <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
     <state width="1398" height="255" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1596401115449" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
-    <state width="1808" height="604" key="GridCell.Tab.0.left/0.0.1851.1194@0.0.1851.1194" timestamp="1596467740045" />
+    <state width="1808" height="203" key="GridCell.Tab.0.left/0.0.1851.1194@0.0.1851.1194" timestamp="1596472549014" />
     <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596040574566" />
-    <state width="1808" height="604" key="GridCell.Tab.0.right" timestamp="1596467740046">
+    <state width="1808" height="203" key="GridCell.Tab.0.right" timestamp="1596472549014">
       <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
     <state width="1398" height="255" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1596401115460" />
-    <state width="1808" height="604" key="GridCell.Tab.0.right/0.0.1851.1194@0.0.1851.1194" timestamp="1596467740046" />
+    <state width="1808" height="203" key="GridCell.Tab.0.right/0.0.1851.1194@0.0.1851.1194" timestamp="1596472549014" />
     <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596040574568" />
     <state width="1398" height="274" key="GridCell.Tab.1.bottom" timestamp="1596398834338">
@@ -429,10 +415,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="430" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1595279374929" />
-    <state x="734" y="517" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596438140882">
+    <state x="734" y="517" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1596470546000">
       <screen x="0" y="0" width="1851" height="1194" />
     </state>
-    <state x="734" y="517" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1851.1194@0.0.1851.1194" timestamp="1596438140882" />
+    <state x="734" y="517" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1851.1194@0.0.1851.1194" timestamp="1596470546000" />
     <state x="734" y="534" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1851.1234@0.0.1851.1234" timestamp="1594698498861" />
     <state x="477" y="337" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog" timestamp="1595155929154">
       <screen x="0" y="0" width="1440" height="900" />
@@ -460,11 +446,6 @@
           <url>file://$PROJECT_DIR$/Test/Dino/DinoTest_Static.java</url>
           <line>16</line>
           <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java</url>
-          <line>679</line>
-          <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.java</url>

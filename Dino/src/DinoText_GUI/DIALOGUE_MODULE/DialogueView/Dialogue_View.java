@@ -209,14 +209,9 @@ public class Dialogue_View {
         newList.setBackground(color);
         jTextPane_dialogueInput.insertComponent(newList);
         staticVarButtons.add(newList);
-//
-//        try {
-//            jTextPane_dialogueInput.getDocument().insertString(caretPos + (varName.length() + 5), "\b", null);
-//        } catch (BadLocationException e) {
-//            e.printStackTrace();
-//        }
 
     }
+
     /***************************************************************************
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
@@ -284,8 +279,10 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
-        jMenu_listInsertion.add(temp);
-        jPopupMenu_listInsertion.pack();
+        if (!jMenu_listInsertion.isMenuComponent(temp)) {
+            jMenu_listInsertion.add(temp);
+            jPopupMenu_listInsertion.pack();
+        }
     }
 
     /***************************************************************************
@@ -293,8 +290,10 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void addItemjPopupMenu_dictionary(JMenuItem temp) {
-        jMenu_dictionaryFunctions.add(temp);
-        jPopupMenu_listInsertion.pack();
+        if (!jMenu_dictionaryFunctions.isMenuComponent(temp)) {
+            jMenu_dictionaryFunctions.add(temp);
+            jPopupMenu_listInsertion.pack();
+        }
     }
 
     /***************************************************************************
@@ -334,7 +333,6 @@ public class Dialogue_View {
             }
         }
     }
-
 
 
     /***************************************************************************
@@ -403,7 +401,7 @@ public class Dialogue_View {
         }
     }
 
-    public void dehighlightAll(){
+    public void dehighlightAll() {
         Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
         highlighter.removeAllHighlights();
     }
@@ -422,5 +420,13 @@ public class Dialogue_View {
 
     public int getCaret_jTextPane_dialogueInput() {
         return jTextPane_dialogueInput.getCaretPosition();
+    }
+
+    public void clearjTextPane_dialogueInput() {
+        System.out.println("CLEARING");
+        SimpleAttributeSet set = new SimpleAttributeSet();
+        StyleConstants.setFontSize(set, 12);
+
+        jTextPane_dialogueInput.setCharacterAttributes(set, true);
     }
 }

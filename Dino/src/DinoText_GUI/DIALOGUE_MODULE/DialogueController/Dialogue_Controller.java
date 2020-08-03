@@ -350,8 +350,7 @@ public class Dialogue_Controller {
                     conversionHelper(word, listName);
 
                 }
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a word/sentence and try again.");
             }
         }
@@ -379,20 +378,27 @@ public class Dialogue_Controller {
                 }
             }, Color.yellow);
 
-            //adds button to popup menu
-            JMenuItem temp = new JMenuItem();
-            temp.setText(listName.trim());
-            temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
-            dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
             //adds button to table
             table_controller.addList(listName.trim());
+
+            // add button to list
+            jPopupMenu_listInsertion_updateMenuItems();
 
         }
 
         dinoGUIView.setFocusTSDialogueInput();
 
         dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
+    }
+
+
+    private void jPopupMenu_listInsertion_updateMenuItems() {
+        for (String listName : table_controller.getListNames()) {
+            JMenuItem temp = new JMenuItem();
+            temp.setText(listName.trim());
+            temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
+            dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+        }
     }
 
     /***************************************************************************
@@ -421,13 +427,10 @@ public class Dialogue_Controller {
                     }
                 }, Color.yellow);
 
-
-                JMenuItem temp = new JMenuItem();
-                temp.setText(listName.trim());
-                temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
-                dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
                 table_controller.addList(listName.trim());
+
+                // add button to list
+                jPopupMenu_listInsertion_updateMenuItems();
 
             } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
@@ -485,7 +488,9 @@ public class Dialogue_Controller {
             if (varName != null) {
                 if (varName.trim().length() > 0) {
                     varName = varName.trim();
+
                     staticHelper(varName);
+
                 } else {
                     JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
                 }
@@ -502,6 +507,7 @@ public class Dialogue_Controller {
             }
         }, Color.red);
 
+        // add button to list
         JMenuItem temp = new JMenuItem();
         temp.setText(varName);
         temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
@@ -525,6 +531,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void newDialogue() {
+        dinoGUIView.clearjTextPane_dialogueInput();
         dinoGUIView.setVisibleTSDialogueInput(true);
         dinoGUIView.setFocusTSDialogueInput();
     }
@@ -734,10 +741,8 @@ public class Dialogue_Controller {
 
             //add newname to jpopupmenu
 
-            JMenuItem tempItem = new JMenuItem();
-            tempItem.setText(newName);
-            tempItem.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(newName.trim()));
-            dinoGUIView.addItemjPopupMenu_listInsertion(tempItem);
+            // add button to list
+            jPopupMenu_listInsertion_updateMenuItems();
             dinoGUIView.pack();
         }
     }
@@ -769,7 +774,11 @@ public class Dialogue_Controller {
 
                 JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
 
-                if (pane.getText().length() > 0) {
+                if (pane.getText().length() >= 0) {
+                    if (pane.getCaretPosition() == 0) {
+                        newDialogue();
+                        return;
+                    }
 
                     try {
                         if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
@@ -781,7 +790,7 @@ public class Dialogue_Controller {
                         ex.printStackTrace();
                     }
 
-                    while (StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
+                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
                         if (first) {
                             pane.setCaretPosition(pane.getCaretPosition() + 1);
                             first = false;
@@ -789,6 +798,7 @@ public class Dialogue_Controller {
 
 
                         try {
+                            System.out.println("Caret pos: " + pane.getCaretPosition());
                             pane.getDocument().remove(pane.getCaretPosition(), 1);
                         } catch (BadLocationException ex) {
                         }
@@ -798,6 +808,7 @@ public class Dialogue_Controller {
 
                     if (space)
                         pane.setCaretPosition(pane.getCaretPosition() + 1);
+
 
                 }
             }
