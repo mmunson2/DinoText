@@ -230,26 +230,42 @@ public class Dialogue_Controller {
         String[] split = unformattedDialogue.split(" ");
         dinoGUIView.setText_jTextPane_dialogueInput(unformattedDialogue);
         String searchString = "";
-        boolean found;
+        int offset = 0;
 
         for (int i = 0; i < split.length; i++) {
             String word = split[i];
-            searchString += word + " ";
+            System.out.println("initial word: " + word + ".");
 
-            if (word.contains("\\L[")) {
-                do {
-                    word += split[++i];
-                } while (!word.contains("]"));
+            if (word.contains("\\L[") || word.contains("\\S[")) {
+                if (!word.contains("]")) {
+                    do {
+                        // get next word, then check to see if the list is complete.
+                        // add a space between words
+                        word += " " + split[++i];
+                    } while (!word.contains("]"));
+                }
 
-                int prevPanel = searchString.length() - word.length() - 1;
+                searchString += word + " ";
 
-                dinoGUIView.setSelectedText_jTextPane_dialogueInput(prevPanel, prevPanel + word.length());
-                System.out.println("Selected: " + dinoGUIView.getSelectedText_jTextPane_dialogueInput());
+                int selectionStart = searchString.lastIndexOf(word) + offset;
 
-                conversionHelper(word.substring(3, word.length() - 1));
-                System.out.println("found list :" + word.substring(3, word.length() - 1));
-            } else if (word.contains("\\S[") && word.contains("]")) {
-                //static is unused atm
+
+                dinoGUIView.setCaret_jTextPane_dialogueInput(selectionStart);
+                switch (word.charAt(1)) {
+                    case 'L':
+                        insertionHelper(word.substring(3, word.length() - 1));
+                        break;
+                    case 'S':
+                        staticHelper(word.substring(3, word.length() - 1));
+                        break;
+                }
+                dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
+                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
+
+                offset++;
+            } else {
+                searchString += word + " ";
+                System.out.println("ADDING: " + word + '.');
             }
         }
     }
@@ -261,10 +277,11 @@ public class Dialogue_Controller {
     class listener_JMenuItem_File_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            saveDialogueFile();
-            JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
-            jFrame.setVisible(false);
-            DinoText.main(null);
+            if (saveDialogueFile()) {
+                JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
+                jFrame.setVisible(false);
+                DinoText.main(null);
+            }
         }
     }
 
@@ -334,21 +351,23 @@ public class Dialogue_Controller {
 
                 }
             }
+            else {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a word/sentence and try again.");
+            }
         }
     }
 
     public void conversionHelper(String word, String listName) {
 
-        if (word.length() > 0 && word.trim().length() > 0) {
+        if (word != null && word.trim().length() > 0) {
             conversionHelper(listName);
             table_controller.addEntry(word.trim());
-        } else {
-            JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a word/sentence and try again.");
         }
     }
 
     public void conversionHelper(String listName) {
         if (listName.length() > 0 && listName.trim().length() > 0) {
+
 
             //inserts button into panel
             dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
@@ -391,27 +410,28 @@ public class Dialogue_Controller {
     }
 
     public void insertionHelper(String listName) {
-        if (listName.length() > 0 && listName.trim().length() > 0) {
-            dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
+        if (listName != null)
+            if (listName.trim().length() > 0) {
+                dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //When a list button is pressed, change the list tab
-                    table_controller.switchToName(listName.trim());
-                }
-            }, Color.yellow);
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //When a list button is pressed, change the list tab
+                        table_controller.switchToName(listName.trim());
+                    }
+                }, Color.yellow);
 
 
-            JMenuItem temp = new JMenuItem();
-            temp.setText(listName.trim());
-            temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
-            dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+                JMenuItem temp = new JMenuItem();
+                temp.setText(listName.trim());
+                temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
+                dinoGUIView.addItemjPopupMenu_listInsertion(temp);
 
-            table_controller.addList(listName.trim());
+                table_controller.addList(listName.trim());
 
-        } else {
-            JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
-        }
+            } else {
+                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
+            }
     }
 
     /***************************************************************************
@@ -429,7 +449,6 @@ public class Dialogue_Controller {
                 for (String word : result) {
                     dinoGUIView.getSelectedText_jTextPane_dialogueInput();
                     try {
-                        System.out.print(word);
                         dinoGUIView.highlightWordInSelection(word, Color.yellow);
                     } catch (BadLocationException ex) {
                         ex.printStackTrace();
@@ -462,32 +481,35 @@ public class Dialogue_Controller {
      **************************************************************************/
     class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
-            parseUnformattedDialogue("This is a \\L[Dialogue Time] test");
-
-            /*String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
-            if (varName.length() > 0 && varName.trim().length() > 0) {
-                varName = varName.trim();
-                dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        //If we make a static variable menu, it should be
-                        //updated here
-                    }
-                }, Color.red);
-
-                JMenuItem temp = new JMenuItem();
-                temp.setText(varName);
-                temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
-                dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
-                dinoGUIModel.addStaticVar(varName);
-
-                dinoGUIView.setFocusTSDialogueInput();
-            } else {
-                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
-            }*/
+            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
+            if (varName != null) {
+                if (varName.trim().length() > 0) {
+                    varName = varName.trim();
+                    staticHelper(varName);
+                } else {
+                    JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
+                }
+            }
         }
+    }
+
+    public void staticHelper(String varName) {
+        dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //If we make a static variable menu, it should be
+                //updated here
+            }
+        }, Color.red);
+
+        JMenuItem temp = new JMenuItem();
+        temp.setText(varName);
+        temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
+        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+
+        dinoGUIModel.addStaticVar(varName);
+
+        dinoGUIView.setFocusTSDialogueInput();
     }
 
     /***************************************************************************
@@ -581,19 +603,20 @@ public class Dialogue_Controller {
      * Write To File
      *
      **************************************************************************/
-    public void saveDialogueFile() {
+    public boolean saveDialogueFile() {
         String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
         if (fileName != null) {
-
             dinoGUIModel.setName(fileName);
             mostRecentSaved = fileName;
 
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("  ", " "));
             dinoGUIModel.writeToFile();
 
             table_controller.writeAllToFile();
+            return true;
         }
+        return false;
     }
 
     /***************************************************************************
@@ -704,9 +727,7 @@ public class Dialogue_Controller {
             temp.remove(oldName);
             temp.add(newName);
             dinoGUIView.setSetListNames(temp);
-            System.out.println("Temp: " + temp);
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            System.out.println(dinoGUIView.getSetListNames());
 
             //remove oldname from jpopupmenu
             dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 2);
@@ -752,7 +773,6 @@ public class Dialogue_Controller {
 
                     try {
                         if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
-                            System.out.println("] found");
                             pane.setCaretPosition(pane.getCaretPosition() - 2);
                             space = true;
                             first = true;

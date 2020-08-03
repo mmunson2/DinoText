@@ -419,4 +419,8 @@ public class Dialogue_View {
     public void pack() {
         SwingUtilities.getWindowAncestor(jTextPane_dialogueInput).pack();
     }
+
+    public int getCaret_jTextPane_dialogueInput() {
+        return jTextPane_dialogueInput.getCaretPosition();
+    }
 }
