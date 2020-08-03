@@ -621,6 +621,7 @@ public class Dialogue_Controller {
             dinoGUIModel.writeToFile();
 
             table_controller.writeAllToFile();
+            ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("DinoText - " + fileName);
             return true;
         }
         return false;
