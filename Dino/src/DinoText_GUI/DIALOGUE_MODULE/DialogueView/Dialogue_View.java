@@ -423,7 +423,6 @@ public class Dialogue_View {
     }
 
     public void clearjTextPane_dialogueInput() {
-        System.out.println("CLEARING");
         SimpleAttributeSet set = new SimpleAttributeSet();
         StyleConstants.setFontSize(set, 12);
 

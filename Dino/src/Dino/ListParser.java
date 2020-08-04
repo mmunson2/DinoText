@@ -57,12 +57,14 @@ public class ListParser
         for(int i = 0; i < list.length; i++)
         {
             String listEntry = Parser.getNextLine(fileScanner);
+
             stringScan = new Scanner(listEntry);
             String entryNumber = stringScan.next(); //Ignore the entry number
             String entryName = stringScan.nextLine();
             entryName = entryName.substring(1);
 
             String dataEntry = Parser.getNextLine(fileScanner);
+
             stringScan = new Scanner(dataEntry);
 
             double baseProbability = stringScan.nextDouble();
@@ -165,12 +167,12 @@ public class ListParser
     {
         try
         {
-            this.fileScanner = new Scanner(file);
+            this.fileScanner = new Scanner(file); //TODO: Matthew: This scanner is not initializing correctly, could you take a look?
         }
         catch(IOException e)
         {
+
             System.err.println("ListParser could not locate fileScanner: " + file.getName());
-            System.exit(-1);
         }
     }
 

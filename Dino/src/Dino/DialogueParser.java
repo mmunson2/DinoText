@@ -58,7 +58,7 @@ public class DialogueParser
         File file = (new File(path)).getAbsoluteFile();
         this.parentDirectory = file.getParentFile();
 
-        initializeDialogue(path);
+        initializeDialogue(file.getAbsolutePath());
         initializeLists();
         initializeStaticVars();
 

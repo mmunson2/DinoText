@@ -105,8 +105,7 @@ public class Table_Controller {
     public void addList(String name, String[] entries) {
 
         //Check if the list already exists
-        if(this.manager.hasList(name))
-        {
+        if (this.manager.hasList(name)) {
             //Not doing anything currently!
         }
         //If this is the first list, just rename Untitled List
@@ -116,8 +115,7 @@ public class Table_Controller {
             this.view.initializeAddTraitButtonColumn();
 
             this.view.addTraitButtonListener(traitButtonListener);
-        }
-        else //Otherwise make a whole new list
+        } else //Otherwise make a whole new list
         {
             removeListeners();
             this.manager.addModel(name);
@@ -132,32 +130,26 @@ public class Table_Controller {
         }
 
         //If there are entries, add them
-        if(entries != null)
-        {
-            for(int i = 0; i < entries.length; i++)
-            {
+        if (entries != null) {
+            for (int i = 0; i < entries.length; i++) {
                 this.addEntry(entries[i]);
             }
         }
     }
 
-    public String[] getListNames()
-    {
+    public String[] getListNames() {
         return this.manager.getListNames();
     }
 
-    public void addEntry(String entry)
-    {
+    public void addEntry(String entry) {
         this.manager.getCurrentModel().addEntry(entry, 1.0);
     }
 
-    public void addEntry(String entry, double weight)
-    {
+    public void addEntry(String entry, double weight) {
         this.manager.getCurrentModel().addEntry(entry, weight);
     }
 
-    public void addEntry(ListEntry listEntry)
-    {
+    public void addEntry(ListEntry listEntry) {
         this.manager.getCurrentModel().addEntry(listEntry);
     }
 
@@ -226,8 +218,7 @@ public class Table_Controller {
      * writeCurrentToFile
      *
      **************************************************************************/
-    public void writeCurrentToFile()
-    {
+    public void writeCurrentToFile() {
         this.manager.getCurrentModel().writeToFile();
     }
 
@@ -235,35 +226,49 @@ public class Table_Controller {
      * writeToFile
      *
      **************************************************************************/
-    public void writeToFile(String name)
-    {
+    public void writeToFile(String name) {
         this.manager.writeToFile(name);
     }
 
     //Todo: Support Traits
     //Todo: If a list is already open, just switch the tab
     //Todo: Implement file extensions
+
     /***************************************************************************
      * openFile
      *
      **************************************************************************/
-    public void openFile(String fileName)
-    {
-        if(!FileTypes.hasListExtension(fileName))
-        {
+    public void openFile(String fileName) {
+        openFile(fileName, null);
+    }
+
+    public void openFile(File file) {
+        openFile(file.getName(), file);
+    }
+
+    public void openFile(String fileName, File file) {
+        if (!FileTypes.hasListExtension(fileName)) {
             System.err.println("Could not open " + fileName);
 
             JOptionPane.showMessageDialog(null, "Could not open " + fileName);
 
             return;
         }
+        ListParser parser = null;
 
-        ListParser parser = new ListParser(new File(fileName));
+        System.out.println("attempting to parse file");
+
+        if (file == null) {
+            System.out.println("parsing by name");
+            parser = new ListParser(new File(fileName));
+        } else {
+            System.out.println("parsing by File");
+            parser = new ListParser(file);
+        }
 
         String name = parser.getName();
 
-        if(manager.hasList(name))
-        {
+        if (manager.hasList(name)) {
             //Todo: Make this overwrite the existing list
             return;
         }
@@ -272,8 +277,7 @@ public class Table_Controller {
 
         ListEntry[] entries = parser.getList();
 
-        for(ListEntry entry : entries)
-        {
+        for (ListEntry entry : entries) {
             this.addEntry(entry);
         }
     }
@@ -327,8 +331,7 @@ public class Table_Controller {
         }
     }
 
-    class listener_debug implements ActionListener
-    {
+    class listener_debug implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
@@ -349,11 +352,9 @@ public class Table_Controller {
         }
     }
 
-    class listener_addTraitButton implements ActionListener
-    {
+    class listener_addTraitButton implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e)
-        {
+        public void actionPerformed(ActionEvent e) {
             int row = view.getSelectedRow();
             Table_Probabilities probabilities =
                     manager.getCurrentModel().getProbabilities();
@@ -367,18 +368,15 @@ public class Table_Controller {
             Creator_Controller traitController =
                     new Creator_Controller(traitModel, traitView);
 
-            int result = JOptionPane.showConfirmDialog(null, traitView.getPanel(), "Create Trait",JOptionPane.OK_CANCEL_OPTION);
+            int result = JOptionPane.showConfirmDialog(null, traitView.getPanel(), "Create Trait", JOptionPane.OK_CANCEL_OPTION);
 
-            if(result == JOptionPane.OK_OPTION)
-            {
+            if (result == JOptionPane.OK_OPTION) {
                 traitController.finalizeTrait();
                 Trait newTrait = traitModel.getTrait();
                 manager.getCurrentModel().addTrait(row, newTrait);
                 System.out.println("Trait Added");
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
-            }
-            else
-            {
+            } else {
                 System.out.println("Cancelled");
             }
         }
