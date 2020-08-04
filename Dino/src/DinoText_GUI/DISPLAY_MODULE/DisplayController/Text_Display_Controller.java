@@ -51,8 +51,9 @@ public class Text_Display_Controller
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
 
-        // setting up trait settings listener
+        // setting up settings listeners
         this.view.traitSettingsListener(new traitSettingsListener());
+        this.view.variableSettingsListener(new variableSettingsListener());
 
         this.view.add_generateNew_button_listener(new generateNewListener());
     }
@@ -74,6 +75,8 @@ public class Text_Display_Controller
      **************************************************************************/
     public void setDino(Dino dino)
     {
+        model.resetTraitSettings();
+        model.resetVariableSettings();
         this.model.setDino(dino);
         this.generateNewText();
     }
@@ -216,16 +219,20 @@ public class Text_Display_Controller
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            if (window == null)
-            {
-                window = new Trait_Setting_View(model.getDino());
-            }
+            model.openTraitSettings();
+        }
+    }
 
-            if (!window.isVisible())
-            {
-                window = new Trait_Setting_View(model.getDino());
-                window.setVisible(true);
-            }
+    /***************************************************************************
+     * Variable Settings Button
+     *
+     **************************************************************************/
+    class variableSettingsListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            model.openVariableSettings();
         }
     }
 
