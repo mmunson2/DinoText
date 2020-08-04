@@ -40,6 +40,9 @@ public class Table_View {
         this.listTable.setRowSelectionAllowed(false);
         this.listTable.setDragEnabled(false);
         this.listTable.getTableHeader().setReorderingAllowed(false);
+
+        //Disabled Debug Button for V0.5-beta release
+        this.debugButton.setVisible(false);
     }
 
     /***************************************************************************

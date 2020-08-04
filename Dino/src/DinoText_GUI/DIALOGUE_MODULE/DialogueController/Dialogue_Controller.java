@@ -152,7 +152,8 @@ public class Dialogue_Controller {
         JMenuBar toolsMenu = new JMenuBar();
         toolsMenu.add(tools);
 
-        dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
+        //Disabled Dictionary Tools for V0.5-beta release
+        //dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
     }
 
     /***************************************************************************
