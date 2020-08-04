@@ -2,6 +2,7 @@
 
 package DinoText_GUI.DISPLAY_MODULE.DisplayController;
 
+import DinoText_GUI.DISPLAY_MODULE.DisplayView.Variable_Setting_View;
 import DinoText_GUI.Util.DinoConfig;
 import Dino.Dino;
 import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
@@ -23,7 +24,8 @@ public class Text_Display_Controller
     private Text_Display_Model model;
     private Text_Display_View view;
     private DinoConfig config;
-    private Trait_Setting_View window = null;
+    private Trait_Setting_View traitSettings = null;
+    private Variable_Setting_View variableSettings = null;
 
     /***************************************************************************
      * Constructor
@@ -60,7 +62,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * setDialogue
-     *
      **************************************************************************/
     public void setDialogue(String str)
     {
@@ -71,19 +72,17 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * setDino
-     *
      **************************************************************************/
     public void setDino(Dino dino)
     {
-        model.resetTraitSettings();
-        model.resetVariableSettings();
+        resetTraitSettings();
+        resetVariableSettings();
         this.model.setDino(dino);
         this.generateNewText();
     }
 
     /***************************************************************************
      * Generate New Text
-     *
      **************************************************************************/
     public void generateNewText()
     {
@@ -94,7 +93,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * format
-     *
      **************************************************************************/
     public void format()
     {
@@ -103,7 +101,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * update display
-     *
      **************************************************************************/
     public void updateDisplay()
     {
@@ -114,7 +111,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * update config
-     *
      **************************************************************************/
     public void updateConfig()
     {
@@ -127,7 +123,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * setPage
-     *
      **************************************************************************/
     private void setPage(int i)
     {
@@ -135,9 +130,28 @@ public class Text_Display_Controller
         view.setPageCounter(i + " / " + model.getNumPages());
     }
 
+    // closes and deletes the trait settings window
+    public void resetTraitSettings()
+    {
+        if (traitSettings != null)
+        {
+            traitSettings.setVisible(false);
+            traitSettings = null;
+        }
+    }
+
+    // closes and deletes the variable settings window
+    public void resetVariableSettings()
+    {
+        if (variableSettings != null)
+        {
+            variableSettings.setVisible(false);
+            variableSettings = null;
+        }
+    }
+
     /***************************************************************************
      * Next Button
-     *
      **************************************************************************/
     class nextButtonListener implements ActionListener
     {
@@ -158,7 +172,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Previous Button
-     *
      **************************************************************************/
     class prevButtonListener implements ActionListener
     {
@@ -178,7 +191,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Character Count Spinner
-     *
      **************************************************************************/
     class charactersSpinnerListener implements ChangeListener
     {
@@ -195,7 +207,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Line Count Spinner
-     *
      **************************************************************************/
     class linesSpinnerListener implements ChangeListener
     {
@@ -212,33 +223,44 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Trait Settings Button
-     *
      **************************************************************************/
     class traitSettingsListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            model.openTraitSettings();
+            if (traitSettings == null)
+            {
+                traitSettings = new Trait_Setting_View(model.getDino());
+            }
+            if (!traitSettings.isVisible())
+            {
+                traitSettings.setVisible(true);
+            }
         }
     }
 
     /***************************************************************************
      * Variable Settings Button
-     *
      **************************************************************************/
     class variableSettingsListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            model.openVariableSettings();
+            if (variableSettings == null)
+            {
+                variableSettings = new Variable_Setting_View(model.getDino());
+            }
+            if (!variableSettings.isVisible())
+            {
+                variableSettings.setVisible(true);
+            }
         }
     }
 
     /***************************************************************************
      * Generate New Button
-     *
      **************************************************************************/
     class generateNewListener implements ActionListener
     {
