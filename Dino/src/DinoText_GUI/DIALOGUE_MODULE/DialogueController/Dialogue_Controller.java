@@ -15,10 +15,12 @@ import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
 
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -92,6 +94,11 @@ public class Dialogue_Controller {
         file.add(fileMenu);
 
         fileMenu = new JMenuItem();
+        fileMenu.setText("Save As");
+        fileMenu.addActionListener(new listener_JMenuItem_File_SaveAs());
+        file.add(fileMenu);
+
+        fileMenu = new JMenuItem();
         fileMenu.setText("Preview");
         fileMenu.addActionListener(new listener_JMenuItem_File_Preview());
         file.add(fileMenu);
@@ -162,6 +169,17 @@ public class Dialogue_Controller {
     class listener_JMenuItem_File_Save implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            saveExistingDialogueFile();
+        }
+    }
+
+    /***************************************************************************
+     * File Dropdown Menu - Save As
+     *
+     **************************************************************************/
+    class listener_JMenuItem_File_SaveAs implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             saveDialogueFile();
         }
     }
@@ -174,29 +192,37 @@ public class Dialogue_Controller {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String fileName = JOptionPane.showInputDialog("Open File Name: ");
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "DINO and DLIST files", "dino", "dlist");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(dinoGUIView.getjTextPane_dialogueInput());
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                System.out.println("You chose to open this file: " +
+                        chooser.getSelectedFile().getName());
+            }
 
-            if (fileName == null) //Cancelled operation
+            File file = chooser.getSelectedFile();
+
+            if (file == null) //Cancelled operation
             {
                 return;
-            } else if (FileTypes.hasListExtension(fileName)) {
-                table_controller.openFile(fileName);
-            } else if (FileTypes.hasDialogueExtension(fileName)) {
-                String dialogueName = FileTypes.trimDialogueExtension(fileName);
+            } else if (FileTypes.hasListExtension(file.getName())) {
+                table_controller.openFile(file);
+            } else if (FileTypes.hasDialogueExtension(file.getName())) {
+                String dialogueName = FileTypes.trimDialogueExtension(file.getName());
 
-                DialogueParser parser = new DialogueParser(fileName);
+                DialogueParser parser = new DialogueParser(file.getAbsolutePath());
                 //Todo: Take this dialogue String and put it into the view
                 parseUnformattedDialogue(parser.getUnformattedDialogue());
 
                 List[] lists = parser.getListArray();
                 //Todo: Take these list names and put it wherever you keep them
                 int j = 0;
-                System.out.println("Previous size: " + dinoGUIModel.getListNames().size());
                 for (List list : lists) {
                     dinoGUIModel.getListNames().add(list.getName());
                     j++;
                 }
-                System.out.println("Next size: " + dinoGUIModel.getListNames().size());
                 String[] listNames = new String[lists.length];
 
                 for (int i = 0; i < lists.length; i++) {
@@ -212,19 +238,12 @@ public class Dialogue_Controller {
             } else //File type not recognized
             {
                 JOptionPane.showMessageDialog(null,
-                        "Could not open file: " + fileName);
+                        "Could not open file: " + file.getName());
             }
 
 
-            if (fileName != null) {
-                dinoGUIModel.setName(fileName);
-                mostRecentSaved = fileName;
-
-                dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-                dinoGUIModel.writeToFile();
-
-                table_controller.writeAllToFile();
+            if (file != null) {
+                saveDialogueFileHelper(file.getName());
             }
         }
     }
@@ -238,7 +257,6 @@ public class Dialogue_Controller {
 
         for (int i = 0; i < split.length; i++) {
             String word = split[i];
-            System.out.println("initial word: " + word + ".");
 
             if (word.contains("\\L[") || word.contains("\\S[")) {
                 if (!word.contains("]")) {
@@ -269,7 +287,6 @@ public class Dialogue_Controller {
                 offset++;
             } else {
                 searchString += word + " ";
-                System.out.println("ADDING: " + word + '.');
             }
         }
     }
@@ -281,7 +298,7 @@ public class Dialogue_Controller {
     class listener_JMenuItem_File_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (saveDialogueFile()) {
+            if (saveExistingDialogueFile()) {
                 JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
                 jFrame.setVisible(false);
                 DinoText.main(null);
@@ -306,14 +323,7 @@ public class Dialogue_Controller {
                 if (mostRecentSaved == null) {
                     String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
 
-                    dinoGUIModel.setName(fileName);
-                    mostRecentSaved = fileName;
-
-                    dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                    dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-                    dinoGUIModel.writeToFile();
-
-                    table_controller.writeAllToFile();
+                    saveDialogueFileHelper(fileName);
                 }
 
 
@@ -617,16 +627,34 @@ public class Dialogue_Controller {
     public boolean saveDialogueFile() {
         String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
         if (fileName != null) {
-            dinoGUIModel.setName(fileName);
-            mostRecentSaved = fileName;
-
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("  ", " "));
-            dinoGUIModel.writeToFile();
-
-            table_controller.writeAllToFile();
-            ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("DinoText - " + fileName);
+            saveDialogueFileHelper(fileName);
             return true;
+        }
+        return false;
+    }
+
+    private void saveDialogueFileHelper(String fileName) {
+        dinoGUIModel.setName(fileName);
+        mostRecentSaved = fileName;
+
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
+        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        dinoGUIModel.writeToFile();
+
+        table_controller.writeAllToFile();
+        ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
+        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+    }
+
+    public boolean saveExistingDialogueFile() {
+        String fileName = ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).getTitle();
+        if (fileName.length() > 9) {
+            fileName = fileName.substring(12);
+            saveDialogueFileHelper(fileName);
+            return true;
+        } else {
+            saveDialogueFile();
         }
         return false;
     }
@@ -803,7 +831,6 @@ public class Dialogue_Controller {
 
 
                         try {
-                            System.out.println("Caret pos: " + pane.getCaretPosition());
                             pane.getDocument().remove(pane.getCaretPosition(), 1);
                         } catch (BadLocationException ex) {
                         }
