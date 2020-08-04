@@ -356,7 +356,7 @@ public class Dialogue_Controller {
 
                 if (word.length() > 0 && word.trim().length() > 0) {
 
-                    String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
+                    String listName = dinoGUIView.requestListNamejOptionPane_listInsertion(DYNAMICLISTNAME);
                     conversionHelper(word, listName);
 
                 }
@@ -417,7 +417,7 @@ public class Dialogue_Controller {
      **************************************************************************/
     class listener_JMenuItem_Tools_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String listName = dinoGUIView.requestListNamejOptionPane_listInsertion();
+            String listName = dinoGUIView.requestListNamejOptionPane_listInsertion(DYNAMICLISTNAME);
 
             insertionHelper(listName);
 
@@ -494,7 +494,7 @@ public class Dialogue_Controller {
      **************************************************************************/
     class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(); // get name of
+            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(STATICVARNAME); // get name of
             if (varName != null) {
                 if (varName.trim().length() > 0) {
                     varName = varName.trim();

@@ -316,9 +316,9 @@ public class Dialogue_View {
      * Request list name
      *
      **************************************************************************/
-    public String requestListNamejOptionPane_listInsertion() {
+    public String requestListNamejOptionPane_listInsertion(String category) {
         JTextArea textArea = new JTextArea();
-        String listName = JOptionPane.showInputDialog("List Name: ");
+        String listName = JOptionPane.showInputDialog(category + " Name: ");
         return listName;
     }
 
