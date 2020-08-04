@@ -325,8 +325,11 @@ public class Dialogue_Controller {
 
                 if (textDisplayController.panelIsVisible()) {
                     textDisplayController.setPanelVisible(false);
+                    System.out.println("Setting invisible");
+
                 } else {
                     textDisplayController.setPanelVisible(true);
+                    System.out.println("Setting visible");
                 }
             }
         }

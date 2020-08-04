@@ -2,6 +2,7 @@
 
 package DinoText_GUI.DISPLAY_MODULE.DisplayController;
 
+import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
 import DinoText_GUI.Util.DinoConfig;
 import Dino.Dino;
 import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
@@ -24,6 +25,7 @@ public class Text_Display_Controller
     private Text_Display_View view;
     private DinoConfig config;
     private Trait_Setting_View window = null;
+    private Dialogue_Controller dialogeController;
 
     /***************************************************************************
      * Constructor
@@ -56,7 +58,14 @@ public class Text_Display_Controller
 
         this.view.add_generateNew_button_listener(new generateNewListener());
     }
-
+    /***************************************************************************
+     * setDialogueController
+     *
+     **************************************************************************/
+    public void setDialogueController(Dialogue_Controller controller)
+    {
+        this.dialogeController = controller;
+    }
     /***************************************************************************
      * setDialogue
      *
@@ -253,6 +262,6 @@ public class Text_Display_Controller
      *
      **************************************************************************/
     public boolean panelIsVisible() {
-        return view.isVisible();
+        return view.panelIsVisible();
     }
 }
