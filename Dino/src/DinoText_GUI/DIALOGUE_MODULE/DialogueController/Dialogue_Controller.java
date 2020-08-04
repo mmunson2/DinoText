@@ -196,11 +196,7 @@ public class Dialogue_Controller {
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "DINO and DLIST files", "dino", "dlist");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(dinoGUIView.getjTextPane_dialogueInput());
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                System.out.println("You chose to open this file: " +
-                        chooser.getSelectedFile().getName());
-            }
+            chooser.showOpenDialog(dinoGUIView.getjTextPane_dialogueInput());
 
             File file = chooser.getSelectedFile();
 

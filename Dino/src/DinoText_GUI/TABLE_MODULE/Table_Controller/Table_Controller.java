@@ -248,21 +248,15 @@ public class Table_Controller {
 
     public void openFile(String fileName, File file) {
         if (!FileTypes.hasListExtension(fileName)) {
-            System.err.println("Could not open " + fileName);
-
             JOptionPane.showMessageDialog(null, "Could not open " + fileName);
 
             return;
         }
         ListParser parser = null;
 
-        System.out.println("attempting to parse file");
-
         if (file == null) {
-            System.out.println("parsing by name");
             parser = new ListParser(new File(fileName));
         } else {
-            System.out.println("parsing by File");
             parser = new ListParser(file);
         }
 
