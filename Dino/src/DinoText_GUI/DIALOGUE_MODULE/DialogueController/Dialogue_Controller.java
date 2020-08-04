@@ -302,29 +302,28 @@ public class Dialogue_Controller {
             }
 
             if (dinoGUIModel.getName() != null) {
-                Dino dino = new Dino(mostRecentSaved);
+
+                Dino dino = getDino();
                 textDisplayController.setDino(dino);
                 if (mostRecentSaved == null) {
                     String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-
-                    dinoGUIModel.setName(fileName);
-                    mostRecentSaved = fileName;
-
-                    dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-                    dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-                    dinoGUIModel.writeToFile();
-
-                    table_controller.writeAllToFile();
+                    saveDialogueFileHelper(fileName);
                 }
-
 
                 if (textDisplayController.panelIsVisible()) {
                     textDisplayController.setPanelVisible(false);
+                    System.out.println("Setting invisible");
+
                 } else {
                     textDisplayController.setPanelVisible(true);
+                    System.out.println("Setting visible");
                 }
             }
         }
+    }
+
+    public Dino getDino() {
+        return new Dino(mostRecentSaved);
     }
 
     /***************************************************************************
@@ -618,16 +617,34 @@ public class Dialogue_Controller {
     public boolean saveDialogueFile() {
         String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
         if (fileName != null) {
-            dinoGUIModel.setName(fileName);
-            mostRecentSaved = fileName;
-
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("  ", " "));
-            dinoGUIModel.writeToFile();
-
-            table_controller.writeAllToFile();
-            ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("DinoText - " + fileName);
+            saveDialogueFileHelper(fileName);
             return true;
+        }
+        return false;
+    }
+
+    private void saveDialogueFileHelper(String fileName) {
+        dinoGUIModel.setName(fileName);
+        mostRecentSaved = fileName;
+
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
+        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        dinoGUIModel.writeToFile();
+
+        table_controller.writeAllToFile();
+        ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
+        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+    }
+
+    public boolean saveExistingDialogueFile() {
+        String fileName = ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).getTitle();
+        if (fileName.length() > 9) {
+            fileName = fileName.substring(12);
+            saveDialogueFileHelper(fileName);
+            return true;
+        } else {
+            saveDialogueFile();
         }
         return false;
     }
@@ -666,7 +683,7 @@ public class Dialogue_Controller {
     public void setDialogueName(String newName) {
         dinoGUIModel.setName(newName);
     }
-
+    
 
     /***************************************************************************
      * GETTERS

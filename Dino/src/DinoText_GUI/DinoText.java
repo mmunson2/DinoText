@@ -62,6 +62,7 @@ public class DinoText implements Runnable {
         dinoGUIController = new Dialogue_Controller(dinoGUIModel, dinoGUIView, textDisplayController, table_controller);
 
         table_controller.setDialogue_controller(dinoGUIController);
+        textDisplayController.setDialogueController(dinoGUIController);
 
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());
