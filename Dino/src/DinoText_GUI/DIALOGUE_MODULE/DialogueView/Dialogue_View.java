@@ -279,10 +279,14 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
-        if (!jMenu_listInsertion.isMenuComponent(temp)) {
-            jMenu_listInsertion.add(temp);
-            jPopupMenu_listInsertion.pack();
+        for (Component c : jMenu_listInsertion.getMenuComponents()) {
+            if (((JMenuItem) c).getText() == temp.getText())
+                return;
         }
+        // else
+        System.out.println("adding " + temp.getText());
+        jMenu_listInsertion.add(temp);
+        jPopupMenu_listInsertion.pack();
     }
 
     /***************************************************************************
