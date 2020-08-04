@@ -25,7 +25,7 @@ public class Text_Display_Controller
     private Text_Display_View view;
     private DinoConfig config;
     private Trait_Setting_View window = null;
-    private Dialogue_Controller dialogeController;
+    private Dialogue_Controller dialogueController;
 
     /***************************************************************************
      * Constructor
@@ -64,7 +64,7 @@ public class Text_Display_Controller
      **************************************************************************/
     public void setDialogueController(Dialogue_Controller controller)
     {
-        this.dialogeController = controller;
+        this.dialogueController = controller;
     }
     /***************************************************************************
      * setDialogue
@@ -93,6 +93,8 @@ public class Text_Display_Controller
      **************************************************************************/
     public void generateNewText()
     {
+        dialogueController.saveExistingDialogueFile();
+        this.model.setDino(dialogueController.getDino());
         this.model.generateNewText();
         this.format();
         this.updateDisplay();

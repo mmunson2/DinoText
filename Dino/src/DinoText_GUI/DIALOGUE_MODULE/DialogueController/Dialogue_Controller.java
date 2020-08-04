@@ -314,14 +314,13 @@ public class Dialogue_Controller {
             }
 
             if (dinoGUIModel.getName() != null) {
-                Dino dino = new Dino(mostRecentSaved);
+
+                Dino dino = getDino();
                 textDisplayController.setDino(dino);
                 if (mostRecentSaved == null) {
                     String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-
                     saveDialogueFileHelper(fileName);
                 }
-
 
                 if (textDisplayController.panelIsVisible()) {
                     textDisplayController.setPanelVisible(false);
@@ -333,6 +332,10 @@ public class Dialogue_Controller {
                 }
             }
         }
+    }
+
+    public Dino getDino() {
+        return new Dino(mostRecentSaved);
     }
 
     /***************************************************************************
