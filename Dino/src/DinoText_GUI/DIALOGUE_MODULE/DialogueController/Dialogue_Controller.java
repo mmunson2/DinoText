@@ -34,6 +34,10 @@ public class Dialogue_Controller {
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
 
+    private static final String DYNAMICLISTNAME = "Phrase List";
+    private static final String STATICVARNAME = "Game Value";
+
+
     //Todo: Find a better way to do this
     private String mostRecentSaved = null;
 
@@ -107,17 +111,17 @@ public class Dialogue_Controller {
         JMenuItem menuItem;
 
         menuItem = new JMenuItem();
-        menuItem.setText("Insert Dynamic List");
+        menuItem.setText("Insert " + DYNAMICLISTNAME);
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         tools.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("Convert to Dynamic List");
+        menuItem.setText("Convert to " + DYNAMICLISTNAME);
         menuItem.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
         tools.add(menuItem);
 
         menuItem = new JMenuItem();
-        menuItem.setText("Insert Static Variable");
+        menuItem.setText("Insert " + STATICVARNAME);
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
         tools.add(menuItem);
 
@@ -136,7 +140,7 @@ public class Dialogue_Controller {
         JMenuItem menuItem;
 
         menuItem = new JMenuItem();
-        menuItem.setText("Dynamic Word Candidate Suggestion");
+        menuItem.setText(DYNAMICLISTNAME + " Candidate Suggestion");
         menuItem.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
         tools.add(menuItem);
 
@@ -544,22 +548,22 @@ public class Dialogue_Controller {
         dinoGUIView.setInvokerjPopupMenu_listInsertion(dinoGUIView.getjTextPane_dialogueInput());
 
         JMenuItem temp = new JMenuItem();
-        temp.setText("Dynamic List");
+        temp.setText(DYNAMICLISTNAME);
         temp.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         dinoGUIView.addItemjPopupMenu_listInsertion(temp);
 
         temp = new JMenuItem();
-        temp.setText("Dynamic List Conversion");
+        temp.setText(DYNAMICLISTNAME + " Conversion");
         temp.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
         dinoGUIView.addItemjPopupMenu_listInsertion(temp);
 
         temp = new JMenuItem();
-        temp.setText("Static Variable");
+        temp.setText(STATICVARNAME);
         temp.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
         dinoGUIView.addItemjPopupMenu_listInsertion(temp);
 
         temp = new JMenuItem();
-        temp.setText("Dynamic Word Candidate Suggestion");
+        temp.setText(DYNAMICLISTNAME + " Candidate Suggestion");
         temp.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
         dinoGUIView.addItemjPopupMenu_dictionary(temp);
 
