@@ -8,7 +8,24 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/Dino/DialogueParser$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/Dino/DialogueParser$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/Dino/DialogueParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/Dino/DialogueParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/Dino/ListParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/Dino/Parser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayModel/Text_Display_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayModel/Text_Display_Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DinoText.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_debug.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_debug.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_listName.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_listName.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tabSwitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tabSwitch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tableModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +64,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Resources/Lists" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Local Git/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.java" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -317,9 +334,10 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593775972114" />
-    <state x="706" y="372" key="FileChooserDialogImpl" timestamp="1594662692953">
-      <screen x="0" y="0" width="1851" height="1234" />
+    <state x="973" y="282" key="FileChooserDialogImpl" timestamp="1596577868928">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
+    <state x="973" y="282" key="FileChooserDialogImpl/0.0.1851.1194@0.0.1851.1194" timestamp="1596577868928" />
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
     <state width="1808" height="203" key="GridCell.Tab.0.bottom" timestamp="1596486041156">
       <screen x="0" y="0" width="1851" height="1194" />
@@ -405,6 +423,18 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="477" y="337" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog/0.0.1440.900@0.0.1440.900" timestamp="1595155929154" />
+    <state x="919" y="0" width="938" height="1201" key="dock-window-1" timestamp="1596577873090">
+      <screen x="0" y="0" width="1851" height="1194" />
+    </state>
+    <state x="919" y="0" width="938" height="1201" key="dock-window-1/0.0.1851.1194@0.0.1851.1194" timestamp="1596577873090" />
+    <state x="919" y="0" width="938" height="1201" key="dock-window-2" timestamp="1596578096656">
+      <screen x="0" y="0" width="1851" height="1194" />
+    </state>
+    <state x="919" y="0" width="938" height="1201" key="dock-window-2/0.0.1851.1194@0.0.1851.1194" timestamp="1596578096656" />
+    <state x="919" y="0" width="938" height="1201" key="dock-window-3" timestamp="1596579602513">
+      <screen x="0" y="0" width="1851" height="1194" />
+    </state>
+    <state x="919" y="0" width="938" height="1201" key="dock-window-3/0.0.1851.1194@0.0.1851.1194" timestamp="1596579602513" />
     <state x="633" y="245" key="refactoring.ChangeSignatureDialog" timestamp="1594699294007">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
@@ -430,13 +460,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.java</url>
-          <line>74</line>
+          <line>65</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayModel/Text_Display_Model.java</url>
-          <line>45</line>
+          <line>50</line>
           <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../../../Local Git/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java</url>
+          <line>821</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

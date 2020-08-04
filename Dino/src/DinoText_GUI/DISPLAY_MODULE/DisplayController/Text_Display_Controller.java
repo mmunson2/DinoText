@@ -2,6 +2,7 @@
 
 package DinoText_GUI.DISPLAY_MODULE.DisplayController;
 
+import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
 import DinoText_GUI.Util.DinoConfig;
 import Dino.Dino;
 import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
@@ -24,6 +25,7 @@ public class Text_Display_Controller
     private Text_Display_View view;
     private DinoConfig config;
     private Trait_Setting_View window = null;
+    private Dialogue_Controller dialogueController;
 
     /***************************************************************************
      * Constructor
@@ -51,13 +53,19 @@ public class Text_Display_Controller
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
 
-        // setting up settings listeners
+        // setting up trait settings listener
         this.view.traitSettingsListener(new traitSettingsListener());
-        this.view.variableSettingsListener(new variableSettingsListener());
 
         this.view.add_generateNew_button_listener(new generateNewListener());
     }
-
+    /***************************************************************************
+     * setDialogueController
+     *
+     **************************************************************************/
+    public void setDialogueController(Dialogue_Controller controller)
+    {
+        this.dialogueController = controller;
+    }
     /***************************************************************************
      * setDialogue
      *
@@ -75,8 +83,6 @@ public class Text_Display_Controller
      **************************************************************************/
     public void setDino(Dino dino)
     {
-        model.resetTraitSettings();
-        model.resetVariableSettings();
         this.model.setDino(dino);
         this.generateNewText();
     }
@@ -87,6 +93,8 @@ public class Text_Display_Controller
      **************************************************************************/
     public void generateNewText()
     {
+        dialogueController.saveExistingDialogueFile();
+        this.model.setDino(dialogueController.getDino());
         this.model.generateNewText();
         this.format();
         this.updateDisplay();
@@ -219,20 +227,16 @@ public class Text_Display_Controller
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            model.openTraitSettings();
-        }
-    }
+            if (window == null)
+            {
+                window = new Trait_Setting_View(model.getDino());
+            }
 
-    /***************************************************************************
-     * Variable Settings Button
-     *
-     **************************************************************************/
-    class variableSettingsListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e)
-        {
-            model.openVariableSettings();
+            if (!window.isVisible())
+            {
+                window = new Trait_Setting_View(model.getDino());
+                window.setVisible(true);
+            }
         }
     }
 
@@ -260,6 +264,6 @@ public class Text_Display_Controller
      *
      **************************************************************************/
     public boolean panelIsVisible() {
-        return view.isVisible();
+        return view.panelIsVisible();
     }
 }
