@@ -23,7 +23,7 @@ public class DinoConfig implements Serializable
     {
         try
         {
-            FileInputStream fileIn = new FileInputStream("config");
+            FileInputStream fileIn = new FileInputStream("dino.cfg");
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
             DinoConfig config = (DinoConfig) objectIn.readObject();
             objectIn.close();
@@ -40,7 +40,7 @@ public class DinoConfig implements Serializable
     {
         try
         {
-            FileOutputStream fileOut = new FileOutputStream("config");
+            FileOutputStream fileOut = new FileOutputStream("dino.cfg");
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(this);
             objectOut.close();
