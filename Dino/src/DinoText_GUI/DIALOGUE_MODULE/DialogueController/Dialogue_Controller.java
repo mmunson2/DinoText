@@ -408,7 +408,7 @@ public class Dialogue_Controller {
     }
 
 
-    private void jPopupMenu_listInsertion_updateMenuItems() {
+    public void jPopupMenu_listInsertion_updateMenuItems() {
         for (String listName : table_controller.getListNames()) {
             JMenuItem temp = new JMenuItem();
             temp.setText(listName.trim());
@@ -615,9 +615,12 @@ public class Dialogue_Controller {
             if (dinoGUIView.getSetListNames().contains(varName))
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
             else {
-                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
+                if (varName == "Untitled List") {
+                    insertionHelper(varName);
+                } else {
+                    dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
+                }
             }
-
             dinoGUIView.setFocusTSDialogueInput();
         }
     }

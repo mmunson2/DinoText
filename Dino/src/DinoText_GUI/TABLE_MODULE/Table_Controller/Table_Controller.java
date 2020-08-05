@@ -79,6 +79,7 @@ public class Table_Controller {
 
     public void setDialogue_controller(Dialogue_Controller controller) {
         this.dialogue_controller = controller;
+        dialogue_controller.jPopupMenu_listInsertion_updateMenuItems();
     }
 
     /***************************************************************************
