@@ -10,12 +10,12 @@ public class Creator_View {
     private JSlider lowerBoundSlider;
     private JSlider upperBoundSlider;
     private JTextField traitWeight;
-    private JLabel DisplayProbability;
     private JPanel panel;
+    private JTextField probabilityDisplay;
 
     public Creator_View()
     {
-
+        this.probabilityDisplay.setEditable(false);
     }
     public JPanel getPanel()
     {
@@ -69,7 +69,9 @@ public class Creator_View {
 
     public void setDisplayProbability(double probability)
     {
-        this.DisplayProbability.setText(probability + "%");
+        String probabilityString = String.format("%2.2f%%", probability);
+
+        this.probabilityDisplay.setText(probabilityString);
     }
 
 
