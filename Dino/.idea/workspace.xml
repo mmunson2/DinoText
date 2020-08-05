@@ -6,47 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayController/Text_Display_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayModel/Text_Display_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayModel/Text_Display_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Text_Display_View_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_Slider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Trait_Setting_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_Box.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_Box.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DISPLAY_MODULE/DisplayView/Variable_Setting_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Columns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Columns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Probabilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Probabilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/Table_TraitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/Table_TraitDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/TraitLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/TraitLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/DinoWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/Util/TraitModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/Util/TraitModel.java" afterDir="false" />
-    </list>
+    <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
