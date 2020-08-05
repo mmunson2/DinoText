@@ -3,6 +3,7 @@
 package DinoText_GUI.DISPLAY_MODULE.DisplayController;
 
 import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
+import DinoText_GUI.DISPLAY_MODULE.DisplayView.Variable_Setting_View;
 import DinoText_GUI.Util.DinoConfig;
 import Dino.Dino;
 import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
@@ -24,7 +25,9 @@ public class Text_Display_Controller
     private Text_Display_Model model;
     private Text_Display_View view;
     private DinoConfig config;
-    private Trait_Setting_View window = null;
+    private Trait_Setting_View traitSettings = null;
+    private Variable_Setting_View variableSettings = null;
+
     private Dialogue_Controller dialogueController;
 
     /***************************************************************************
@@ -53,22 +56,15 @@ public class Text_Display_Controller
         this.view.setLinesSpinner(this.model.getLinesPerPage());
         this.view.linesSpinnerListener(new linesSpinnerListener());
 
-        // setting up trait settings listener
+        // setting up settings listeners
         this.view.traitSettingsListener(new traitSettingsListener());
+        this.view.variableSettingsListener(new variableSettingsListener());
 
         this.view.add_generateNew_button_listener(new generateNewListener());
     }
-    /***************************************************************************
-     * setDialogueController
-     *
-     **************************************************************************/
-    public void setDialogueController(Dialogue_Controller controller)
-    {
-        this.dialogueController = controller;
-    }
+
     /***************************************************************************
      * setDialogue
-     *
      **************************************************************************/
     public void setDialogue(String str)
     {
@@ -78,23 +74,31 @@ public class Text_Display_Controller
     }
 
     /***************************************************************************
+     * setDialogueController
+     **************************************************************************/
+    public void setDialogueController(Dialogue_Controller controller)
+    {
+        this.dialogueController = controller;
+    }
+
+    /***************************************************************************
      * setDino
-     *
      **************************************************************************/
     public void setDino(Dino dino)
     {
+        resetTraitSettings();
+        resetVariableSettings();
         this.model.setDino(dino);
         this.generateNewText();
     }
 
     /***************************************************************************
      * Generate New Text
-     *
      **************************************************************************/
     public void generateNewText()
     {
-        dialogueController.saveExistingDialogueFile();
-        this.model.setDino(dialogueController.getDino());
+        //dialogueController.saveExistingDialogueFile();
+        //this.model.setDino(dialogueController.getDino());
         this.model.generateNewText();
         this.format();
         this.updateDisplay();
@@ -102,7 +106,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * format
-     *
      **************************************************************************/
     public void format()
     {
@@ -111,7 +114,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * update display
-     *
      **************************************************************************/
     public void updateDisplay()
     {
@@ -122,7 +124,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * update config
-     *
      **************************************************************************/
     public void updateConfig()
     {
@@ -135,7 +136,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * setPage
-     *
      **************************************************************************/
     private void setPage(int i)
     {
@@ -143,9 +143,28 @@ public class Text_Display_Controller
         view.setPageCounter(i + " / " + model.getNumPages());
     }
 
+    // closes and deletes the trait settings window
+    public void resetTraitSettings()
+    {
+        if (traitSettings != null)
+        {
+            traitSettings.setVisible(false);
+            traitSettings = null;
+        }
+    }
+
+    // closes and deletes the variable settings window
+    public void resetVariableSettings()
+    {
+        if (variableSettings != null)
+        {
+            variableSettings.setVisible(false);
+            variableSettings = null;
+        }
+    }
+
     /***************************************************************************
      * Next Button
-     *
      **************************************************************************/
     class nextButtonListener implements ActionListener
     {
@@ -166,7 +185,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Previous Button
-     *
      **************************************************************************/
     class prevButtonListener implements ActionListener
     {
@@ -186,7 +204,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Character Count Spinner
-     *
      **************************************************************************/
     class charactersSpinnerListener implements ChangeListener
     {
@@ -203,7 +220,6 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Line Count Spinner
-     *
      **************************************************************************/
     class linesSpinnerListener implements ChangeListener
     {
@@ -220,29 +236,44 @@ public class Text_Display_Controller
 
     /***************************************************************************
      * Trait Settings Button
-     *
      **************************************************************************/
     class traitSettingsListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            if (window == null)
+            if (traitSettings == null)
             {
-                window = new Trait_Setting_View(model.getDino());
+                traitSettings = new Trait_Setting_View(model.getDino());
             }
-
-            if (!window.isVisible())
+            if (!traitSettings.isVisible())
             {
-                window = new Trait_Setting_View(model.getDino());
-                window.setVisible(true);
+                traitSettings.setVisible(true);
+            }
+        }
+    }
+
+    /***************************************************************************
+     * Variable Settings Button
+     **************************************************************************/
+    class variableSettingsListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if (variableSettings == null)
+            {
+                variableSettings = new Variable_Setting_View(model.getDino());
+            }
+            if (!variableSettings.isVisible())
+            {
+                variableSettings.setVisible(true);
             }
         }
     }
 
     /***************************************************************************
      * Generate New Button
-     *
      **************************************************************************/
     class generateNewListener implements ActionListener
     {
@@ -264,6 +295,6 @@ public class Text_Display_Controller
      *
      **************************************************************************/
     public boolean panelIsVisible() {
-        return view.panelIsVisible();
+        return view.isVisible();
     }
 }

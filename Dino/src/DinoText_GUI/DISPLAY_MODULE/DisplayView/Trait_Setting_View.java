@@ -41,14 +41,6 @@ public class Trait_Setting_View extends JFrame
             this.sliders.add(tss);
         }
 
-        /* build fake sliders array for testing
-        for (int i = 0; i < 100; i++)
-        {
-            Trait_Setting_Slider tss = new Trait_Setting_Slider("trait" + i, 0, 100, i);
-            tss.sliderListener(new sliderListener(i));
-            this.sliders.add(tss);
-        }*/
-
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         for (int i = 0; i < this.sliders.size(); i++)
         {
@@ -56,7 +48,6 @@ public class Trait_Setting_View extends JFrame
             panel.add(Box.createRigidArea(new Dimension(0, 5)));
         }
         panel.add(Box.createRigidArea(new Dimension(0, 5)));
-        //panel.add(Box.createVerticalGlue());
         this.content.add(scroller, BorderLayout.CENTER);
     }
 

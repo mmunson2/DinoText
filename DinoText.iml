@@ -12,5 +12,7 @@
     <orderEntry type="library" name="org.junit.jupiter:junit-jupiter-api:5.0.0-M4" level="project" />
     <orderEntry type="library" name="com.konghq:unirest-java:3.7.04" level="project" />
     <orderEntry type="library" name="com.algorithmia:algorithmia-client:1.0.16" level="project" />
+    <orderEntry type="library" name="Dino" level="project" />
+    <orderEntry type="library" name="org.junit.jupiter:junit-jupiter:5.7.0-M1" level="project" />
   </component>
 </module>

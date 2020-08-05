@@ -30,6 +30,7 @@ public class Text_Display_View extends JFrame
     private JSpinner linesSpinner;
     private JButton generateNewButton;
     private JButton traitSettings;
+    private JButton variableSettings;
 
     /***************************************************************************
      * Constructor
@@ -62,6 +63,12 @@ public class Text_Display_View extends JFrame
      *
      **************************************************************************/
     public void traitSettingsListener(ActionListener actionListener) { traitSettings.addActionListener(actionListener); }
+
+    /***************************************************************************
+     * Listener - Variable Settings Button
+     *
+     **************************************************************************/
+    public void variableSettingsListener(ActionListener actionListener) { variableSettings.addActionListener(actionListener); }
 
     /***************************************************************************
      * Listener - Next Button
