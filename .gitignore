@@ -1,4 +1,6 @@
 
 *.xml
-*.xml
-*.xml
+*.class
+*.jar
+*.dino
+*.dlist
