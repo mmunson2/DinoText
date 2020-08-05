@@ -152,8 +152,7 @@ public class Dialogue_Controller {
         JMenuBar toolsMenu = new JMenuBar();
         toolsMenu.add(tools);
 
-        //Disabled Dictionary Tools for V0.5-beta release
-        //dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
+        dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
     }
 
     /***************************************************************************
@@ -302,28 +301,29 @@ public class Dialogue_Controller {
             }
 
             if (dinoGUIModel.getName() != null) {
-
-                Dino dino = getDino();
+                Dino dino = new Dino(mostRecentSaved);
                 textDisplayController.setDino(dino);
                 if (mostRecentSaved == null) {
                     String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-                    saveDialogueFileHelper(fileName);
+
+                    dinoGUIModel.setName(fileName);
+                    mostRecentSaved = fileName;
+
+                    dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+                    dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+                    dinoGUIModel.writeToFile();
+
+                    table_controller.writeAllToFile();
                 }
+
 
                 if (textDisplayController.panelIsVisible()) {
                     textDisplayController.setPanelVisible(false);
-                    System.out.println("Setting invisible");
-
                 } else {
                     textDisplayController.setPanelVisible(true);
-                    System.out.println("Setting visible");
                 }
             }
         }
-    }
-
-    public Dino getDino() {
-        return new Dino(mostRecentSaved);
     }
 
     /***************************************************************************
@@ -617,34 +617,16 @@ public class Dialogue_Controller {
     public boolean saveDialogueFile() {
         String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
         if (fileName != null) {
-            saveDialogueFileHelper(fileName);
+            dinoGUIModel.setName(fileName);
+            mostRecentSaved = fileName;
+
+            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+            dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("  ", " "));
+            dinoGUIModel.writeToFile();
+
+            table_controller.writeAllToFile();
+            ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("DinoText - " + fileName);
             return true;
-        }
-        return false;
-    }
-
-    private void saveDialogueFileHelper(String fileName) {
-        dinoGUIModel.setName(fileName);
-        mostRecentSaved = fileName;
-
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
-        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-        dinoGUIModel.writeToFile();
-
-        table_controller.writeAllToFile();
-        ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
-        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-    }
-
-    public boolean saveExistingDialogueFile() {
-        String fileName = ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).getTitle();
-        if (fileName.length() > 9) {
-            fileName = fileName.substring(12);
-            saveDialogueFileHelper(fileName);
-            return true;
-        } else {
-            saveDialogueFile();
         }
         return false;
     }
@@ -683,7 +665,7 @@ public class Dialogue_Controller {
     public void setDialogueName(String newName) {
         dinoGUIModel.setName(newName);
     }
-    
+
 
     /***************************************************************************
      * GETTERS

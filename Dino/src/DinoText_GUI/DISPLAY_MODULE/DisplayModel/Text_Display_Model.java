@@ -23,9 +23,6 @@ public class Text_Display_Model
     private int charsPerLine;
     private int linesPerPage;
 
-    private Trait_Setting_View traitSettings = null;
-    private Variable_Setting_View variableSettings = null;
-
     private Dino dino;
 
     /***************************************************************************
@@ -111,48 +108,6 @@ public class Text_Display_Model
      * Set Lines Per Page
      **************************************************************************/
     public void setLinesPerPage(int i) { linesPerPage = i; }
-
-    public void openTraitSettings()
-    {
-        if (traitSettings == null)
-        {
-            traitSettings = new Trait_Setting_View(dino);
-        }
-        if (!traitSettings.isVisible())
-        {
-            traitSettings.setVisible(true);
-        }
-    }
-
-    public void resetTraitSettings()
-    {
-        if (traitSettings != null)
-        {
-            traitSettings.setVisible(false);
-            traitSettings = null;
-        }
-    }
-
-    public void openVariableSettings()
-    {
-        if (variableSettings == null)
-        {
-            variableSettings = new Variable_Setting_View(dino);
-        }
-        if (!variableSettings.isVisible())
-        {
-            variableSettings.setVisible(true);
-        }
-    }
-
-    public void resetVariableSettings()
-    {
-        if (variableSettings != null)
-        {
-            variableSettings.setVisible(false);
-            variableSettings = null;
-        }
-    }
 
     /***************************************************************************
      * Format Text
