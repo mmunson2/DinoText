@@ -43,7 +43,18 @@ public class DinoText implements Runnable {
 
     private static DinoConfig config;
 
+    private static final String LOOKANDFEEL = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+    private static final boolean LOOKANDFEEL_VISIBLE = false;
+
     public static void main(String[] args) {
+        if (LOOKANDFEEL_VISIBLE) {
+            try {
+                UIManager.setLookAndFeel(LOOKANDFEEL); //Windows Look and feel
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+                e.printStackTrace();
+            }
+        }
+
         JFrame jFrame_dinoText = new JFrame();
 
         config = DinoConfig.loadConfig();
@@ -67,8 +78,8 @@ public class DinoText implements Runnable {
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());
         jFrame_dinoText.getContentPane().add(dinoGUIView.getjPanel_dialogueEditor(), BorderLayout.CENTER);
-        jFrame_dinoText.getContentPane().add(textDisplayView.getJpanel(),BorderLayout.EAST);
-        jFrame_dinoText.getContentPane().add(table_view.getPanel1(),BorderLayout.SOUTH);
+        jFrame_dinoText.getContentPane().add(textDisplayView.getJpanel(), BorderLayout.EAST);
+        jFrame_dinoText.getContentPane().add(table_view.getPanel1(), BorderLayout.SOUTH);
         jFrame_dinoText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame_dinoText.setSize(600, 580);
         jFrame_dinoText.setTitle("Dino Text");
