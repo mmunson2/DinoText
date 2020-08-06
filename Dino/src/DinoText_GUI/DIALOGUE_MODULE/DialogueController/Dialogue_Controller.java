@@ -68,6 +68,17 @@ public class Dialogue_Controller {
         initializejToolBar_DictionaryTools();
         newDialogue();
         insertionHelper("Untitled List", false);
+
+        dinoGUIView.getjTextPane_dialogueInput().addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                if (ke.getKeyCode() == 8) {
+                    dinoGUIView.getjTextPane_dialogueInput().setEditable(true);
+                } else {
+                    dinoGUIView.getjTextPane_dialogueInput().setEditable(false);
+                }
+            }
+        });
+
     }
 
 
@@ -436,11 +447,11 @@ public class Dialogue_Controller {
         insertionHelper(listName, true);
     }
 
-    public void insertionHelper(String listName, boolean bool) {
+    public void insertionHelper(String listName, boolean insertNow) {
         if (listName != null)
 
             if (listName.trim().length() > 0) {
-                if (bool) {
+                if (insertNow) {
                     dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
@@ -467,6 +478,7 @@ public class Dialogue_Controller {
             } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
+        System.out.println(dinoGUIView.getjTextPane_dialogueInput().getComponentCount());
     }
 
     /***************************************************************************
@@ -856,9 +868,19 @@ public class Dialogue_Controller {
                         pane.setCaretPosition(pane.getCaretPosition() - 1);
                     }
 
+                    if (dinoGUIView.getjTextPane_dialogueInput().getComponentCount() > 1) {
+                        try {
+                            pane.getDocument().remove(pane.getCaretPosition(), 1);
+
+                            if (space)
+                                pane.setCaretPosition(pane.getCaretPosition() - 1);
+
+                        } catch (BadLocationException ex) {
+                        }
+                    }
+
                     if (space)
                         pane.setCaretPosition(pane.getCaretPosition() + 1);
-
 
                 }
             }

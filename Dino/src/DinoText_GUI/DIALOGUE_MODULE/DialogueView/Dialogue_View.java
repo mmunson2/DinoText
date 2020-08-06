@@ -216,6 +216,10 @@ public class Dialogue_View {
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
+        if (getjTextPane_dialogueInput().getComponentCount() > 0) {
+            insertIcon_Arrow_jTextPane();
+        }
+
         SimpleAttributeSet set = new SimpleAttributeSet();
         StyleConstants.setFontSize(set, 0);
 
@@ -427,5 +431,12 @@ public class Dialogue_View {
         StyleConstants.setFontSize(set, 12);
 
         jTextPane_dialogueInput.setCharacterAttributes(set, true);
+    }
+
+    public void insertIcon_Arrow_jTextPane() {
+        JLabel arrow = new JLabel();
+        arrow.setText("  \u2794  ");
+        System.out.println("inserting");
+        jTextPane_dialogueInput.insertComponent(arrow);
     }
 }

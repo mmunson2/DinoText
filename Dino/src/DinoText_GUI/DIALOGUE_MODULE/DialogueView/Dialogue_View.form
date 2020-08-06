@@ -15,6 +15,7 @@
           </grid>
         </constraints>
         <properties>
+          <enabled value="true"/>
           <visible value="false"/>
         </properties>
         <border type="none"/>
@@ -22,6 +23,7 @@
           <component id="1e04" class="javax.swing.JTextPane" binding="jTextPane_dialogueInput">
             <constraints/>
             <properties>
+              <editable value="true"/>
               <preferredSize width="1" height="1"/>
               <text value=""/>
             </properties>
