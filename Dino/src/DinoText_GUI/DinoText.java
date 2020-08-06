@@ -43,13 +43,13 @@ public class DinoText implements Runnable {
 
     private static DinoConfig config;
 
-    private static final String LOOKANDFEEL = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
     private static final boolean LOOKANDFEEL_VISIBLE = false;
 
     public static void main(String[] args) {
+
         if (LOOKANDFEEL_VISIBLE) {
             try {
-                UIManager.setLookAndFeel(LOOKANDFEEL); //Windows Look and feel
+                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); //Windows Look and feel
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
                 e.printStackTrace();
             }
