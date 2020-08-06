@@ -650,6 +650,7 @@ public class Dialogue_Controller {
         table_controller.writeAllToFile();
         ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
         parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        textDisplayController.setDino(getDino());
     }
 
     public boolean saveExistingDialogueFile() {
