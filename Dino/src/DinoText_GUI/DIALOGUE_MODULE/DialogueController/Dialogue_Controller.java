@@ -69,15 +69,15 @@ public class Dialogue_Controller {
         newDialogue();
         insertionHelper("Untitled List", false);
 
-        dinoGUIView.getjTextPane_dialogueInput().addKeyListener(new KeyAdapter() {
-            public void keyPressed(KeyEvent ke) {
-                if (ke.getKeyCode() == 8) {
-                    dinoGUIView.getjTextPane_dialogueInput().setEditable(true);
-                } else {
-                    dinoGUIView.getjTextPane_dialogueInput().setEditable(false);
-                }
-            }
-        });
+//        dinoGUIView.getjTextPane_dialogueInput().addKeyListener(new KeyAdapter() {
+//            public void keyPressed(KeyEvent ke) {
+//                if (ke.getKeyCode() == 8) {
+//                    dinoGUIView.getjTextPane_dialogueInput().setEditable(true);
+//                } else {
+//                    dinoGUIView.getjTextPane_dialogueInput().setEditable(false);
+//                }
+//            }
+//        });
 
     }
 
@@ -260,8 +260,10 @@ public class Dialogue_Controller {
 
         String[] split = unformattedDialogue.split(" ");
         dinoGUIView.setText_jTextPane_dialogueInput(unformattedDialogue);
-        String searchString = "";
+        String searchString = ""; // text that has already been iterated through
         int offset = 0;
+        int listCount = 0;
+        boolean listFound = false;
 
         for (int i = 0; i < split.length; i++) {
             String word = split[i];
@@ -283,15 +285,27 @@ public class Dialogue_Controller {
                 dinoGUIView.setCaret_jTextPane_dialogueInput(selectionStart);
                 switch (word.charAt(1)) {
                     case 'L':
+                        if (listCount > 0) {
+                            dinoGUIView.insertIcon_Arrow_jTextPane();
+                        }
                         insertionHelper(word.substring(3, word.length() - 1));
+                        listFound = true;
                         break;
                     case 'S':
                         staticHelper(word.substring(3, word.length() - 1));
                         break;
                 }
-                dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
+                if (listCount > 0) {
+                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 2 + word.length(), selectionStart + (2 * word.length()) + 3);
+                } else {
+                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
+                }
                 dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
 
+                if (listFound) {
+                    listCount++;
+                    listFound = false;
+                }
                 offset++;
             } else {
                 searchString += word + " ";
@@ -436,7 +450,9 @@ public class Dialogue_Controller {
     class listener_JMenuItem_Tools_InsertDynamicList implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String listName = dinoGUIView.requestListNamejOptionPane_listInsertion(DYNAMICLISTNAME);
-
+            if (dinoGUIView.getjTextPane_dialogueInput().getComponents().length > 0) {
+                dinoGUIView.insertIcon_Arrow_jTextPane();
+            }
             insertionHelper(listName);
 
             dinoGUIView.setFocusTSDialogueInput();
@@ -474,11 +490,11 @@ public class Dialogue_Controller {
 
                 // add button to list
                 jPopupMenu_listInsertion_updateMenuItems();
-
             } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
         System.out.println(dinoGUIView.getjTextPane_dialogueInput().getComponentCount());
+
     }
 
     /***************************************************************************
@@ -645,6 +661,7 @@ public class Dialogue_Controller {
             else {
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
             }
+            parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIView.setFocusTSDialogueInput();
         }
     }
@@ -809,7 +826,21 @@ public class Dialogue_Controller {
             dinoGUIView.pack();
         }
     }
-
+//
+//    public void insertAllArrows() {
+//        String unformattedDialogue = dinoGUIView.getText_jTextPane_dialogueInput();
+//        String[] split = unformattedDialogue.split(" ");
+//
+//        String searchString = ""; // text that has already been iterated through
+//        int offset = 0;
+//
+//        for (int i = 0; i < split.length; i++) {
+//            if (split[i].contains("\\")) {
+//                insert
+//            }
+//
+//        }
+//    }
 
     /***************************************************************************
      * Dehighlight all

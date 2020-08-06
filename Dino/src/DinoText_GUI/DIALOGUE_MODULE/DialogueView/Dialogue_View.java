@@ -44,7 +44,6 @@ public class Dialogue_View {
         jPopupMenu_listInsertion.add(jMenu_listInsertion);
 
         listButtons = new ArrayList<>();
-        staticVarButtons = new ArrayList<>();
         listNames = new HashSet<>();
 
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
@@ -207,30 +206,34 @@ public class Dialogue_View {
         newList.setText(varName);
         newList.addActionListener(actionListener);
         newList.setBackground(color);
-        jTextPane_dialogueInput.insertComponent(newList);
+        jTextPane_dialogueInput.add(newList);
         staticVarButtons.add(newList);
-
     }
 
     /***************************************************************************
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
-        if (getjTextPane_dialogueInput().getComponentCount() > 0) {
-            insertIcon_Arrow_jTextPane();
-        }
 
-        SimpleAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setFontSize(set, 0);
+        JButton newList = new JButton(listName);
+        newList.setName("\\L[" + listName + "]");
+        newList.setText(listName);
+        newList.addActionListener(actionListener);
+        listButtons.add(newList);
 
-        int caretPos = jTextPane_dialogueInput.getCaretPosition();
-
-        try {
-            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\L[" + listName + "]", set);
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-        jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName,actionListener,color));
+        jTextPane_dialogueInput.add(new JButton());
+//
+//        System.out.println("Perint: " + newList.getParent().getName());
+//
+//
+//        for (Component c : jTextPane_dialogueInput.getComponents()) {
+//            if (c instanceof JButton) {
+//                System.out.println("BUTTON" + ((JButton) c).getText());
+//            }
+//            else{
+//                System.out.println("size: " + jTextPane_dialogueInput.getComponents().length);
+//            }
+//        }
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -437,6 +440,6 @@ public class Dialogue_View {
         JLabel arrow = new JLabel();
         arrow.setText("  \u2794  ");
         System.out.println("inserting");
-        jTextPane_dialogueInput.insertComponent(arrow);
+        jTextPane_dialogueInput.add(arrow);
     }
 }
