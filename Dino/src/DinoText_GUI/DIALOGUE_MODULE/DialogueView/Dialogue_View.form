@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View">
-  <grid id="27dc6" binding="jPanel_dialogueEditor" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="jPanel_dialogueEditor" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
       <xy x="20" y="20" width="1022" height="691"/>
@@ -10,8 +10,9 @@
     <children>
       <scrollpane id="ff0fd" binding="jScrollPane_dialogueInput">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <minimum-size width="300" height="300"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <minimum-size width="300" height="100"/>
+            <preferred-size width="1" height="100"/>
           </grid>
         </constraints>
         <properties>
@@ -48,6 +49,37 @@
         <properties>
           <text value="Dialogue Editor"/>
           <visible value="true"/>
+        </properties>
+      </component>
+      <scrollpane id="f56ea" binding="jScrollPane_listEntryEditor">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="300"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="b530c" class="javax.swing.JTextPane" binding="jTextPane_listEntryEditor">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="df534" class="javax.swing.JLabel" binding="jLabel_dialogueOverView">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Dialogue Overview"/>
+        </properties>
+      </component>
+      <component id="b8c4c" class="javax.swing.JLabel" binding="jLabel_ListEntryEditor">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="List Entry Editor"/>
         </properties>
       </component>
     </children>

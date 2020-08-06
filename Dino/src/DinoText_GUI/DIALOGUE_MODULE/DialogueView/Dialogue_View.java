@@ -21,6 +21,10 @@ public class Dialogue_View {
     private JMenu jMenu_listInsertion;
     private JMenu jMenu_dictionaryFunctions;
     private JToolBar jToolBar_topBar;
+    private JTextPane jTextPane_listEntryEditor;
+    private JLabel jLabel_dialogueOverView;
+    private JLabel jLabel_ListEntryEditor;
+    private JScrollPane jScrollPane_listEntryEditor;
     private ArrayList<JButton> listButtons;
     private ArrayList<JButton> staticVarButtons;
     private HashSet<String> listNames;
