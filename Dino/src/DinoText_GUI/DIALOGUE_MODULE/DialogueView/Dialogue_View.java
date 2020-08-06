@@ -139,15 +139,15 @@ public class Dialogue_View {
         }
         return null;
     }
-
-    public JButton getStaticVarButton(String name) {
-        for (JButton button : staticVarButtons) {
-            if (button.getName().equals(name)) {
-                return button;
-            }
-        }
-        return null;
-    }
+//
+//    public JButton getStaticVarButton(String name) {
+//        for (JButton button : staticVarButtons) {
+//            if (button.getName().equals(name)) {
+//                return button;
+//            }
+//        }
+//        return null;
+//    }
 
     /***************************************************************************
      * get all buttons
@@ -186,54 +186,37 @@ public class Dialogue_View {
     /*************************************
      * MISC
      ************************************/
-
-    /***************************************************************************
-     * insert Button to JTextPane (Static Variable)
-     **************************************************************************/
-    public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
-        SimpleAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setFontSize(set, 0);
-
-        int caretPos = jTextPane_dialogueInput.getCaretPosition();
-        try {
-            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\S[" + varName + "]", set); //TODO: How are we representing static vars?
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-
-        JButton newList = new JButton(varName);
-        newList.setName(varName);
-        newList.setText(varName);
-        newList.addActionListener(actionListener);
-        newList.setBackground(color);
-        jTextPane_dialogueInput.add(newList);
-        staticVarButtons.add(newList);
-    }
+//
+//    /***************************************************************************
+//     * insert Button to JTextPane (Static Variable)
+//     **************************************************************************/
+//    public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
+//        SimpleAttributeSet set = new SimpleAttributeSet();
+//        StyleConstants.setFontSize(set, 0);
+//
+//        int caretPos = jTextPane_dialogueInput.getCaretPosition();
+//        try {
+//            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\S[" + varName + "]", set); //TODO: How are we representing static vars?
+//        } catch (BadLocationException e) {
+//            e.printStackTrace();
+//        }
+//
+//        JButton newList = new JButton(varName);
+//        newList.setName(varName);
+//        newList.setText(varName);
+//        newList.addActionListener(actionListener);
+//        newList.setBackground(color);
+//        jTextPane_dialogueInput.add(newList);
+//        staticVarButtons.add(newList);
+//    }
 
     /***************************************************************************
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
 
-        JButton newList = new JButton(listName);
-        newList.setName("\\L[" + listName + "]");
-        newList.setText(listName);
-        newList.addActionListener(actionListener);
-        listButtons.add(newList);
+        jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, null));
 
-        jTextPane_dialogueInput.add(new JButton());
-//
-//        System.out.println("Perint: " + newList.getParent().getName());
-//
-//
-//        for (Component c : jTextPane_dialogueInput.getComponents()) {
-//            if (c instanceof JButton) {
-//                System.out.println("BUTTON" + ((JButton) c).getText());
-//            }
-//            else{
-//                System.out.println("size: " + jTextPane_dialogueInput.getComponents().length);
-//            }
-//        }
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -241,7 +224,7 @@ public class Dialogue_View {
         newList.setName(listName);
         newList.setText(listName);
         newList.addActionListener(actionListener);
-        newList.setBackground(color);
+        newList.setBackground(null);
         listButtons.add(newList);
         return newList;
     }
@@ -251,6 +234,7 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public HashSet<String> getSetListNames() {
+        listNames = new HashSet<>();
         for (JButton jb : listButtons) {
             listNames.add(jb.getName());
         }
@@ -262,7 +246,10 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void setSetListNames(HashSet<String> newNames) {
+        System.out.println(newNames.toArray().length);
+        System.out.println(listNames.toArray().length);
         listNames = newNames;
+        System.out.println(listNames.toArray().length);
     }
 
     /*************************************
@@ -283,8 +270,13 @@ public class Dialogue_View {
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
         for (Component c : jMenu_listInsertion.getMenuComponents()) {
-            if (((JMenuItem) c).getText() == temp.getText())
+            System.out.println("menu item: " + ((JMenuItem) c).getText());
+            System.out.println("checking against: " + temp.getText());
+            if (((JMenuItem) c).getText().trim().equalsIgnoreCase(temp.getText().trim())){
+                System.out.println("returning");
                 return;
+            }
+
         }
         // else
         System.out.println("adding " + temp.getText());
@@ -367,51 +359,71 @@ public class Dialogue_View {
         jTextPane_dialogueInput.replaceSelection("");
     }
 
+
     /***************************************************************************
-     * Highlight Word
+     * Get Active List Buttons
      *
      **************************************************************************/
-    public void highlightWord(String wordToFind, Color color) throws BadLocationException {
-        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
-                new DefaultHighlighter.DefaultHighlightPainter(color);
-
-        String dialogueInputText = jTextPane_dialogueInput.getText();
-
-        String words[] = dialogueInputText.split(" ");
-
-        int offset = 0;
-        for (String word : words) {
-            if (word.equals(wordToFind)) {
-                highlighter.addHighlight(offset, offset + word.length(),
-                        highlightPainter);
+    public ArrayList<JButton> getActiveListButtons() {
+        ArrayList<JButton> activeButtons = new ArrayList<JButton>();
+        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element element;
+        while ((element = iterator.next()) != null) {
+            AttributeSet as = element.getAttributes();
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JButton) {
+                    activeButtons.add((JButton) StyleConstants.getComponent(as));
+                }
             }
-            offset += word.length() + 1;
         }
+        return activeButtons;
     }
 
-    public void highlightWordInSelection(String wordToFind, Color color) throws BadLocationException {
-        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
-                new DefaultHighlighter.DefaultHighlightPainter(color);
-
-        String dialogueInputText = jTextPane_dialogueInput.getSelectedText();
-
-        String words[] = dialogueInputText.split(" ");
-        int offset = 0;
-        for (String word : words) {
-            if (word.equals(wordToFind)) {
-                highlighter.addHighlight(offset, offset + word.length(),
-                        highlightPainter);
-            }
-            offset += word.length() + 1;
-        }
-    }
-
-    public void dehighlightAll() {
-        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-        highlighter.removeAllHighlights();
-    }
+//    /***************************************************************************
+//     * Highlight Word
+//     *
+//     **************************************************************************/
+//    public void highlightWord(String wordToFind, Color color) throws BadLocationException {
+//        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
+//        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
+//                new DefaultHighlighter.DefaultHighlightPainter(color);
+//
+//        String dialogueInputText = jTextPane_dialogueInput.getText();
+//
+//        String words[] = dialogueInputText.split(" ");
+//
+//        int offset = 0;
+//        for (String word : words) {
+//            if (word.equals(wordToFind)) {
+//                highlighter.addHighlight(offset, offset + word.length(),
+//                        highlightPainter);
+//            }
+//            offset += word.length() + 1;
+//        }
+//    }
+//
+//    public void highlightWordInSelection(String wordToFind, Color color) throws BadLocationException {
+//        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
+//        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
+//                new DefaultHighlighter.DefaultHighlightPainter(color);
+//
+//        String dialogueInputText = jTextPane_dialogueInput.getSelectedText();
+//
+//        String words[] = dialogueInputText.split(" ");
+//        int offset = 0;
+//        for (String word : words) {
+//            if (word.equals(wordToFind)) {
+//                highlighter.addHighlight(offset, offset + word.length(),
+//                        highlightPainter);
+//            }
+//            offset += word.length() + 1;
+//        }
+//    }
+//
+//    public void dehighlightAll() {
+//        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
+//        highlighter.removeAllHighlights();
+//    }
 
     /***************************************************************************
      * Set Caret Position

@@ -1,7 +1,5 @@
 package DinoText_GUI.DIALOGUE_MODULE.DialogueController;
 
-import DinoDictionary.DinoDictionary;
-import DinoDictionary.WordSuggest;
 import Dino.Dino;
 import Dino.FileTypes;
 import Dino.DialogueParser;
@@ -16,14 +14,11 @@ import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.*;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /*******************************************************************************
  * Dialogue Controller
@@ -37,7 +32,7 @@ public class Dialogue_Controller {
     private Table_Controller table_controller;
 
     private static final String DYNAMICLISTNAME = "Phrase List";
-    private static final String STATICVARNAME = "Game Value";
+//    private static final String STATICVARNAME = "Game Value";
 
 
     //Todo: Find a better way to do this
@@ -61,23 +56,13 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void initialize() {
-        dinoGUIView.addKeyListenerjTextPane_dialogueInput(new listener_JPanel_dialogueInput_backspace());
+//        dinoGUIView.addKeyListenerjTextPane_dialogueInput(new listener_JPanel_dialogueInput_backspace());
         initializejPopupMenu();
         initializejToolBar_File();
         initializejToolBar_ListTools();
         initializejToolBar_DictionaryTools();
         newDialogue();
         insertionHelper("Untitled List", false);
-
-//        dinoGUIView.getjTextPane_dialogueInput().addKeyListener(new KeyAdapter() {
-//            public void keyPressed(KeyEvent ke) {
-//                if (ke.getKeyCode() == 8) {
-//                    dinoGUIView.getjTextPane_dialogueInput().setEditable(true);
-//                } else {
-//                    dinoGUIView.getjTextPane_dialogueInput().setEditable(false);
-//                }
-//            }
-//        });
 
     }
 
@@ -134,15 +119,10 @@ public class Dialogue_Controller {
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         tools.add(menuItem);
 
-        menuItem = new JMenuItem();
-        menuItem.setText("Convert to " + DYNAMICLISTNAME);
-        menuItem.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
-        tools.add(menuItem);
-
-        menuItem = new JMenuItem();
-        menuItem.setText("Insert " + STATICVARNAME);
-        menuItem.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
-        tools.add(menuItem);
+//        menuItem = new JMenuItem();
+//        menuItem.setText("Insert " + STATICVARNAME);
+//        menuItem.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
+//        tools.add(menuItem);
 
         JMenuBar toolsMenu = new JMenuBar();
         toolsMenu.add(tools);
@@ -157,16 +137,16 @@ public class Dialogue_Controller {
     private void initializejToolBar_DictionaryTools() {
         JMenu tools = new JMenu("Dictionary Tools");
         JMenuItem menuItem;
-
-        menuItem = new JMenuItem();
-        menuItem.setText(DYNAMICLISTNAME + " Candidate Suggestion");
-        menuItem.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
-        tools.add(menuItem);
-
-        menuItem = new JMenuItem();
-        menuItem.setText("Synonyms");
-        menuItem.addActionListener(new listener_JMenuItem_Tools_Synonyms());
-        tools.add(menuItem);
+//
+//        menuItem = new JMenuItem();
+//        menuItem.setText(DYNAMICLISTNAME + " Candidate Suggestion");
+//        menuItem.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
+//        tools.add(menuItem);
+//
+//        menuItem = new JMenuItem();
+//        menuItem.setText("Synonyms");
+//        menuItem.addActionListener(new listener_JMenuItem_Tools_Synonyms());
+//        tools.add(menuItem);
 
         JMenuBar toolsMenu = new JMenuBar();
         toolsMenu.add(tools);
@@ -259,58 +239,67 @@ public class Dialogue_Controller {
     private void parseUnformattedDialogue(String unformattedDialogue) {
 
         String[] split = unformattedDialogue.split(" ");
-        dinoGUIView.setText_jTextPane_dialogueInput(unformattedDialogue);
-        String searchString = ""; // text that has already been iterated through
-        int offset = 0;
         int listCount = 0;
-        boolean listFound = false;
 
-        for (int i = 0; i < split.length; i++) {
-            String word = split[i];
-
-            if (word.contains("\\L[") || word.contains("\\S[")) {
-                if (!word.contains("]")) {
-                    do {
-                        // get next word, then check to see if the list is complete.
-                        // add a space between words
-                        word += " " + split[++i];
-                    } while (!word.contains("]"));
-                }
-
-                searchString += word + " ";
-
-                int selectionStart = searchString.lastIndexOf(word) + offset;
-
-
-                dinoGUIView.setCaret_jTextPane_dialogueInput(selectionStart);
-                switch (word.charAt(1)) {
-                    case 'L':
-                        if (listCount > 0) {
-                            dinoGUIView.insertIcon_Arrow_jTextPane();
-                        }
-                        insertionHelper(word.substring(3, word.length() - 1));
-                        listFound = true;
-                        break;
-                    case 'S':
-                        staticHelper(word.substring(3, word.length() - 1));
-                        break;
-                }
-                if (listCount > 0) {
-                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 2 + word.length(), selectionStart + (2 * word.length()) + 3);
-                } else {
-                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
-                }
-                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-
-                if (listFound) {
-                    listCount++;
-                    listFound = false;
-                }
-                offset++;
-            } else {
-                searchString += word + " ";
+        for (String list : split) {
+            if (listCount > 0) {
+                dinoGUIView.insertIcon_Arrow_jTextPane();
             }
+            insertionHelper(list.substring(3, list.length() - 1));
+            listCount++;
         }
+//
+//        dinoGUIView.setText_jTextPane_dialogueInput(unformattedDialogue);
+//        String searchString = ""; // text that has already been iterated through
+//        int offset = 0;
+//        int listCount = 0;
+//        boolean listFound = false;
+//
+//        for (int i = 0; i < split.length; i++) {
+//            String word = split[i];
+//
+//            if (word.contains("\\L[") || word.contains("\\S[")) {
+//                if (!word.contains("]")) {
+//                    do {
+//                        // get next word, then check to see if the list is complete.
+//                        // add a space between words
+//                        word += " " + split[++i];
+//                    } while (!word.contains("]"));
+//                }
+//
+//                searchString += word + " ";
+//
+//                int selectionStart = searchString.lastIndexOf(word) + offset;
+//
+//                dinoGUIView.setCaret_jTextPane_dialogueInput(selectionStart);
+//                switch (word.charAt(1)) {
+//                    case 'L':
+//                        if (listCount > 0) {
+//                            dinoGUIView.insertIcon_Arrow_jTextPane();
+//                        }
+//                        insertionHelper(word.substring(3, word.length() - 1));
+//                        listFound = true;
+//                        break;
+////                    case 'S':
+////                        staticHelper(word.substring(3, word.length() - 1));
+////                        break;
+//                }
+//                if (listCount > 0) {
+//                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 2 + word.length(), selectionStart + (2 * word.length()) + 3);
+//                } else {
+//                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
+//                }
+//                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
+//
+//                if (listFound) {
+//                    listCount++;
+//                    listFound = false;
+//                }
+//                offset++;
+//            } else {
+//                searchString += word + " ";
+//            }
+//        }
     }
 
     /***************************************************************************
@@ -496,87 +485,87 @@ public class Dialogue_Controller {
         System.out.println(dinoGUIView.getjTextPane_dialogueInput().getComponentCount());
 
     }
-
-    /***************************************************************************
-     * Tools Dropdown Menu - Dynamic Word Candidate Suggestion
-     *
-     **************************************************************************/
-    private class listener_JMenuItem_Tools_DynamicWordCandidateSuggestion implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String sentence = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-            if (sentence == null) {
-                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a sentence and try again.");
-            } else {
-                String[] result = WordSuggest.suggestWord(sentence);
-                for (String word : result) {
-                    dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-                    try {
-                        dinoGUIView.highlightWordInSelection(word, Color.yellow);
-                    } catch (BadLocationException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-
-    /***************************************************************************
-     * Tools Dropdown Menu - Synonyms
-     *
-     **************************************************************************/
-    private class listener_JMenuItem_Tools_Synonyms implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-            if (word == null || word.trim().contains(" ") || word.trim() == null) {
-                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a single word and try again.");
-            } else {
-                word = word.trim();
-                table_controller.addList(word + " Synonyms", DinoDictionary.getSynonyms(word).toArray(new String[0]));
-            }
-        }
-    }
-
-    /***************************************************************************
-     * Tools Dropdown Menu - Insert Static Variable
-     *
-     **************************************************************************/
-    class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(STATICVARNAME); // get name of
-            if (varName != null) {
-                if (varName.trim().length() > 0) {
-                    varName = varName.trim();
-
-                    staticHelper(varName);
-
-                } else {
-                    JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
-                }
-            }
-        }
-    }
-
-    public void staticHelper(String varName) {
-        dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //If we make a static variable menu, it should be
-                //updated here
-            }
-        }, Color.red);
-
-        // add button to list
-        JMenuItem temp = new JMenuItem();
-        temp.setText(varName);
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
-        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
-        dinoGUIModel.addStaticVar(varName);
-
-        dinoGUIView.setFocusTSDialogueInput();
-    }
+//
+//    /***************************************************************************
+//     * Tools Dropdown Menu - Dynamic Word Candidate Suggestion
+//     *
+//     **************************************************************************/
+//    private class listener_JMenuItem_Tools_DynamicWordCandidateSuggestion implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            String sentence = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+//            if (sentence == null) {
+//                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a sentence and try again.");
+//            } else {
+//                String[] result = WordSuggest.suggestWord(sentence);
+//                for (String word : result) {
+//                    dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+//                    try {
+//                        dinoGUIView.highlightWordInSelection(word, Color.yellow);
+//                    } catch (BadLocationException ex) {
+//                        ex.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//    }
+//
+//    /***************************************************************************
+//     * Tools Dropdown Menu - Synonyms
+//     *
+//     **************************************************************************/
+//    private class listener_JMenuItem_Tools_Synonyms implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
+//            if (word == null || word.trim().contains(" ") || word.trim() == null) {
+//                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a single word and try again.");
+//            } else {
+//                word = word.trim();
+//                table_controller.addList(word + " Synonyms", DinoDictionary.getSynonyms(word).toArray(new String[0]));
+//            }
+//        }
+//    }
+//
+//    /***************************************************************************
+//     * Tools Dropdown Menu - Insert Static Variable
+//     *
+//     **************************************************************************/
+//    class listener_JMenuItem_Tools_InsertStaticVariable implements ActionListener {
+//        public void actionPerformed(ActionEvent e) {
+//            String varName = dinoGUIView.requestListNamejOptionPane_listInsertion(STATICVARNAME); // get name of
+//            if (varName != null) {
+//                if (varName.trim().length() > 0) {
+//                    varName = varName.trim();
+//
+//                    staticHelper(varName);
+//
+//                } else {
+//                    JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
+//                }
+//            }
+//        }
+//    }
+//
+//    public void staticHelper(String varName) {
+//        dinoGUIView.insertButtonjTextPane_StaticVar(varName, new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                //If we make a static variable menu, it should be
+//                //updated here
+//            }
+//        }, Color.red);
+//
+//        // add button to list
+//        JMenuItem temp = new JMenuItem();
+//        temp.setText(varName);
+//        temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
+//        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+//
+//        dinoGUIModel.addStaticVar(varName);
+//
+//        dinoGUIView.setFocusTSDialogueInput();
+//    }
 
     /***************************************************************************
      * set jOptionPane_Preferences
@@ -607,31 +596,31 @@ public class Dialogue_Controller {
         temp.setText(DYNAMICLISTNAME);
         temp.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
-        temp = new JMenuItem();
-        temp.setText(DYNAMICLISTNAME + " Conversion");
-        temp.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
-        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
-        temp = new JMenuItem();
-        temp.setText(STATICVARNAME);
-        temp.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
-        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
-        temp = new JMenuItem();
-        temp.setText(DYNAMICLISTNAME + " Candidate Suggestion");
-        temp.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
-        dinoGUIView.addItemjPopupMenu_dictionary(temp);
-
-        temp = new JMenuItem();
-        temp.setText("Find Synonyms");
-        temp.addActionListener(new listener_JMenuItem_Tools_Synonyms());
-        dinoGUIView.addItemjPopupMenu_dictionary(temp);
-
-        temp = new JMenuItem();
-        temp.setText("Remove All Highlights");
-        temp.addActionListener(new listener_JMenuItem_Tools_Dehighlight());
-        dinoGUIView.addItemjPopupMenu_dictionary(temp);
+//
+//        temp = new JMenuItem();
+//        temp.setText(DYNAMICLISTNAME + " Conversion");
+//        temp.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
+//        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+//
+//        temp = new JMenuItem();
+//        temp.setText(STATICVARNAME);
+//        temp.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
+//        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+//
+//        temp = new JMenuItem();
+//        temp.setText(DYNAMICLISTNAME + " Candidate Suggestion");
+//        temp.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
+//        dinoGUIView.addItemjPopupMenu_dictionary(temp);
+//
+//        temp = new JMenuItem();
+//        temp.setText("Find Synonyms");
+//        temp.addActionListener(new listener_JMenuItem_Tools_Synonyms());
+//        dinoGUIView.addItemjPopupMenu_dictionary(temp);
+//
+//        temp = new JMenuItem();
+//        temp.setText("Remove All Highlights");
+//        temp.addActionListener(new listener_JMenuItem_Tools_Dehighlight());
+//        dinoGUIView.addItemjPopupMenu_dictionary(temp);
 
         dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
@@ -658,9 +647,9 @@ public class Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             if (dinoGUIView.getSetListNames().contains(varName))
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
-            else {
-                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
-            }
+//            else {
+//                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
+//            }
             parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIView.setFocusTSDialogueInput();
         }
@@ -683,9 +672,13 @@ public class Dialogue_Controller {
         dinoGUIModel.setName(fileName);
         mostRecentSaved = fileName;
 
+        String dialogue = "";
+        for (JButton button : dinoGUIView.getActiveListButtons()) {
+            dialogue += button.getName() + " ";
+        }
         dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
-        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+//        dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
+        dinoGUIModel.setDialogue(dialogue);
         dinoGUIModel.writeToFile();
 
         table_controller.writeAllToFile();
@@ -760,18 +753,18 @@ public class Dialogue_Controller {
         return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
     }
 
-    /***************************************************************************
-     * get staticVars
-     *
-     **************************************************************************/
-    public Set<String> getSetStaticVars() {
-        return dinoGUIModel.getStaticVars();
-    }
-
-    public String[] getArrayStaticVars() {
-        return dinoGUIModel.getStaticVars().toArray(new String[dinoGUIModel.getStaticVars().size()]);
-
-    }
+//    /***************************************************************************
+//     * get staticVars
+//     *
+//     **************************************************************************/
+//    public Set<String> getSetStaticVars() {
+//        return dinoGUIModel.getStaticVars();
+//    }
+//
+//    public String[] getArrayStaticVars() {
+//        return dinoGUIModel.getStaticVars().toArray(new String[dinoGUIModel.getStaticVars().size()]);
+//
+//    }
 
     /***************************************************************************
      * get Dialogue
@@ -797,7 +790,9 @@ public class Dialogue_Controller {
     public void renameList(String newName, String oldName) {
         HashSet<String> temp = dinoGUIView.getSetListNames();
         if (temp.contains(oldName)) {
-            int oldPos = Arrays.asList(temp.toArray(new String[0])).indexOf(oldName);
+            java.util.List<String> tempList =  Arrays.asList(temp.toArray(new String[0]));
+            Collections.sort(tempList);
+            int oldPos = tempList.indexOf(oldName);
 
             //remove oldname from dialogue
             dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
@@ -817,7 +812,7 @@ public class Dialogue_Controller {
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
 
             //remove oldname from jpopupmenu
-            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 3);
+            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 1);
 
             //add newname to jpopupmenu
 
@@ -842,84 +837,84 @@ public class Dialogue_Controller {
 //        }
 //    }
 
-    /***************************************************************************
-     * Dehighlight all
-     *
-     **************************************************************************/
-    private class listener_JMenuItem_Tools_Dehighlight implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dinoGUIView.dehighlightAll();
-        }
-    }
-
-    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
-        @Override
-        public void keyTyped(KeyEvent e) {
-        }
-
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == 8) {
-                boolean space = false;
-                boolean first = false;
-
-
-                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
-
-                if (pane.getText().length() >= 0) {
-                    if (pane.getCaretPosition() == 0) {
-                        newDialogue();
-                        return;
-                    }
-
-                    try {
-                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
-                            pane.setCaretPosition(pane.getCaretPosition() - 2);
-                            space = true;
-                            first = true;
-                        }
-                    } catch (BadLocationException ex) {
-                        ex.printStackTrace();
-                    }
-
-                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
-                        if (first) {
-                            pane.setCaretPosition(pane.getCaretPosition() + 1);
-                            first = false;
-                        }
-
-
-                        try {
-                            pane.getDocument().remove(pane.getCaretPosition(), 1);
-                        } catch (BadLocationException ex) {
-                        }
-
-                        pane.setCaretPosition(pane.getCaretPosition() - 1);
-                    }
-
-                    if (dinoGUIView.getjTextPane_dialogueInput().getComponentCount() > 1) {
-                        try {
-                            pane.getDocument().remove(pane.getCaretPosition(), 1);
-
-                            if (space)
-                                pane.setCaretPosition(pane.getCaretPosition() - 1);
-
-                        } catch (BadLocationException ex) {
-                        }
-                    }
-
-                    if (space)
-                        pane.setCaretPosition(pane.getCaretPosition() + 1);
-
-                }
-            }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-        }
-
-    }
+//    /***************************************************************************
+//     * Dehighlight all
+//     *
+//     **************************************************************************/
+//    private class listener_JMenuItem_Tools_Dehighlight implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            dinoGUIView.dehighlightAll();
+//        }
+//    }
+//
+//    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
+//        @Override
+//        public void keyTyped(KeyEvent e) {
+//        }
+//
+//
+//        @Override
+//        public void keyPressed(KeyEvent e) {
+//            if (e.getKeyCode() == 8) {
+//                boolean space = false;
+//                boolean first = false;
+//
+//
+//                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
+//
+//                if (pane.getText().length() >= 0) {
+//                    if (pane.getCaretPosition() == 0) {
+//                        newDialogue();
+//                        return;
+//                    }
+//
+//                    try {
+//                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
+//                            pane.setCaretPosition(pane.getCaretPosition() - 2);
+//                            space = true;
+//                            first = true;
+//                        }
+//                    } catch (BadLocationException ex) {
+//                        ex.printStackTrace();
+//                    }
+//
+//                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
+//                        if (first) {
+//                            pane.setCaretPosition(pane.getCaretPosition() + 1);
+//                            first = false;
+//                        }
+//
+//
+//                        try {
+//                            pane.getDocument().remove(pane.getCaretPosition(), 1);
+//                        } catch (BadLocationException ex) {
+//                        }
+//
+//                        pane.setCaretPosition(pane.getCaretPosition() - 1);
+//                    }
+//
+//                    if (dinoGUIView.getjTextPane_dialogueInput().getComponentCount() > 1) {
+//                        try {
+//                            pane.getDocument().remove(pane.getCaretPosition(), 1);
+//
+//                            if (space)
+//                                pane.setCaretPosition(pane.getCaretPosition() - 1);
+//
+//                        } catch (BadLocationException ex) {
+//                        }
+//                    }
+//
+//                    if (space)
+//                        pane.setCaretPosition(pane.getCaretPosition() + 1);
+//
+//                }
+//            }
+//        }
+//
+//        @Override
+//        public void keyReleased(KeyEvent e) {
+//        }
+//
+//    }
 }
