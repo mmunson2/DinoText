@@ -226,21 +226,17 @@ public class Dialogue_View {
         } catch (BadLocationException e) {
             e.printStackTrace();
         }
+        jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName,actionListener,color));
+    }
 
+    public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
         JButton newList = new JButton(listName);
         newList.setName(listName);
         newList.setText(listName);
         newList.addActionListener(actionListener);
         newList.setBackground(color);
-        jTextPane_dialogueInput.insertComponent(newList);
         listButtons.add(newList);
-//
-//        try {
-//            jTextPane_dialogueInput.getDocument().insertString(caretPos + (listName.length() + 5), "\b", null);
-//        } catch (BadLocationException e) {
-//            e.printStackTrace();
-//        }
-
+        return newList;
     }
 
     /***************************************************************************
@@ -305,7 +301,7 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void removeItemjPopupMenu_listInsertion(int oldPos) {
-        jPopupMenu_listInsertion.remove(oldPos);
+        jMenu_listInsertion.remove(oldPos);
     }
 
     /***************************************************************************

@@ -67,6 +67,7 @@ public class Dialogue_Controller {
         initializejToolBar_ListTools();
         initializejToolBar_DictionaryTools();
         newDialogue();
+        insertionHelper("Untitled List", false);
     }
 
 
@@ -432,16 +433,31 @@ public class Dialogue_Controller {
     }
 
     public void insertionHelper(String listName) {
-        if (listName != null)
-            if (listName.trim().length() > 0) {
-                dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
+        insertionHelper(listName, true);
+    }
 
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        //When a list button is pressed, change the list tab
-                        table_controller.switchToName(listName.trim());
-                    }
-                }, Color.yellow);
+    public void insertionHelper(String listName, boolean bool) {
+        if (listName != null)
+
+            if (listName.trim().length() > 0) {
+                if (bool) {
+                    dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            //When a list button is pressed, change the list tab
+                            table_controller.switchToName(listName.trim());
+                        }
+                    }, Color.yellow);
+
+                } else {
+                    dinoGUIView.makeButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            //When a list button is pressed, change the list tab
+                            table_controller.switchToName(listName.trim());
+                        }
+                    }, Color.yellow);
+                }
 
                 table_controller.addList(listName.trim());
 
@@ -615,11 +631,7 @@ public class Dialogue_Controller {
             if (dinoGUIView.getSetListNames().contains(varName))
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
             else {
-                if (varName == "Untitled List") {
-                    insertionHelper(varName);
-                } else {
-                    dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
-                }
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
             }
             dinoGUIView.setFocusTSDialogueInput();
         }
@@ -776,7 +788,7 @@ public class Dialogue_Controller {
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
 
             //remove oldname from jpopupmenu
-            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 2);
+            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 3);
 
             //add newname to jpopupmenu
 
