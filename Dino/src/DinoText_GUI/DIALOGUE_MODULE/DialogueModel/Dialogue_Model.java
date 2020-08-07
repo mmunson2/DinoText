@@ -19,7 +19,6 @@ public class Dialogue_Model {
     private static Set<String> staticVars = new LinkedHashSet<>();
     private static Set<String> listNames = new LinkedHashSet<>();
 
-
     /***************************************************************************
      * addStaticVar
      *
@@ -78,7 +77,7 @@ public class Dialogue_Model {
     public void addListName(String name) {
         listNames.add(name);
     }
-    
+
     /***************************************************************************
      * writeToFile
      *

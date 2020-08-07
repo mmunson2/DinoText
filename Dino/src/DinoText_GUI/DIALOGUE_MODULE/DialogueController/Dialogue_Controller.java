@@ -31,7 +31,7 @@ public class Dialogue_Controller {
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
 
-    private static final String DYNAMICLISTNAME = "Phrase List";
+    private static final String DYNAMICLISTNAME = "Part of Conversation";
 //    private static final String STATICVARNAME = "Game Value";
 
 
@@ -125,7 +125,7 @@ public class Dialogue_Controller {
         JMenuItem menuItem;
 
         menuItem = new JMenuItem();
-        menuItem.setText("Insert " + DYNAMICLISTNAME);
+        menuItem.setText("Insert New " + DYNAMICLISTNAME);
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         tools.add(menuItem);
 
@@ -400,6 +400,7 @@ public class Dialogue_Controller {
 // q
 //        dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
 //    }
+
     public void jPopupMenu_listInsertion_updateMenuItems() {
         System.err.println("__________________________________________________");
 
@@ -424,7 +425,7 @@ public class Dialogue_Controller {
         // checks if the table has a list the view does not
         currentLists = new HashSet<>(); // set of lists in table
         for (Component c : dinoGUIView.getjMenu_listInsertion().getMenuComponents()) {
-            if (((JMenuItem) c).getText() != "Phrase List") {
+            if (((JMenuItem) c).getText() != DYNAMICLISTNAME) {
                 for (String listName : table_controller.getListNames()) { // populate listName with all lists in table
                     currentLists.add(listName.trim());
                 }
