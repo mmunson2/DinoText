@@ -1,11 +1,12 @@
 package DinoText_GUI.DIALOGUE_MODULE.DialogueView;
 
-
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 /*******************************************************************************
@@ -121,6 +122,10 @@ public class Dialogue_View {
         return jPopupMenu_listInsertion;
     }
 
+    public JMenu getjMenu_listInsertion() {
+        return jMenu_listInsertion;
+    }
+
     /***************************************************************************
      * get text pane
      **************************************************************************/
@@ -216,7 +221,7 @@ public class Dialogue_View {
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
 
         jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, null));
-
+        insertAllArrows();
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -269,15 +274,6 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
-        for (Component c : jMenu_listInsertion.getMenuComponents()) {
-            System.out.println("menu item: " + ((JMenuItem) c).getText());
-            System.out.println("checking against: " + temp.getText());
-            if (((JMenuItem) c).getText().trim().equalsIgnoreCase(temp.getText().trim())){
-                System.out.println("returning");
-                return;
-            }
-
-        }
         // else
         System.out.println("adding " + temp.getText());
         jMenu_listInsertion.add(temp);
@@ -301,6 +297,19 @@ public class Dialogue_View {
      **************************************************************************/
     public void removeItemjPopupMenu_listInsertion(int oldPos) {
         jMenu_listInsertion.remove(oldPos);
+    }
+
+    public void removeItemjPopupMenu_listInsertion(String item) {
+        HashSet<String> temp = getSetListNames();
+        if (temp.contains(item)) {
+            java.util.List<String> tempList = Arrays.asList(temp.toArray(new String[0]));
+            Collections.sort(tempList);
+            int oldPos = tempList.indexOf(item);
+
+
+            //remove oldname from jpopupmenu
+            removeItemjPopupMenu_listInsertion(oldPos + 1);
+        }
     }
 
     /***************************************************************************
@@ -372,6 +381,7 @@ public class Dialogue_View {
             AttributeSet as = element.getAttributes();
             if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
                 if (StyleConstants.getComponent(as) instanceof JButton) {
+                    System.out.println("adding button to save");
                     activeButtons.add((JButton) StyleConstants.getComponent(as));
                 }
             }
@@ -448,10 +458,42 @@ public class Dialogue_View {
         jTextPane_dialogueInput.setCharacterAttributes(set, true);
     }
 
-    public void insertIcon_Arrow_jTextPane() {
+    public void insertLabel_Arrow_jTextPane() {
         JLabel arrow = new JLabel();
         arrow.setText("  \u2794  ");
         System.out.println("inserting");
         jTextPane_dialogueInput.add(arrow);
+    }
+
+    public void insertAllArrows() {
+        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element element;
+        while ((element = iterator.next()) != null) {
+            AttributeSet as = element.getAttributes();
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JLabel) {
+                    jTextPane_dialogueInput.remove(StyleConstants.getComponent(as));
+                }
+            }
+        }
+
+        iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        ElementIterator nextItr = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element next = nextItr.next();
+        element = iterator.next();
+
+        while ((next = nextItr.next()) != null) {
+            AttributeSet as = element.getAttributes();
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JButton) {
+
+                    System.out.println("current list: " + StyleConstants.getComponent(as).getName());
+                    System.out.println("next list: " + StyleConstants.getComponent(as).getName());
+
+                    insertLabel_Arrow_jTextPane();
+                    element = next;
+                }
+            }
+        }
     }
 }
