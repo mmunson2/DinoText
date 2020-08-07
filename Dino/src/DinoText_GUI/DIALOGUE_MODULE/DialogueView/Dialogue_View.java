@@ -84,6 +84,7 @@ public class Dialogue_View {
     public void addListenerjTextPane_dialogueInput(MouseAdapter mouseAdapter) {
         jTextPane_dialogueInput.addMouseListener(mouseAdapter);
     }
+
     /***************************************************************************
      * set dialogue ext
      **************************************************************************/
@@ -170,7 +171,7 @@ public class Dialogue_View {
      * MISC
      ************************************/
 
-    public void setCaretToEnd(){
+    public void setCaretToEnd() {
         jTextPane_dialogueInput.setCaretPosition(jTextPane_dialogueInput.getStyledDocument().getLength());
         jTextPane_dialogueInput.requestFocus();
     }
@@ -199,12 +200,9 @@ public class Dialogue_View {
      **************************************************************************/
     public HashSet<String> getSetListNames() {
         listNames = new HashSet<>();
-        System.out.println("PRE SIZE: " + listNames.size());
         for (JButton jb : listButtons) {
             listNames.add(jb.getName());
-            System.out.println("name added to list: " + jb.getName());
         }
-        System.out.println("POST SIZE: " + listNames.size());
 
         return listNames;
     }
@@ -311,10 +309,12 @@ public class Dialogue_View {
 
     public void insertLabel_Arrow_jTextPane() {
         JLabel arrow = new JLabel();
+        arrow.setFocusable(false);
         arrow.setText("  \u2794  ");
-        if (numArrows < getActiveListButtons().size() - 1)
-        jTextPane_dialogueInput.insertComponent(arrow);
-        numArrows++;
+        if (numArrows < getActiveListButtons().size() - 1) {
+            jTextPane_dialogueInput.insertComponent(arrow);
+            numArrows++;
+        }
     }
 
     public void insertAllArrows() {
@@ -324,7 +324,6 @@ public class Dialogue_View {
 
     private void insertArrows() {
         numArrows = 0;
-        System.out.println("NEW CALL");
         //remove any existing arrows
         int cursorPos = 0;
         int components = 0;

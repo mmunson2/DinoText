@@ -180,11 +180,7 @@ public class Dialogue_Controller {
                 newDialogue();
                 String dialogueName = FileTypes.trimDialogueExtension(file.getName());
 
-                System.err.println("PRE: ");
-
                 DialogueParser parser = new DialogueParser(file.getAbsolutePath());
-
-                System.err.println("POST: ");
 
                 //Todo: Take this dialogue String and put it into the view
                 parseUnformattedDialogue(parser.getUnformattedDialogue());
@@ -226,7 +222,6 @@ public class Dialogue_Controller {
     private void parseUnformattedDialogue(String unformattedDialogue) {
         String[] split = unformattedDialogue.split(" ");
         int listCount = 0;
-        System.out.println("parsing: " + split.length + " " + unformattedDialogue);
 
         for (int i = 0; i < split.length; i++) {
             String list = split[i];
@@ -285,11 +280,9 @@ public class Dialogue_Controller {
 
                 if (textDisplayController.panelIsVisible()) {
                     textDisplayController.setPanelVisible(false);
-                    System.out.println("Setting invisible");
 
                 } else {
                     textDisplayController.setPanelVisible(true);
-                    System.out.println("Setting visible");
                 }
             }
         }
@@ -312,7 +305,6 @@ public class Dialogue_Controller {
 
 
     public void jPopupMenu_listInsertion_updateMenuItems() {
-        System.err.println("__________________________________________________");
 
 
         HashSet<String> currentLists = new HashSet<>();
@@ -341,7 +333,6 @@ public class Dialogue_Controller {
 
                 if (!currentLists.contains(((JMenuItem) c).getText())) { // if the table does not contain the button,
                     // remove it from the popup
-                    System.err.println("List found in popup, but not table: " + ((JMenuItem) c).getText());
                     dinoGUIView.removeItemjPopupMenu_listInsertion(((JMenuItem) c).getText());
 //                    dinoGUIView.removeListName(((JMenuItem) c).getText());
                 }
@@ -440,7 +431,6 @@ public class Dialogue_Controller {
                     dinoGUIView.showjPopupMenu_listInsertion(me);
                 }
             }
-
         });
     }
 
@@ -526,9 +516,7 @@ public class Dialogue_Controller {
             ArrayList<String> tempList = new ArrayList<>(Arrays.asList(temp.toArray(new String[0])));
 
 //            Collections.sort(tempList);
-            System.out.println("tempList indexof: " + tempList.indexOf(oldName));
             int oldPos = tempList.indexOf(oldName);
-            System.out.println("initial oldpos: " + (oldPos));
 
             //remove oldname from dialogue
             dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
@@ -547,7 +535,6 @@ public class Dialogue_Controller {
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
 
             //remove oldname from jpopupmenu
-            System.out.println("removing: " + oldName);
             dinoGUIView.removeItemjPopupMenu_listInsertion(oldName);
 
             //add newname to jpopupmenu
