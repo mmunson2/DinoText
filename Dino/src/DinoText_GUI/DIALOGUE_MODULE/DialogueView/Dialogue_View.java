@@ -219,9 +219,8 @@ public class Dialogue_View {
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
-
         jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, null));
-        insertAllArrows();
+        //insertAllArrows();
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -251,10 +250,7 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void setSetListNames(HashSet<String> newNames) {
-        System.out.println(newNames.toArray().length);
-        System.out.println(listNames.toArray().length);
         listNames = newNames;
-        System.out.println(listNames.toArray().length);
     }
 
     /*************************************
@@ -275,7 +271,6 @@ public class Dialogue_View {
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
         // else
-        System.out.println("adding " + temp.getText());
         jMenu_listInsertion.add(temp);
         jPopupMenu_listInsertion.pack();
     }
@@ -381,7 +376,6 @@ public class Dialogue_View {
             AttributeSet as = element.getAttributes();
             if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
                 if (StyleConstants.getComponent(as) instanceof JButton) {
-                    System.out.println("adding button to save");
                     activeButtons.add((JButton) StyleConstants.getComponent(as));
                 }
             }
@@ -461,39 +455,39 @@ public class Dialogue_View {
     public void insertLabel_Arrow_jTextPane() {
         JLabel arrow = new JLabel();
         arrow.setText("  \u2794  ");
-        System.out.println("inserting");
+        System.out.println("inserting arrow");
         jTextPane_dialogueInput.add(arrow);
     }
 
-    public void insertAllArrows() {
-        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-        Element element;
-        while ((element = iterator.next()) != null) {
-            AttributeSet as = element.getAttributes();
-            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
-                if (StyleConstants.getComponent(as) instanceof JLabel) {
-                    jTextPane_dialogueInput.remove(StyleConstants.getComponent(as));
-                }
-            }
-        }
-
-        iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-        ElementIterator nextItr = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-        Element next = nextItr.next();
-        element = iterator.next();
-
-        while ((next = nextItr.next()) != null) {
-            AttributeSet as = element.getAttributes();
-            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
-                if (StyleConstants.getComponent(as) instanceof JButton) {
-
-                    System.out.println("current list: " + StyleConstants.getComponent(as).getName());
-                    System.out.println("next list: " + StyleConstants.getComponent(as).getName());
-
-                    insertLabel_Arrow_jTextPane();
-                    element = next;
-                }
-            }
-        }
-    }
+//    public void insertAllArrows() {
+//        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+//        Element element;
+//        while ((element = iterator.next()) != null) {
+//            AttributeSet as = element.getAttributes();
+//            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+//                if (StyleConstants.getComponent(as) instanceof JLabel) {
+//                    jTextPane_dialogueInput.remove(StyleConstants.getComponent(as));
+//                }
+//            }
+//        }
+//
+//        iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+//        ElementIterator nextItr = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+//        Element next = nextItr.next();
+//        element = iterator.next();
+//
+//        while ((next = nextItr.next()) != null) {
+//            AttributeSet as = element.getAttributes();
+//            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+//                if (StyleConstants.getComponent(as) instanceof JButton) {
+//
+//                    System.out.println("current list: " + StyleConstants.getComponent(as).getName());
+//                    System.out.println("next list: " + StyleConstants.getComponent(as).getName());
+//
+//                    insertLabel_Arrow_jTextPane();
+//                    element = next;
+//                }
+//            }
+//        }
+//    }
 }
