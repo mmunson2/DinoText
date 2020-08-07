@@ -14,4 +14,16 @@ public class System_Controller {
         text_display_controller = text;
         table_controller = table;
     }
+
+    public Dialogue_Controller getDialogueController() {
+        return dialogue_controller;
+    }
+
+    public Text_Display_Controller getText_display_controller() {
+        return text_display_controller;
+    }
+
+    public Table_Controller getTable_Controller() {
+        return table_controller;
+    }
 }

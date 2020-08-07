@@ -5,6 +5,7 @@ import Dino.FileTypes;
 import Dino.DialogueParser;
 import Dino.List.List;
 
+import DinoText_GUI.SYSTEM_CONTROLLER.System_Controller;
 import DinoText_GUI.TABLE_MODULE.Table_Controller.Table_Controller;
 import DinoText_GUI.DISPLAY_MODULE.DisplayController.Text_Display_Controller;
 import DinoText_GUI.DinoText;
@@ -273,6 +274,7 @@ public class Dialogue_Controller {
             }
 
             if (dinoGUIModel.getName() != null) {
+                saveExistingDialogueFile();
 
                 Dino dino = getDino();
                 textDisplayController.setDino(dino);
@@ -398,6 +400,7 @@ public class Dialogue_Controller {
             } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
+        dinoGUIView.setCaretToEnd();
     }
 
     /***************************************************************************
