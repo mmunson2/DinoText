@@ -79,6 +79,9 @@ public class DialogueParser
         initializeIndices(builder.toString());
 
         this.unformattedDialogue = builder.toString();
+
+        System.err.println("DialogueParser found unformatted d: " + unformattedDialogue);
+
         this.dialogue = formatDialogue(builder.toString());
     }
 
