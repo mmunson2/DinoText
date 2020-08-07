@@ -22,7 +22,7 @@ public class Dialogue_View {
     private JMenu jMenu_listInsertion;
     private JMenu jMenu_dictionaryFunctions;
     private JToolBar jToolBar_topBar;
-    private ArrayList<JButton> listButtons;
+    private ArrayList<JButton> listButtons; //  buttons in the popup that may not be in the dialogue
     private ArrayList<JButton> staticVarButtons;
     private HashSet<String> listNames;
     private JDialog jDialog_Preferences = new JDialog();
@@ -239,19 +239,32 @@ public class Dialogue_View {
      **************************************************************************/
     public HashSet<String> getSetListNames() {
         listNames = new HashSet<>();
+        System.out.println("PRE SIZE: " + listNames.size());
         for (JButton jb : listButtons) {
             listNames.add(jb.getName());
+            System.out.println("name added to list: " + jb.getName());
         }
+        System.out.println("POST SIZE: " + listNames.size());
+
         return listNames;
     }
-
-    /***************************************************************************
-     * Set List Names
-     *
-     **************************************************************************/
-    public void setSetListNames(HashSet<String> newNames) {
-        listNames = newNames;
-    }
+//
+//    /***************************************************************************
+//     * Set List Names
+//     *
+//     **************************************************************************/
+//    public void setSetListNames(HashSet<String> newNames) {
+//        listNames = newNames;
+//    }
+//
+//    /***************************************************************************
+//     * Remove List Names
+//     *
+//     **************************************************************************/
+//    public void removeListName(String name) {
+//        System.out.println("Attempting to remove " + name + "from: " + listNames.size());
+//        if (listNames.contains(name)) listNames.remove(name);
+//    }
 
     /*************************************
      * POPUP MENU
@@ -294,6 +307,7 @@ public class Dialogue_View {
         for (Component c : getjMenu_listInsertion().getMenuComponents()) {
             if (((JMenuItem) c).getText() == item) {
                 jMenu_listInsertion.remove(c);
+//                removeListName(((JMenuItem) c).getText());
             }
         }
     }
@@ -316,17 +330,36 @@ public class Dialogue_View {
         return listName;
     }
 
+//    /***************************************************************************
+//     * Remove button from popup menu
+//     *
+//     **************************************************************************/
+//    public void removeButtonjPopupMenu(JButton button) {
+//        for (JButton jb : listButtons) {
+//            if (jb.equals(button)) {
+//                listButtons.remove(jb);
+//            }
+//        }
+//    }
+
+
     /***************************************************************************
-     * Remove button from popup menu
+     * Clear List Button
      *
      **************************************************************************/
-    public void removeButtonjPopupMenu(JButton button) {
-        for (JButton jb : listButtons) {
-            if (jb.equals(button)) {
-                listButtons.remove(jb);
-            }
-        }
+    public void clearListButtonsjPopupMenu() {
+        listButtons.clear();
     }
+
+
+    /***************************************************************************
+     * Add List Buttons
+     *
+     **************************************************************************/
+    public void addListButtonsjPopupMenu(JButton button) {
+        listButtons.add(button);
+    }
+
 
 
     /***************************************************************************
@@ -437,10 +470,7 @@ public class Dialogue_View {
     }
 
     public void clearjTextPane_dialogueInput() {
-        SimpleAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setFontSize(set, 12);
-
-        jTextPane_dialogueInput.setCharacterAttributes(set, true);
+        setText_jTextPane_dialogueInput("");
     }
 
     public void insertLabel_Arrow_jTextPane() {

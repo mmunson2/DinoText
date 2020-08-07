@@ -47,7 +47,6 @@ public class Dialogue_Controller {
         dinoGUIView = view;
         this.textDisplayController = textDisplayController;
         this.table_controller = table_controller;
-
         initialize();
     }
 
@@ -207,8 +206,10 @@ public class Dialogue_Controller {
             {
                 return;
             } else if (FileTypes.hasListExtension(file.getName())) {
+                newDialogue();
                 table_controller.openFile(file);
             } else if (FileTypes.hasDialogueExtension(file.getName())) {
+                newDialogue();
                 String dialogueName = FileTypes.trimDialogueExtension(file.getName());
 
                 System.err.println("PRE: ");
@@ -224,7 +225,7 @@ public class Dialogue_Controller {
                 //Todo: Take these list names and put it wherever you keep them
                 int j = 0;
                 for (List list : lists) {
-                    dinoGUIModel.getListNames().add(list.getName());
+                    dinoGUIModel.addListName(list.getName());
                     j++;
                 }
                 String[] listNames = new String[lists.length];
@@ -257,71 +258,27 @@ public class Dialogue_Controller {
         int listCount = 0;
         System.out.println("parsing: " + split.length + " " + unformattedDialogue);
 
-        for (String list : split) {
-            if (list.length() > 4) {
-                System.out.println("parsing inside: " + list);
+        for (int i = 0; i < split.length; i++) {
+            String list = split[i];
+            if (list.contains("\\L[")) {
+                if (!list.contains("]")) {
+                    do {
+                        // get next word, then check to see if the list is complete.
+                        // add a space between words
+                        list += " " + split[++i];
+                        listCount++;
+                    } while (!list.contains("]"));
+                }
 
                 if (listCount > 0) {
-                    System.out.println("parse arrow");
-
-                    dinoGUIView.insertLabel_Arrow_jTextPane();
+//                    dinoGUIView.insertIcon_Arrow_jTextPane();
                 }
-                insertionHelper(list.substring(3, list.length() - 1));
-                listCount++;
+
+                if (list.length() > 4) {
+                    insertionHelper(list.substring(3, list.length() - 1));
+                }
             }
         }
-//
-//        dinoGUIView.setText_jTextPane_dialogueInput(unformattedDialogue);
-//        String searchString = ""; // text that has already been iterated through
-//        int offset = 0;
-//        int listCount = 0;
-//        boolean listFound = false;
-//
-//        for (int i = 0; i < split.length; i++) {
-//            String word = split[i];
-//
-//            if (word.contains("\\L[") || word.contains("\\S[")) {
-//                if (!word.contains("]")) {
-//                    do {
-//                        // get next word, then check to see if the list is complete.
-//                        // add a space between words
-//                        word += " " + split[++i];
-//                    } while (!word.contains("]"));
-//                }
-//
-//                searchString += word + " ";
-//
-//                int selectionStart = searchString.lastIndexOf(word) + offset;
-//
-//                dinoGUIView.setCaret_jTextPane_dialogueInput(selectionStart);
-//                switch (word.charAt(1)) {
-//                    case 'L':
-//                        if (listCount > 0) {
-//                            dinoGUIView.insertIcon_Arrow_jTextPane();
-//                        }
-//                        insertionHelper(word.substring(3, word.length() - 1));
-//                        listFound = true;
-//                        break;
-////                    case 'S':
-////                        staticHelper(word.substring(3, word.length() - 1));
-////                        break;
-//                }
-//                if (listCount > 0) {
-//                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 2 + word.length(), selectionStart + (2 * word.length()) + 3);
-//                } else {
-//                    dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
-//                }
-//                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-//
-//                if (listFound) {
-//                    listCount++;
-//                    listFound = false;
-//                }
-//                offset++;
-//            } else {
-//                searchString += word + " ";
-//            }
-//        }
     }
 
     /***************************************************************************
@@ -444,6 +401,10 @@ public class Dialogue_Controller {
 //        dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
 //    }
     public void jPopupMenu_listInsertion_updateMenuItems() {
+        System.err.println("__________________________________________________");
+
+        System.err.println("Popup Size: " + dinoGUIView.getAllListButtons().size());
+
         HashSet<String> currentLists = new HashSet<>();
         // checks if the table has a list the view does not
         for (String listName : table_controller.getListNames()) {
@@ -472,11 +433,12 @@ public class Dialogue_Controller {
                     // remove it from the popup
                     System.err.println("List found in popup, but not table: " + ((JMenuItem) c).getText());
                     dinoGUIView.removeItemjPopupMenu_listInsertion(((JMenuItem) c).getText());
+//                    dinoGUIView.removeListName(((JMenuItem) c).getText());
                 }
 
             }
         }
-
+        System.err.println("Popup Size: " + dinoGUIView.getAllListButtons().size());
     }
 
     /***************************************************************************
@@ -623,6 +585,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void newDialogue() {
+        dinoGUIView.clearListButtonsjPopupMenu();
         dinoGUIView.clearjTextPane_dialogueInput();
         dinoGUIView.setVisibleTSDialogueInput(true);
         dinoGUIView.setFocusTSDialogueInput();
@@ -849,7 +812,7 @@ public class Dialogue_Controller {
             //remove oldname from the set of list names
             temp.remove(oldName);
             temp.add(newName);
-            dinoGUIView.setSetListNames(temp);
+//            dinoGUIView.setSetListNames(temp);
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
 
             //remove oldname from jpopupmenu
