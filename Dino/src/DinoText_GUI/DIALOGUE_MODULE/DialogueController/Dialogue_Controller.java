@@ -187,7 +187,6 @@ public class Dialogue_Controller {
 
                 //Todo: Take this dialogue String and put it into the view
                 parseUnformattedDialogue(parser.getUnformattedDialogue());
-                dinoGUIView.insertAllArrows();
 
                 List[] lists = parser.getListArray();
                 //Todo: Take these list names and put it wherever you keep them
@@ -217,7 +216,9 @@ public class Dialogue_Controller {
 
             if (file != null) {
                 saveDialogueFileHelper(file.getName());
+
             }
+            jPopupMenu_listInsertion_updateMenuItems();
         }
     }
 
@@ -347,6 +348,7 @@ public class Dialogue_Controller {
         }
 
         dinoGUIView.insertAllArrows();
+        dinoGUIView.getjPanel_dialogueEditor().validate(); // prints out labels!
     }
 
     /***************************************************************************

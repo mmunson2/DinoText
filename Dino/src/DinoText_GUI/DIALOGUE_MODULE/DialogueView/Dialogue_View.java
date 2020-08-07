@@ -21,6 +21,7 @@ public class Dialogue_View {
     private ArrayList<JButton> listButtons; //  buttons in the popup that may not be in the dialogue
     private HashSet<String> listNames;
     private JDialog jDialog_Preferences = new JDialog();
+    private JLabel jLabel_title;
     private JOptionPane jOptionPane_Preferences = new JOptionPane("Preferences");
     private int numArrows;
 
