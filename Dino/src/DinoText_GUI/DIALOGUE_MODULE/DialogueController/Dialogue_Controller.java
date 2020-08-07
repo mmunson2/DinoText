@@ -430,7 +430,7 @@ public class Dialogue_Controller {
 //        }
 //
 //        dinoGUIView.setFocusTSDialogueInput();
-//
+// q
 //        dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
 //    }
     public void jPopupMenu_listInsertion_updateMenuItems() {
@@ -453,15 +453,18 @@ public class Dialogue_Controller {
         // checks if the table has a list the view does not
         currentLists = new HashSet<>(); // set of lists in table
         for (Component c : dinoGUIView.getjMenu_listInsertion().getMenuComponents()) {
-            for (String listName : table_controller.getListNames()) { // populate listName with all lists in table
-                currentLists.add(listName.trim());
-            }
+            if (((JMenuItem) c).getText() != "Phrase List") {
+                for (String listName : table_controller.getListNames()) { // populate listName with all lists in table
+                    currentLists.add(listName.trim());
+                }
 
-            if (!currentLists.contains(((JMenuItem) c).getText())) { // if the table does not contain the button,
-                // remove it from the popup
-                dinoGUIView.removeItemjPopupMenu_listInsertion(((JMenuItem) c).getText());
-            }
+                if (!currentLists.contains(((JMenuItem) c).getText())) { // if the table does not contain the button,
+                    // remove it from the popup
+                    System.err.println("List found in popup, but not table: " + ((JMenuItem) c).getText());
+                    dinoGUIView.removeItemjPopupMenu_listInsertion(((JMenuItem) c).getText());
+                }
 
+            }
         }
 
     }
@@ -493,7 +496,7 @@ public class Dialogue_Controller {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             //When a list button is pressed, change the list tab
-                            table_controller.switchToName(listName.trim());
+                            table_controller.switchToName(((JButton) (e.getSource())).getName().trim());
                         }
                     }, Color.yellow);
 
@@ -502,7 +505,7 @@ public class Dialogue_Controller {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             //When a list button is pressed, change the list tab
-                            table_controller.switchToName(listName.trim());
+                            table_controller.switchToName(((JButton) (e.getSource())).getName().trim());
                         }
                     }, Color.yellow);
                 }
@@ -676,8 +679,8 @@ public class Dialogue_Controller {
 
         public void actionPerformed(ActionEvent e) {
             if (dinoGUIView.getSetListNames().contains(varName))
-            dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow);
-            
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow);
+
             //parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
             dinoGUIView.setFocusTSDialogueInput();
         }
@@ -815,9 +818,12 @@ public class Dialogue_Controller {
     public void renameList(String newName, String oldName) {
         HashSet<String> temp = dinoGUIView.getSetListNames();
         if (temp.contains(oldName)) {
-            java.util.List<String> tempList = Arrays.asList(temp.toArray(new String[0]));
-            Collections.sort(tempList);
+            ArrayList<String> tempList = new ArrayList<>(Arrays.asList(temp.toArray(new String[0])));
+
+//            Collections.sort(tempList);
+            System.out.println("tempList indexof: " + tempList.indexOf(oldName));
             int oldPos = tempList.indexOf(oldName);
+            System.out.println("initial oldpos: " + (oldPos));
 
             //remove oldname from dialogue
             dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
@@ -837,7 +843,8 @@ public class Dialogue_Controller {
             dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
 
             //remove oldname from jpopupmenu
-            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 1);
+            System.out.println("removing: " + oldName);
+            dinoGUIView.removeItemjPopupMenu_listInsertion(oldName);
 
             //add newname to jpopupmenu
 

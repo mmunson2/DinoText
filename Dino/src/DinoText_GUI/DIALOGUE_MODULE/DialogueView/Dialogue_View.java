@@ -40,8 +40,8 @@ public class Dialogue_View {
 
         jPopupMenu_listInsertion = new JPopupMenu();
         jMenu_listInsertion = new JMenu("Insert New");
-        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions ");
-        jPopupMenu_listInsertion.add(jMenu_dictionaryFunctions);
+//        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions ");
+//        jPopupMenu_listInsertion.add(jMenu_dictionaryFunctions);
         jPopupMenu_listInsertion.add(jMenu_listInsertion);
 
         listButtons = new ArrayList<>();
@@ -275,35 +275,26 @@ public class Dialogue_View {
         jPopupMenu_listInsertion.pack();
     }
 
-    /***************************************************************************
-     * add item to popup menu - existing insertion
-     *
-     **************************************************************************/
-    public void addItemjPopupMenu_dictionary(JMenuItem temp) {
-        if (!jMenu_dictionaryFunctions.isMenuComponent(temp)) {
-            jMenu_dictionaryFunctions.add(temp);
-            jPopupMenu_listInsertion.pack();
-        }
-    }
+//    /***************************************************************************
+//     * add item to popup menu - existing insertion
+//     *
+//     **************************************************************************/
+//    public void addItemjPopupMenu_dictionary(JMenuItem temp) {
+//        if (!jMenu_dictionaryFunctions.isMenuComponent(temp)) {
+//            jMenu_dictionaryFunctions.add(temp);
+//            jPopupMenu_listInsertion.pack();
+//        }
+//    }
 
     /***************************************************************************
      * remove item to popup menu
      *
      **************************************************************************/
-    public void removeItemjPopupMenu_listInsertion(int oldPos) {
-        jMenu_listInsertion.remove(oldPos);
-    }
-
     public void removeItemjPopupMenu_listInsertion(String item) {
-        HashSet<String> temp = getSetListNames();
-        if (temp.contains(item)) {
-            java.util.List<String> tempList = Arrays.asList(temp.toArray(new String[0]));
-            Collections.sort(tempList);
-            int oldPos = tempList.indexOf(item);
-
-
-            //remove oldname from jpopupmenu
-            removeItemjPopupMenu_listInsertion(oldPos + 1);
+        for (Component c : getjMenu_listInsertion().getMenuComponents()) {
+            if (((JMenuItem) c).getText() == item) {
+                jMenu_listInsertion.remove(c);
+            }
         }
     }
 
