@@ -5,8 +5,6 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
 
 /*******************************************************************************
@@ -27,6 +25,7 @@ public class Dialogue_View {
     private HashSet<String> listNames;
     private JDialog jDialog_Preferences = new JDialog();
     private JOptionPane jOptionPane_Preferences = new JOptionPane("Preferences");
+    private int numArrows;
 
     /***************************************************************************
      * Constructor
@@ -48,6 +47,7 @@ public class Dialogue_View {
         listNames = new HashSet<>();
 
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
+        numArrows = 0;
     }
 
     /***************************************************************************
@@ -220,7 +220,6 @@ public class Dialogue_View {
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
         jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, null));
-        //insertAllArrows();
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -326,22 +325,9 @@ public class Dialogue_View {
      **************************************************************************/
     public String requestListNamejOptionPane_listInsertion(String category) {
         JTextArea textArea = new JTextArea();
-        String listName = JOptionPane.showInputDialog(category + " Name: ");
+        String listName = JOptionPane.showInputDialog(category + ":");
         return listName;
     }
-
-//    /***************************************************************************
-//     * Remove button from popup menu
-//     *
-//     **************************************************************************/
-//    public void removeButtonjPopupMenu(JButton button) {
-//        for (JButton jb : listButtons) {
-//            if (jb.equals(button)) {
-//                listButtons.remove(jb);
-//            }
-//        }
-//    }
-
 
     /***************************************************************************
      * Clear List Button
@@ -359,7 +345,6 @@ public class Dialogue_View {
     public void addListButtonsjPopupMenu(JButton button) {
         listButtons.add(button);
     }
-
 
 
     /***************************************************************************
@@ -476,39 +461,74 @@ public class Dialogue_View {
     public void insertLabel_Arrow_jTextPane() {
         JLabel arrow = new JLabel();
         arrow.setText("  \u2794  ");
-        System.out.println("inserting arrow");
-        jTextPane_dialogueInput.add(arrow);
+        if (numArrows < getActiveListButtons().size() - 1)
+        jTextPane_dialogueInput.insertComponent(arrow);
+        numArrows++;
     }
 
-//    public void insertAllArrows() {
-//        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-//        Element element;
-//        while ((element = iterator.next()) != null) {
-//            AttributeSet as = element.getAttributes();
-//            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
-//                if (StyleConstants.getComponent(as) instanceof JLabel) {
-//                    jTextPane_dialogueInput.remove(StyleConstants.getComponent(as));
-//                }
-//            }
-//        }
-//
-//        iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-//        ElementIterator nextItr = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-//        Element next = nextItr.next();
-//        element = iterator.next();
-//
-//        while ((next = nextItr.next()) != null) {
-//            AttributeSet as = element.getAttributes();
-//            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
-//                if (StyleConstants.getComponent(as) instanceof JButton) {
-//
-//                    System.out.println("current list: " + StyleConstants.getComponent(as).getName());
-//                    System.out.println("next list: " + StyleConstants.getComponent(as).getName());
-//
-//                    insertLabel_Arrow_jTextPane();
-//                    element = next;
-//                }
-//            }
-//        }
-//    }
+    public void insertAllArrows() {
+        clearAllArrows();
+        insertArrows();
+    }
+
+    private void insertArrows() {
+        numArrows = 0;
+        System.out.println("NEW CALL");
+        //remove any existing arrows
+        int cursorPos = 0;
+        int components = 0;
+        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element element;
+        Element temp = null;
+        while ((element = iterator.next()) != null) {
+            if (cursorPos > 0) {
+                temp = element;
+            }
+
+            AttributeSet as = element.getAttributes();
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JButton) { // TODO: Find out where sizeless buttons are coming from
+
+                    components++;
+
+                    if (StyleConstants.getComponent(as).getSize().height <= 0 ||
+                            StyleConstants.getComponent(as).getSize().width <= 0) {
+                        jTextPane_dialogueInput.remove(StyleConstants.getComponent(as));
+                        components--;
+                        continue;
+                    }
+
+
+                    setCaret_jTextPane_dialogueInput(++cursorPos); // increase to account for button
+                    insertLabel_Arrow_jTextPane();
+                    cursorPos++; // increase to account for new arrow
+                }
+            }
+        }
+    }
+
+
+    private void clearAllArrows() {
+        //remove any existing arrows
+
+
+        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element element;
+        int caretPos = 0;
+
+        while ((element = iterator.next()) != null) {
+            AttributeSet as = element.getAttributes();
+
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JLabel) {
+                    try {
+                        jTextPane_dialogueInput.getDocument().remove(caretPos, 1);
+                    } catch (BadLocationException e) {
+                        e.printStackTrace();
+                    }
+                }
+                caretPos++;
+            }
+        }
+    }
 }

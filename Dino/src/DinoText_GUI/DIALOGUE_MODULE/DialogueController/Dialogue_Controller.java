@@ -220,6 +220,7 @@ public class Dialogue_Controller {
 
                 //Todo: Take this dialogue String and put it into the view
                 parseUnformattedDialogue(parser.getUnformattedDialogue());
+                dinoGUIView.insertAllArrows();
 
                 List[] lists = parser.getListArray();
                 //Todo: Take these list names and put it wherever you keep them
@@ -268,10 +269,6 @@ public class Dialogue_Controller {
                         list += " " + split[++i];
                         listCount++;
                     } while (!list.contains("]"));
-                }
-
-                if (listCount > 0) {
-//                    dinoGUIView.insertIcon_Arrow_jTextPane();
                 }
 
                 if (list.length() > 4) {
@@ -404,7 +401,6 @@ public class Dialogue_Controller {
     public void jPopupMenu_listInsertion_updateMenuItems() {
         System.err.println("__________________________________________________");
 
-        System.err.println("Popup Size: " + dinoGUIView.getAllListButtons().size());
 
         HashSet<String> currentLists = new HashSet<>();
         // checks if the table has a list the view does not
@@ -439,7 +435,8 @@ public class Dialogue_Controller {
 
             }
         }
-        System.err.println("Popup Size: " + dinoGUIView.getAllListButtons().size());
+
+        dinoGUIView.insertAllArrows();
     }
 
     /***************************************************************************
@@ -462,7 +459,6 @@ public class Dialogue_Controller {
 
     public void insertionHelper(String listName, boolean insertNow) {
         if (listName != null)
-
             if (listName.trim().length() > 0) {
                 if (insertNow) {
                     dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
@@ -655,6 +651,7 @@ public class Dialogue_Controller {
             if (dinoGUIView.getSetListNames().contains(varName))
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow);
             dinoGUIView.setFocusTSDialogueInput();
+            jPopupMenu_listInsertion_updateMenuItems();
         }
     }
 
@@ -827,22 +824,6 @@ public class Dialogue_Controller {
             dinoGUIView.pack();
         }
     }
-//
-//    public void insertAllArrows() {
-//        String unformattedDialogue = dinoGUIView.getText_jTextPane_dialogueInput();
-//        String[] split = unformattedDialogue.split(" ");
-//
-//        String searchString = ""; // text that has already been iterated through
-//        int offset = 0;
-//
-//        for (int i = 0; i < split.length; i++) {
-//            if (split[i].contains("\\")) {
-//                insert
-//            }
-//
-//        }
-//    }
-
 //    /***************************************************************************
 //     * Dehighlight all
 //     *
