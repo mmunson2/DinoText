@@ -15,6 +15,7 @@ import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
 import DinoText_GUI.DISPLAY_MODULE.DisplayView.Text_Display_View;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
+import DinoText_GUI.SYSTEM_CONTROLLER.System_Controller;
 import DinoText_GUI.TABLE_MODULE.Table_Controller.Table_Controller;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueModel.Dialogue_Model;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
@@ -29,9 +30,9 @@ import java.awt.*;
  *
  ******************************************************************************/
 public class DinoText implements Runnable {
-    private static Dialogue_Model dinoGUIModel;
-    private static Dialogue_View dinoGUIView;
-    private static Dialogue_Controller dinoGUIController;
+    private static Dialogue_Model dialogue_model;
+    private static Dialogue_View dialogue_view;
+    private static Dialogue_Controller dialogue_controller;
 
     private static Table_Manager table_manager;
     private static Table_TabbedPane table_view;
@@ -41,12 +42,16 @@ public class DinoText implements Runnable {
     private static Text_Display_View textDisplayView;
     private static Text_Display_Controller textDisplayController;
 
+    private static System_Controller system_controller;
+
     private static DinoConfig config;
 
     private static final String LOOKANDFEEL = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
     private static final boolean LOOKANDFEEL_VISIBLE = true;
 
     public static void main(String[] args) {
+
+        system_controller = new System_Controller(dialogue_controller, textDisplayController, table_controller);
 
         if (LOOKANDFEEL_VISIBLE) {
             try {
@@ -69,16 +74,16 @@ public class DinoText implements Runnable {
         textDisplayController = new Text_Display_Controller(textDisplayModel, textDisplayView, config);
         textDisplayView.setPanelVisible(false);
 
-        dinoGUIModel = new Dialogue_Model();
-        dinoGUIView = new Dialogue_View();
-        dinoGUIController = new Dialogue_Controller(dinoGUIModel, dinoGUIView, textDisplayController, table_controller);
+        dialogue_model = new Dialogue_Model();
+        dialogue_view = new Dialogue_View();
+        dialogue_controller = new Dialogue_Controller(dialogue_model, dialogue_view, textDisplayController, table_controller);
 
-        table_controller.setDialogue_controller(dinoGUIController);
-        textDisplayController.setDialogueController(dinoGUIController);
+        table_controller.setDialogue_controller(dialogue_controller);
+        textDisplayController.setDialogueController(dialogue_controller);
 
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());
-        jFrame_dinoText.getContentPane().add(dinoGUIView.getjPanel_dialogueEditor(), BorderLayout.CENTER);
+        jFrame_dinoText.getContentPane().add(dialogue_view.getjPanel_dialogueEditor(), BorderLayout.CENTER);
         jFrame_dinoText.getContentPane().add(textDisplayView.getJpanel(), BorderLayout.EAST);
         jFrame_dinoText.getContentPane().add(table_view.getPanel1(), BorderLayout.SOUTH);
         jFrame_dinoText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
