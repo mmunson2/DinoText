@@ -181,7 +181,6 @@ public class Dialogue_View {
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
         jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, null));
-        setCaretToEnd();
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -255,6 +254,7 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public String requestListNamejOptionPane_listInsertion(String category) {
+        JTextArea textArea = new JTextArea();
         String listName = JOptionPane.showInputDialog(category + ":");
         return listName;
     }
