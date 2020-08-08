@@ -48,8 +48,14 @@ public class Table_View {
      **************************************************************************/
     public void setTableModel(TableModel tableModel) {
         this.listTable.setModel(tableModel);
-    }
 
+        // Set individual column widths
+        this.listTable.getColumnModel().getColumn(0).setPreferredWidth(350);
+        this.listTable.getColumnModel().getColumn(1).setPreferredWidth(120);
+        this.listTable.getColumnModel().getColumn(2).setPreferredWidth(78);
+        this.listTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+        this.listTable.getColumnModel().getColumn(4).setPreferredWidth(200);
+    }
 
     /***************************************************************************
      * get JTable
