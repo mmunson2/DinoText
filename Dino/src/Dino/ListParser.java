@@ -78,6 +78,7 @@ public class ListParser
                 Scanner traitScanner = new Scanner(traitLine);
                 traitScanner.useDelimiter(":");
 
+                System.err.println(entryName);
                 String traitName = traitScanner.next();
                 double lowerBound = traitScanner.nextDouble();
                 double upperBound = traitScanner.nextDouble();

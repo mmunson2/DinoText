@@ -1,0 +1,45 @@
+# Generated: 2020/08/08 19:13:20
+Name: CONTENT
+Size: 21
+1: I don’t think I’ve seen you around here.
+0.5 NPC1_INTERACTION:0.0:10.0:25.0
+2: A new face; that’s rare nowadays.
+0.0 NPC1_INTERACTION:0.0:10.0:25.0
+3: Have we met before?
+0.5 NPC1_INTERACTION:5.0:20.0:25.0
+4: You remind me of someone.
+0.0 NPC1_INTERACTION:20.0:40.0:25.0
+5: How nice of you to stop by.
+0.0 NPC1_INTERACTION:30.0:50.0:25.0
+6: What’s up?
+0.0 NPC1_INTERACTION:40.0:60.0:25.0
+7: How’ve you been?
+0.0 NPC1_INTERACTION:50.0:70.0:25.0
+8: I treasure every moment we have together.
+0.0 NPC1_INTERACTION:50.0:70.0:25.0
+9: It’s always such a blast talking with you.
+0.0 NPC1_INTERACTION:70.0:90.0:25.0
+10: I always count the seconds between our conversations.
+0.0 NPC1_INTERACTION:90.0:100.0:25.0
+11: Ah, I see you’ve met Barnaby.
+0.0 NPC1_INTERACTION:0.0:25.0:25.0 NPC2_INTERACTION:10.0:25.0:60.0
+12: Been talking a lot with Barnaby?
+0.0 NPC1_INTERACTION:0.0:25.0:25.0 NPC2_INTERACTION:25.0:50.0:60.0
+13: You’re Barnaby’s friend. Right?
+0.0 NPC1_INTERACTION:0.0:25.0:25.0 NPC2_INTERACTION:25.0:50.0:60.0
+14: Barnaby’s been keeping watch over the edge of the world for eons. 
+0.0 NPC1_INTERACTION:0.0:25.0:25.0 NPC2_INTERACTION:50.0:100.0:50.0
+15: Barnaby’s said a lot about you.
+0.0 NPC1_INTERACTION:25.0:50.0:25.0 NPC2_INTERACTION:50.0:100.0:50.0
+16: You’ve been talking with Barnaby, haven’t you?
+0.0 NPC1_INTERACTION:70.0:90.0:50.0 NPC2_INTERACTION:50.0:100.0:50.0 TIME_SINCE_LAST_INTERACTION 50.0:100.0:80.0
+17: Don’t think I haven’t seen you chatting it up with Barnaby.
+0.0 NPC1_INTERACTION:80.0:95.0:50.0 NPC2_INTERACTION:50.0:100.0:50.0 TIME_SINCE_LAST_INTERACTION 50.0:100.0:80.0
+18: You should really be more careful.
+0.0 NPC1_INTERACTION:0.0:50.0:25.0 HEALTH_LEVEL:0.0:50.0:80.0
+19: Let me know if I can help.
+0.0 NPC1_INTERACTION:25.0:70.0:25.0 HEALTH_LEVEL:0.0:50.0:80.0
+20: We must get you assistance!
+0.0 NPC1_INTERACTION:60.0:100.0:25.0 HEALTH_LEVEL:0.0:50.0:80.0
+21: I TOLD Barnaby to guard the edge better, that dumb slut!
+0.0 NPC1_INTERACTION:95.0:100.0:25.0 HEALTH_LEVEL:0.0:50.0:80.0 NPC2_INTERACTION:50.0:100.0:20.0
