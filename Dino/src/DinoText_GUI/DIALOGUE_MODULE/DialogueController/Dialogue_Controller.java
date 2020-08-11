@@ -262,12 +262,19 @@ public class Dialogue_Controller {
 
                 switch (word.charAt(1)) {
                     case 'L':
-                        insertionHelper(word.substring(3, word.length() - 1));
+                        insertionHelper(word.substring(3, word.trim().length() - 1));
                         break;
                     case 'S':
-                        staticHelper(word.substring(3, word.length() - 1));
+                        staticHelper(word.substring(3, word.trim().length() - 1));
                         break;
+
                 }
+                try {
+                    dinoGUIView.getjTextPane_dialogueInput().getDocument().insertString(dinoGUIView.getText_jTextPane_dialogueInput().length(), " ", null); // TODO: Part of bandaid
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
+                }
+
             } else {
                 try {
                     dinoGUIView.getjTextPane_dialogueInput().getDocument().insertString(dinoGUIView.getText_jTextPane_dialogueInput().length(), word + " ", null);
@@ -706,7 +713,7 @@ public class Dialogue_Controller {
 
         while (i < activeButtons.length) {
             System.out.println("active: " + activeButtons[i]);
-            dialogue = dialogue.replaceFirst("\\s\\s", " " + activeButtons[i]);
+            dialogue = dialogue.replaceFirst("\\s\\s", " \\" + activeButtons[i]); //TODO: the extra backslashes are a bandaid
             i++;
         }
         dialogue = dialogue.replaceAll("\\s+", " ");
