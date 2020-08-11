@@ -76,16 +76,9 @@ public class Table_View {
 
     public void initializeAddTraitButtonColumn()
     {
-        try {
-            this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
-            this.listTable.getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
-            this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
-        }
-        catch(Exception e)
-        {
-
-        }
-
+        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
+        this.listTable.getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
+        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
     }
 
     /***************************************************************************

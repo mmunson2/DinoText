@@ -179,7 +179,11 @@ public class Table_Controller {
      **************************************************************************/
     public void renameList(String newName, String oldName) {
         renameList(newName, manager.getListIndexFromName(oldName));
-        dialogue_controller.renameList(newName, oldName);
+
+        if(dialogue_controller != null)
+        {
+            dialogue_controller.renameList(newName, oldName);
+        }
     }
 
 
@@ -329,20 +333,7 @@ public class Table_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            File root = new File("/Users/matthewmunson/Documents/GitHub/DinoText/Resources/Lists");
-            System.out.println(root.getAbsolutePath());
-
-            String[] files = root.list();
-
-
-            Random random = new Random();
-
-            String fileName = files[random.nextInt(files.length)];
-
-            System.out.println(fileName);
-            openFile(fileName);
-
-
+            addList("New List");
         }
     }
 

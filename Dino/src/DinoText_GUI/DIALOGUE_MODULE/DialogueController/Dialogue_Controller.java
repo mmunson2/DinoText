@@ -654,7 +654,7 @@ public class Dialogue_Controller {
         dinoGUIModel.setName(fileName);
         mostRecentSaved = fileName;
 
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames(), true);
         dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
         dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
         dinoGUIModel.writeToFile();
@@ -685,7 +685,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     public void setListNames(Set<String> newListNames) {
-        dinoGUIModel.setListNames(newListNames);
+        dinoGUIModel.setListNames(newListNames, true);
     }
 
     /***************************************************************************
@@ -722,12 +722,12 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     public Set<String> getSetListNames() {
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames(), true);
         return dinoGUIModel.getListNames();
     }
 
     public String[] getArrayListName() {
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.setListNames(dinoGUIView.getSetListNames(), true);
         return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
     }
 
@@ -785,7 +785,7 @@ public class Dialogue_Controller {
             temp.remove(oldName);
             temp.add(newName);
             dinoGUIView.setSetListNames(temp);
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+            dinoGUIModel.setListNames(dinoGUIView.getSetListNames(), true);
 
             //remove oldname from jpopupmenu
             dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 3);

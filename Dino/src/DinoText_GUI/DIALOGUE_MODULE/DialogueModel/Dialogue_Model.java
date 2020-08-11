@@ -64,6 +64,11 @@ public class Dialogue_Model {
 
     public void setListNames(Set<File> set) { listPaths = set; }
 
+    public void setListNames(Set<String> set, boolean lol)
+    {
+
+    }
+
     /***************************************************************************
      * getListNames
      *
