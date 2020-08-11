@@ -101,24 +101,33 @@ public class Dialogue_Model {
         DinoWriter writer = new DinoWriter();
         String[] listNames = new String[listPaths.size()];
         int i = 0;
-        for (File file : listPaths) {
 
-            Path absoluteFilePath = Paths.get(file.getAbsolutePath());
+        Path dinoLocation = Paths.get(name);
+        File dinoLocationFile = new File(dinoLocation.toString());
 
-            Path dinoLocation = Paths.get(name);
-            Path dinoParent = dinoLocation.getParent();
-
-            File dinoParentDirectory = new File(dinoParent.toString());
-            Path base = Paths.get(dinoParentDirectory.getAbsolutePath());
-
-            System.out.println("Base: " + base);
-            System.out.println("absoluteFilePath:" + absoluteFilePath);
-
-            Path relativePath = base.relativize(absoluteFilePath);
-            String directoryString = relativePath.toString();
-            listNames[i] = directoryString;
-            i++;
+        if(dinoLocationFile.getParentFile() == null) //
+        {
+            for(File file : listPaths)
+            {
+                listNames[i] = file.getName();
+            }
         }
+        else
+        {
+            for (File file : listPaths) {
+
+                Path absoluteFilePath = Paths.get(file.getAbsolutePath());
+
+                File dinoParentDirectory = dinoLocationFile.getParentFile();
+                Path base = Paths.get(dinoParentDirectory.getAbsolutePath());
+
+                Path relativePath = base.relativize(absoluteFilePath);
+                String directoryString = relativePath.toString();
+                listNames[i] = directoryString;
+                i++;
+            }
+        }
+        
         //Todo: Switch this over to the DinoList call
         writer.writeDialogueToFile(name, dialogue, listNames, staticVars.toArray(new String[staticVars.size()]));
     }
