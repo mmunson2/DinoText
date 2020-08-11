@@ -712,13 +712,11 @@ public class Dialogue_Controller {
         i = 0;
 
         while (i < activeButtons.length) {
-            System.out.println("active: " + activeButtons[i]);
             dialogue = dialogue.replaceFirst("\\s\\s", " \\" + activeButtons[i]); //TODO: the extra backslashes are a bandaid
             i++;
         }
         dialogue = dialogue.replaceAll("\\s+", " ");
 
-        System.out.println("Dialogue: " + dialogue);
         return dialogue.trim();
     }
 
