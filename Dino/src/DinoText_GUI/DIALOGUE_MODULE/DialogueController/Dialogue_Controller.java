@@ -21,10 +21,7 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 /*******************************************************************************
  * Dialogue Controller
@@ -207,9 +204,11 @@ public class Dialogue_Controller {
             {
                 return;
             } else if (FileTypes.hasListExtension(file.getName())) {
+                newDialogue();
                 table_controller.openFile(file);
                 dinoGUIModel.addListFile(file);
             } else if (FileTypes.hasDialogueExtension(file.getName())) {
+                newDialogue();
                 String dialogueName = FileTypes.trimDialogueExtension(file.getName());
 
                 DialogueParser parser = new DialogueParser(file.getAbsolutePath());
@@ -448,7 +447,7 @@ public class Dialogue_Controller {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             //When a list button is pressed, change the list tab
-                            table_controller.switchToName(listName.trim());
+                            table_controller.switchToName(((JButton) (e.getSource())).getName().trim());
                         }
                     }, Color.yellow);
 
@@ -457,7 +456,7 @@ public class Dialogue_Controller {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             //When a list button is pressed, change the list tab
-                            table_controller.switchToName(listName.trim());
+                            table_controller.switchToName(((JButton) (e.getSource())).getName().trim());
                         }
                     }, Color.yellow);
                 }
@@ -566,6 +565,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void newDialogue() {
+        dinoGUIView.clearListButtonsjPopupMenu();
         dinoGUIView.clearjTextPane_dialogueInput();
         dinoGUIView.setVisibleTSDialogueInput(true);
         dinoGUIView.setFocusTSDialogueInput();
@@ -632,9 +632,9 @@ public class Dialogue_Controller {
 
         public void actionPerformed(ActionEvent e) {
             if (dinoGUIView.getSetListNames().contains(varName))
-                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getListButton(varName).getAction(), Color.yellow); //TODO this button may not link to the right name
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName,  (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow); //TODO this button may not link to the right name
             else {
-                dinoGUIView.insertButtonjTextPane_DynamicList(varName, dinoGUIView.getStaticVarButton(varName).getAction(), Color.red); //TODO this button may not link to the right name
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getStaticVarButton(varName).getActionListeners())[0], Color.red); //TODO this button may not link to the right name
             }
             dinoGUIView.setFocusTSDialogueInput();
         }
@@ -764,7 +764,10 @@ public class Dialogue_Controller {
     public void renameList(String newName, String oldName) {
         HashSet<String> temp = dinoGUIView.getSetListNames();
         if (temp.contains(oldName)) {
-            int oldPos = Arrays.asList(temp.toArray(new String[0])).indexOf(oldName);
+            ArrayList<String> tempList = new ArrayList<>(Arrays.asList(temp.toArray(new String[0])));
+
+//            Collections.sort(tempList);
+            int oldPos = tempList.indexOf(oldName);
 
             //remove oldname from dialogue
             dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);
@@ -780,11 +783,10 @@ public class Dialogue_Controller {
             //remove oldname from the set of list names
             temp.remove(oldName);
             temp.add(newName);
-            dinoGUIView.setSetListNames(temp);
-            dinoGUIModel.setListNames(dinoGUIView.getSetFiles());
+            dinoGUIView.getSetListNames();
 
             //remove oldname from jpopupmenu
-            dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 3);
+            dinoGUIView.removeItemjPopupMenu_listInsertion(oldName);
 
             //add newname to jpopupmenu
 

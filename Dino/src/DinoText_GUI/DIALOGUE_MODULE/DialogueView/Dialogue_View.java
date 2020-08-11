@@ -243,6 +243,7 @@ public class Dialogue_View {
     /***************************************************************************
      * Get List Names
      *
+     *
      **************************************************************************/
     public HashSet<String> getSetListNames() {
         for (JButton jb : listButtons) {
@@ -319,10 +320,18 @@ public class Dialogue_View {
      * remove item to popup menu
      *
      **************************************************************************/
-    public void removeItemjPopupMenu_listInsertion(int oldPos) {
-        jMenu_listInsertion.remove(oldPos);
+    public void removeItemjPopupMenu_listInsertion(String item) {
+        for (Component c : getjMenu_listInsertion().getMenuComponents()) {
+            if (((JMenuItem) c).getText() == item) {
+                jMenu_listInsertion.remove(c);
+//                removeListName(((JMenuItem) c).getText());
+            }
+        }
     }
 
+    public JMenu getjMenu_listInsertion() {
+        return jMenu_listInsertion;
+    }
     /***************************************************************************
      * show popup menu
      *
@@ -351,6 +360,15 @@ public class Dialogue_View {
                 listButtons.remove(jb);
             }
         }
+    }
+
+
+    /***************************************************************************
+     * Clear List Button
+     *
+     **************************************************************************/
+    public void clearListButtonsjPopupMenu() {
+        listButtons.clear();
     }
 
 
