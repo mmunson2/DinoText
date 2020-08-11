@@ -18,8 +18,12 @@ public class Table_Manager
      **************************************************************************/
     public Table_Manager()
     {
-        this.currentModel = new Table_Model();
-        lists.add(currentModel);
+        this.currentModel = null;
+    }
+
+    public boolean hasActiveModel()
+    {
+        return this.currentModel != null;
     }
 
     /***************************************************************************

@@ -127,8 +127,7 @@ public class Dialogue_Model {
                 i++;
             }
         }
-        
-        //Todo: Switch this over to the DinoList call
+
         writer.writeDialogueToFile(name, dialogue, listNames, staticVars.toArray(new String[staticVars.size()]));
     }
 

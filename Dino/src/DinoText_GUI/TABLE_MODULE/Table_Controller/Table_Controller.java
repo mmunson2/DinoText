@@ -38,6 +38,7 @@ public class Table_Controller {
     private listener_tableModel tableModelListener;
     private listener_tabSwitch tabSwitchListener;
     private listener_addTraitButton traitButtonListener;
+    private listener_firstListButton firstListButtonListener;
 
     private listener_debug debugListener;
 
@@ -54,40 +55,29 @@ public class Table_Controller {
         this.listNumber = 0;
         this.view = view;
 
-        Table_Model model = manager.getCurrentModel();
-
-        this.view.setTableModel(model);
-        this.view.setEntryCount(Table_Model.DEFAULT_ROWS);
-
         this.incrementListener = new listener_increment();
         this.listNameListener = new listener_listName();
         this.tableModelListener = new listener_tableModel();
         this.tabSwitchListener = new listener_tabSwitch();
         this.traitButtonListener = new listener_addTraitButton();
+        this.firstListButtonListener = new listener_firstListButton();
 
         this.debugListener = new listener_debug();
 
         this.view.addTabSwitchListener(tabSwitchListener);
+        this.view.addNoListButtonListener(this.firstListButtonListener);
 
-        this.view.initializeAddTraitButtonColumn();
-        this.view.addTraitButtonListener(traitButtonListener);
+        //this.view.initializeAddTraitButtonColumn();
+        //this.view.addTraitButtonListener(traitButtonListener);
 
-        this.view.setTableModel(model);
-        this.view.setButtonColumn(0);
-        addListeners();
+       //this.view.setTableModel(model);
+        //this.view.setButtonColumn(0);
     }
 
     public void setDialogue_controller(Dialogue_Controller controller) {
         this.dialogue_controller = controller;
     }
 
-    /***************************************************************************
-     * addList - noArg
-     *
-     **************************************************************************/
-    public void addList() {
-        addList("Untitled List", null);
-    }
 
     /***************************************************************************
      * addList - String overload
@@ -99,25 +89,22 @@ public class Table_Controller {
 
     /***************************************************************************
      * addList - String and entries overload
-     *
-     *
      **************************************************************************/
     public void addList(String name, String[] entries) {
 
         //Check if the list already exists
-        if (this.manager.hasList(name)) {
+        if (this.manager.hasActiveModel() && this.manager.hasList(name)) {
             //Not doing anything currently!
         }
-        //If this is the first list, just rename Untitled List
-        else if (this.manager.getCurrentModel().getName().equals("Untitled List")
-                && this.manager.getSize() == 1) {
-            this.renameList(name);
-            this.view.initializeAddTraitButtonColumn();
-
-            this.view.addTraitButtonListener(traitButtonListener);
-        } else //Otherwise make a whole new list
+        else //Otherwise make a whole new list
         {
             removeListeners();
+
+            if(view.hasNoListTab())
+            {
+                view.removeNoListTab();
+            }
+
             this.manager.addModel(name);
             this.view.addList(name);
             this.view.setTableModel(this.manager.getCurrentModel());
@@ -142,15 +129,18 @@ public class Table_Controller {
     }
 
     public void addEntry(String entry) {
-        this.manager.getCurrentModel().addEntry(entry, 1.0);
+        if(this.manager.hasActiveModel())
+            this.manager.getCurrentModel().addEntry(entry, 1.0);
     }
 
     public void addEntry(String entry, double weight) {
-        this.manager.getCurrentModel().addEntry(entry, weight);
+        if(this.manager.hasActiveModel())
+            this.manager.getCurrentModel().addEntry(entry, weight);
     }
 
     public void addEntry(ListEntry listEntry) {
-        this.manager.getCurrentModel().addEntry(listEntry);
+        if(this.manager.hasActiveModel())
+            this.manager.getCurrentModel().addEntry(listEntry);
     }
 
     /***************************************************************************
@@ -158,8 +148,10 @@ public class Table_Controller {
      *
      **************************************************************************/
     public void renameList(String newName) {
-        this.manager.getCurrentModel().setName(newName);
-        this.view.setListName(newName);
+        if(this.manager.hasActiveModel())
+            this.manager.getCurrentModel().setName(newName);
+        if(this.view.hasActiveTable())
+            this.view.setListName(newName);
     }
 
     /***************************************************************************
@@ -193,8 +185,13 @@ public class Table_Controller {
      **************************************************************************/
     public void switchToIndex(int index) {
         removeListeners();
-        this.manager.switchModel(index);
-        this.view.switchList(index);
+
+        if(this.manager.hasActiveModel())
+            this.manager.switchModel(index);
+
+        if(this.view.hasActiveTable())
+            this.view.switchList(index);
+
         addListeners();
     }
 
@@ -229,7 +226,8 @@ public class Table_Controller {
      *
      **************************************************************************/
     public void writeCurrentToFile() {
-        this.manager.getCurrentModel().writeToFile();
+        if(this.manager.hasActiveModel())
+            this.manager.getCurrentModel().writeToFile();
     }
 
     /***************************************************************************
@@ -239,10 +237,6 @@ public class Table_Controller {
     public void writeToFile(String name) {
         this.manager.writeToFile(name);
     }
-
-    //Todo: Support Traits
-    //Todo: If a list is already open, just switch the tab
-    //Todo: Implement file extensions
 
     /***************************************************************************
      * openFile
@@ -306,6 +300,10 @@ public class Table_Controller {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            assert(view.hasActiveTable());
+            assert(manager.hasActiveModel());
+
             manager.getCurrentModel().addRow();
             view.setEntryCount(manager.getCurrentModel().getRowCount());
         }
@@ -318,7 +316,9 @@ public class Table_Controller {
     class listener_tableModel implements TableModelListener {
 
         @Override
-        public void tableChanged(TableModelEvent e) {
+        public void tableChanged(TableModelEvent e)
+        {
+            assert(view.hasActiveTable());
             view.updateTable();
         }
     }
@@ -330,6 +330,8 @@ public class Table_Controller {
     class listener_listName implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            assert(view.hasActiveTable());
+
             renameList(view.getListName(), manager.getCurrentModel().getName());
             renameList(view.getListName());
         }
@@ -346,6 +348,9 @@ public class Table_Controller {
     class listener_addTraitButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            assert(view.hasActiveTable());
+            assert(manager.hasActiveModel());
+
             int row = view.getSelectedRow();
             Table_Probabilities probabilities =
                     manager.getCurrentModel().getProbabilities();
@@ -365,18 +370,32 @@ public class Table_Controller {
                 traitController.finalizeTrait();
                 Trait newTrait = traitModel.getTrait();
                 manager.getCurrentModel().addTrait(row, newTrait);
-                System.out.println("Trait Added");
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
             } else {
-                System.out.println("Cancelled");
+                //Cancelled Trait
             }
         }
     }
+
+    class listener_firstListButton implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            String listName = JOptionPane.showInputDialog(Dialogue_Controller.DYNAMICLISTNAME + " Name: ");
+
+            dialogue_controller.insertionHelper(listName);
+        }
+    }
+
 
     /***************************************************************************
      * addListeners
      **************************************************************************/
     private void addListeners() {
+        if(!view.hasActiveTable() || !manager.hasActiveModel())
+            return;
+
         this.view.addIncrementListener(incrementListener);
         this.view.addListNameListener(listNameListener);
 
@@ -391,6 +410,9 @@ public class Table_Controller {
      *
      **************************************************************************/
     private void removeListeners() {
+        if(!view.hasActiveTable() || !manager.hasActiveModel())
+            return;
+
         //this.view.removeTraitButtonListener(traitButtonListener);
         this.view.removeIncrementListener(incrementListener);
         this.view.removeListNameListener(listNameListener);

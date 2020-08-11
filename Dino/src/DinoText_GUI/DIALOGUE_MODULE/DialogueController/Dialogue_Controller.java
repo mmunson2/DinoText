@@ -37,7 +37,7 @@ public class Dialogue_Controller {
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
 
-    private static final String DYNAMICLISTNAME = "Phrase List";
+    public static final String DYNAMICLISTNAME = "Phrase List";
     private static final String STATICVARNAME = "Game Value";
 
 
