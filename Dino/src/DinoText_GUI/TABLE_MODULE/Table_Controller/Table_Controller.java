@@ -218,6 +218,12 @@ public class Table_Controller {
         this.manager.writeToFile();
     }
 
+    public void writeAllToFile(File directory)
+    {
+        this.manager.writeToFile(directory);
+    }
+
+
     /***************************************************************************
      * writeCurrentToFile
      *

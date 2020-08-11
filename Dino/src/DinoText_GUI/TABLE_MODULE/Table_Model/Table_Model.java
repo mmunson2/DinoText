@@ -127,6 +127,12 @@ public class Table_Model extends AbstractTableModel
         writer.writeListToFile(this.list);
     }
 
+    public void writeToFile(File directory)
+    {
+        DinoWriter writer = new DinoWriter();
+        this.list.setDirectory(directory);
+        writer.writeListToFile(this.list);
+    }
 
     public void addEntry(String entry, double weight)
     {

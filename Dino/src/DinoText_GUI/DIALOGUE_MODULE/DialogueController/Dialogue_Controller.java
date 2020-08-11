@@ -661,9 +661,12 @@ public class Dialogue_Controller {
         dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
         dinoGUIModel.writeToFile();
 
-        table_controller.writeAllToFile();
+        File savedFile = new File(fileName);
+        File savedDirectory = savedFile.getParentFile();
+
+        table_controller.writeAllToFile(savedDirectory);
         ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
-//        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
 //        textDisplayController.setDino(getDino());
     }
 

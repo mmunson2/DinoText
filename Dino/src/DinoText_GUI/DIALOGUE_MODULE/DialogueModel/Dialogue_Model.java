@@ -4,6 +4,8 @@ import Dino.FileTypes;
 import DinoText_GUI.Util.DinoWriter;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -100,7 +102,21 @@ public class Dialogue_Model {
         String[] listNames = new String[listPaths.size()];
         int i = 0;
         for (File file : listPaths) {
-            listNames[i] = file.getAbsolutePath();
+
+            Path absoluteFilePath = Paths.get(file.getAbsolutePath());
+
+            Path dinoLocation = Paths.get(name);
+            Path dinoParent = dinoLocation.getParent();
+
+            File dinoParentDirectory = new File(dinoParent.toString());
+            Path base = Paths.get(dinoParentDirectory.getAbsolutePath());
+
+            System.out.println("Base: " + base);
+            System.out.println("absoluteFilePath:" + absoluteFilePath);
+
+            Path relativePath = base.relativize(absoluteFilePath);
+            String directoryString = relativePath.toString();
+            listNames[i] = directoryString;
             i++;
         }
         //Todo: Switch this over to the DinoList call
