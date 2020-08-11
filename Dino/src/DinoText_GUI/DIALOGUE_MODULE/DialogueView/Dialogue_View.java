@@ -301,7 +301,7 @@ public class Dialogue_View {
             }
         }
         // else
-        System.out.println("adding " + temp.getText());
+
         jMenu_listInsertion.add(temp);
         jPopupMenu_listInsertion.pack();
     }
