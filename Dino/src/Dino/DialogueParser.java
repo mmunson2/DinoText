@@ -550,7 +550,7 @@ public class DialogueParser
     {
         try
         {
-            this.dialogueIn = new Scanner(new FileInputStream(path));
+            this.dialogueIn = new Scanner(new FileInputStream(path)); // TODO: This is the part that fails
         }
         catch(IOException e)
         {

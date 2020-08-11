@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -248,6 +249,15 @@ public class Dialogue_View {
             listNames.add(jb.getName());
         }
         return listNames;
+    }
+
+    public HashSet<File> getSetFiles() {
+        HashSet<File> files = new HashSet<>();
+        for (JButton jb : listButtons) {
+            if (jb.getName() != "Untitled List")
+            files.add(new File(System.getProperty("user.dir") + System.getProperty("file.separator") + jb.getName()));
+        }
+        return files;
     }
 
     /***************************************************************************

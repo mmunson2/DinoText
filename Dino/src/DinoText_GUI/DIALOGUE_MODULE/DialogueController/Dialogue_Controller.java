@@ -67,7 +67,7 @@ public class Dialogue_Controller {
         initializejToolBar_ListTools();
         initializejToolBar_DictionaryTools();
         newDialogue();
-        insertionHelper("Untitled List", false);
+//        insertionHelper("Untitled List", false);
     }
 
 
@@ -199,6 +199,7 @@ public class Dialogue_Controller {
             chooser.setFileFilter(filter);
             chooser.showOpenDialog(dinoGUIView.getjTextPane_dialogueInput());
 
+
             File file = chooser.getSelectedFile();
 
             if (file == null) //Cancelled operation
@@ -206,6 +207,7 @@ public class Dialogue_Controller {
                 return;
             } else if (FileTypes.hasListExtension(file.getName())) {
                 table_controller.openFile(file);
+                dinoGUIModel.addListFile(file);
             } else if (FileTypes.hasDialogueExtension(file.getName())) {
                 String dialogueName = FileTypes.trimDialogueExtension(file.getName());
 
@@ -654,15 +656,19 @@ public class Dialogue_Controller {
         dinoGUIModel.setName(fileName);
         mostRecentSaved = fileName;
 
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.setListNames(getSetFiles());
         dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
         dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
         dinoGUIModel.writeToFile();
 
         table_controller.writeAllToFile();
         ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
-        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-        textDisplayController.setDino(getDino());
+//        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+//        textDisplayController.setDino(getDino());
+    }
+
+    private HashSet<File> getSetFiles() {
+        return dinoGUIView.getSetFiles();
     }
 
     public boolean saveExistingDialogueFile() {
@@ -684,7 +690,7 @@ public class Dialogue_Controller {
      * set ListNames
      *
      **************************************************************************/
-    public void setListNames(Set<String> newListNames) {
+    public void setListNames(Set<File> newListNames) {
         dinoGUIModel.setListNames(newListNames);
     }
 
@@ -716,20 +722,6 @@ public class Dialogue_Controller {
     /***************************************************************************
      * GETTERS
      **************************************************************************/
-
-    /***************************************************************************
-     * get ListNames
-     *
-     **************************************************************************/
-    public Set<String> getSetListNames() {
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        return dinoGUIModel.getListNames();
-    }
-
-    public String[] getArrayListName() {
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
-        return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
-    }
 
     /***************************************************************************
      * get staticVars
@@ -785,7 +777,7 @@ public class Dialogue_Controller {
             temp.remove(oldName);
             temp.add(newName);
             dinoGUIView.setSetListNames(temp);
-            dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+            dinoGUIModel.setListNames(dinoGUIView.getSetFiles());
 
             //remove oldname from jpopupmenu
             dinoGUIView.removeItemjPopupMenu_listInsertion(oldPos + 3);

@@ -64,6 +64,9 @@ public class Dialogue_Model {
 
     public void setListNames(Set<File> set) { listPaths = set; }
 
+    public void setListFiles(HashSet<File> set) { listPaths = set; }
+
+
     /***************************************************************************
      * getListNames
      *
@@ -94,9 +97,14 @@ public class Dialogue_Model {
      **************************************************************************/
     public void writeToFile() {
         DinoWriter writer = new DinoWriter();
-
+        String[] listNames = new String[listPaths.size()];
+        int i = 0;
+        for (File file : listPaths) {
+            listNames[i] = file.getAbsolutePath();
+            i++;
+        }
         //Todo: Switch this over to the DinoList call
-        writer.writeDialogueToFile(name, dialogue, listPaths.toArray(new String[listPaths.size()]), staticVars.toArray(new String[staticVars.size()]));
+        writer.writeDialogueToFile(name, dialogue, listNames, staticVars.toArray(new String[staticVars.size()]));
     }
 
     /***************************************************************************
@@ -112,6 +120,10 @@ public class Dialogue_Model {
      **************************************************************************/
     public String getDialogue() {
         return dialogue;
+    }
+
+    public void addListFile(File file) {
+        listPaths.add(file);
     }
 }
 
