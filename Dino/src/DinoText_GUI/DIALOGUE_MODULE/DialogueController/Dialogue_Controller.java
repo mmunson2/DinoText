@@ -23,6 +23,7 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /*******************************************************************************
@@ -656,15 +657,15 @@ public class Dialogue_Controller {
         dinoGUIModel.setName(fileName);
         mostRecentSaved = fileName;
 
-        dinoGUIModel.setListNames(getSetFiles());
+        File savedFile = new File(fileName);
+        File saveDirectory = savedFile.getParentFile();
+
+        dinoGUIModel.setListNames(dinoGUIView.getSetFiles(saveDirectory));
         dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
         dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
         dinoGUIModel.writeToFile();
 
-        File savedFile = new File(fileName);
-        File savedDirectory = savedFile.getParentFile();
-
-        table_controller.writeAllToFile(savedDirectory);
+        table_controller.writeAllToFile(saveDirectory);
         ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
         parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
 //        textDisplayController.setDino(getDino());

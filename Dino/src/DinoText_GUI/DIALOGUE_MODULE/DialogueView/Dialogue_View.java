@@ -260,6 +260,15 @@ public class Dialogue_View {
         return files;
     }
 
+    public HashSet<File> getSetFiles(File directory) {
+        HashSet<File> files = new HashSet<>();
+        for (JButton jb : listButtons) {
+            if (jb.getName() != "Untitled List")
+                files.add(new File(directory + System.getProperty("file.separator") + jb.getName()));
+        }
+        return files;
+    }
+
     /***************************************************************************
      * Set List Names
      *
