@@ -12,6 +12,7 @@ import DinoText_GUI.DISPLAY_MODULE.DisplayController.Text_Display_Controller;
 import DinoText_GUI.DinoText;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueModel.Dialogue_Model;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
+import DinoText_GUI.Util.DinoConfig;
 
 
 import javax.swing.*;
@@ -33,6 +34,8 @@ public class Dialogue_Controller {
     private Dialogue_View dinoGUIView;
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
+
+    private static DinoConfig config;
 
     private static final String DYNAMICLISTNAME = "Phrase List";
     private static final String STATICVARNAME = "Game Value";
@@ -161,6 +164,10 @@ public class Dialogue_Controller {
         dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
     }
 
+    public void setDinoConfig(DinoConfig config) {
+        this.config = config;
+    }
+
     /***************************************************************************
      * File Dropdown Menu - Save
      *
@@ -187,7 +194,7 @@ public class Dialogue_Controller {
      * File Dropdown Menu - Open
      *
      **************************************************************************/
-    class listener_JMenuItem_File_Open implements ActionListener {
+    class listener_JMenuItem_File_Open implements ActionListener { //TODO: call config.get/setLastSavedDir 
 
         @Override
         public void actionPerformed(ActionEvent e) {
