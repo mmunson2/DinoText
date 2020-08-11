@@ -8,6 +8,7 @@ import DinoText_GUI.Util.DinoWriter;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
+import java.io.File;
 
 /*******************************************************************************
  * Table_Model
@@ -19,6 +20,7 @@ public class Table_Model extends AbstractTableModel
     private int entryCount;
 
     private DinoList list;
+    private File directory;
     private Table_Probabilities probabilities;
 
     /***************************************************************************
@@ -64,6 +66,11 @@ public class Table_Model extends AbstractTableModel
         this.list.setName(listName);
     }
 
+    public void setDirectory(File directory)
+    {
+        this.directory = directory;
+    }
+
     /***************************************************************************
      * getName
      *
@@ -78,6 +85,10 @@ public class Table_Model extends AbstractTableModel
         return this.list;
     }
 
+    public File getDirectory()
+    {
+        return this.directory;
+    }
 
     /***************************************************************************
      * getTraitArray

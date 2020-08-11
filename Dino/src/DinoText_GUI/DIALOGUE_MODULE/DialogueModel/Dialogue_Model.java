@@ -78,6 +78,7 @@ public class Dialogue_Model {
     public void writeToFile() {
         DinoWriter writer = new DinoWriter();
 
+        //Todo: Switch this over to the DinoList call
         writer.writeDialogueToFile(name, dialogue, listNames.toArray(new String[listNames.size()]), staticVars.toArray(new String[staticVars.size()]));
     }
 

@@ -167,7 +167,7 @@ public class ListParser
     {
         try
         {
-            this.fileScanner = new Scanner(file); //TODO: Matthew: This scanner is not initializing correctly, could you take a look?
+            this.fileScanner = new Scanner(file);
         }
         catch(IOException e)
         {

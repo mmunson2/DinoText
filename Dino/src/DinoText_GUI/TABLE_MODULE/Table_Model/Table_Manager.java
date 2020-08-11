@@ -74,7 +74,11 @@ public class Table_Manager
         int index = this.getListIndexFromName(name);
 
         if(index != -1)
-            this.lists.get(index).writeToFile();
+        {
+            Table_Model model = this.lists.get(index);
+            model.writeToFile();
+        }
+
     }
 
     /***************************************************************************
