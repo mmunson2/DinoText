@@ -3,6 +3,7 @@ package DinoText_GUI.Util;
 import Dino.List.ListEntry;
 import Dino.List.Trait;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -23,6 +24,7 @@ public class DinoList
 {
     private String name;
     private ArrayList<ListEntry> list;
+    private File directory;
     private boolean skipWrite = false;
 
     /***************************************************************************
@@ -47,6 +49,11 @@ public class DinoList
     public void setSkipWrite(boolean skipWrite)
     {
         this.skipWrite = skipWrite;
+    }
+
+    public void setDirectory(File directory)
+    {
+        this.directory = directory;
     }
 
     /***************************************************************************
@@ -152,6 +159,23 @@ public class DinoList
         currentTraits.remove(targetIndex);
 
         setTraits(index, currentTraits);
+    }
+
+    public String getDirectoryString()
+    {
+        if(this.directory == null)
+        {
+            return "";
+        }
+        else
+        {
+            return this.directory.getAbsolutePath();
+        }
+    }
+
+    public File getDirectory()
+    {
+        return this.directory;
     }
 
     /***************************************************************************

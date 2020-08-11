@@ -12,6 +12,8 @@ public class Creator_View {
     private JTextField traitWeight;
     private JPanel panel;
     private JTextField probabilityDisplay;
+    private JSpinner upperBoundSpinner;
+    private JSpinner lowerBoundSpinner;
 
     public Creator_View()
     {
@@ -47,6 +49,16 @@ public class Creator_View {
         return this.lowerBoundSlider.getValue();
     }
 
+    public void setLowerBoundSpinner(int value)
+    {
+        this.lowerBoundSpinner.setValue(value);
+    }
+
+    public Object getLowerBoundSpinner()
+    {
+        return this.lowerBoundSpinner.getValue();
+    }
+
     public void setUpperBoundSlider(int value)
     {
         this.upperBoundSlider.setValue(value);
@@ -55,6 +67,16 @@ public class Creator_View {
     public int getUpperBoundSliderValue()
     {
         return this.upperBoundSlider.getValue();
+    }
+
+    public void setUpperBoundSpinner(int value)
+    {
+        this.upperBoundSpinner.setValue(value);
+    }
+
+    public Object getUpperBoundSpinner()
+    {
+        return this.upperBoundSpinner.getValue();
     }
 
     public void setTraitWeight(double weight)
@@ -98,6 +120,16 @@ public class Creator_View {
         this.lowerBoundSlider.removeChangeListener(l);
     }
 
+    public void addLowerBoundSpinnerListener(ChangeListener l)
+    {
+        this.lowerBoundSpinner.addChangeListener(l);
+    }
+
+    public void removeLowerBoundSpinnerListener(ChangeListener l)
+    {
+        this.lowerBoundSpinner.removeChangeListener(l);
+    }
+
     public void addUpperBoundSliderListener(ChangeListener l)
     {
         this.upperBoundSlider.addChangeListener(l);
@@ -106,6 +138,16 @@ public class Creator_View {
     public void removeUpperBoundSliderListener(ChangeListener l)
     {
         this.upperBoundSlider.removeChangeListener(l);
+    }
+
+    public void addUpperBoundSpinnerListener(ChangeListener l)
+    {
+        this.upperBoundSpinner.addChangeListener(l);
+    }
+
+    public void removeUpperBoundSpinnerListener(ChangeListener l)
+    {
+        this.upperBoundSpinner.removeChangeListener(l);
     }
 
     public void addWeightListener(ActionListener l)

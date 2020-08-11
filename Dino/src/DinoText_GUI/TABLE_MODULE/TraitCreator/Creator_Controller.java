@@ -15,7 +15,9 @@ public class Creator_Controller
 
     traitName_listener traitListener;
     lowerBoundSlider_listener lowerBoundListener;
+    lowerBoundSpinner_listener lowerBoundSpinnerListener;
     upperBoundSlider_listener upperBoundListener;
+    upperBoundSpinner_listener upperBoundSpinnerListener;
     traitWeight_listener traitWeightListener;
     traitName_focusListener traitNameFocusListener;
 
@@ -27,7 +29,9 @@ public class Creator_Controller
 
         this.traitListener = new traitName_listener();
         this.lowerBoundListener = new lowerBoundSlider_listener();
+        this.lowerBoundSpinnerListener = new lowerBoundSpinner_listener();
         this.upperBoundListener = new upperBoundSlider_listener();
+        this.upperBoundSpinnerListener = new upperBoundSpinner_listener();
         this.traitWeightListener = new traitWeight_listener();
         this.traitNameFocusListener = new traitName_focusListener();
 
@@ -44,6 +48,54 @@ public class Creator_Controller
         String traitName = view.getTraitName();
         model.setName(traitName);
         view.setTraitName(traitName);
+    }
+
+    public void setUpperBound(int value)
+    {
+        if(value >= Creator_Model.MIN && value <= Creator_Model.MAX)
+        {
+            if(value < model.getLowerBound())
+            {
+                value = model.getLowerBound();
+            }
+
+            this.model.setUpperBound(value);
+
+            this.view.setUpperBoundSpinner(value);
+            this.view.setUpperBoundSlider(value);
+        }
+        else if(value > Creator_Model.MAX)
+        {
+            this.setUpperBound(Creator_Model.MAX);
+        }
+        else
+        {
+            this.setUpperBound(Creator_Model.MIN);
+        }
+    }
+
+    public void setLowerBound(int value)
+    {
+        if(value >= Creator_Model.MIN && value <= Creator_Model.MAX)
+        {
+            if(value >= model.getUpperBound())
+            {
+                value = model.getLowerBound();
+            }
+
+            this.model.setLowerBound(value);
+
+            this.view.setLowerBoundSpinner(value);
+            this.view.setLowerBoundSlider(value);
+        }
+        else if(value > Creator_Model.MAX)
+        {
+            this.setLowerBound(Creator_Model.MAX);
+        }
+        else
+        {
+            this.setLowerBound(Creator_Model.MIN);
+        }
     }
 
     class traitName_listener implements ActionListener
@@ -65,13 +117,29 @@ public class Creator_Controller
         {
             int newValue = view.getLowerBoundSliderValue();
 
-            if(newValue > model.getUpperBound())
+            setLowerBound(newValue);
+        }
+    }
+
+    class lowerBoundSpinner_listener implements ChangeListener
+    {
+        @Override
+        public void stateChanged(ChangeEvent e)
+        {
+            Object newValueObject = view.getLowerBoundSpinner();
+            int newValue;
+
+            try
             {
-                newValue = model.getUpperBound();
+                newValue = (Integer) newValueObject;
+            }
+            catch(Exception error)
+            {
+                //If we run into an error, don't change
+                newValue = model.getLowerBound();
             }
 
-            model.setLowerBound(newValue);
-            view.setLowerBoundSlider(newValue);
+            setLowerBound(newValue);
         }
     }
 
@@ -82,13 +150,30 @@ public class Creator_Controller
         {
             int newValue = view.getUpperBoundSliderValue();
 
-            if(newValue < model.getLowerBound())
+            setUpperBound(newValue);
+        }
+    }
+
+    class upperBoundSpinner_listener implements ChangeListener
+    {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+
+            Object newValueObject = view.getUpperBoundSpinner();
+            int newValue;
+
+            try
             {
-                newValue = model.getLowerBound();
+                newValue = (Integer) newValueObject;
+            }
+            catch(Exception error)
+            {
+                System.out.println(error.getMessage());
+                //If we run into an error, don't change
+                newValue = model.getUpperBound();
             }
 
-            model.setUpperBound(newValue);
-            view.setUpperBoundSlider(newValue);
+            setUpperBound(newValue);
         }
     }
 
@@ -138,6 +223,9 @@ public class Creator_Controller
         this.view.addUpperBoundSliderListener(upperBoundListener);
         this.view.addWeightListener(traitWeightListener);
         this.view.addTraitNameFocusListener(traitNameFocusListener);
+
+        this.view.addLowerBoundSpinnerListener(this.lowerBoundSpinnerListener);
+        this.view.addUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
 
     private void removeListeners()
@@ -146,6 +234,9 @@ public class Creator_Controller
         this.view.removeLowerBoundSliderListener(lowerBoundListener);
         this.view.removeUpperBoundSliderListener(upperBoundListener);
         this.view.removeWeightListener(traitWeightListener);
+
+        this.view.removeLowerBoundSpinnerListener(this.lowerBoundSpinnerListener);
+        this.view.removeUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
 
 }

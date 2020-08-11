@@ -1,9 +1,11 @@
-# Generated: 2020/08/04 02:43:19
+# Generated: 2020/08/10 15:36:12
 
-Lists Referenced: 1
+Lists Referenced: 3
+Untitled List
+nouns
 adjectives
 
 
 Static Variables: 0
 
-This is a \L[adjectives] test
+This is a \L[adjectives] \L[nouns] 
