@@ -193,16 +193,6 @@ public class Dialogue_View {
      * insert Button to JTextPane (Static Variable)
      **************************************************************************/
     public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
-        SimpleAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setFontSize(set, 0);
-
-        int caretPos = jTextPane_dialogueInput.getCaretPosition();
-        try {
-            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\S[" + varName + "]", set); //TODO: How are we representing static vars?
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-
         JButton newList = new JButton(varName);
         newList.setName(varName);
         newList.setText(varName);
@@ -217,17 +207,7 @@ public class Dialogue_View {
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
-        SimpleAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setFontSize(set, 0);
-
-        int caretPos = jTextPane_dialogueInput.getCaretPosition();
-
-        try {
-            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\L[" + listName + "]", set);
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-        jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName,actionListener,color));
+        jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, color));
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -239,6 +219,26 @@ public class Dialogue_View {
         listButtons.add(newList);
         return newList;
     }
+
+    /***************************************************************************
+     * Get Active List Buttons
+     *
+     **************************************************************************/
+    public ArrayList<JButton> getActiveListButtons() {
+        ArrayList<JButton> activeButtons = new ArrayList<JButton>();
+        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element element;
+        while ((element = iterator.next()) != null) {
+            AttributeSet as = element.getAttributes();
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JButton) {
+                    activeButtons.add((JButton) StyleConstants.getComponent(as));
+                }
+            }
+        }
+        return activeButtons;
+    }
+
 
     /***************************************************************************
      * Get List Names
@@ -256,7 +256,7 @@ public class Dialogue_View {
         HashSet<File> files = new HashSet<>();
         for (JButton jb : listButtons) {
             if (jb.getName() != "Untitled List")
-            files.add(new File(System.getProperty("user.dir") + System.getProperty("file.separator") + jb.getName()));
+                files.add(new File(System.getProperty("user.dir") + System.getProperty("file.separator") + jb.getName()));
         }
         return files;
     }
@@ -296,8 +296,9 @@ public class Dialogue_View {
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
         for (Component c : jMenu_listInsertion.getMenuComponents()) {
-            if (((JMenuItem) c).getText() == temp.getText())
+            if (((JMenuItem) c).getText() == temp.getText()) {
                 return;
+            }
         }
         // else
         System.out.println("adding " + temp.getText());
@@ -332,6 +333,7 @@ public class Dialogue_View {
     public JMenu getjMenu_listInsertion() {
         return jMenu_listInsertion;
     }
+
     /***************************************************************************
      * show popup menu
      *
@@ -460,9 +462,6 @@ public class Dialogue_View {
     }
 
     public void clearjTextPane_dialogueInput() {
-        SimpleAttributeSet set = new SimpleAttributeSet();
-        StyleConstants.setFontSize(set, 12);
-
-        jTextPane_dialogueInput.setCharacterAttributes(set, true);
+        jTextPane_dialogueInput.setText("");
     }
 }

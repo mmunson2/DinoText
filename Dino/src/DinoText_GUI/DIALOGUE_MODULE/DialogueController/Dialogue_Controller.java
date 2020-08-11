@@ -59,7 +59,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void initialize() {
-        dinoGUIView.addKeyListenerjTextPane_dialogueInput(new listener_JPanel_dialogueInput_backspace());
+//        dinoGUIView.addKeyListenerjTextPane_dialogueInput(new listener_JPanel_dialogueInput_backspace());
         initializejPopupMenu();
         initializejToolBar_File();
         initializejToolBar_ListTools();
@@ -200,49 +200,48 @@ public class Dialogue_Controller {
 
             File file = chooser.getSelectedFile();
 
-            if (file == null) //Cancelled operation
+            if (file != null) //Cancelled operation
             {
-                return;
-            } else if (FileTypes.hasListExtension(file.getName())) {
                 newDialogue();
-                table_controller.openFile(file);
-                dinoGUIModel.addListFile(file);
-            } else if (FileTypes.hasDialogueExtension(file.getName())) {
-                newDialogue();
-                String dialogueName = FileTypes.trimDialogueExtension(file.getName());
+                if (FileTypes.hasListExtension(file.getName())) {
+                    table_controller.openFile(file);
+                    dinoGUIModel.addListFile(file);
+                } else if (FileTypes.hasDialogueExtension(file.getName())) {
+                    String dialogueName = FileTypes.trimDialogueExtension(file.getName());
 
-                DialogueParser parser = new DialogueParser(file.getAbsolutePath());
-                //Todo: Take this dialogue String and put it into the view
-                parseUnformattedDialogue(parser.getUnformattedDialogue());
+                    DialogueParser parser = new DialogueParser(file.getAbsolutePath());
+                    //Todo: Take this dialogue String and put it into the view
+                    parseUnformattedDialogue(parser.getUnformattedDialogue());
 
-                List[] lists = parser.getListArray();
-                //Todo: Take these list names and put it wherever you keep them
-                int j = 0;
-                for (List list : lists) {
-                    dinoGUIModel.getListNames().add(list.getName());
-                    j++;
+                    List[] lists = parser.getListArray();
+                    //Todo: Take these list names and put it wherever you keep them
+                    int j = 0;
+                    for (List list : lists) {
+                        dinoGUIModel.getListNames().add(list.getName());
+                        j++;
+                    }
+                    String[] listNames = new String[lists.length];
+
+                    for (int i = 0; i < lists.length; i++) {
+                        listNames[i] = lists[i].getName();
+                    }
+
+                    for (int i = 0; i < listNames.length; i++) {
+                        String listFileName = listNames[i] +
+                                FileTypes.LIST_EXTENSION;
+
+                        table_controller.openFile(listFileName);
+                    }
+                } else //File type not recognized
+                {
+                    JOptionPane.showMessageDialog(null,
+                            "Could not open file: " + file.getName());
                 }
-                String[] listNames = new String[lists.length];
 
-                for (int i = 0; i < lists.length; i++) {
-                    listNames[i] = lists[i].getName();
+
+                if (file != null) {
+                    saveDialogueFileHelper(file.getName());
                 }
-
-                for (int i = 0; i < listNames.length; i++) {
-                    String listFileName = listNames[i] +
-                            FileTypes.LIST_EXTENSION;
-
-                    table_controller.openFile(listFileName);
-                }
-            } else //File type not recognized
-            {
-                JOptionPane.showMessageDialog(null,
-                        "Could not open file: " + file.getName());
-            }
-
-
-            if (file != null) {
-                saveDialogueFileHelper(file.getName());
             }
         }
     }
@@ -250,9 +249,7 @@ public class Dialogue_Controller {
     private void parseUnformattedDialogue(String unformattedDialogue) {
 
         String[] split = unformattedDialogue.split(" ");
-        dinoGUIView.setText_jTextPane_dialogueInput(unformattedDialogue);
         String searchString = "";
-        int offset = 0;
 
         for (int i = 0; i < split.length; i++) {
             String word = split[i];
@@ -268,10 +265,6 @@ public class Dialogue_Controller {
 
                 searchString += word + " ";
 
-                int selectionStart = searchString.lastIndexOf(word) + offset;
-
-
-                dinoGUIView.setCaret_jTextPane_dialogueInput(selectionStart);
                 switch (word.charAt(1)) {
                     case 'L':
                         insertionHelper(word.substring(3, word.length() - 1));
@@ -280,10 +273,6 @@ public class Dialogue_Controller {
                         staticHelper(word.substring(3, word.length() - 1));
                         break;
                 }
-                dinoGUIView.setSelectedText_jTextPane_dialogueInput(selectionStart + 1 + word.length(), selectionStart + (2 * word.length()) + 1);
-                dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-
-                offset++;
             } else {
                 searchString += word + " ";
             }
@@ -412,12 +401,48 @@ public class Dialogue_Controller {
 
 
     public void jPopupMenu_listInsertion_updateMenuItems() {
+        HashSet<String> currentLists = new HashSet<>();
+        // checks if the table has a list the view does not
+
         for (String listName : table_controller.getListNames()) {
             JMenuItem temp = new JMenuItem();
             temp.setText(listName.trim());
             temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
+
+            for (Component c : dinoGUIView.getjMenu_listInsertion().getMenuComponents()) {
+                currentLists.add(((JMenuItem) c).getText());
+            }
+
+            if (!currentLists.contains(temp.getText())) {
+                dinoGUIView.addItemjPopupMenu_listInsertion(temp);
+            }
+        }
+
+        // checks if the table has a list the view does not
+        currentLists = new HashSet<>(); // set of lists in table
+        for (Component c : dinoGUIView.getjMenu_listInsertion().getMenuComponents()) {
+            if (((JMenuItem) c).getText() != DYNAMICLISTNAME && ((JMenuItem) c).getText() != DYNAMICLISTNAME + " Conversion" && ((JMenuItem) c).getText() != STATICVARNAME) {
+                for (String listName : table_controller.getListNames()) { // populate listName with all lists in table
+                    currentLists.add(listName.trim());
+                }
+
+                if (!currentLists.contains(((JMenuItem) c).getText())) { // if the table does not contain the button,
+                    // remove it from the popup
+                    dinoGUIView.removeItemjPopupMenu_listInsertion(((JMenuItem) c).getText());
+//                    dinoGUIView.removeListName(((JMenuItem) c).getText());
+                }
+
+            }
+        }
+
+        for (JButton staticVar : dinoGUIView.getAllStaticVarButtons()) {
+            System.out.println(staticVar.getName() + ": Text: " + staticVar.getText());
+            JMenuItem temp = new JMenuItem();
+            temp.setText(staticVar.getName());
+            temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(staticVar.getName()));
             dinoGUIView.addItemjPopupMenu_listInsertion(temp);
         }
+
     }
 
     /***************************************************************************
@@ -541,14 +566,8 @@ public class Dialogue_Controller {
             }
         }, Color.red);
 
-        // add button to list
-        JMenuItem temp = new JMenuItem();
-        temp.setText(varName);
-        temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(varName));
-        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-
         dinoGUIModel.addStaticVar(varName);
-
+        jPopupMenu_listInsertion_updateMenuItems();
         dinoGUIView.setFocusTSDialogueInput();
     }
 
@@ -565,8 +584,8 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void newDialogue() {
-        dinoGUIView.clearListButtonsjPopupMenu();
         dinoGUIView.clearjTextPane_dialogueInput();
+        dinoGUIView.clearListButtonsjPopupMenu();
         dinoGUIView.setVisibleTSDialogueInput(true);
         dinoGUIView.setFocusTSDialogueInput();
     }
@@ -632,7 +651,7 @@ public class Dialogue_Controller {
 
         public void actionPerformed(ActionEvent e) {
             if (dinoGUIView.getSetListNames().contains(varName))
-                dinoGUIView.insertButtonjTextPane_DynamicList(varName,  (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow); //TODO this button may not link to the right name
+                dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow); //TODO this button may not link to the right name
             else {
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getStaticVarButton(varName).getActionListeners())[0], Color.red); //TODO this button may not link to the right name
             }
@@ -657,18 +676,71 @@ public class Dialogue_Controller {
         dinoGUIModel.setName(fileName);
         mostRecentSaved = fileName;
 
+        String dialogue = formatDialogue();
+
         File savedFile = new File(fileName);
         File saveDirectory = savedFile.getParentFile();
 
         dinoGUIModel.setListNames(dinoGUIView.getSetFiles(saveDirectory));
-        dinoGUIView.setText_jTextPane_dialogueInput(dinoGUIView.getText_jTextPane_dialogueInput().replaceAll("\\s{2,}", " "));
-        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
+        dinoGUIModel.setDialogue(dialogue);
         dinoGUIModel.writeToFile();
 
         table_controller.writeAllToFile(saveDirectory);
         ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
-        parseUnformattedDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-//        textDisplayController.setDino(getDino());
+        textDisplayController.setDino(getDino());
+    }
+
+    private String formatDialogue() {
+//        String dialogue = "";
+//        String[] dialogueSplit = dinoGUIView.getText_jTextPane_dialogueInput().split(" ");
+//        String[] activeButtons = new String[dinoGUIView.getActiveListButtons().size()];
+//
+//        int i = 0;
+//        for (JButton b : dinoGUIView.getActiveListButtons()) {
+//            if (dinoGUIView.getAllStaticVarButtons().contains(b)) {
+//                activeButtons[i] = "\\S[" + b.getName() + "]" + " ";
+//            } else {
+//                activeButtons[i] = "\\L[" + b.getName() + "]" + " ";
+//            }
+//            i++;
+//        }
+//        i = 0;
+//
+//        for (String word : dialogueSplit) {
+//            System.out.println(i + " Word: " + word);
+//            if (word.isEmpty() && i < activeButtons.length) {
+//                System.out.println("adding " + activeButtons[i] + " to dialogue.");
+//                dialogue += activeButtons[i] + " ";
+//                i++;
+//            } else {
+//                dialogue += word + " ";
+//            }
+//        }
+//        System.out.println("Dialogue: " + dialogue);
+//        return dialogue.trim();
+        String dialogue = dinoGUIView.getText_jTextPane_dialogueInput();
+        String[] activeButtons = new String[dinoGUIView.getActiveListButtons().size()];
+
+        int i = 0;
+        for (JButton b : dinoGUIView.getActiveListButtons()) {
+            if (dinoGUIView.getAllStaticVarButtons().contains(b)) {
+                activeButtons[i] = "\\S[" + b.getName() + "]" + " ";
+            } else {
+                activeButtons[i] = "\\L[" + b.getName() + "]" + " ";
+            }
+            i++;
+        }
+        i = 0;
+
+        while (i < activeButtons.length) {
+            System.out.println(activeButtons.length);
+            dialogue = dialogue.replaceFirst("\\s\\s", " " + activeButtons[i]);
+            i++;
+        }
+        dialogue = dialogue.replaceAll("\\s+", " ");
+
+        System.out.println("Dialogue: " + dialogue);
+        return dialogue.trim();
     }
 
     private HashSet<File> getSetFiles() {
@@ -741,23 +813,6 @@ public class Dialogue_Controller {
     }
 
     /***************************************************************************
-     * get Dialogue
-     *
-     **************************************************************************/
-    public String getDialogue() {
-        dinoGUIModel.setDialogue(dinoGUIView.getText_jTextPane_dialogueInput());
-        return dinoGUIModel.getDialogue();
-    }
-
-    /***************************************************************************
-     * get Dialogue Name
-     *
-     **************************************************************************/
-    public String getDialogueName() {
-        return dinoGUIModel.getName();
-    }
-
-    /***************************************************************************
      * rename List
      *
      **************************************************************************/
@@ -808,63 +863,63 @@ public class Dialogue_Controller {
         }
     }
 
-    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
-        @Override
-        public void keyTyped(KeyEvent e) {
-        }
-
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == 8) {
-                boolean space = false;
-                boolean first = false;
-
-
-                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
-
-                if (pane.getText().length() >= 0) {
-                    if (pane.getCaretPosition() == 0) {
-                        newDialogue();
-                        return;
-                    }
-
-                    try {
-                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
-                            pane.setCaretPosition(pane.getCaretPosition() - 2);
-                            space = true;
-                            first = true;
-                        }
-                    } catch (BadLocationException ex) {
-                        ex.printStackTrace();
-                    }
-
-                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
-                        if (first) {
-                            pane.setCaretPosition(pane.getCaretPosition() + 1);
-                            first = false;
-                        }
-
-
-                        try {
-                            pane.getDocument().remove(pane.getCaretPosition(), 1);
-                        } catch (BadLocationException ex) {
-                        }
-
-                        pane.setCaretPosition(pane.getCaretPosition() - 1);
-                    }
-
-                    if (space)
-                        pane.setCaretPosition(pane.getCaretPosition() + 1);
-
-
-                }
-            }
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-        }
-
-    }
+//    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
+//        @Override
+//        public void keyTyped(KeyEvent e) {
+//        }
+//
+//
+//        @Override
+//        public void keyPressed(KeyEvent e) {
+//            if (e.getKeyCode() == 8) {
+//                boolean space = false;
+//                boolean first = false;
+//
+//
+//                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
+//
+//                if (pane.getText().length() >= 0) {
+//                    if (pane.getCaretPosition() == 0) {
+//                        newDialogue();
+//                        return;
+//                    }
+//
+//                    try {
+//                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
+//                            pane.setCaretPosition(pane.getCaretPosition() - 2);
+//                            space = true;
+//                            first = true;
+//                        }
+//                    } catch (BadLocationException ex) {
+//                        ex.printStackTrace();
+//                    }
+//
+//                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
+//                        if (first) {
+//                            pane.setCaretPosition(pane.getCaretPosition() + 1);
+//                            first = false;
+//                        }
+//
+//
+//                        try {
+//                            pane.getDocument().remove(pane.getCaretPosition(), 1);
+//                        } catch (BadLocationException ex) {
+//                        }
+//
+//                        pane.setCaretPosition(pane.getCaretPosition() - 1);
+//                    }
+//
+//                    if (space)
+//                        pane.setCaretPosition(pane.getCaretPosition() + 1);
+//
+//
+//                }
+//            }
+//        }
+//
+//        @Override
+//        public void keyReleased(KeyEvent e) {
+//        }
+//
+//    }
 }
