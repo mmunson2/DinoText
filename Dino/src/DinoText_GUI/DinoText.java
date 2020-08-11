@@ -10,13 +10,13 @@
  *****************************************************************************************/
 package DinoText_GUI;
 
+import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
+import DinoText_GUI.DIALOGUE_MODULE.DialogueModel.Dialogue_Model;
+import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
 import DinoText_GUI.DISPLAY_MODULE.DisplayController.Text_Display_Controller;
 import DinoText_GUI.DISPLAY_MODULE.DisplayModel.Text_Display_Model;
-import DinoText_GUI.DIALOGUE_MODULE.DialogueView.Dialogue_View;
 import DinoText_GUI.DISPLAY_MODULE.DisplayView.Text_Display_View;
-import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
 import DinoText_GUI.TABLE_MODULE.Table_Controller.Table_Controller;
-import DinoText_GUI.DIALOGUE_MODULE.DialogueModel.Dialogue_Model;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
 import DinoText_GUI.TABLE_MODULE.Table_View.Table_TabbedPane;
 import DinoText_GUI.Util.DinoConfig;
@@ -75,6 +75,7 @@ public class DinoText implements Runnable {
 
         table_controller.setDialogue_controller(dinoGUIController);
         textDisplayController.setDialogueController(dinoGUIController);
+        dinoGUIController.setDinoConfig(config);
 
         //Frame
         jFrame_dinoText.setLayout(new BorderLayout());

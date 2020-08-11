@@ -11,11 +11,7 @@
 
 package DinoText_GUI.Util;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 public class DinoConfig implements Serializable
 {
@@ -68,6 +64,16 @@ public class DinoConfig implements Serializable
     private int linesPerPage = 3;
     public int getLinesPerPage() { return linesPerPage; }
     public void setLinesPerPage(int i) { linesPerPage = i; save(); }
+
+    // File
+    private File lastSavedDir = null;
+    public File getLastSavedDir() {
+        return lastSavedDir;
+    }
+    public void setLastSavedDir(File directory) {
+        lastSavedDir = directory;
+    }
+
 
     /* TEMPLATE
     private int template_default = 3;

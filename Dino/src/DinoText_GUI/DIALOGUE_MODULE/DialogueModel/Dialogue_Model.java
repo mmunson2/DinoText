@@ -110,6 +110,7 @@ public class Dialogue_Model {
             for(File file : listPaths)
             {
                 listNames[i] = file.getName();
+                i++;
             }
         }
         else
