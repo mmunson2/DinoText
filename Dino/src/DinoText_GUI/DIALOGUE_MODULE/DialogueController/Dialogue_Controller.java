@@ -41,9 +41,6 @@ public class Dialogue_Controller {
     public static final String DYNAMICLISTNAME = "Phrase List";
     private static final String STATICVARNAME = "Game Value";
 
-
-    private DinoConfig config; //Todo: @Ihsan, this seemed to be missing so I added it to fix the build
-
     //Todo: Find a better way to do this
     private File mostRecentSaved = null;
 
