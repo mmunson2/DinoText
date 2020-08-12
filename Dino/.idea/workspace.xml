@@ -8,47 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DinoText.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DinoText.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_debug.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_debug.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_listName.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_listName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tabSwitch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tabSwitch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_tableModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/2/dinos/adjectives.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/2/dinos/nouns.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/2/dinos/testdemo.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/Github.Dinotext.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/TestDemo.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/TestList.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/Untitled List.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/adjectives.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/adjectives.dlist.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/nouns.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DirectoryTests/superList.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DinoText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_NoList.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_NoList.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_NoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_NoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/2/dinos/adjectives.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/2/dinos/nouns.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/2/dinos/testDemo.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/Github.Dinotext.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/TestDemo.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/TestList.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/Untitled List.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/adjectives.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/adjectives.dlist.dino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/nouns.dlist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/DirectoryTests/superList.dlist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -406,10 +368,10 @@
     </state>
     <state x="221" y="63" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1595990248908" />
     <state x="284" y="86" key="SettingsEditor/0.0.1851.1234@0.0.1851.1234" timestamp="1594624318706" />
-    <state x="622" y="427" key="com.intellij.ide.util.TipDialog" timestamp="1596672123885">
+    <state x="622" y="427" key="com.intellij.ide.util.TipDialog" timestamp="1597190979024">
       <screen x="0" y="0" width="1851" height="1194" />
     </state>
-    <state x="622" y="427" key="com.intellij.ide.util.TipDialog/0.0.1851.1194@0.0.1851.1194" timestamp="1596672123885" />
+    <state x="622" y="427" key="com.intellij.ide.util.TipDialog/0.0.1851.1194@0.0.1851.1194" timestamp="1597190979024" />
     <state x="622" y="441" key="com.intellij.ide.util.TipDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1595710494914" />
     <state x="430" y="381" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1595279374929">
       <screen x="0" y="0" width="1440" height="900" />

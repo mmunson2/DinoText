@@ -34,6 +34,9 @@ public class Dialogue_Controller {
     private Dialogue_View dinoGUIView;
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
+    
+    private static DinoConfig config;
+
 
     public static final String DYNAMICLISTNAME = "Phrase List";
     private static final String STATICVARNAME = "Game Value";
