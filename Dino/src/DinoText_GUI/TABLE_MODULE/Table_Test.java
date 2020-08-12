@@ -27,7 +27,7 @@ public class Table_Test
 
         Table_Controller controller = new Table_Controller(model, view);
 
-        frame.add(view.getPanel1());
+        frame.add(view.getPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 580);
         frame.setTitle("Table Test");

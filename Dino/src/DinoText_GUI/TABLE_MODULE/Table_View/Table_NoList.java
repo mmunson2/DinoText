@@ -1,6 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.Table_View;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class Table_NoList {
@@ -20,5 +21,10 @@ public class Table_NoList {
     public void removeCreateListActionListener(ActionListener listener)
     {
         this.createList.removeActionListener(listener);
+    }
+
+    public Component getPanel()
+    {
+        return this.panel1;
     }
 }
