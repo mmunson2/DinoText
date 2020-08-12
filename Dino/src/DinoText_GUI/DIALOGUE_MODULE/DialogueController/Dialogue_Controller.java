@@ -34,6 +34,9 @@ public class Dialogue_Controller {
     private Dialogue_View dinoGUIView;
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
+    
+    private static DinoConfig config;
+
 
     public static final String DYNAMICLISTNAME = "Phrase List";
     private static final String STATICVARNAME = "Game Value";
@@ -42,7 +45,7 @@ public class Dialogue_Controller {
     private DinoConfig config; //Todo: @Ihsan, this seemed to be missing so I added it to fix the build
 
     //Todo: Find a better way to do this
-    private String mostRecentSaved = null;
+    private File mostRecentSaved = null;
 
     /***************************************************************************
      * Constructor
@@ -198,7 +201,7 @@ public class Dialogue_Controller {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFileChooser chooser = new JFileChooser();
+            JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "DINO and DLIST files", "dino", "dlist");
             chooser.setFileFilter(filter);
@@ -323,8 +326,7 @@ public class Dialogue_Controller {
                 Dino dino = getDino();
                 textDisplayController.setDino(dino);
                 if (mostRecentSaved == null) {
-                    String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-                    saveDialogueFileHelper(fileName);
+                    saveDialogueFile();
                 }
 
                 if (textDisplayController.panelIsVisible()) {
@@ -338,7 +340,7 @@ public class Dialogue_Controller {
     }
 
     public Dino getDino() {
-        return new Dino(mostRecentSaved);
+        return new Dino(mostRecentSaved.getName());
     }
 
     /***************************************************************************
@@ -674,21 +676,25 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     public boolean saveDialogueFile() {
-        String fileName = JOptionPane.showInputDialog("Dialogue File Name: ");
-        if (fileName != null) {
-            saveDialogueFileHelper(fileName);
-            return true;
+        JFileChooser jFileChooser = new JFileChooser(System.getProperty("user.dir"));
+        int confirm = jFileChooser.showSaveDialog(null);
+        if (confirm == JFileChooser.APPROVE_OPTION) {
+            try {
+                saveDialogueFileHelper(jFileChooser.getSelectedFile());
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
         return false;
     }
 
-    private void saveDialogueFileHelper(String fileName) {
-        dinoGUIModel.setName(fileName);
-        mostRecentSaved = fileName;
+    private void saveDialogueFileHelper(File savedFile) {
+        dinoGUIModel.setName(savedFile.getName());
+        mostRecentSaved = savedFile;
 
         String dialogue = formatDialogue();
 
-        File savedFile = new File(fileName);
         File saveDirectory = savedFile.getParentFile();
 
         dinoGUIModel.setListNames(dinoGUIView.getSetFiles(saveDirectory));
@@ -696,8 +702,9 @@ public class Dialogue_Controller {
         dinoGUIModel.writeToFile();
 
         table_controller.writeAllToFile(saveDirectory);
-        ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + fileName);
+        ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).setTitle("Dino Text - " + savedFile.getName());
         textDisplayController.setDino(getDino());
+        config.setLastSavedDir(savedFile.getParentFile());
     }
 
     private String formatDialogue() {
@@ -728,10 +735,8 @@ public class Dialogue_Controller {
     }
 
     public boolean saveExistingDialogueFile() {
-        String fileName = ((JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor())).getTitle();
-        if (fileName.length() > 9) {
-            fileName = fileName.substring(12);
-            saveDialogueFileHelper(fileName);
+        if (mostRecentSaved != null) {
+            saveDialogueFileHelper(mostRecentSaved);
             return true;
         } else {
             saveDialogueFile();
