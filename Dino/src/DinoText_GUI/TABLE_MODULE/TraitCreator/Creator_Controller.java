@@ -37,11 +37,18 @@ public class Creator_Controller
 
         addListeners();
 
-        this.view.setTraitName(this.model.getName());
-        this.view.setLowerBoundSlider(this.model.getLowerBound());
-        this.view.setUpperBoundSlider(this.model.getUpperBound());
-        this.view.setTraitWeight(this.model.getWeight());
-        this.view.setDisplayProbability(this.model.getProbability());
+        synchronize();
+    }
+
+    public void set(Creator_Model model, Creator_View view)
+    {
+        this.removeListeners();
+
+        this.model = model;
+        this.view = view;
+
+        this.addListeners();
+        synchronize();
     }
 
     public void finalizeTrait() {
@@ -213,6 +220,17 @@ public class Creator_Controller
         public void focusLost(FocusEvent e) {
 
         }
+    }
+
+    private void synchronize()
+    {
+        this.view.setTraitName(this.model.getName());
+        this.view.setLowerBoundSlider(this.model.getLowerBound());
+        this.view.setLowerBoundSpinner(this.model.getLowerBound());
+        this.view.setUpperBoundSlider(this.model.getUpperBound());
+        this.view.setUpperBoundSpinner(this.model.getUpperBound());
+        this.view.setTraitWeight(this.model.getWeight());
+        this.view.setDisplayProbability(this.model.getProbability());
     }
 
 

@@ -8,6 +8,8 @@ public class Table_NoList {
     private JPanel panel1;
     private JButton createList;
 
+    public static final String NAME = "No Lists";
+
     Table_NoList()
     {
 

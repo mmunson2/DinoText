@@ -39,6 +39,8 @@ public class Dialogue_Controller {
     private static final String STATICVARNAME = "Game Value";
 
 
+    private DinoConfig config; //Todo: @Ihsan, this seemed to be missing so I added it to fix the build
+
     //Todo: Find a better way to do this
     private String mostRecentSaved = null;
 

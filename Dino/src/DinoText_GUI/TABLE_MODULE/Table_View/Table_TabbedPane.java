@@ -55,19 +55,19 @@ public class Table_TabbedPane extends JFrame{
 
     public void addNoListTab()
     {
-        this.listPane.addTab("No Lists", this.noList.getPanel());
+        this.listPane.addTab(Table_NoList.NAME, this.noList.getPanel());
     }
 
     public boolean hasNoListTab()
     {
-        int index = this.listPane.indexOfTab("No Lists");
+        int index = this.listPane.indexOfTab(Table_NoList.NAME);
 
         return index != -1;
     }
 
     public void removeNoListTab()
     {
-        int index = this.listPane.indexOfTab("No Lists");
+        int index = this.listPane.indexOfTab(Table_NoList.NAME);
 
         if(index != -1)
         {

@@ -16,7 +16,7 @@ public class Creator_Model
 
     public Creator_Model()
     {
-        trait = new TraitModel("name", MIN, MAX, 0);
+        trait = new TraitModel("New Trait", MIN, MAX, 0);
     }
 
     public Creator_Model(TraitModel trait)
