@@ -20,7 +20,6 @@ public class Variable_Setting_View extends JFrame
     public Variable_Setting_View(Dino dino)
     {
         this.setContentPane(content);
-        this.setAlwaysOnTop(true);
         this.setSize(300, 300);
         this.setTitle("Variable Settings");
 

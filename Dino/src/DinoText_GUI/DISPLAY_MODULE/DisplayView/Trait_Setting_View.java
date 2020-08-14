@@ -20,7 +20,6 @@ public class Trait_Setting_View extends JFrame
     public Trait_Setting_View(Dino dino)
     {
         this.setContentPane(content);
-        this.setAlwaysOnTop(true);
         this.setSize(300, 300);
         this.setTitle("Trait Settings");
 
@@ -38,6 +37,7 @@ public class Trait_Setting_View extends JFrame
             int value = (int) this.dino.getTraitValue(i);
             Trait_Setting_Slider tss = new Trait_Setting_Slider(this.dino.getTraitName(i), 0, 100, value);
             tss.sliderListener(new sliderListener(i));
+            tss.spinnerListener(new spinnerListener(i));
             this.sliders.add(tss);
         }
 
@@ -45,7 +45,7 @@ public class Trait_Setting_View extends JFrame
         for (int i = 0; i < this.sliders.size(); i++)
         {
             panel.add(this.sliders.get(i).getPanel());
-            panel.add(Box.createRigidArea(new Dimension(0, 5)));
+            panel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
         panel.add(Box.createRigidArea(new Dimension(0, 5)));
         this.content.add(scroller, BorderLayout.CENTER);
@@ -61,7 +61,34 @@ public class Trait_Setting_View extends JFrame
         @Override
         public void stateChanged(ChangeEvent e)
         {
-            double value = sliders.get(index).getValue();
+            double value = sliders.get(index).getSliderValue();
+            sliders.get(index).setSpinner((int) value);
+            dino.setTraitValue(index, value);
+        }
+    }
+
+    class spinnerListener implements ChangeListener
+    {
+        private int index;
+        public spinnerListener(int index)
+        {
+            this.index = index;
+        }
+        @Override
+        public void stateChanged(ChangeEvent e)
+        {
+            double value = sliders.get(index).getSpinnerValue();
+            if (value < 0)
+            {
+                value = 0;
+                sliders.get(index).setSpinner(0);
+            }
+            if (value > 100)
+            {
+                value = 100;
+                sliders.get(index).setSpinner(100);
+            }
+            sliders.get(index).setSlider((int) value);
             dino.setTraitValue(index, value);
         }
     }

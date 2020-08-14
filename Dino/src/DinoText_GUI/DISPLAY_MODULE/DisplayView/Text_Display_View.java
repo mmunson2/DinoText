@@ -26,11 +26,10 @@ public class Text_Display_View extends JFrame
     private JButton nextButton;
     private JButton prevButton;
     private JTextPane pageCounter;
-    private JSpinner charactersSpinner;
-    private JSpinner linesSpinner;
     private JButton generateNewButton;
     private JButton traitSettings;
     private JButton variableSettings;
+    private JButton settingsButton;
 
     /***************************************************************************
      * Constructor
@@ -86,35 +85,7 @@ public class Text_Display_View extends JFrame
         prevButton.addActionListener(actionListener);
     }
 
-    /***************************************************************************
-     * Listener - Character Spinner
-     *
-     **************************************************************************/
-    public void charactersSpinnerListener(ChangeListener changeListener) { charactersSpinner.addChangeListener(changeListener); }
-
-    /***************************************************************************
-     * Listener - Lines Spinner
-     *
-     **************************************************************************/
-    public void linesSpinnerListener(ChangeListener changeListener) {
-        linesSpinner.addChangeListener(changeListener);
-    }
-
-    /***************************************************************************
-     * get Chars Per Line
-     *
-     **************************************************************************/
-    public int getCharsPerLine() {
-        return (int) charactersSpinner.getValue();
-    }
-
-    /***************************************************************************
-     * get Lines Per Page
-     *
-     **************************************************************************/
-    public int getLinesPerPage() {
-        return (int) linesSpinner.getValue();
-    }
+    public void settingsButtonListener(ActionListener actionListener) { settingsButton.addActionListener(actionListener); }
 
     /***************************************************************************
      * set Text Pane
@@ -129,22 +100,6 @@ public class Text_Display_View extends JFrame
      *
      **************************************************************************/
     public void setPageCounter(String page) { pageCounter.setText(page); }
-
-    /***************************************************************************
-     * Set Character Spinner
-     *
-     **************************************************************************/
-    public void setCharactersSpinner(int numChar) {
-        charactersSpinner.setValue(numChar);
-    }
-
-    /***************************************************************************
-     * Set Lines Spinner
-     *
-     **************************************************************************/
-    public void setLinesSpinner(int numLines) {
-        linesSpinner.setValue(numLines);
-    }
 
     /***************************************************************************
      * set PanelVisible
