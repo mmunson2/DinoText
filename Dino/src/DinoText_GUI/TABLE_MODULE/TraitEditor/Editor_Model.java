@@ -1,6 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.TraitEditor;
 
 import Dino.List.Trait;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Probabilities;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Controller;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Model;
 import DinoText_GUI.Util.TraitModel;
@@ -12,11 +13,16 @@ public class Editor_Model
 {
     private ArrayList<Creator_Model> traits = new ArrayList<>();
 
+    private Table_Probabilities probabilities;
+    private final int rowIndex;
+
     private Creator_Model activeModel;
+    private int activeIndex = -1;
 
-    public Editor_Model()
+    public Editor_Model(Table_Probabilities probabilities, int row)
     {
-
+        this.probabilities = probabilities;
+        this.rowIndex = row;
     }
 
     public Creator_Model getActiveModel()
@@ -24,16 +30,26 @@ public class Editor_Model
         return this.activeModel;
     }
 
-    public Editor_Model(Trait[] traits)
+    public Editor_Model(Trait[] traits, Table_Probabilities probabilities, int row)
     {
+        this.probabilities = probabilities;
+        this.rowIndex = row;
+
         for(int i = 0; i < traits.length; i++)
         {
-            this.traits.add(i,new Creator_Model(new TraitModel(traits[i])));
+            TraitModel nextTrait = new TraitModel(traits[i]);
+            Creator_Model nextModel = new Creator_Model(nextTrait);
+
+            nextModel.setProbabilities(this.probabilities);
+            nextModel.setRowIndex(rowIndex);
+
+            this.traits.add(i,nextModel);
         }
 
         if(this.traits.size() > 0)
         {
             this.activeModel = this.traits.get(0);
+            this.activeIndex = 0;
         }
     }
 
@@ -44,29 +60,35 @@ public class Editor_Model
 
     public void addTrait()
     {
-        this.traits.add(traits.size(), new Creator_Model());
+        Creator_Model newTrait = new Creator_Model();
+        newTrait.setProbabilities(this.probabilities);
+
+        this.traits.add(traits.size(), newTrait);
         this.activeModel = this.traits.get(traits.size() - 1);
+        this.activeIndex = traits.size() - 1;
     }
 
-    public void deleteTrait(int traitIndex)
+    public void removeActiveTrait()
     {
-        int traitCount = this.getTraitCount();
+        int currentIndex = this.activeIndex;
+        traits.remove(activeIndex);
 
-        if(traitCount == 1)
+        if(this.traits.size() == 0)
         {
-            this.traits.remove(0);
             this.activeModel = null;
+            this.activeIndex = -1;
+        }
+        else if(currentIndex > 0)
+        {
+            //Default is to go one tab left if possible
+            currentIndex -= 1;
+            this.switchModel(currentIndex);
         }
         else
         {
-            this.traits.remove(traitIndex);
-
-
-
-
+            //Otherwise we go one tab to the right
+            this.switchModel(currentIndex);
         }
-
-
     }
 
     public Trait[] getTraits()
@@ -89,5 +111,8 @@ public class Editor_Model
     public void switchModel(int index)
     {
         this.activeModel = this.traits.get(index);
+        this.activeIndex = index;
     }
+
+
 }

@@ -1,8 +1,10 @@
 package DinoText_GUI.TABLE_MODULE.TraitEditor;
 
 import Dino.List.Trait;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Probabilities;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Controller;
 
+import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,8 @@ public class Editor_Controller
 
     private newTrait_listener newTraitListener;
     private tabSwitch_listener tabSwitchListener;
+    private traitNameChange_listener traitNameChangeListener;
+    private deleteTrait_listener deleteTraitListener;
 
     public Editor_Controller(Editor_Model model, Editor_View view)
     {
@@ -24,24 +28,21 @@ public class Editor_Controller
         this.view = view;
 
         this.newTraitListener = new newTrait_listener();
-        tabSwitchListener = new tabSwitch_listener();
+        this.tabSwitchListener = new tabSwitch_listener();
+        this.traitNameChangeListener = new traitNameChange_listener();
+        this.deleteTraitListener = new deleteTrait_listener();
 
         addListeners();
     }
 
-    public void setTraits(Trait[] traits)
+    public void setTraits(Trait[] traits, Table_Probabilities probabilities, int rowIndex)
     {
         if(traits.length == 0)
         {
             return;
         }
 
-        this.model = new Editor_Model(traits);
-
-        if(this.view.hasNoListTab())
-        {
-            this.view.removeNoListTab();
-        }
+        this.model = new Editor_Model(traits, probabilities, rowIndex);
 
         for(int i = 0; i < this.model.getTraitCount(); i++)
         {
@@ -49,6 +50,11 @@ public class Editor_Controller
         }
 
         updateCreatorController();
+
+        if(this.view.hasNoListTab())
+        {
+            this.view.removeNoListTab();
+        }
     }
 
     public void addTrait()
@@ -68,27 +74,28 @@ public class Editor_Controller
     {
         int traitCount = this.model.getTraitCount();
 
-        assert(traitCount != 0);
+        if(traitCount < 1)
+            return;
 
         if(traitCount == 1)
         {
-
-
+            this.view.addNoTraitsTab();
+            this.traitController = null;
         }
-        else
+
+        this.model.removeActiveTrait();
+        this.view.removeActiveTrait();
+
+        if(traitCount > 1)
         {
-
-
+            this.updateCreatorController();
         }
-
-
-
-
     }
 
     public void switchTab(int tabIndex)
     {
-        assert(tabIndex > 0 && tabIndex < this.model.getTraitCount());
+        if(this.view.hasNoListTab())
+            return;
 
         this.model.switchModel(tabIndex);
         this.view.switchList(tabIndex);
@@ -99,6 +106,16 @@ public class Editor_Controller
     public Trait[] getTraits()
     {
         return this.model.getTraits();
+    }
+
+    public void addSaveButtonListener(ActionListener l)
+    {
+        this.view.addSaveButtonListener(l);
+    }
+
+    public void removeSaveButtonListener(ActionListener l)
+    {
+        this.view.removeSaveButtonListener(l);
     }
 
     private class tabSwitch_listener implements ChangeListener
@@ -120,22 +137,36 @@ public class Editor_Controller
 
     private class deleteTrait_listener implements ActionListener
     {
-
         @Override
-        public void actionPerformed(ActionEvent e) {
-
+        public void actionPerformed(ActionEvent e)
+        {
+            deleteTrait();
         }
     }
+
+    private class traitNameChange_listener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            String newName = view.getActiveTrait().getTraitName();
+            view.setListName(newName);
+        }
+    }
+
 
     private void updateCreatorController()
     {
         if(this.traitController == null)
         {
             this.traitController = new Creator_Controller(this.model.getActiveModel(), this.view.getActiveTrait());
+            this.traitController.addNameChangeListener(this.traitNameChangeListener);
         }
         else
         {
+            this.traitController.removeNameChangeListener(this.traitNameChangeListener);
             this.traitController.set(this.model.getActiveModel(), this.view.getActiveTrait());
+            this.traitController.addNameChangeListener(this.traitNameChangeListener);
         }
     }
 
@@ -144,6 +175,7 @@ public class Editor_Controller
         this.view.addNoTraitButtonListener(this.newTraitListener);
         this.view.addTabSwitchListener(this.tabSwitchListener);
         this.view.addNewTraitButtonListener(this.newTraitListener);
+        this.view.addDeleteTraitButtonListener(this.deleteTraitListener);
     }
 
     private void removeListeners()
@@ -151,6 +183,7 @@ public class Editor_Controller
         this.view.removeNoTraitButtonListener(this.newTraitListener);
         this.view.removeTabSwitchListener(this.tabSwitchListener);
         this.view.removeNewTraitButtonListener(this.newTraitListener);
+        this.view.removeDeleteTraitButtonListener(this.deleteTraitListener);
     }
 
 

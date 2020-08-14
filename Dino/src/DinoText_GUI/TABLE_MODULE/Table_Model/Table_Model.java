@@ -40,6 +40,7 @@ public class Table_Model extends AbstractTableModel
         this.entryCount = DEFAULT_ROWS;
 
         probabilities = new Table_Probabilities();
+
     }
 
     /***************************************************************************
@@ -69,6 +70,11 @@ public class Table_Model extends AbstractTableModel
     public void setDirectory(File directory)
     {
         this.directory = directory;
+    }
+
+    public void setTraits(int row, Trait[] traits)
+    {
+        this.list.setTraits(row, traits);
     }
 
     /***************************************************************************
@@ -237,6 +243,7 @@ public class Table_Model extends AbstractTableModel
             case LIST_ENTRY:
             case PROBABILITY_WEIGHT:
             case ADD_TRAIT:
+            case EDIT_TRAIT:
                 return true;
             case PROBABILITY:
             case TRAIT:
@@ -266,6 +273,8 @@ public class Table_Model extends AbstractTableModel
                         this.probabilities.getProbability(rowIndex));
             case ADD_TRAIT:
                 return "Add Trait";
+            case EDIT_TRAIT:
+                return "Edit Trait";
             case TRAIT:
                 return list.getTraits(rowIndex);
         }
