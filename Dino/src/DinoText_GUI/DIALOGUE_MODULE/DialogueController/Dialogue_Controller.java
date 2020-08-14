@@ -439,14 +439,6 @@ public class Dialogue_Controller {
 
             }
         }
-
-        for (JButton staticVar : dinoGUIView.getAllStaticVarButtons()) {
-            JMenuItem temp = new JMenuItem();
-            temp.setText(staticVar.getName());
-            temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(staticVar.getName()));
-            dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-        }
-
     }
 
     /***************************************************************************
