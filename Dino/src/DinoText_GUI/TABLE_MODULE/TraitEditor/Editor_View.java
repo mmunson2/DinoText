@@ -38,6 +38,29 @@ public class Editor_View {
         this.traitTabs.setSelectedIndex(this.traits.size() - 1);
     }
 
+    public void removeActiveTrait()
+    {
+        int currentIndex = this.getSelectedIndex();
+        traits.remove(currentIndex);
+        traitTabs.removeTabAt(currentIndex);
+
+        if(this.traits.size() == 0)
+        {
+            this.activeTrait = null;
+        }
+        else if(currentIndex > 0)
+        {
+            //Default is to go one tab left if possible
+            currentIndex -= 1;
+            this.switchList(currentIndex);
+        }
+        else
+        {
+            //Otherwise we go one tab to the right
+            this.switchList(currentIndex);
+        }
+    }
+
     public void addNoTraitsTab()
     {
         this.traitTabs.addTab(Editor_NoTraits.NAME, this.noTraits.getPanel());

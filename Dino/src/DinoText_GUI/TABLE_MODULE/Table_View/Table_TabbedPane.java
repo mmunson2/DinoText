@@ -194,9 +194,24 @@ public class Table_TabbedPane extends JFrame{
         this.activeTable.removeTraitButtonListener(l);
     }
 
+    public void addEditTraitButtonListener(ActionListener l)
+    {
+        this.activeTable.addEditTraitButtonListener(l);
+    }
+
+    public void removeEditTraitButtonListener(ActionListener l)
+    {
+        this.activeTable.removeEditTraitButtonListener(l);
+    }
+
     public void initializeAddTraitButtonColumn()
     {
         this.activeTable.initializeAddTraitButtonColumn();
+    }
+
+    public void initializeEditTraitButtonColumn()
+    {
+        this.activeTable.initializeEditTraitButtonColumn();
     }
 
     public void updateTable() {

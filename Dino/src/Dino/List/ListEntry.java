@@ -180,7 +180,8 @@ public class ListEntry
             }
         }
 
-        if(count == 0)
+        //Modified 8/13, attempting to make AND gate
+        if(count != this.traits.length)
         {
             return this.baseProbability;
         }

@@ -3,6 +3,7 @@ package DinoText_GUI.TABLE_MODULE.TraitCreator;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.EventListenerList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -20,6 +21,8 @@ public class Creator_Controller
     upperBoundSpinner_listener upperBoundSpinnerListener;
     traitWeight_listener traitWeightListener;
     traitName_focusListener traitNameFocusListener;
+
+    ActionEvent nameChangedListener;
 
 
     public Creator_Controller(Creator_Model model, Creator_View view)
@@ -234,6 +237,7 @@ public class Creator_Controller
     }
 
 
+
     private void addListeners()
     {
         this.view.addTraitNameListener(traitListener);
@@ -256,5 +260,16 @@ public class Creator_Controller
         this.view.removeLowerBoundSpinnerListener(this.lowerBoundSpinnerListener);
         this.view.removeUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
+
+    public void addNameChangeListener(ActionListener l)
+    {
+        this.view.addTraitNameListener(l);
+    }
+
+    public void removeNameChangeListener(ActionListener l)
+    {
+        this.view.removeTraitNameListener(l);
+    }
+
 
 }

@@ -3,9 +3,11 @@ package DinoText_GUI.Util;
 import Dino.List.ListEntry;
 import Dino.List.Trait;
 
+import javax.swing.plaf.IconUIResource;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 /*******************************************************************************
@@ -98,6 +100,15 @@ public class DinoList
         currentTraits.add(trait);
 
         setTraits(index, currentTraits);
+    }
+
+    public void setTraits(int index, Trait[] traits)
+    {
+        ArrayList<Trait> newTraits = new ArrayList<>();
+
+        Collections.addAll(newTraits, traits);
+
+        setTraits(index, newTraits);
     }
 
     /***************************************************************************

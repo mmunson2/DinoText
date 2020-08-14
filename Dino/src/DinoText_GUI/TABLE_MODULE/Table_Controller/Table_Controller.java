@@ -12,6 +12,9 @@ import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Model;
 import DinoText_GUI.TABLE_MODULE.Table_View.Table_TabbedPane;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_View;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Controller;
+import DinoText_GUI.TABLE_MODULE.TraitEditor.Editor_Controller;
+import DinoText_GUI.TABLE_MODULE.TraitEditor.Editor_Model;
+import DinoText_GUI.TABLE_MODULE.TraitEditor.Editor_View;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -38,6 +41,7 @@ public class Table_Controller {
     private listener_tableModel tableModelListener;
     private listener_tabSwitch tabSwitchListener;
     private listener_addTraitButton traitButtonListener;
+    private listener_editTraitButton editTraitButtonListener;
     private listener_firstListButton firstListButtonListener;
 
     private listener_debug debugListener;
@@ -60,6 +64,7 @@ public class Table_Controller {
         this.tableModelListener = new listener_tableModel();
         this.tabSwitchListener = new listener_tabSwitch();
         this.traitButtonListener = new listener_addTraitButton();
+        this.editTraitButtonListener = new listener_editTraitButton();
         this.firstListButtonListener = new listener_firstListButton();
 
         this.debugListener = new listener_debug();
@@ -110,10 +115,12 @@ public class Table_Controller {
             this.view.setTableModel(this.manager.getCurrentModel());
             view.setEntryCount(manager.getCurrentModel().getRowCount());
             this.view.initializeAddTraitButtonColumn();
+            this.view.initializeEditTraitButtonColumn();
 
             addListeners();
 
             this.view.addTraitButtonListener(traitButtonListener);
+            this.view.addEditTraitButtonListener(editTraitButtonListener);
         }
 
         //If there are entries, add them
@@ -373,6 +380,51 @@ public class Table_Controller {
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
             } else {
                 //Cancelled Trait
+            }
+        }
+    }
+
+    class listener_editTraitButton implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            int row = view.getSelectedRow();
+            Table_Probabilities probabilities =
+                    manager.getCurrentModel().getProbabilities();
+
+            Trait[] traits = manager.getCurrentModel().getTraitArray(row);
+
+            Editor_View editorView = new Editor_View();
+
+            Editor_Model editorModel = new Editor_Model(probabilities, row);
+
+            Editor_Controller editorController = new Editor_Controller(
+                    editorModel, editorView);
+
+            if(traits != null && traits.length != 0)
+            {
+                editorController.setTraits(traits, probabilities, row);
+            }
+
+            int result = JOptionPane.showConfirmDialog(null,
+                    editorView.getPanel(),
+                    "Edit Trait",
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE,
+                    null);
+
+            if(result == JOptionPane.OK_OPTION)
+            {
+                Trait[] newTraits = editorController.getTraits();
+
+                manager.getCurrentModel().setTraits(row, newTraits);
+                SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
+            }
+            else
+            {
+                //cancelled edits
             }
         }
     }
