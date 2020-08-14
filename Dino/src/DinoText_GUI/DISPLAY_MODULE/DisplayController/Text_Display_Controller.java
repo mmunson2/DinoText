@@ -42,6 +42,7 @@ public class Text_Display_Controller
         this.view = view;
         this.config = config;
         this.settings = new Text_Display_Settings();
+        this.settings.setLocation(830, 600);
 
         // loading from config
         this.model.setCharsPerLine(this.config.getCharsPerLine());
@@ -329,6 +330,7 @@ public class Text_Display_Controller
             if (traitSettings == null)
             {
                 traitSettings = new Trait_Setting_View(model.getDino());
+                traitSettings.setLocation(830, 0);
             }
             if (!traitSettings.isVisible())
             {
@@ -351,6 +353,7 @@ public class Text_Display_Controller
             if (variableSettings == null)
             {
                 variableSettings = new Variable_Setting_View(model.getDino());
+                variableSettings.setLocation(830, 300);
             }
             if (!variableSettings.isVisible())
             {
