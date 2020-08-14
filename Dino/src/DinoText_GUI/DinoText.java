@@ -83,7 +83,7 @@ public class DinoText implements Runnable {
         jFrame_dinoText.getContentPane().add(textDisplayView.getJpanel(), BorderLayout.EAST);
         jFrame_dinoText.getContentPane().add(table_view.getPanel(), BorderLayout.SOUTH);
         jFrame_dinoText.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame_dinoText.setSize(600, 580);
+        jFrame_dinoText.setSize(1000, 580);
         jFrame_dinoText.setTitle("Dino Text");
         jFrame_dinoText.pack();
         jFrame_dinoText.setVisible(true);

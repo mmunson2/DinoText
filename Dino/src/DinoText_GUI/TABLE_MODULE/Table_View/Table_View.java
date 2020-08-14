@@ -50,11 +50,19 @@ public class Table_View {
         this.listTable.setModel(tableModel);
 
         // Set individual column widths
-        this.listTable.getColumnModel().getColumn(0).setPreferredWidth(350);
-        this.listTable.getColumnModel().getColumn(1).setPreferredWidth(120);
-        this.listTable.getColumnModel().getColumn(2).setPreferredWidth(78);
-        this.listTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-        this.listTable.getColumnModel().getColumn(4).setPreferredWidth(200);
+        int listEntry = Columns.LIST_ENTRY.ordinal();
+        int weight = Columns.PROBABILITY_WEIGHT.ordinal();
+        int probability = Columns.PROBABILITY.ordinal();
+        int addTrait = Columns.ADD_TRAIT.ordinal();
+        int editTrait = Columns.EDIT_TRAIT.ordinal();
+        int traitDisplay = Columns.TRAIT.ordinal();
+
+        this.listTable.getColumnModel().getColumn(listEntry).setPreferredWidth(350);
+        this.listTable.getColumnModel().getColumn(weight).setPreferredWidth(120);
+        this.listTable.getColumnModel().getColumn(probability).setPreferredWidth(78);
+        this.listTable.getColumnModel().getColumn(addTrait).setPreferredWidth(100);
+        this.listTable.getColumnModel().getColumn(editTrait).setPreferredWidth(100);
+        this.listTable.getColumnModel().getColumn(traitDisplay).setPreferredWidth(200);
     }
 
     /***************************************************************************
