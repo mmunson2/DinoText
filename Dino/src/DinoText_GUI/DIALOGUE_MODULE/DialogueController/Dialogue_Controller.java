@@ -104,8 +104,13 @@ public class Dialogue_Controller {
         file.add(fileMenu);
 
         fileMenu = new JMenuItem();
-        fileMenu.setText("Save");
+        fileMenu.setText("Save Dino");
         fileMenu.addActionListener(new listener_JMenuItem_File_Save());
+        file.add(fileMenu);
+
+        fileMenu = new JMenuItem();
+        fileMenu.setText("Save Phrase List");
+        fileMenu.addActionListener(new listener_JMenuItem_File_SavePhraseList());
         file.add(fileMenu);
 
         fileMenu = new JMenuItem();
@@ -162,6 +167,21 @@ public class Dialogue_Controller {
         public void actionPerformed(ActionEvent e) {
             saveExistingDialogueFile();
         }
+    }
+
+    /***************************************************************************
+     * File Dropdown Menu - Save
+     *
+     **************************************************************************/
+    class listener_JMenuItem_File_SavePhraseList implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            savePhraseList();
+        }
+    }
+
+    //TODO: This is the method that will be called when the "Save phrase list" button is pressed
+    private void savePhraseList() {
     }
 
     /***************************************************************************
