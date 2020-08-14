@@ -77,6 +77,8 @@ public class DinoText implements Runnable {
         dialogue_model = new Dialogue_Model();
         dialogue_view = new Dialogue_View();
         dialogue_controller = new Dialogue_Controller(dialogue_model, dialogue_view, textDisplayController, table_controller);
+        dialogue_controller.setDinoConfig(config);
+
 
         table_controller.setDialogue_controller(dialogue_controller);
         textDisplayController.setDialogueController(dialogue_controller);

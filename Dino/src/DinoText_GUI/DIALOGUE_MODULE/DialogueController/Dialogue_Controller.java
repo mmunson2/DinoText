@@ -603,11 +603,7 @@ public class Dialogue_Controller {
 
         int i = 0;
         for (JButton b : dinoGUIView.getActiveListButtons()) {
-            if (dinoGUIView.getAllStaticVarButtons().contains(b)) {
-                activeButtons[i] = "\\S[" + b.getName() + "]" + " ";
-            } else {
                 activeButtons[i] = "\\L[" + b.getName() + "]" + " ";
-            }
             i++;
         }
         i = 0;
