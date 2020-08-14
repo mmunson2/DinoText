@@ -158,6 +158,11 @@ public class Dialogue_Controller {
         menuItem.addActionListener(new listener_JMenuItem_Tools_Synonyms());
         tools.add(menuItem);
 
+        menuItem = new JMenuItem();
+        menuItem.setText("Settings");
+        menuItem.addActionListener(new listener_JMenuItem_Tools_Settings());
+        tools.add(menuItem);
+
         JMenuBar toolsMenu = new JMenuBar();
         toolsMenu.add(tools);
 
@@ -842,6 +847,13 @@ public class Dialogue_Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             dinoGUIView.dehighlightAll();
+        }
+    }
+
+    private class listener_JMenuItem_Tools_Settings implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DinoDictionary.openSettings();
         }
     }
 
