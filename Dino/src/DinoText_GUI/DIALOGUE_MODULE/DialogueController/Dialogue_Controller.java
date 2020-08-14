@@ -15,6 +15,7 @@ import DinoText_GUI.Util.DinoConfig;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.BadLocationException;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -34,7 +35,7 @@ public class Dialogue_Controller {
 
     private static DinoConfig config;
 
-    private static final String DYNAMICLISTNAME = "Part of Conversation";
+    public static final String DYNAMICLISTNAME = "Part of Conversation";
 //    private static final String STATICVARNAME = "Game Value";
 
 //Todo: Mark for deletion
@@ -144,30 +145,9 @@ public class Dialogue_Controller {
 
         dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
     }
-//
-//    /***************************************************************************
-//     * Initialize DictionaryTools JToolBar
-//     *
-//     **************************************************************************/
-//    private void initializejToolBar_DictionaryTools() {
-//        JMenu tools = new JMenu("Dictionary Tools");
-//        JMenuItem menuItem;
-//
-//        menuItem = new JMenuItem();
-//        menuItem.setText(DYNAMICLISTNAME + " Candidate Suggestion");
-//        menuItem.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
-//        tools.add(menuItem);
-//
-//        menuItem = new JMenuItem();
-//        menuItem.setText("Synonyms");
-//        menuItem.addActionListener(new listener_JMenuItem_Tools_Synonyms());
-//        tools.add(menuItem);
-//
-//        JMenuBar toolsMenu = new JMenuBar();
-//        toolsMenu.add(tools);
-//
-//        dinoGUIView.addJMenujToolBar_topBar(toolsMenu);
-//    }
+
+
+
 
     public void setDinoConfig(DinoConfig config) {
         this.config = config;
@@ -262,7 +242,6 @@ public class Dialogue_Controller {
                 }
             }
         }
-    }
 
     private void parseUnformattedDialogue(String unformattedDialogue) {
         String[] split = unformattedDialogue.split(" ");
@@ -281,19 +260,17 @@ public class Dialogue_Controller {
                 }
 
 
+                //Todo: This is suspect
               if (list.length() > 4) {
                   insertionHelper(list.substring(3, list.length() - 1));
 
-                  switch (word.charAt(1)) {
+                  switch (list.charAt(1)) {
                     case 'L':
-                        insertionHelper(word.substring(3, word.trim().length() - 1));
+                        insertionHelper(list.substring(3, list.trim().length() - 1));
                         break;
-                    case 'S':
-                        staticHelper(word.substring(3, word.trim().length() - 1));
-                        break;
-
                 }
-                try {
+                try
+                {
                     dinoGUIView.getjTextPane_dialogueInput().getDocument().insertString(dinoGUIView.getText_jTextPane_dialogueInput().length(), " ", null); // TODO: Part of bandaid
                 } catch (BadLocationException e) {
                     e.printStackTrace();
@@ -301,7 +278,7 @@ public class Dialogue_Controller {
 
             } else {
                 try {
-                    dinoGUIView.getjTextPane_dialogueInput().getDocument().insertString(dinoGUIView.getText_jTextPane_dialogueInput().length(), word + " ", null);
+                    dinoGUIView.getjTextPane_dialogueInput().getDocument().insertString(dinoGUIView.getText_jTextPane_dialogueInput().length(), list + " ", null);
                 } catch (BadLocationException e) {
                     e.printStackTrace();
                 }
@@ -426,51 +403,6 @@ public class Dialogue_Controller {
 // q
 //        dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
 //    }
-
-    public void jPopupMenu_listInsertion_updateMenuItems() {
-        System.err.println("__________________________________________________");
-
-
-        HashSet<String> currentLists = new HashSet<>();
-        // checks if the table has a list the view does not
-        for (String listName : table_controller.getListNames()) {
-            JMenuItem temp = new JMenuItem();
-            temp.setText(listName.trim());
-            temp.addActionListener(new listener_jPopupMenu_listInsertion_SelectExistingList(listName.trim()));
-
-            for (Component c : dinoGUIView.getjMenu_listInsertion().getMenuComponents()) {
-                currentLists.add(((JMenuItem) c).getText());
-            }
-
-            if (!currentLists.contains(temp.getText())) {
-                dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-            }
-        }
-
-        // checks if the table has a list the view does not
-        currentLists = new HashSet<>(); // set of lists in table
-        for (Component c : dinoGUIView.getjMenu_listInsertion().getMenuComponents()) {
-            if (((JMenuItem) c).getText() != DYNAMICLISTNAME) {
-                for (String listName : table_controller.getListNames()) { // populate listName with all lists in table
-                    currentLists.add(listName.trim());
-                }
-
-                if (!currentLists.contains(((JMenuItem) c).getText())) { // if the table does not contain the button,
-                    // remove it from the popup
-                    System.err.println("List found in popup, but not table: " + ((JMenuItem) c).getText());
-                    dinoGUIView.removeItemjPopupMenu_listInsertion(((JMenuItem) c).getText());
-//                    dinoGUIView.removeListName(((JMenuItem) c).getText());
-                }
-
-            }
-        }
-
-        dinoGUIView.insertAllArrows();
-
-        dinoGUIView.setFocusTSDialogueInput();
-
-        dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-    }
 
 
     public void jPopupMenu_listInsertion_updateMenuItems() {
@@ -598,31 +530,6 @@ public class Dialogue_Controller {
         temp.setText(DYNAMICLISTNAME);
         temp.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-//
-//        temp = new JMenuItem();
-//        temp.setText(DYNAMICLISTNAME + " Conversion");
-//        temp.addActionListener(new listener_JMenuItem_Tools_ConvertToDynamicList());
-//        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-//
-//        temp = new JMenuItem();
-//        temp.setText(STATICVARNAME);
-//        temp.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
-//        dinoGUIView.addItemjPopupMenu_listInsertion(temp);
-//
-//        temp = new JMenuItem();
-//        temp.setText(DYNAMICLISTNAME + " Candidate Suggestion");
-//        temp.addActionListener(new listener_JMenuItem_Tools_DynamicWordCandidateSuggestion());
-//        dinoGUIView.addItemjPopupMenu_dictionary(temp);
-//
-//        temp = new JMenuItem();
-//        temp.setText("Find Synonyms");
-//        temp.addActionListener(new listener_JMenuItem_Tools_Synonyms());
-//        dinoGUIView.addItemjPopupMenu_dictionary(temp);
-//
-//        temp = new JMenuItem();
-//        temp.setText("Remove All Highlights");
-//        temp.addActionListener(new listener_JMenuItem_Tools_Dehighlight());
-//        dinoGUIView.addItemjPopupMenu_dictionary(temp);
 
         dinoGUIView.addListenerjTextPane_dialogueInput(new MouseAdapter() {
             public void mouseClicked(MouseEvent me) {
@@ -638,20 +545,21 @@ public class Dialogue_Controller {
      * Select Existing List
      *
      **************************************************************************/
-    class listener_jPopupMenu_listInsertion_SelectExistingList implements ActionListener {
+    class listener_jPopupMenu_listInsertion_SelectExistingList implements ActionListener
+    {
         private String varName;
 
-        listener_jPopupMenu_listInsertion_SelectExistingList(String name) {
+        listener_jPopupMenu_listInsertion_SelectExistingList(String name)
+        {
             super();
             varName = name;
         }
 
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e)
+        {
             if (dinoGUIView.getSetListNames().contains(varName))
                 dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getListButton(varName).getActionListeners())[0], Color.yellow);
-            else {
-                dinoGUIView.insertButtonjTextPane_DynamicList(varName, (dinoGUIView.getStaticVarButton(varName).getActionListeners())[0], Color.red); //TODO this button may not link to the right name
-            }
+
             dinoGUIView.setFocusTSDialogueInput();
             jPopupMenu_listInsertion_updateMenuItems();
         }
@@ -693,7 +601,8 @@ public class Dialogue_Controller {
         config.setLastSavedDir(savedFile.getParentFile());
     }
 
-    private String formatDialogue() {
+    private String formatDialogue()
+    {
         String dialogue = "";
         if (dinoGUIView.getText_jTextPane_dialogueInput() != null) {
             dialogue = dinoGUIView.getText_jTextPane_dialogueInput();
@@ -720,7 +629,8 @@ public class Dialogue_Controller {
         return dialogue.trim();
     }
 
-    public boolean saveExistingDialogueFile() {
+    public boolean saveExistingDialogueFile()
+    {
         if (mostRecentSaved != null) {
             saveDialogueFileHelper(mostRecentSaved);
             return true;
@@ -775,12 +685,12 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     public Set<String> getSetListNames() {
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.setListNames(dinoGUIView.getSetFiles());
         return dinoGUIModel.getListNames();
     }
 
     public String[] getArrayListName() {
-        dinoGUIModel.setListNames(dinoGUIView.getSetListNames());
+        dinoGUIModel.setListNames(dinoGUIView.getSetFiles());
         return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
     }
 

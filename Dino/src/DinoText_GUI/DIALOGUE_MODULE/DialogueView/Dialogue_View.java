@@ -123,10 +123,6 @@ public class Dialogue_View {
         return jPopupMenu_listInsertion;
     }
 
-    public JMenu getjMenu_listInsertion() {
-        return jMenu_listInsertion;
-    }
-
     /***************************************************************************
      * get text pane
      **************************************************************************/
@@ -404,16 +400,6 @@ public class Dialogue_View {
         listButtons.add(button);
     }
 
-
-    /***************************************************************************
-     * Clear List Button
-     *
-     **************************************************************************/
-    public void clearListButtonsjPopupMenu() {
-        listButtons.clear();
-    }
-
-
     /***************************************************************************
      * Get Selected Text
      *
@@ -439,25 +425,6 @@ public class Dialogue_View {
         jTextPane_dialogueInput.replaceSelection("");
     }
 
-
-    /***************************************************************************
-     * Get Active List Buttons
-     *
-     **************************************************************************/
-    public ArrayList<JButton> getActiveListButtons() {
-        ArrayList<JButton> activeButtons = new ArrayList<JButton>();
-        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
-        Element element;
-        while ((element = iterator.next()) != null) {
-            AttributeSet as = element.getAttributes();
-            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
-                if (StyleConstants.getComponent(as) instanceof JButton) {
-                    activeButtons.add((JButton) StyleConstants.getComponent(as));
-                }
-            }
-        }
-        return activeButtons;
-    }
 
 //    /***************************************************************************
 //     * Highlight Word

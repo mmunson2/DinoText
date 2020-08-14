@@ -98,7 +98,7 @@ public class Dialogue_Model {
      *
      **************************************************************************/
     public void addListName(String name) {
-        listNames.add(name);
+        listPaths.add(new File(name));
     }
 
     /***************************************************************************
