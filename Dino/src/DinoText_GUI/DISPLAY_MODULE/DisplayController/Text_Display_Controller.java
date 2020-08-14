@@ -67,6 +67,7 @@ public class Text_Display_Controller
         this.view.add_generateNew_button_listener(new generateNewListener());
     }
 
+    // unused for now
     public void close()
     {
         if (settings != null)
@@ -109,6 +110,10 @@ public class Text_Display_Controller
      **************************************************************************/
     public void setDino(Dino dino)
     {
+        for (int i = 0; i < dino.getTraitCount(); i++)
+        {
+            dino.setTraitValue(i, 0);
+        }
         this.model.setDino(dino);
         resetTraitSettings();
         resetVariableSettings();
@@ -118,7 +123,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * Generate New Text
      **************************************************************************/
-    public void generateNewText()
+    private void generateNewText()
     {
         //dialogueController.saveExistingDialogueFile();
         //this.model.setDino(dialogueController.getDino());
@@ -130,7 +135,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * format
      **************************************************************************/
-    public void format()
+    private void format()
     {
         model.formatText();
     }
@@ -138,7 +143,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * update display
      **************************************************************************/
-    public void updateDisplay()
+    private void updateDisplay()
     {
         ArrayList<String> pages = model.getPages();
         view.setTextPane(pages.get(model.getCurrentPage() - 1));
@@ -148,7 +153,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * update config
      **************************************************************************/
-    public void updateConfig()
+    private void updateConfig()
     {
         model.setCharsPerLine(config.getCharsPerLine());
         model.setLinesPerPage(config.getLinesPerPage());
@@ -167,7 +172,7 @@ public class Text_Display_Controller
     }
 
     // closes and deletes the trait settings window
-    public void resetTraitSettings()
+    private void resetTraitSettings()
     {
         if (traitSettings != null)
         {
@@ -182,7 +187,7 @@ public class Text_Display_Controller
     }
 
     // closes and deletes the variable settings window
-    public void resetVariableSettings()
+    private void resetVariableSettings()
     {
         if (variableSettings != null)
         {
@@ -193,6 +198,22 @@ public class Text_Display_Controller
             variableSettings = new Variable_Setting_View(model.getDino());
             variableSettings.setLocation(x, y);
             variableSettings.setVisible(visible);
+        }
+    }
+
+    private void bringForward(int i)
+    {
+        if (i == 1 && settings != null && settings.isVisible())
+        {
+            settings.toFront();
+        }
+        if (i == 2 && traitSettings != null && traitSettings.isVisible())
+        {
+            traitSettings.toFront();
+        }
+        if (i == 3 && variableSettings != null && variableSettings.isVisible())
+        {
+            variableSettings.toFront();
         }
     }
 
@@ -291,10 +312,9 @@ public class Text_Display_Controller
             {
                 settings.setVisible(true);
             }
-            else
-            {
-                settings.setVisible(false);
-            }
+            bringForward(2);
+            bringForward(3);
+            bringForward(1);
         }
     }
 
@@ -314,6 +334,9 @@ public class Text_Display_Controller
             {
                 traitSettings.setVisible(true);
             }
+            bringForward(1);
+            bringForward(3);
+            bringForward(2);
         }
     }
 
@@ -333,6 +356,9 @@ public class Text_Display_Controller
             {
                 variableSettings.setVisible(true);
             }
+            bringForward(1);
+            bringForward(2);
+            bringForward(3);
         }
     }
 
