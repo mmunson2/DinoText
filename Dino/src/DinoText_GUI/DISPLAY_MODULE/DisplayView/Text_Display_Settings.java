@@ -1,3 +1,5 @@
+// Camden Brewster
+
 package DinoText_GUI.DISPLAY_MODULE.DisplayView;
 
 import javax.swing.*;

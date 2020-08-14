@@ -27,7 +27,7 @@ public class DinoConfig implements Serializable
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            System.err.println("Could not load config file, creating default file.");
         }
         return new DinoConfig();
     }
@@ -43,25 +43,21 @@ public class DinoConfig implements Serializable
         }
         catch (Exception e)
         {
-            e.printStackTrace();
+            System.err.println("Error while saving config.");
         }
     }
 
     public DinoConfig() { save(); }
 
     // CamdenController charsPerLine
-    private int charsPerLine_default = 30;
-    public int getCharsPerLine_default() { return charsPerLine_default; }
-    public void setCharsPerLine_default(int i) { charsPerLine_default = i; save(); }
     private int charsPerLine = 30;
+    public void resetCharsPerLine() { charsPerLine = 30; save(); }
     public int getCharsPerLine() { return charsPerLine; }
     public void setCharsPerLine(int i) { charsPerLine = i; save(); }
 
     // CamdenController linesPerPage
-    private int linesPerPage_default = 3;
-    public int getLinesPerPage_default() { return linesPerPage_default; }
-    public void setLinesPerPage_default(int i) { linesPerPage_default = i; save(); }
     private int linesPerPage = 3;
+    public void resetLinesPerPage() { linesPerPage = 3; save(); }
     public int getLinesPerPage() { return linesPerPage; }
     public void setLinesPerPage(int i) { linesPerPage = i; save(); }
 
@@ -70,17 +66,21 @@ public class DinoConfig implements Serializable
     public File getLastSavedDir() {
         return lastSavedDir;
     }
-    public void setLastSavedDir(File directory) {
-        lastSavedDir = directory;
-    }
+    public void setLastSavedDir(File directory) { lastSavedDir = directory; save(); }
+
+    // API Settings
+    private boolean API_enabled = false;
+    private String API_key = "";
+    public void setAPI_enabled(boolean b) { API_enabled = b; save(); }
+    public boolean isAPI_enabled() { return API_enabled; }
+    public void setAPI_key(String s) { API_key = s; save();}
+    public String getAPI_key() { return API_key; }
 
 
     /* TEMPLATE
-    private int template_default = 3;
-    public int getTemplate_default() { return template_default; }
-    public void setTemplate_default(int i) { template_default = i; save(); }
-    private int template = 3;
-    public int getTemplate() { return template; }
-    public void setTemplate(int i) { template = i; save(); }
+    private <type> template = <default_value>;
+    public void resetTemplate() { template = <default_value>; save(); }
+    public <type> getTemplate() { return template; }
+    public void setTemplate(<type> i) { template = i; save(); }
     */
 }

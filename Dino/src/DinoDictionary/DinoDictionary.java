@@ -4,21 +4,26 @@
 
 package DinoDictionary;
 
+import DinoText_GUI.Util.DinoConfig;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class DinoDictionary
 {
-    // CAMDEN'S API KEY FOR WORDS API
-    // LIMIT 2500 CALLS PER DAY
-    private static final String API_KEY = "9d11bb4624msh1652f06c1138f65p1bc48bjsn709ad8a31b52";
+    public static void main(String[] args)
+    {
+        DinoDictionary.openSettings();
+    }
 
-    // Enabling TEST_MODE will make the program not use any API calls
-    private static final boolean TEST_MODE = true;
+    public static void openSettings()
+    {
+        JOptionPane.showConfirmDialog(null, new APIsettings().getPanel(), "API Settings", JOptionPane.DEFAULT_OPTION);
+    }
 
     //************//
     // MAIN CALLS //
@@ -148,13 +153,14 @@ public class DinoDictionary
     // helper function to make the main calls easier to write
     private static ArrayList<String> queryArrayList(String word, String mode)
     {
-        if (TEST_MODE) return testArray(word, mode);
+        DinoConfig config = DinoConfig.loadConfig();
+        if (!config.isAPI_enabled()) return testArray(word, mode);
 
-        return toArrayList(query(word, mode), mode);
+        return toArrayList(query(word, mode, config.getAPI_key()), mode);
     }
 
     // formats and sends a request to the API
-    private static HttpResponse<String> query(String word, String mode)
+    private static HttpResponse<String> query(String word, String mode, String API_KEY)
     {
         HttpResponse<String> response = null;
         try
@@ -196,9 +202,10 @@ public class DinoDictionary
     // special method to get the partOfSpeech part of a definition API call
     private static ArrayList<String> partOfSpeech(String word)
     {
-        if (TEST_MODE) return testPartOfSpeech();
+        DinoConfig config = DinoConfig.loadConfig();
+        if (!config.isAPI_enabled()) return testPartOfSpeech();
 
-        HttpResponse<String> response = query(word, "definitions");
+        HttpResponse<String> response = query(word, "definitions", config.getAPI_key());
         ArrayList<String> list = new ArrayList<>();
 
         if (response.getBody().equals("{\"success\":false,\"message\":\"word not found\"}")) return list;
