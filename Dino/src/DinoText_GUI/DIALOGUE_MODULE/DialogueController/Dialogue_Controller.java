@@ -67,7 +67,9 @@ public class Dialogue_Controller {
         initializejToolBar_ListTools();
 //        initializejToolBar_DictionaryTools();
         newDialogue();
-        insertionHelper("Untitled List", false);
+
+        //Todo: Matthew commented this out to prevent the untitled list from appearing
+        //insertionHelper("Untitled List", false);
 
         dinoGUIView.getjTextPane_dialogueInput().addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
