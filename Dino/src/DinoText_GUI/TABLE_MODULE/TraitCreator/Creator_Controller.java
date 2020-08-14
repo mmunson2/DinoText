@@ -3,6 +3,7 @@ package DinoText_GUI.TABLE_MODULE.TraitCreator;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.EventListenerList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -15,9 +16,13 @@ public class Creator_Controller
 
     traitName_listener traitListener;
     lowerBoundSlider_listener lowerBoundListener;
+    lowerBoundSpinner_listener lowerBoundSpinnerListener;
     upperBoundSlider_listener upperBoundListener;
+    upperBoundSpinner_listener upperBoundSpinnerListener;
     traitWeight_listener traitWeightListener;
     traitName_focusListener traitNameFocusListener;
+
+    ActionEvent nameChangedListener;
 
 
     public Creator_Controller(Creator_Model model, Creator_View view)
@@ -27,23 +32,80 @@ public class Creator_Controller
 
         this.traitListener = new traitName_listener();
         this.lowerBoundListener = new lowerBoundSlider_listener();
+        this.lowerBoundSpinnerListener = new lowerBoundSpinner_listener();
         this.upperBoundListener = new upperBoundSlider_listener();
+        this.upperBoundSpinnerListener = new upperBoundSpinner_listener();
         this.traitWeightListener = new traitWeight_listener();
         this.traitNameFocusListener = new traitName_focusListener();
 
         addListeners();
 
-        this.view.setTraitName(this.model.getName());
-        this.view.setLowerBoundSlider(this.model.getLowerBound());
-        this.view.setUpperBoundSlider(this.model.getUpperBound());
-        this.view.setTraitWeight(this.model.getWeight());
-        this.view.setDisplayProbability(this.model.getProbability());
+        synchronize();
+    }
+
+    public void set(Creator_Model model, Creator_View view)
+    {
+        this.removeListeners();
+
+        this.model = model;
+        this.view = view;
+
+        this.addListeners();
+        synchronize();
     }
 
     public void finalizeTrait() {
         String traitName = view.getTraitName();
         model.setName(traitName);
         view.setTraitName(traitName);
+    }
+
+    public void setUpperBound(int value)
+    {
+        if(value >= Creator_Model.MIN && value <= Creator_Model.MAX)
+        {
+            if(value < model.getLowerBound())
+            {
+                value = model.getLowerBound();
+            }
+
+            this.model.setUpperBound(value);
+
+            this.view.setUpperBoundSpinner(value);
+            this.view.setUpperBoundSlider(value);
+        }
+        else if(value > Creator_Model.MAX)
+        {
+            this.setUpperBound(Creator_Model.MAX);
+        }
+        else
+        {
+            this.setUpperBound(Creator_Model.MIN);
+        }
+    }
+
+    public void setLowerBound(int value)
+    {
+        if(value >= Creator_Model.MIN && value <= Creator_Model.MAX)
+        {
+            if(value >= model.getUpperBound())
+            {
+                value = model.getLowerBound();
+            }
+
+            this.model.setLowerBound(value);
+
+            this.view.setLowerBoundSpinner(value);
+            this.view.setLowerBoundSlider(value);
+        }
+        else if(value > Creator_Model.MAX)
+        {
+            this.setLowerBound(Creator_Model.MAX);
+        }
+        else
+        {
+            this.setLowerBound(Creator_Model.MIN);
+        }
     }
 
     class traitName_listener implements ActionListener
@@ -65,13 +127,29 @@ public class Creator_Controller
         {
             int newValue = view.getLowerBoundSliderValue();
 
-            if(newValue > model.getUpperBound())
+            setLowerBound(newValue);
+        }
+    }
+
+    class lowerBoundSpinner_listener implements ChangeListener
+    {
+        @Override
+        public void stateChanged(ChangeEvent e)
+        {
+            Object newValueObject = view.getLowerBoundSpinner();
+            int newValue;
+
+            try
             {
-                newValue = model.getUpperBound();
+                newValue = (Integer) newValueObject;
+            }
+            catch(Exception error)
+            {
+                //If we run into an error, don't change
+                newValue = model.getLowerBound();
             }
 
-            model.setLowerBound(newValue);
-            view.setLowerBoundSlider(newValue);
+            setLowerBound(newValue);
         }
     }
 
@@ -82,13 +160,30 @@ public class Creator_Controller
         {
             int newValue = view.getUpperBoundSliderValue();
 
-            if(newValue < model.getLowerBound())
+            setUpperBound(newValue);
+        }
+    }
+
+    class upperBoundSpinner_listener implements ChangeListener
+    {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+
+            Object newValueObject = view.getUpperBoundSpinner();
+            int newValue;
+
+            try
             {
-                newValue = model.getLowerBound();
+                newValue = (Integer) newValueObject;
+            }
+            catch(Exception error)
+            {
+                System.out.println(error.getMessage());
+                //If we run into an error, don't change
+                newValue = model.getUpperBound();
             }
 
-            model.setUpperBound(newValue);
-            view.setUpperBoundSlider(newValue);
+            setUpperBound(newValue);
         }
     }
 
@@ -130,6 +225,18 @@ public class Creator_Controller
         }
     }
 
+    private void synchronize()
+    {
+        this.view.setTraitName(this.model.getName());
+        this.view.setLowerBoundSlider(this.model.getLowerBound());
+        this.view.setLowerBoundSpinner(this.model.getLowerBound());
+        this.view.setUpperBoundSlider(this.model.getUpperBound());
+        this.view.setUpperBoundSpinner(this.model.getUpperBound());
+        this.view.setTraitWeight(this.model.getWeight());
+        this.view.setDisplayProbability(this.model.getProbability());
+    }
+
+
 
     private void addListeners()
     {
@@ -138,6 +245,9 @@ public class Creator_Controller
         this.view.addUpperBoundSliderListener(upperBoundListener);
         this.view.addWeightListener(traitWeightListener);
         this.view.addTraitNameFocusListener(traitNameFocusListener);
+
+        this.view.addLowerBoundSpinnerListener(this.lowerBoundSpinnerListener);
+        this.view.addUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
 
     private void removeListeners()
@@ -146,6 +256,20 @@ public class Creator_Controller
         this.view.removeLowerBoundSliderListener(lowerBoundListener);
         this.view.removeUpperBoundSliderListener(upperBoundListener);
         this.view.removeWeightListener(traitWeightListener);
+
+        this.view.removeLowerBoundSpinnerListener(this.lowerBoundSpinnerListener);
+        this.view.removeUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
+
+    public void addNameChangeListener(ActionListener l)
+    {
+        this.view.addTraitNameListener(l);
+    }
+
+    public void removeNameChangeListener(ActionListener l)
+    {
+        this.view.removeTraitNameListener(l);
+    }
+
 
 }

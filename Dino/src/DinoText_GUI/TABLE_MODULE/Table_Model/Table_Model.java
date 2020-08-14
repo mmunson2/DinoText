@@ -8,6 +8,7 @@ import DinoText_GUI.Util.DinoWriter;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
+import java.io.File;
 
 /*******************************************************************************
  * Table_Model
@@ -19,6 +20,7 @@ public class Table_Model extends AbstractTableModel
     private int entryCount;
 
     private DinoList list;
+    private File directory;
     private Table_Probabilities probabilities;
 
     /***************************************************************************
@@ -38,6 +40,7 @@ public class Table_Model extends AbstractTableModel
         this.entryCount = DEFAULT_ROWS;
 
         probabilities = new Table_Probabilities();
+
     }
 
     /***************************************************************************
@@ -64,6 +67,16 @@ public class Table_Model extends AbstractTableModel
         this.list.setName(listName);
     }
 
+    public void setDirectory(File directory)
+    {
+        this.directory = directory;
+    }
+
+    public void setTraits(int row, Trait[] traits)
+    {
+        this.list.setTraits(row, traits);
+    }
+
     /***************************************************************************
      * getName
      *
@@ -78,6 +91,10 @@ public class Table_Model extends AbstractTableModel
         return this.list;
     }
 
+    public File getDirectory()
+    {
+        return this.directory;
+    }
 
     /***************************************************************************
      * getTraitArray
@@ -116,6 +133,12 @@ public class Table_Model extends AbstractTableModel
         writer.writeListToFile(this.list);
     }
 
+    public void writeToFile(File directory)
+    {
+        DinoWriter writer = new DinoWriter();
+        this.list.setDirectory(directory);
+        writer.writeListToFile(this.list);
+    }
 
     public void addEntry(String entry, double weight)
     {
@@ -220,6 +243,7 @@ public class Table_Model extends AbstractTableModel
             case LIST_ENTRY:
             case PROBABILITY_WEIGHT:
             case ADD_TRAIT:
+            case EDIT_TRAIT:
                 return true;
             case PROBABILITY:
             case TRAIT:
@@ -249,6 +273,8 @@ public class Table_Model extends AbstractTableModel
                         this.probabilities.getProbability(rowIndex));
             case ADD_TRAIT:
                 return "Add Trait";
+            case EDIT_TRAIT:
+                return "Edit Trait";
             case TRAIT:
                 return list.getTraits(rowIndex);
         }

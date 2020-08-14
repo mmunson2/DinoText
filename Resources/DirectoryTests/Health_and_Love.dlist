@@ -1,0 +1,11 @@
+# Generated: 2020/08/13 19:58:18
+Name: Health_and_Love
+Size: 4
+1: Link! You're hurt!
+0.0 health:0.0:20.0:10.0 love:50.0:100.0:10.0 
+2: Uh, could you not bleed on me?
+0.0 health:0.0:20.0:10.0 love:0.0:50.0:10.0 
+3: Hi Link! You look well!
+0.0 health:20.0:100.0:10.0 love:50.0:100.0:10.0 
+4: Who are you again?
+0.0 health:20.0:100.0:10.0 love:0.0:50.0:10.0 

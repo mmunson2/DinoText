@@ -13,6 +13,7 @@ public class Trait_Setting_Slider
     private JLabel traitName;
     private JLabel min;
     private JLabel max;
+    private JSpinner spinner;
 
     public Trait_Setting_Slider(String name, int min, int max, int value)
     {
@@ -22,9 +23,10 @@ public class Trait_Setting_Slider
         this.slider.setMinimum(min);
         this.slider.setMaximum(max);
         this.slider.setValue(value);
-        this.panel.setMinimumSize(new Dimension(250, 50));
-        this.panel.setMaximumSize(new Dimension(300, 50));
-        this.panel.setPreferredSize(new Dimension(-1, 50));
+        this.spinner.setValue(value);
+        this.panel.setMinimumSize(new Dimension(250, 70));
+        this.panel.setMaximumSize(new Dimension(300, 70));
+        this.panel.setPreferredSize(new Dimension(-1, 70));
     }
 
     public JPanel getPanel()
@@ -32,7 +34,15 @@ public class Trait_Setting_Slider
         return panel;
     }
 
-    public int getValue() { return slider.getValue(); }
+    public int getSliderValue() { return slider.getValue(); }
+
+    public int getSpinnerValue() { return (int) spinner.getValue(); }
 
     public void sliderListener(ChangeListener changeListener) { slider.addChangeListener(changeListener); }
+
+    public void spinnerListener(ChangeListener changeListener) { spinner.addChangeListener(changeListener); }
+
+    public void setSlider(int i) { slider.setValue(i); }
+
+    public void setSpinner(int i) { spinner.setValue(i); }
 }

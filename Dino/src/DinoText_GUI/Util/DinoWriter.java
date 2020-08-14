@@ -3,9 +3,12 @@ package DinoText_GUI.Util;
 import Dino.FileTypes;
 import DinoText_GUI.Util.DinoList;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -50,7 +53,18 @@ public class DinoWriter
         if(list.skipWrite())
             return;
 
-        String fileName = list.getName() + FileTypes.LIST_EXTENSION;
+
+        String fileName;
+        String directoryString = list.getDirectoryString();
+
+        if(!directoryString.equals(""))
+        {
+            fileName = list.getDirectoryString() + File.separator + list.getName() + FileTypes.LIST_EXTENSION;
+        }
+        else
+        {
+            fileName = list.getName() + FileTypes.LIST_EXTENSION;
+        }
 
         try
         {
@@ -94,10 +108,20 @@ public class DinoWriter
     {
         String[] listsStringArray = new String[lists.size()];
 
+        File baseDirectory = new File(path);
+        baseDirectory = baseDirectory.getParentFile();
+
+
         int index = 0;
         for(DinoList list: lists)
         {
-            listsStringArray[index] = list.getName();
+            Path absoluteFilePath = Paths.get(list.getDirectoryString());
+            Path base = Paths.get(baseDirectory.toURI());
+
+            Path relativePath = base.relativize(absoluteFilePath);
+            String directoryString = relativePath.toString();
+
+            listsStringArray[index] = directoryString + File.separator + list.getName() + FileTypes.LIST_EXTENSION;
             index++;
         }
 
@@ -150,6 +174,12 @@ public class DinoWriter
             for(String list : lists)
             {
                 builder.setLength(0);
+
+                //Todo: Remove this once it's unnecessary
+                if(!FileTypes.hasListExtension(list))
+                {
+                    list += FileTypes.LIST_EXTENSION;
+                }
 
                 builder.append(list);
                 builder.append("\n");

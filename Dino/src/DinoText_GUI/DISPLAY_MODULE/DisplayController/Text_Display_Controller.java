@@ -3,6 +3,7 @@
 package DinoText_GUI.DISPLAY_MODULE.DisplayController;
 
 import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
+import DinoText_GUI.DISPLAY_MODULE.DisplayView.Text_Display_Settings;
 import DinoText_GUI.DISPLAY_MODULE.DisplayView.Variable_Setting_View;
 import DinoText_GUI.Util.DinoConfig;
 import Dino.Dino;
@@ -27,6 +28,7 @@ public class Text_Display_Controller
     private DinoConfig config;
     private Trait_Setting_View traitSettings = null;
     private Variable_Setting_View variableSettings = null;
+    private Text_Display_Settings settings = null;
 
     private Dialogue_Controller dialogueController;
 
@@ -39,6 +41,8 @@ public class Text_Display_Controller
         this.model = model;
         this.view = view;
         this.config = config;
+        this.settings = new Text_Display_Settings();
+        this.settings.setLocation(830, 600);
 
         // loading from config
         this.model.setCharsPerLine(this.config.getCharsPerLine());
@@ -49,18 +53,39 @@ public class Text_Display_Controller
         this.view.prevButtonListener(new prevButtonListener());
 
         // setting up character spinner
-        this.view.setCharactersSpinner(this.model.getCharsPerLine());
-        this.view.charactersSpinnerListener(new charactersSpinnerListener());
+        this.settings.setCharactersSpinner(this.model.getCharsPerLine());
+        this.settings.charactersSpinnerListener(new charactersSpinnerListener());
 
         // setting up lines spinner
-        this.view.setLinesSpinner(this.model.getLinesPerPage());
-        this.view.linesSpinnerListener(new linesSpinnerListener());
+        this.settings.setLinesSpinner(this.model.getLinesPerPage());
+        this.settings.linesSpinnerListener(new linesSpinnerListener());
 
         // setting up settings listeners
         this.view.traitSettingsListener(new traitSettingsListener());
         this.view.variableSettingsListener(new variableSettingsListener());
+        this.view.settingsButtonListener(new SettingsButtonListener());
 
         this.view.add_generateNew_button_listener(new generateNewListener());
+    }
+
+    // unused for now
+    public void close()
+    {
+        if (settings != null)
+        {
+            settings.setVisible(false);
+            settings = null;
+        }
+        if (traitSettings != null)
+        {
+            traitSettings.setVisible(false);
+            traitSettings = null;
+        }
+        if (variableSettings != null)
+        {
+            variableSettings.setVisible(false);
+            variableSettings = null;
+        }
     }
 
     /***************************************************************************
@@ -86,16 +111,20 @@ public class Text_Display_Controller
      **************************************************************************/
     public void setDino(Dino dino)
     {
+        for (int i = 0; i < dino.getTraitCount(); i++)
+        {
+            dino.setTraitValue(i, 0);
+        }
+        this.model.setDino(dino);
         resetTraitSettings();
         resetVariableSettings();
-        this.model.setDino(dino);
         this.generateNewText();
     }
 
     /***************************************************************************
      * Generate New Text
      **************************************************************************/
-    public void generateNewText()
+    private void generateNewText()
     {
         //dialogueController.saveExistingDialogueFile();
         //this.model.setDino(dialogueController.getDino());
@@ -107,7 +136,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * format
      **************************************************************************/
-    public void format()
+    private void format()
     {
         model.formatText();
     }
@@ -115,7 +144,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * update display
      **************************************************************************/
-    public void updateDisplay()
+    private void updateDisplay()
     {
         ArrayList<String> pages = model.getPages();
         view.setTextPane(pages.get(model.getCurrentPage() - 1));
@@ -125,7 +154,7 @@ public class Text_Display_Controller
     /***************************************************************************
      * update config
      **************************************************************************/
-    public void updateConfig()
+    private void updateConfig()
     {
         model.setCharsPerLine(config.getCharsPerLine());
         model.setLinesPerPage(config.getLinesPerPage());
@@ -144,22 +173,48 @@ public class Text_Display_Controller
     }
 
     // closes and deletes the trait settings window
-    public void resetTraitSettings()
+    private void resetTraitSettings()
     {
         if (traitSettings != null)
         {
+            boolean visible = traitSettings.isVisible();
+            int x = traitSettings.getX();
+            int y = traitSettings.getY();
             traitSettings.setVisible(false);
-            traitSettings = null;
+            traitSettings = new Trait_Setting_View(model.getDino());
+            traitSettings.setLocation(x, y);
+            traitSettings.setVisible(visible);
         }
     }
 
     // closes and deletes the variable settings window
-    public void resetVariableSettings()
+    private void resetVariableSettings()
     {
         if (variableSettings != null)
         {
+            boolean visible = variableSettings.isVisible();
+            int x = variableSettings.getX();
+            int y = variableSettings.getY();
             variableSettings.setVisible(false);
-            variableSettings = null;
+            variableSettings = new Variable_Setting_View(model.getDino());
+            variableSettings.setLocation(x, y);
+            variableSettings.setVisible(visible);
+        }
+    }
+
+    private void bringForward(int i)
+    {
+        if (i == 1 && settings != null && settings.isVisible())
+        {
+            settings.toFront();
+        }
+        if (i == 2 && traitSettings != null && traitSettings.isVisible())
+        {
+            traitSettings.toFront();
+        }
+        if (i == 3 && variableSettings != null && variableSettings.isVisible())
+        {
+            variableSettings.toFront();
         }
     }
 
@@ -210,7 +265,13 @@ public class Text_Display_Controller
         @Override
         public void stateChanged(ChangeEvent e)
         {
-            int chars = view.getCharsPerLine();
+            int chars = settings.getCharsPerLine();
+
+            if (chars < 10)
+            {
+                settings.setCharactersSpinner(10);
+                chars = 10;
+            }
 
             config.setCharsPerLine(chars);
 
@@ -226,11 +287,35 @@ public class Text_Display_Controller
         @Override
         public void stateChanged(ChangeEvent e)
         {
-            int lines = view.getLinesPerPage();
+            int lines = settings.getLinesPerPage();
+
+            if (lines < 1)
+            {
+                settings.setLinesSpinner(1);
+                lines = 1;
+            }
 
             config.setLinesPerPage(lines);
 
             updateConfig();
+        }
+    }
+
+    /***************************************************************************
+     * Settings Button
+     **************************************************************************/
+    class SettingsButtonListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if (!settings.isVisible())
+            {
+                settings.setVisible(true);
+            }
+            bringForward(2);
+            bringForward(3);
+            bringForward(1);
         }
     }
 
@@ -245,11 +330,15 @@ public class Text_Display_Controller
             if (traitSettings == null)
             {
                 traitSettings = new Trait_Setting_View(model.getDino());
+                traitSettings.setLocation(830, 0);
             }
             if (!traitSettings.isVisible())
             {
                 traitSettings.setVisible(true);
             }
+            bringForward(1);
+            bringForward(3);
+            bringForward(2);
         }
     }
 
@@ -264,11 +353,15 @@ public class Text_Display_Controller
             if (variableSettings == null)
             {
                 variableSettings = new Variable_Setting_View(model.getDino());
+                variableSettings.setLocation(830, 300);
             }
             if (!variableSettings.isVisible())
             {
                 variableSettings.setVisible(true);
             }
+            bringForward(1);
+            bringForward(2);
+            bringForward(3);
         }
     }
 

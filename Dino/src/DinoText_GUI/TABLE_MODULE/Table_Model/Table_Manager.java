@@ -1,5 +1,6 @@
 package DinoText_GUI.TABLE_MODULE.Table_Model;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /*******************************************************************************
@@ -17,8 +18,12 @@ public class Table_Manager
      **************************************************************************/
     public Table_Manager()
     {
-        this.currentModel = new Table_Model();
-        lists.add(currentModel);
+        this.currentModel = null;
+    }
+
+    public boolean hasActiveModel()
+    {
+        return this.currentModel != null;
     }
 
     /***************************************************************************
@@ -69,12 +74,28 @@ public class Table_Manager
      * Write To File
      *
      **************************************************************************/
+    public void writeToFile(File directory)
+    {
+        for(Table_Model list : this.lists)
+        {
+            list.writeToFile(directory);
+        }
+    }
+
+    /***************************************************************************
+     * Write To File
+     *
+     **************************************************************************/
     public void writeToFile(String name)
     {
         int index = this.getListIndexFromName(name);
 
         if(index != -1)
-            this.lists.get(index).writeToFile();
+        {
+            Table_Model model = this.lists.get(index);
+            model.writeToFile();
+        }
+
     }
 
     /***************************************************************************

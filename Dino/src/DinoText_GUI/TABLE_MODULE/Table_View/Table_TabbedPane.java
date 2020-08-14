@@ -21,18 +21,22 @@ public class Table_TabbedPane extends JFrame{
     private ArrayList<Table_View> tables = new ArrayList<>();
     private Table_View activeTable;
 
+    private Table_NoList noList;
+
     /***************************************************************************
      * Constructor
      *
      **************************************************************************/
     public Table_TabbedPane()
     {
-        activeTable = new Table_View();
-        listPane.add(activeTable.getPanel());
-        listPane.setTitleAt(this.getSelectedIndex(), "Untitled List");
-        this.activeTable.setListName("Untitled List");
+        this.noList = new Table_NoList();
 
-        tables.add(activeTable);
+        addNoListTab();
+    }
+
+    public boolean hasActiveTable()
+    {
+        return this.activeTable != null;
     }
 
     /***************************************************************************
@@ -48,6 +52,29 @@ public class Table_TabbedPane extends JFrame{
         this.listPane.addTab(name, this.activeTable.getPanel());
         this.listPane.setSelectedIndex(this.tables.size() - 1);
     }
+
+    public void addNoListTab()
+    {
+        this.listPane.addTab(Table_NoList.NAME, this.noList.getPanel());
+    }
+
+    public boolean hasNoListTab()
+    {
+        int index = this.listPane.indexOfTab(Table_NoList.NAME);
+
+        return index != -1;
+    }
+
+    public void removeNoListTab()
+    {
+        int index = this.listPane.indexOfTab(Table_NoList.NAME);
+
+        if(index != -1)
+        {
+            this.listPane.removeTabAt(index);
+        }
+    }
+
 
     /***************************************************************************
      * getSelectedIndex
@@ -69,14 +96,6 @@ public class Table_TabbedPane extends JFrame{
     }
 
     /***************************************************************************
-     * setTableModel
-     *
-     **************************************************************************/
-    public void setTableModel(TableModel tableModel) {
-        activeTable.setTableModel(tableModel);
-    }
-
-    /***************************************************************************
      * setListName
      *
      **************************************************************************/
@@ -85,75 +104,74 @@ public class Table_TabbedPane extends JFrame{
         listPane.setTitleAt(this.getSelectedIndex(), text);
     }
 
-    /***************************************************************************
-     * setEntryCount
-     *
-     **************************************************************************/
-    public void setEntryCount(int count) {
-        this.activeTable.setEntryCount(count);
-    }
-
-    /***************************************************************************
-     * getListName
-     *
-     **************************************************************************/
-    public String getListName() {
-        return this.activeTable.getListName();
-    }
-
     public int getSelectedRow() {return this.activeTable.getSelectedRow();}
 
 
-    /***************************************************************************
-     * addIncrementListener
-     *
-     **************************************************************************/
-    public void addIncrementListener(ActionListener l) {
-        this.activeTable.addIncrementListener(l);
-    }
-
-    /***************************************************************************
-     * removeIncrementListener
-     *
-     **************************************************************************/
-    public void removeIncrementListener(ActionListener l)
+    public Component getPanel()
     {
-        this.activeTable.removeIncrementListener(l);
+        return this.panel1;
     }
 
     /***************************************************************************
-     * addListNameListener
-     *
+     * set Button Column
      **************************************************************************/
-    public void addListNameListener(ActionListener l) {
-        this.activeTable.addListNameListener(l);
-    }
-
-    /***************************************************************************
-     * removeListNameListener
-     *
-     **************************************************************************/
-    public void removeListNameListener(ActionListener l)
+    public void setButtonColumn(int columnIndex)
     {
-        this.activeTable.removeListNameListener(l);
+        this.activeTable.getJTable().getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
     }
 
-    /***************************************************************************
-     * addTabSwitchListener
-     *
-     **************************************************************************/
     public void addTabSwitchListener(ChangeListener l)
     {
         this.listPane.addChangeListener(l);
     }
 
-    /***************************************************************************
-     * removeTabSwitchListener
-     *
-     **************************************************************************/
     public void removeTabSwitchListener(ChangeListener l)
     {
         this.listPane.removeChangeListener(l);
+    }
+
+    public void addNoListButtonListener(ActionListener l)
+    {
+        this.noList.addCreateListActionListener(l);
+    }
+
+    public void removeNoListButtonListener(ActionListener l)
+    {
+        this.noList.removeCreateListActionListener(l);
+    }
+
+    /***************************************************************************
+     * PASS THROUGH METHODS
+     **************************************************************************/
+
+    public void setTableModel(TableModel tableModel) {
+        activeTable.setTableModel(tableModel);
+    }
+
+    public void setEntryCount(int count) {
+        this.activeTable.setEntryCount(count);
+    }
+
+    public String getListName() {
+        return this.activeTable.getListName();
+    }
+
+    public void addIncrementListener(ActionListener l) {
+        this.activeTable.addIncrementListener(l);
+    }
+
+    public void removeIncrementListener(ActionListener l)
+    {
+        this.activeTable.removeIncrementListener(l);
+    }
+
+    public void addListNameListener(ActionListener l) {
+        this.activeTable.addListNameListener(l);
+    }
+
+    public void removeListNameListener(ActionListener l)
+    {
+        this.activeTable.removeListNameListener(l);
     }
 
     public void addDebugListener(ActionListener l)
@@ -176,28 +194,28 @@ public class Table_TabbedPane extends JFrame{
         this.activeTable.removeTraitButtonListener(l);
     }
 
+    public void addEditTraitButtonListener(ActionListener l)
+    {
+        this.activeTable.addEditTraitButtonListener(l);
+    }
+
+    public void removeEditTraitButtonListener(ActionListener l)
+    {
+        this.activeTable.removeEditTraitButtonListener(l);
+    }
+
     public void initializeAddTraitButtonColumn()
     {
         this.activeTable.initializeAddTraitButtonColumn();
     }
 
+    public void initializeEditTraitButtonColumn()
+    {
+        this.activeTable.initializeEditTraitButtonColumn();
+    }
 
     public void updateTable() {
         this.activeTable.updateTable();
     }
 
-
-
-    public Component getPanel1() {
-        return this.panel1;
-    }
-
-
-    /***************************************************************************
-     * set Button Column
-     **************************************************************************/
-    public void setButtonColumn(int columnIndex)
-    {
-        this.activeTable.getJTable().getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
-    }
 }

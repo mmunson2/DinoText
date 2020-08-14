@@ -456,11 +456,11 @@ public class DialogueParser
 
         for(int i = 0; i < listCount; i++)
         {
-            String listName = Parser.getNextLine(dialogueIn);
+            String absolutePath = Parser.getNextLine(dialogueIn);
 
-            ListParser parser = new ListParser(new File(
-                    Paths.get(parentDirectory.toString(),
-                            listName).toString() + FileTypes.LIST_EXTENSION));
+            File listPath = new File(absolutePath);
+
+            ListParser parser = new ListParser(listPath);
 
             lists[i] = new List(parser);
 
@@ -553,7 +553,7 @@ public class DialogueParser
     {
         try
         {
-            this.dialogueIn = new Scanner(new FileInputStream(path));
+            this.dialogueIn = new Scanner(new FileInputStream(path)); // TODO: This is the part that fails
         }
         catch(IOException e)
         {

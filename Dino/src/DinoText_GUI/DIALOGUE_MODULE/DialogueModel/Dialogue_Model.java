@@ -3,6 +3,9 @@ package DinoText_GUI.DIALOGUE_MODULE.DialogueModel;
 import Dino.FileTypes;
 import DinoText_GUI.Util.DinoWriter;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -17,7 +20,7 @@ public class Dialogue_Model {
     private String dialogue;
 
     private static Set<String> staticVars = new LinkedHashSet<>();
-    private static Set<String> listNames = new LinkedHashSet<>();
+    private static Set<File> listPaths = new LinkedHashSet<>();
 
     /***************************************************************************
      * addStaticVar
@@ -59,16 +62,36 @@ public class Dialogue_Model {
      * setListNames
      *
      **************************************************************************/
-    public void setListNames(HashSet<String> set) { listNames = set; }
+    public void setListNames(HashSet<File> set) { listPaths = set; }
 
-    public void setListNames(Set<String> set) { listNames = set; }
+    public void setListNames(Set<File> set) { listPaths = set; }
+
+    public void setListFiles(HashSet<File> set) { listPaths = set; }
 
 
     /***************************************************************************
      * getListNames
      *
      **************************************************************************/
-    public Set<String> getListNames() { return listNames; }
+    public Set<String> getListNames()
+    {
+        Set<String> listNames = new LinkedHashSet<>();
+
+        for(File path : listPaths)
+        {
+            String listName = path.getName();
+
+            if(FileTypes.hasListExtension(listName))
+            {
+                listName = FileTypes.trimListExtension(listName);
+            }
+
+            listNames.add(listName);
+        }
+
+
+        return listNames;
+    }
 
     /***************************************************************************
      * Add List Names
@@ -84,8 +107,37 @@ public class Dialogue_Model {
      **************************************************************************/
     public void writeToFile() {
         DinoWriter writer = new DinoWriter();
+        String[] listNames = new String[listPaths.size()];
+        int i = 0;
 
-        writer.writeDialogueToFile(name, dialogue, listNames.toArray(new String[listNames.size()]), staticVars.toArray(new String[staticVars.size()]));
+        Path dinoLocation = Paths.get(name);
+        File dinoLocationFile = new File(dinoLocation.toString());
+
+        if(dinoLocationFile.getParentFile() == null) //
+        {
+            for(File file : listPaths)
+            {
+                listNames[i] = file.getName();
+                i++;
+            }
+        }
+        else
+        {
+            for (File file : listPaths) {
+
+                Path absoluteFilePath = Paths.get(file.getAbsolutePath());
+
+                File dinoParentDirectory = dinoLocationFile.getParentFile();
+                Path base = Paths.get(dinoParentDirectory.getAbsolutePath());
+
+                Path relativePath = base.relativize(absoluteFilePath);
+                String directoryString = relativePath.toString();
+                listNames[i] = directoryString;
+                i++;
+            }
+        }
+
+        writer.writeDialogueToFile(name, dialogue, listNames, staticVars.toArray(new String[staticVars.size()]));
     }
 
     /***************************************************************************
@@ -102,6 +154,8 @@ public class Dialogue_Model {
     public String getDialogue() {
         return dialogue;
     }
+
+    public void addListFile(File file) {
+        listPaths.add(file);
+    }
 }
-
-

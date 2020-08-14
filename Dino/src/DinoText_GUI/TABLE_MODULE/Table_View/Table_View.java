@@ -48,8 +48,22 @@ public class Table_View {
      **************************************************************************/
     public void setTableModel(TableModel tableModel) {
         this.listTable.setModel(tableModel);
-    }
 
+        // Set individual column widths
+        int listEntry = Columns.LIST_ENTRY.ordinal();
+        int weight = Columns.PROBABILITY_WEIGHT.ordinal();
+        int probability = Columns.PROBABILITY.ordinal();
+        int addTrait = Columns.ADD_TRAIT.ordinal();
+        int editTrait = Columns.EDIT_TRAIT.ordinal();
+        int traitDisplay = Columns.TRAIT.ordinal();
+
+        this.listTable.getColumnModel().getColumn(listEntry).setPreferredWidth(350);
+        this.listTable.getColumnModel().getColumn(weight).setPreferredWidth(120);
+        this.listTable.getColumnModel().getColumn(probability).setPreferredWidth(78);
+        this.listTable.getColumnModel().getColumn(addTrait).setPreferredWidth(100);
+        this.listTable.getColumnModel().getColumn(editTrait).setPreferredWidth(100);
+        this.listTable.getColumnModel().getColumn(traitDisplay).setPreferredWidth(200);
+    }
 
     /***************************************************************************
      * get JTable
@@ -70,16 +84,15 @@ public class Table_View {
 
     public void initializeAddTraitButtonColumn()
     {
-        try {
-            this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
-            this.listTable.getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
-            this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
-        }
-        catch(Exception e)
-        {
+        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
+        this.listTable.getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
+        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
+    }
 
-        }
-
+    public void initializeEditTraitButtonColumn()
+    {
+        this.listTable.getColumn(Columns.EDIT_TRAIT.header).setCellRenderer(new TableButton_View());
+        this.listTable.getColumn(Columns.EDIT_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
     }
 
     /***************************************************************************
@@ -165,23 +178,17 @@ public class Table_View {
         }
         catch(Exception e)
         {
-            
+            System.err.println("Error in addTraitButtonListener :(");
+            //Todo: Remove if we're no longer getting errors
         }
 
-        if(model == null)
-        {
-            System.err.println("Model is null :/");
-        }
-        else
-        {
+        if(model != null)
             model.addButtonListener(l);
-        }
+
     }
 
     public void removeTraitButtonListener(ActionListener l)
     {
-        System.out.println("Column count: " + this.listTable.getColumnCount());
-
         TableColumn column = null;
 
         try {
@@ -189,18 +196,54 @@ public class Table_View {
         }
         catch(IllegalArgumentException e)
         {
+            System.err.println("Error in removeTraitButtonListener :(");
+            //Todo: Remove if we're no longer getting errors
         }
-
-        if(column == null)
+        if(column != null)
         {
-            System.err.println("Column is null :/");
-            return;
+            TableButton_Model model = (TableButton_Model) column.getCellEditor();
+            model.removeButtonListener(l);
+        }
+    }
+
+    public void addEditTraitButtonListener(ActionListener l)
+    {
+        TableButton_Model model = null;
+
+        try {
+            model = (TableButton_Model) this.listTable.getColumn(Columns.EDIT_TRAIT.header).getCellEditor();
+        }
+        catch(Exception e)
+        {
+            System.err.println("Error in addTraitButtonListener :(");
+            //Todo: Remove if we're no longer getting errors
         }
 
-        TableButton_Model model = (TableButton_Model) column.getCellEditor();
+        if(model != null)
+            model.addButtonListener(l);
 
-        model.removeButtonListener(l);
     }
+
+    public void removeEditTraitButtonListener(ActionListener l)
+    {
+        TableColumn column = null;
+
+        try {
+            column = this.listTable.getColumn(Columns.EDIT_TRAIT.header);
+        }
+        catch(IllegalArgumentException e)
+        {
+            System.err.println("Error in removeTraitButtonListener :(");
+            //Todo: Remove if we're no longer getting errors
+        }
+        if(column != null)
+        {
+            TableButton_Model model = (TableButton_Model) column.getCellEditor();
+            model.removeButtonListener(l);
+        }
+    }
+
+
 
 
 

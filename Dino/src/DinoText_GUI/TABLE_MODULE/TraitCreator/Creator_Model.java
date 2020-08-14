@@ -6,13 +6,17 @@ import DinoText_GUI.Util.TraitModel;
 
 public class Creator_Model
 {
+    public static final int MAX = 100;
+    public static final int MIN = 0;
+
+
     TraitModel trait;
     Table_Probabilities probabilities;
     int rowIndex = -1;
 
     public Creator_Model()
     {
-        trait = new TraitModel("name", 0, 100, 0);
+        trait = new TraitModel("New Trait", MIN, MAX, 0);
     }
 
     public Creator_Model(TraitModel trait)
@@ -54,8 +58,6 @@ public class Creator_Model
 
         updateProbabilities();
     }
-
-
 
     public void setWeight(double weight)
     {
@@ -104,6 +106,4 @@ public class Creator_Model
             this.probabilities.updateWeight(rowIndex, this.getWeight());
         }
     }
-
-
 }

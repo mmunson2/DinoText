@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -233,7 +234,28 @@ public class Dialogue_View {
     }
 
     /***************************************************************************
+     * Get Active List Buttons
+     *
+     **************************************************************************/
+    public ArrayList<JButton> getActiveListButtons() {
+        ArrayList<JButton> activeButtons = new ArrayList<JButton>();
+        ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
+        Element element;
+        while ((element = iterator.next()) != null) {
+            AttributeSet as = element.getAttributes();
+            if (as.containsAttribute(AbstractDocument.ElementNameAttribute, StyleConstants.ComponentElementName)) {
+                if (StyleConstants.getComponent(as) instanceof JButton) {
+                    activeButtons.add((JButton) StyleConstants.getComponent(as));
+                }
+            }
+        }
+        return activeButtons;
+    }
+
+
+    /***************************************************************************
      * Get List Names
+     *
      *
      **************************************************************************/
     public HashSet<String> getSetListNames() {
@@ -246,6 +268,32 @@ public class Dialogue_View {
         System.out.println("POST SIZE: " + listNames.size());
 
         return listNames;
+    }
+
+    public HashSet<File> getSetFiles() {
+        HashSet<File> files = new HashSet<>();
+        for (JButton jb : listButtons) {
+            if (jb.getName() != "Untitled List")
+                files.add(new File(System.getProperty("user.dir") + System.getProperty("file.separator") + jb.getName()));
+        }
+        return files;
+    }
+
+    public HashSet<File> getSetFiles(File directory) {
+        HashSet<File> files = new HashSet<>();
+        for (JButton jb : listButtons) {
+            if (jb.getName() != "Untitled List")
+                files.add(new File(directory + System.getProperty("file.separator") + jb.getName()));
+        }
+        return files;
+    }
+
+    /***************************************************************************
+     * Set List Names
+     *
+     **************************************************************************/
+    public void setSetListNames(HashSet<String> newNames) {
+        listNames = newNames;
     }
 //
 //    /***************************************************************************
@@ -282,7 +330,13 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public void addItemjPopupMenu_listInsertion(JMenuItem temp) {
+        for (Component c : jMenu_listInsertion.getMenuComponents()) {
+            if (((JMenuItem) c).getText() == temp.getText()) {
+                return;
+            }
+        }
         // else
+
         jMenu_listInsertion.add(temp);
         jPopupMenu_listInsertion.pack();
     }
@@ -309,6 +363,10 @@ public class Dialogue_View {
 //                removeListName(((JMenuItem) c).getText());
             }
         }
+    }
+
+    public JMenu getjMenu_listInsertion() {
+        return jMenu_listInsertion;
     }
 
     /***************************************************************************
@@ -344,6 +402,15 @@ public class Dialogue_View {
      **************************************************************************/
     public void addListButtonsjPopupMenu(JButton button) {
         listButtons.add(button);
+    }
+
+
+    /***************************************************************************
+     * Clear List Button
+     *
+     **************************************************************************/
+    public void clearListButtonsjPopupMenu() {
+        listButtons.clear();
     }
 
 
