@@ -326,7 +326,7 @@ public class Dialogue_Controller {
     }
 
     public Dino getDino() {
-        return new Dino(mostRecentSaved.getName());
+        return new Dino(mostRecentSaved.getAbsolutePath());
     }
 
     /***************************************************************************
