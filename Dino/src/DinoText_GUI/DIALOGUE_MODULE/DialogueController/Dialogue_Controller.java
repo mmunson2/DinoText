@@ -488,6 +488,7 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void newDialogue() {
+        dinoGUIView.clearjTextPane_dialogueInput();
         dinoGUIView.clearListButtonsjPopupMenu();
         dinoGUIView.clearjTextPane_dialogueInput();
         dinoGUIView.clearListButtonsjPopupMenu();
