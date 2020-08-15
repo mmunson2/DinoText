@@ -3,6 +3,10 @@ package DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay;
 import javax.swing.*;
 import java.awt.*;
 
+/*******************************************************************************
+ * Trait Label
+ *
+ ******************************************************************************/
 public class TraitLabel extends JLabel {
     public static final int MAX_WIDTH = 40;
     int rectStart = 0;
@@ -10,21 +14,33 @@ public class TraitLabel extends JLabel {
     double lower = 0;
     double upper = 100;
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public TraitLabel(String text){
         super();
         setTextWithChart(text);
     }
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public TraitLabel(String text, double lower, double upper){
         super();
         setTextWithChart(text);
         setBounds(lower, upper);
     }
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public TraitLabel() {
         super();
     }
 
+    /***************************************************************************
+     * Paint Component
+     **************************************************************************/
     @Override
     public void paintComponent(Graphics graphics) {
         Graphics2D g = (Graphics2D) graphics;
@@ -42,6 +58,9 @@ public class TraitLabel extends JLabel {
         super.paintComponent(g);
     }
 
+    /***************************************************************************
+     * Set Bounds
+     **************************************************************************/
     public void setBounds(double lb, double ub) {
         lower = lb;
         upper = ub;
@@ -51,6 +70,9 @@ public class TraitLabel extends JLabel {
         upper /= 100;
     }
 
+    /***************************************************************************
+     * Set Text With Chart
+     **************************************************************************/
     public void setTextWithChart(String text) {
         text += "              ";
         setText(text);
