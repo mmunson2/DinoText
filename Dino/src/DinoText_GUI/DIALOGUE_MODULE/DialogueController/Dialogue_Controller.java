@@ -176,8 +176,7 @@ public class Dialogue_Controller {
     }
 
     //TODO: This is the method that will be called when the "Save phrase list" button is pressed
-    private void savePhraseList()
-    {
+    private void savePhraseList() {
         this.table_controller.writeCurrentToFile();
 
         String fileName = this.table_controller.getCurrentListName()
@@ -205,7 +204,12 @@ public class Dialogue_Controller {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
+            JFileChooser chooser = null;
+            if (config.getLastSavedDir() == null) {
+                chooser = new JFileChooser(System.getProperty("user.dir"));
+            } else {
+                chooser = new JFileChooser(config.getLastSavedDir());
+            }
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "DINO and DLIST files", "dino", "dlist");
             chooser.setFileFilter(filter);
@@ -243,7 +247,7 @@ public class Dialogue_Controller {
                     File parentFile = file.getParentFile();
 
                     String listFileName = parentFile.toString() +
-                    File.separator + listNames[i] + FileTypes.LIST_EXTENSION;
+                            File.separator + listNames[i] + FileTypes.LIST_EXTENSION;
 
                     table_controller.openFile(listFileName);
                 }
