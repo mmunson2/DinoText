@@ -1,15 +1,15 @@
-# Generated: 2020/08/15 00:07:13
+# Generated: 2020/08/15 12:59:37
 Name: Greeting
 Size: 4
-1: Wary
-You aren't from around here are you?
-1.0 
-2: Friendly
-Hi friend!
-1.0 
-3: 
-
-0.0 
-4: 
-
-0.0 
+1: Wary 1
+You're not from around here are you?
+0.0 friendship:0.0:40.0:1.0 
+2: Wary 2
+You don't look like you're from these parts.
+0.0 friendship:0.0:40.0:1.0 
+3: Friendly 1
+Howdy friend!
+0.0 friendship:40.0:100.0:1.0 
+4: Friendly 2
+Top of the morning to you!
+0.0 friendship:40.0:100.0:1.0 
