@@ -40,15 +40,27 @@ public class Dialogue_View {
 
         jPopupMenu_listInsertion = new JPopupMenu();
         jMenu_listInsertion = new JMenu("Insert New");
-//        jMenu_dictionaryFunctions = new JMenu("Dictionary Functions ");
-//        jPopupMenu_listInsertion.add(jMenu_dictionaryFunctions);
         jPopupMenu_listInsertion.add(jMenu_listInsertion);
 
         listButtons = new ArrayList<>();
         listNames = new HashSet<>();
 
         jPanel_dialogueEditor.setComponentPopupMenu(jPopupMenu_listInsertion);
+        jTextPane_dialogueInput.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int caretPos = getjTextPane_dialogueInput().getCaretPosition();
+                super.keyPressed(e);
+
+                if (e.getKeyCode() == 8) {
+                    clearAllArrows();
+                    insertAllArrows();
+                }
+                jTextPane_dialogueInput.setCaretPosition(caretPos);
+            }
+        });
         numArrows = 0;
+        jTextPane_dialogueInput.requestFocus();
     }
 
     /***************************************************************************
@@ -182,41 +194,15 @@ public class Dialogue_View {
      * setFocus
      **************************************************************************/
     public void setFocusTSDialogueInput() {
-        jTextPane_dialogueInput.requestFocusInWindow();
+        jTextPane_dialogueInput.requestFocus();
     }
-
-    /*************************************
-     * MISC
-     ************************************/
-//
-//    /***************************************************************************
-//     * insert Button to JTextPane (Static Variable)
-//     **************************************************************************/
-//    public void insertButtonjTextPane_StaticVar(String varName, ActionListener actionListener, Color color) {
-//        SimpleAttributeSet set = new SimpleAttributeSet();
-//        StyleConstants.setFontSize(set, 0);
-//
-//        int caretPos = jTextPane_dialogueInput.getCaretPosition();
-//        try {
-//            jTextPane_dialogueInput.getDocument().insertString(caretPos, "\\S[" + varName + "]", set); //TODO: How are we representing static vars?
-//        } catch (BadLocationException e) {
-//            e.printStackTrace();
-//        }
-//
-//        JButton newList = new JButton(varName);
-//        newList.setName(varName);
-//        newList.setText(varName);
-//        newList.addActionListener(actionListener);
-//        newList.setBackground(color);
-//        jTextPane_dialogueInput.add(newList);
-//        staticVarButtons.add(newList);
-//    }
 
     /***************************************************************************
      * insert Button to JTextPane (Dynamic List)
      **************************************************************************/
     public void insertButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
         jTextPane_dialogueInput.insertComponent(makeButtonjTextPane_DynamicList(listName, actionListener, null));
+        insertAllArrows();
     }
 
     public JButton makeButtonjTextPane_DynamicList(String listName, ActionListener actionListener, Color color) {
@@ -496,7 +482,7 @@ public class Dialogue_View {
         JLabel arrow = new JLabel();
         arrow.setText("  \u2794  ");
         if (numArrows < getActiveListButtons().size() - 1)
-        jTextPane_dialogueInput.insertComponent(arrow);
+            jTextPane_dialogueInput.insertComponent(arrow);
         numArrows++;
     }
 
