@@ -189,7 +189,6 @@ public class Creator_Controller
 
     class traitWeight_listener implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e)
         {

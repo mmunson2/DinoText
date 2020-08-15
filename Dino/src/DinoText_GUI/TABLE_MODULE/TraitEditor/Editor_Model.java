@@ -60,7 +60,8 @@ public class Editor_Model
     {
         Creator_Model newTrait = new Creator_Model();
         newTrait.setProbabilities(this.probabilities);
-
+        newTrait.setRowIndex(this.rowIndex);
+        
         this.traits.add(traits.size(), newTrait);
         this.activeModel = this.traits.get(traits.size() - 1);
         this.activeIndex = traits.size() - 1;
