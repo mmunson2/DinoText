@@ -8,14 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_listName.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_listName.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dino/DialogueParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dino/DialogueParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/0.7_Tests/Greeting.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/0.7_Tests/Greeting.dlist" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +230,7 @@
       <workItem from="1597386170967" duration="1044000" />
       <workItem from="1597430394900" duration="95000" />
       <workItem from="1597431494024" duration="1948000" />
-      <workItem from="1597453633543" duration="13090000" />
+      <workItem from="1597453633543" duration="13877000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fixes and unit tests for static pass through">
       <created>1593412382428</created>

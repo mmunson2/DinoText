@@ -1,6 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.Table_Controller;
 
 import Dino.FileTypes;
+import Dino.List.List;
 import Dino.List.ListEntry;
 import Dino.List.Trait;
 import Dino.ListParser;
@@ -99,7 +100,8 @@ public class Table_Controller {
 
         //Check if the list already exists
         if (this.manager.hasActiveModel() && this.manager.hasList(name)) {
-            //Not doing anything currently!
+
+            switchToName(name);
         }
         else //Otherwise make a whole new list
         {
@@ -131,11 +133,6 @@ public class Table_Controller {
         }
     }
 
-    public void setList(String name, List list)
-    {
-
-
-    }
 
     public String[] getListNames() {
         return this.manager.getListNames();
@@ -291,13 +288,6 @@ public class Table_Controller {
         }
 
         String name = parser.getName();
-
-        if (manager.hasList(name)) {
-
-            //Todo Here
-
-            return;
-        }
 
         this.addList(parser.getName());
 
