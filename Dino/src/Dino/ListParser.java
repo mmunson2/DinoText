@@ -170,7 +170,6 @@ public class ListParser
     {
         try
         {
-            System.out.println("Absolute Path: " + file.getAbsolutePath());
             this.fileScanner = new Scanner(file);
         }
         catch(IOException e)
