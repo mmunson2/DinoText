@@ -25,6 +25,7 @@ import java.util.Collections;
 public class DinoList
 {
     private String name;
+    private ArrayList<String> entryNames;
     private ArrayList<ListEntry> list;
     private File directory;
     private boolean skipWrite = false;
@@ -41,6 +42,7 @@ public class DinoList
         this.name = name;
 
         list = new ArrayList<>();
+        entryNames = new ArrayList<>();
     }
 
     /***************************************************************************
@@ -78,6 +80,16 @@ public class DinoList
     public void add(String entry)
     {
         list.add(new ListEntry(entry, 1, null));
+    }
+
+    public void addEntryName(String name)
+    {
+        this.entryNames.add(name);
+    }
+
+    public void setEntryName(int index, String name)
+    {
+        this.entryNames.set(index, name);
     }
 
     /***************************************************************************
@@ -287,6 +299,12 @@ public class DinoList
 
         return this.list.get(index);
     }
+
+    public String getEntryName(int index)
+    {
+        return this.entryNames.get(index);
+    }
+
 
     /***************************************************************************
      * setProbability

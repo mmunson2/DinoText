@@ -1,7 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.Table_View;
 
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.Table_Buttons.TableButton_View;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Columns;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignColumns;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.Table_Buttons.TableButton_Model;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay.Table_TraitDisplay;
 
@@ -50,12 +50,12 @@ public class Table_View {
         this.listTable.setModel(tableModel);
 
         // Set individual column widths
-        int listEntry = Columns.LIST_ENTRY.ordinal();
-        int weight = Columns.PROBABILITY_WEIGHT.ordinal();
-        int probability = Columns.PROBABILITY.ordinal();
-        int addTrait = Columns.ADD_TRAIT.ordinal();
-        int editTrait = Columns.EDIT_TRAIT.ordinal();
-        int traitDisplay = Columns.TRAIT.ordinal();
+        int listEntry = DesignColumns.ENTRY_NAME.ordinal();
+        int weight = DesignColumns.PROBABILITY_WEIGHT.ordinal();
+        int probability = DesignColumns.PROBABILITY.ordinal();
+        int addTrait = DesignColumns.ADD_TRAIT.ordinal();
+        int editTrait = DesignColumns.EDIT_TRAIT.ordinal();
+        int traitDisplay = DesignColumns.TRAIT.ordinal();
 
         this.listTable.getColumnModel().getColumn(listEntry).setPreferredWidth(350);
         this.listTable.getColumnModel().getColumn(weight).setPreferredWidth(120);
@@ -84,15 +84,15 @@ public class Table_View {
 
     public void initializeAddTraitButtonColumn()
     {
-        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
-        this.listTable.getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
-        this.listTable.getColumn(Columns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
+        this.listTable.getColumn(DesignColumns.ADD_TRAIT.header).setCellRenderer(new TableButton_View());
+        this.listTable.getColumn(DesignColumns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
+        this.listTable.getColumn(DesignColumns.ADD_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
     }
 
     public void initializeEditTraitButtonColumn()
     {
-        this.listTable.getColumn(Columns.EDIT_TRAIT.header).setCellRenderer(new TableButton_View());
-        this.listTable.getColumn(Columns.EDIT_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
+        this.listTable.getColumn(DesignColumns.EDIT_TRAIT.header).setCellRenderer(new TableButton_View());
+        this.listTable.getColumn(DesignColumns.EDIT_TRAIT.header).setCellEditor(new TableButton_Model(new JCheckBox()));
     }
 
     /***************************************************************************
@@ -174,7 +174,7 @@ public class Table_View {
         TableButton_Model model = null;
 
         try {
-            model = (TableButton_Model) this.listTable.getColumn(Columns.ADD_TRAIT.header).getCellEditor();
+            model = (TableButton_Model) this.listTable.getColumn(DesignColumns.ADD_TRAIT.header).getCellEditor();
         }
         catch(Exception e)
         {
@@ -192,7 +192,7 @@ public class Table_View {
         TableColumn column = null;
 
         try {
-            column = this.listTable.getColumn(Columns.ADD_TRAIT.header);
+            column = this.listTable.getColumn(DesignColumns.ADD_TRAIT.header);
         }
         catch(IllegalArgumentException e)
         {
@@ -211,7 +211,7 @@ public class Table_View {
         TableButton_Model model = null;
 
         try {
-            model = (TableButton_Model) this.listTable.getColumn(Columns.EDIT_TRAIT.header).getCellEditor();
+            model = (TableButton_Model) this.listTable.getColumn(DesignColumns.EDIT_TRAIT.header).getCellEditor();
         }
         catch(Exception e)
         {
@@ -229,7 +229,7 @@ public class Table_View {
         TableColumn column = null;
 
         try {
-            column = this.listTable.getColumn(Columns.EDIT_TRAIT.header);
+            column = this.listTable.getColumn(DesignColumns.EDIT_TRAIT.header);
         }
         catch(IllegalArgumentException e)
         {

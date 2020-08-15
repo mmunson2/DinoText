@@ -1,8 +1,6 @@
 package DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay;
 
 import Dino.List.Trait;
-import DinoText_GUI.Util.DinoList;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Model;
 import DinoText_GUI.Util.TraitModel;
 
 import javax.swing.*;

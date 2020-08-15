@@ -1,4 +1,6 @@
-package DinoText_GUI.TABLE_MODULE.Table_Model;
+package DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs;
+
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
 
 import java.util.ArrayList;
 
@@ -17,7 +19,7 @@ public class Table_Probabilities
      **************************************************************************/
     public Table_Probabilities()
     {
-        for(int i = 0; i < Table_Model.DEFAULT_ROWS; i++)
+        for(int i = 0; i < Table_Manager.DEFAULT_ROWS; i++)
         {
             weights.add(i,0.0);
         }

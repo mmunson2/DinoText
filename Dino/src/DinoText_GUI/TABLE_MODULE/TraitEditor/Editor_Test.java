@@ -1,6 +1,6 @@
 package DinoText_GUI.TABLE_MODULE.TraitEditor;
 
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Probabilities;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Probabilities;
 
 import javax.swing.*;
 

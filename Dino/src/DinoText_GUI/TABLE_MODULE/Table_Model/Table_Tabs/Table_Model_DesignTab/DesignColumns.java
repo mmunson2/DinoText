@@ -1,12 +1,12 @@
-package DinoText_GUI.TABLE_MODULE.Table_Model;
+package DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab;
 
 /*******************************************************************************
  * Columns Enum
  *
  ******************************************************************************/
-public enum Columns
+public enum DesignColumns
 {
-    LIST_ENTRY("List Entry"),
+    ENTRY_NAME("Entry Name"),
     PROBABILITY_WEIGHT("Probability Weight"),
     PROBABILITY("Probability"),
     ADD_TRAIT("Add Traits"),
@@ -14,7 +14,7 @@ public enum Columns
     TRAIT("Traits");
 
     public String header;
-    Columns(String name)
+    DesignColumns(String name)
     {
         this.header = name;
     }

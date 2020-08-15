@@ -1,10 +1,9 @@
 package DinoText_GUI.TABLE_MODULE.TraitEditor;
 
 import Dino.List.Trait;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Probabilities;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Probabilities;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Controller;
 
-import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;

@@ -1,6 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.Table_View;
 
-import DinoText_GUI.TABLE_MODULE.Table_Model.Columns;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Model;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignColumns;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay.Table_TraitDisplay;
 
 import javax.swing.*;
@@ -117,7 +118,7 @@ public class Table_TabbedPane extends JFrame{
      **************************************************************************/
     public void setButtonColumn(int columnIndex)
     {
-        this.activeTable.getJTable().getColumn(Columns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
+        this.activeTable.getJTable().getColumn(DesignColumns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
     }
 
     public void addTabSwitchListener(ChangeListener l)
@@ -144,8 +145,9 @@ public class Table_TabbedPane extends JFrame{
      * PASS THROUGH METHODS
      **************************************************************************/
 
-    public void setTableModel(TableModel tableModel) {
-        activeTable.setTableModel(tableModel);
+    public void setTableModel(Table_Model tableModel) {
+
+        activeTable.setTableModel(tableModel.getEntryTab_model());
     }
 
     public void setEntryCount(int count) {

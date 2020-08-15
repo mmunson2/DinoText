@@ -7,7 +7,8 @@ import Dino.ListParser;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Model;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Probabilities;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignTab_Model;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Probabilities;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Model;
 import DinoText_GUI.TABLE_MODULE.Table_View.Table_TabbedPane;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_View;
@@ -24,7 +25,6 @@ import javax.swing.event.TableModelListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Random;
 
 /*******************************************************************************
  * Table Controller
@@ -113,8 +113,8 @@ public class Table_Controller {
 
             this.manager.addModel(name);
             this.view.addList(name);
-            this.view.setTableModel(this.manager.getCurrentModel());
-            view.setEntryCount(manager.getCurrentModel().getRowCount());
+            this.view.setTableModel(this.manager.getActiveModel());
+            view.setEntryCount(manager.getActiveModel().getEntryCount());
             this.view.initializeAddTraitButtonColumn();
             this.view.initializeEditTraitButtonColumn();
 
@@ -138,17 +138,17 @@ public class Table_Controller {
 
     public void addEntry(String entry) {
         if(this.manager.hasActiveModel())
-            this.manager.getCurrentModel().addEntry(entry, 1.0);
+            this.manager.getActiveModel().addEntry(entry, 1.0);
     }
 
     public void addEntry(String entry, double weight) {
         if(this.manager.hasActiveModel())
-            this.manager.getCurrentModel().addEntry(entry, weight);
+            this.manager.getActiveModel().addEntry(entry, weight);
     }
 
     public void addEntry(ListEntry listEntry) {
         if(this.manager.hasActiveModel())
-            this.manager.getCurrentModel().addEntry(listEntry);
+            this.manager.getActiveModel().addEntry(listEntry);
     }
 
     /***************************************************************************
@@ -157,7 +157,7 @@ public class Table_Controller {
      **************************************************************************/
     public void renameList(String newName) {
         if(this.manager.hasActiveModel())
-            this.manager.getCurrentModel().setName(newName);
+            this.manager.getActiveModel().setName(newName);
         if(this.view.hasActiveTable())
             this.view.setListName(newName);
     }
@@ -235,7 +235,7 @@ public class Table_Controller {
      **************************************************************************/
     public void writeCurrentToFile() {
         if(this.manager.hasActiveModel())
-            this.manager.getCurrentModel().writeToFile();
+            this.manager.getActiveModel().writeToFile();
     }
 
     /***************************************************************************
@@ -312,8 +312,8 @@ public class Table_Controller {
             assert(view.hasActiveTable());
             assert(manager.hasActiveModel());
 
-            manager.getCurrentModel().addRow();
-            view.setEntryCount(manager.getCurrentModel().getRowCount());
+            manager.getActiveModel().addRow();
+            view.setEntryCount(manager.getActiveModel().getEntryCount());
         }
     }
 
@@ -340,7 +340,7 @@ public class Table_Controller {
         public void actionPerformed(ActionEvent e) {
             assert(view.hasActiveTable());
 
-            renameList(view.getListName(), manager.getCurrentModel().getName());
+            renameList(view.getListName(), manager.getActiveModel().getName());
             renameList(view.getListName());
         }
     }
@@ -361,7 +361,7 @@ public class Table_Controller {
 
             int row = view.getSelectedRow();
             Table_Probabilities probabilities =
-                    manager.getCurrentModel().getProbabilities();
+                    manager.getActiveModel().getProbabilities();
 
             Creator_View traitView = new Creator_View();
 
@@ -377,7 +377,7 @@ public class Table_Controller {
             if (result == JOptionPane.OK_OPTION) {
                 traitController.finalizeTrait();
                 Trait newTrait = traitModel.getTrait();
-                manager.getCurrentModel().addTrait(row, newTrait);
+                manager.getActiveModel().addTrait(row, newTrait);
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
             } else {
                 //Cancelled Trait
@@ -393,9 +393,9 @@ public class Table_Controller {
         {
             int row = view.getSelectedRow();
             Table_Probabilities probabilities =
-                    manager.getCurrentModel().getProbabilities();
+                    manager.getActiveModel().getProbabilities();
 
-            Trait[] traits = manager.getCurrentModel().getTraitArray(row);
+            Trait[] traits = manager.getActiveModel().getTraitArray(row);
 
             Editor_View editorView = new Editor_View();
 
@@ -420,7 +420,7 @@ public class Table_Controller {
             {
                 Trait[] newTraits = editorController.getTraits();
 
-                manager.getCurrentModel().setTraits(row, newTraits);
+                manager.getActiveModel().setTraits(row, newTraits);
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
             }
             else
@@ -454,7 +454,7 @@ public class Table_Controller {
 
         this.view.addDebugListener(debugListener);
 
-        Table_Model model = manager.getCurrentModel();
+        Table_Model model = manager.getActiveModel();
         model.addTableModelListener(tableModelListener);
     }
 
@@ -471,7 +471,7 @@ public class Table_Controller {
         this.view.removeListNameListener(listNameListener);
 
         this.view.removeDebugListener(debugListener);
-        Table_Model model = manager.getCurrentModel();
+        Table_Model model = manager.getActiveModel();
         model.removeTableModelListener(tableModelListener);
     }
 

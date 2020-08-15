@@ -1,13 +1,11 @@
 package DinoText_GUI.TABLE_MODULE.TraitEditor;
 
 import Dino.List.Trait;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Probabilities;
-import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Controller;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Probabilities;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Model;
 import DinoText_GUI.Util.TraitModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Editor_Model
 {

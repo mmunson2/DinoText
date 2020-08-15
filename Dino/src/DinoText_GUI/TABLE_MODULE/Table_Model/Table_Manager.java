@@ -1,5 +1,9 @@
 package DinoText_GUI.TABLE_MODULE.Table_Model;
 
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Data;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignTab_Model;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_EntryTab.EntryTab_Model;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -9,8 +13,9 @@ import java.util.ArrayList;
  ******************************************************************************/
 public class Table_Manager
 {
-    private ArrayList<Table_Model> lists = new ArrayList<>();
-    private Table_Model currentModel;
+    public static final int DEFAULT_ROWS = 4;
+    private ArrayList<Table_Model> models = new ArrayList<>();
+    private Table_Model activeModel;
 
     /***************************************************************************
      * Constructor
@@ -18,21 +23,21 @@ public class Table_Manager
      **************************************************************************/
     public Table_Manager()
     {
-        this.currentModel = null;
+        this.activeModel = null;
     }
 
     public boolean hasActiveModel()
     {
-        return this.currentModel != null;
+        return this.activeModel != null;
     }
 
     /***************************************************************************
      * getCurrentModel
      *
      **************************************************************************/
-    public Table_Model getCurrentModel()
+    public Table_Model getActiveModel()
     {
-        return this.currentModel;
+        return this.activeModel;
     }
 
     /***************************************************************************
@@ -41,9 +46,12 @@ public class Table_Manager
      **************************************************************************/
     public void addModel(String name)
     {
-        this.currentModel = new Table_Model();
-        this.currentModel.setName(name);
-        lists.add(currentModel);
+        Table_Data model = new Table_Data();
+        EntryTab_Model entryTab_model = new EntryTab_Model(model);
+
+        this.activeModel = new Table_Model();
+        this.activeModel.setName(name);
+        models.add(activeModel);
     }
 
     /***************************************************************************
@@ -52,10 +60,10 @@ public class Table_Manager
      **************************************************************************/
     public void switchModel(int modelIndex)
     {
-        assert(modelIndex >= 0 && modelIndex < lists.size());
+        assert(modelIndex >= 0 && modelIndex < models.size());
 
-        this.currentModel = lists.get(modelIndex);
-        this.currentModel.fireTableDataChanged();
+        this.activeModel = models.get(modelIndex);
+        this.activeModel.fireTableDataChanged();
     }
 
     /***************************************************************************
@@ -64,9 +72,9 @@ public class Table_Manager
      **************************************************************************/
     public void writeToFile()
     {
-        for(Table_Model list : this.lists)
+        for(Table_Model model : this.models)
         {
-            list.writeToFile();
+            model.writeToFile();
         }
     }
 
@@ -76,9 +84,9 @@ public class Table_Manager
      **************************************************************************/
     public void writeToFile(File directory)
     {
-        for(Table_Model list : this.lists)
+        for(Table_Model model : this.models)
         {
-            list.writeToFile(directory);
+            model.writeToFile(directory);
         }
     }
 
@@ -92,7 +100,7 @@ public class Table_Manager
 
         if(index != -1)
         {
-            Table_Model model = this.lists.get(index);
+            Table_Model model = this.models.get(index);
             model.writeToFile();
         }
 
@@ -104,7 +112,7 @@ public class Table_Manager
      **************************************************************************/
     public int getCurrentListIndex()
     {
-        return this.lists.indexOf(currentModel);
+        return this.models.indexOf(activeModel);
     }
 
     /***************************************************************************
@@ -113,11 +121,11 @@ public class Table_Manager
      **************************************************************************/
     public String[] getListNames()
     {
-        String[] retVal = new String[this.lists.size()];
+        String[] retVal = new String[this.models.size()];
 
-        for(int i = 0; i < this.lists.size(); i++)
+        for(int i = 0; i < this.models.size(); i++)
         {
-            retVal[i] = this.lists.get(i).getName();
+            retVal[i] = this.models.get(i).getName();
         }
 
         return retVal;
@@ -129,9 +137,9 @@ public class Table_Manager
      **************************************************************************/
     public int getListIndexFromName(String name)
     {
-        for(int i = 0; i < lists.size(); i++)
+        for(int i = 0; i < models.size(); i++)
         {
-            if(name.equals(lists.get(i).getName()))
+            if(name.equals(models.get(i).getName()))
             {
                 return i;
             }
@@ -146,7 +154,7 @@ public class Table_Manager
      **************************************************************************/
     public boolean hasList(String name)
     {
-        for(Table_Model model : lists)
+        for(Table_Model model : models)
         {
             if(model.getName().equals(name))
                 return true;
@@ -162,9 +170,7 @@ public class Table_Manager
      **************************************************************************/
     public int getSize()
     {
-        return this.lists.size();
+        return this.models.size();
     }
-
-
 
 }
