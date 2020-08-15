@@ -1,0 +1,15 @@
+# Generated: 2020/08/15 12:59:37
+Name: Information
+Size: 4
+1: Wary 1
+The people of this town are wary of strangers, watch your step!
+0.0 friendship:0.0:40.0:1.0 
+2: Wary 2
+The town hall is to the West. You might want to go have a chat with the Sheriff so she knows who you are.
+0.0 friendship:0.0:40.0:1.0 
+3: Friendly 1
+Have you been to the Riverside Inn yet? Their brew is to die for!
+0.0 friendship:40.0:100.0:1.0 
+4: Friendly 2
+I could sure go for a brew right now...
+0.0 friendship:40.0:100.0:1.0 

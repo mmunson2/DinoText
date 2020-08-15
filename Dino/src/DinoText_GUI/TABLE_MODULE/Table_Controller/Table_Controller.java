@@ -131,8 +131,19 @@ public class Table_Controller {
         }
     }
 
+    public void setList(String name, List list)
+    {
+
+
+    }
+
     public String[] getListNames() {
         return this.manager.getListNames();
+    }
+
+    public String getCurrentListName()
+    {
+        return this.manager.getActiveModel().getName();
     }
 
     public void addEntry(String entry) {
@@ -282,7 +293,9 @@ public class Table_Controller {
         String name = parser.getName();
 
         if (manager.hasList(name)) {
-            //Todo: Make this overwrite the existing list
+
+            //Todo Here
+
             return;
         }
 

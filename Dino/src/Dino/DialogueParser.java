@@ -457,6 +457,9 @@ public class DialogueParser
 
             File listPath = new File(absolutePath);
 
+            //This is a band aid fix that removes some functionality
+            listPath = new File((this.parentDirectory + File.separator + listPath.getName()));
+
             ListParser parser = new ListParser(listPath);
 
             lists[i] = new List(parser);

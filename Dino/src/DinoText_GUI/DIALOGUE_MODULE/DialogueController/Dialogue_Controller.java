@@ -176,7 +176,14 @@ public class Dialogue_Controller {
     }
 
     //TODO: This is the method that will be called when the "Save phrase list" button is pressed
-    private void savePhraseList() {
+    private void savePhraseList()
+    {
+        this.table_controller.writeCurrentToFile();
+
+        String fileName = this.table_controller.getCurrentListName()
+                + FileTypes.LIST_EXTENSION;
+
+        JOptionPane.showMessageDialog(null, "Saved: " + fileName);
     }
 
     /***************************************************************************
@@ -218,25 +225,25 @@ public class Dialogue_Controller {
                 newDialogue();
                 DialogueParser parser = new DialogueParser(file.getAbsolutePath());
 
-                //Todo: Take this dialogue String and put it into the view
                 parseUnformattedDialogue(parser.getUnformattedDialogue());
                 dinoGUIView.insertAllArrows();
 
                 List[] lists = parser.getListArray();
-                //Todo: Take these list names and put it wherever you keep them
+
                 for (List list : lists) {
                     dinoGUIModel.getListNames().add(list.getName());
                 }
                 String[] listNames = new String[lists.length];
-
 
                 for (int i = 0; i < lists.length; i++) {
                     listNames[i] = lists[i].getName();
                 }
 
                 for (int i = 0; i < listNames.length; i++) {
-                    String listFileName = listNames[i] +
-                            FileTypes.LIST_EXTENSION;
+                    File parentFile = file.getParentFile();
+
+                    String listFileName = parentFile.toString() +
+                    File.separator + listNames[i] + FileTypes.LIST_EXTENSION;
 
                     table_controller.openFile(listFileName);
                 }
