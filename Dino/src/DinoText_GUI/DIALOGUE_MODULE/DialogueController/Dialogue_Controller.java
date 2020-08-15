@@ -34,7 +34,7 @@ public class Dialogue_Controller {
     private Dialogue_View dinoGUIView;
     private Text_Display_Controller textDisplayController;
     private Table_Controller table_controller;
-    
+
     private static DinoConfig config;
 
 
@@ -710,10 +710,6 @@ public class Dialogue_Controller {
     }
 
     private String formatDialogue() {
-        String dialogue = "";
-        if (dinoGUIView.getText_jTextPane_dialogueInput() != null) {
-            dialogue = dinoGUIView.getText_jTextPane_dialogueInput();
-        }
         String[] activeButtons = new String[dinoGUIView.getActiveListButtons().size()];
 
         int i = 0;
@@ -725,6 +721,12 @@ public class Dialogue_Controller {
             }
             i++;
         }
+
+        if (dinoGUIView.getText_jTextPane_dialogueInput().trim().length() == 0) {
+            if (activeButtons.length == 1) return activeButtons[0] + " ";
+        }
+        String dialogue = dinoGUIView.getText_jTextPane_dialogueInput();
+
         i = 0;
 
         while (i < activeButtons.length) {
@@ -856,64 +858,4 @@ public class Dialogue_Controller {
             DinoDictionary.openSettings();
         }
     }
-
-//    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
-//        @Override
-//        public void keyTyped(KeyEvent e) {
-//        }
-//
-//
-//        @Override
-//        public void keyPressed(KeyEvent e) {
-//            if (e.getKeyCode() == 8) {
-//                boolean space = false;
-//                boolean first = false;
-//
-//
-//                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
-//
-//                if (pane.getText().length() >= 0) {
-//                    if (pane.getCaretPosition() == 0) {
-//                        newDialogue();
-//                        return;
-//                    }
-//
-//                    try {
-//                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
-//                            pane.setCaretPosition(pane.getCaretPosition() - 2);
-//                            space = true;
-//                            first = true;
-//                        }
-//                    } catch (BadLocationException ex) {
-//                        ex.printStackTrace();
-//                    }
-//
-//                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
-//                        if (first) {
-//                            pane.setCaretPosition(pane.getCaretPosition() + 1);
-//                            first = false;
-//                        }
-//
-//
-//                        try {
-//                            pane.getDocument().remove(pane.getCaretPosition(), 1);
-//                        } catch (BadLocationException ex) {
-//                        }
-//
-//                        pane.setCaretPosition(pane.getCaretPosition() - 1);
-//                    }
-//
-//                    if (space)
-//                        pane.setCaretPosition(pane.getCaretPosition() + 1);
-//
-//
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void keyReleased(KeyEvent e) {
-//        }
-//
-//    }
 }
