@@ -56,12 +56,14 @@ public class ListParser
 
         for(int i = 0; i < list.length; i++)
         {
-            String listEntry = Parser.getNextLine(fileScanner);
+            String entryName = Parser.getNextLine(fileScanner);
 
-            stringScan = new Scanner(listEntry);
+            stringScan = new Scanner(entryName);
             String entryNumber = stringScan.next(); //Ignore the entry number
-            String entryName = stringScan.nextLine();
+            entryName = stringScan.nextLine();
             entryName = entryName.substring(1);
+
+            String entry = fileScanner.nextLine();
 
             String dataEntry = Parser.getNextLine(fileScanner);
 
@@ -102,7 +104,8 @@ public class ListParser
             }
 
 
-            list[i] = new ListEntry(entryName, baseProbability, traits);
+            list[i] = new ListEntry(entry, baseProbability, traits);
+            list[i].setEntryName(entryName);
         }
 
         this.setTraitNames();

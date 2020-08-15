@@ -145,8 +145,8 @@ public class DesignTab_Model extends AbstractTableModel
         switch(column)
         {
             case ENTRY_NAME:
-                String entry = (String) aValue;
-                this.model.getList().setEntryName(rowIndex, entry);
+                String entryName = (String) aValue;
+                this.model.setEntryName(nextEmpty, rowIndex, entryName);
                 break;
 
             case PROBABILITY_WEIGHT:

@@ -29,7 +29,7 @@ public class Table_Data
         {
             this.emptyRows.add(true);
             this.list.add("");
-            this.list.addEntryName("");
+            this.list.setEntryName(i, "");
             this.list.setProbability(i, 0);
         }
 
@@ -121,19 +121,19 @@ public class Table_Data
 
     public void addEntry(int nextEmpty, String entry, double weight)
     {
-        this.addEntry(nextEmpty, entry, weight, null);
+        this.addEntry(nextEmpty, "", entry, weight, null);
     }
 
     public void addEntry(int nextEmpty, ListEntry listEntry)
     {
-        this.addEntry(nextEmpty, listEntry.getListEntry(), listEntry.getBaseProbability(), listEntry.getTraits());
+        this.addEntry(nextEmpty, listEntry.getEntryName(), listEntry.getListEntry(), listEntry.getBaseProbability(), listEntry.getTraits());
     }
 
     /***************************************************************************
      * addEntry
      *
      **************************************************************************/
-    public void addEntry(int nextEmpty, String entry, double weight, Trait[] traits)
+    public void addEntry(int nextEmpty, String entryName, String entry, double weight, Trait[] traits)
     {
         int rowIndex = nextEmpty;
 
@@ -144,6 +144,7 @@ public class Table_Data
         }
 
         //Add to existing entry
+        this.list.setEntryName(rowIndex, entryName);
         this.list.setEntry(rowIndex, entry);
         this.list.setProbability(rowIndex, weight);
 
@@ -185,6 +186,20 @@ public class Table_Data
         }
     }
 
+    public void setEntryName(int nextEmpty, int rowIndex, String newName)
+    {
+        if(!this.isEmpty(rowIndex)) //If the row wasn't blank, don't add a newline
+        {
+            this.list.setEntryName(rowIndex, newName);
+        }
+        else //If the row is blank and currentWeight 0, set the weight to 1
+        {
+            this.addEntry(nextEmpty, "", 1.0);
+            this.list.setEntryName(nextEmpty, newName);
+        }
+    }
+
+
     /***************************************************************************
      * setListEntry
      *
@@ -199,26 +214,17 @@ public class Table_Data
      * 6) Set the probability of a row first, then set its entry
      *
      **************************************************************************/
-    public void setListEntry(int nextEmpty, int rowIndex, double currentWeight, String currentEntry, String newEntry)
+    public void setEntry(int nextEmpty, int rowIndex, String newEntry)
     {
-        if(newEntry.equals("")) //Setting a row to blank also unsets probability
-        {
-            this.list.setEntry(rowIndex, newEntry);
-            this.list.setProbability(rowIndex, 0);
-            //Todo: update the table so it stays ordered
-        }
-        else if(!currentEntry.equals("")) //If the row wasn't blank, don't add a newline
+
+        if(!isEmpty(rowIndex)) //If the row wasn't blank, don't add a newline
         {
             this.list.setEntry(rowIndex, newEntry);
         }
-        else if(currentWeight == 0) //If the row is blank and currentWeight 0, set the weight to 1
+        else //If the row is blank and currentWeight 0, set the weight to 1
         {
             this.addEntry(nextEmpty, newEntry, 1.0);
             //Todo: Only do this if there aren't any traits
-        }
-        else //If the probability was already set, don't mess with it
-        {
-            this.list.setEntry(rowIndex, newEntry);
         }
     }
 

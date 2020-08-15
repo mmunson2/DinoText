@@ -83,16 +83,18 @@ public class EntryTab_Model extends AbstractTableModel
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         EntryColumns column = EntryColumns.values()[columnIndex];
 
+        int nextEmpty = this.nextEmptyRow();
+
         switch(column)
         {
             case ENTRY_NAME:
                 String entryName = (String) aValue;
-                this.model.getList().setEntryName(rowIndex, entryName);
+                this.model.setEntryName(nextEmpty, rowIndex, entryName);
                 break;
 
             case ENTRY:
                 String entry = (String) aValue;
-                this.model.getList().setEntry(rowIndex, entry);
+                this.model.setEntry(nextEmpty, rowIndex, entry);
                 break;
         }
     }
@@ -116,5 +118,27 @@ public class EntryTab_Model extends AbstractTableModel
     public void removeTableModelListener(TableModelListener l) {
         super.removeTableModelListener(l);
     }
-    
+
+    /***************************************************************************
+     * nextEmptyRow
+     *
+     *
+     * Returns -1 if there's no empty rows
+     **************************************************************************/
+    private int nextEmptyRow()
+    {
+        for(int i = 0; i < this.model.getEntryCount(); i++)
+        {
+            String entryName = (String) this.getValueAt(i, EntryColumns.ENTRY_NAME.ordinal());
+
+            String entry = (String) this.getValueAt(i,
+                    EntryColumns.ENTRY.ordinal());
+
+            if(entry.equals("") && entryName.equals(""))
+                return i;
+        }
+
+        return -1;
+    }
+
 }

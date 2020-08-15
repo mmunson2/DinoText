@@ -10,6 +10,7 @@ package Dino.List;
  ******************************************************************************/
 public class ListEntry
 {
+    private String entryName;
     private String listEntry;
     private double baseProbability;
     private int[] traitMap;
@@ -81,6 +82,13 @@ public class ListEntry
             }
         }
     }
+
+
+    public void setEntryName(String entryName)
+    {
+        this.entryName = entryName;
+    }
+
 
     /***************************************************************************
      * setListEntry
@@ -203,6 +211,13 @@ public class ListEntry
         return this.listEntry;
     }
 
+
+    public String getEntryName()
+    {
+        return this.entryName;
+    }
+
+
     public Trait[] getTraits()
     {
         if(this.traits == null)
@@ -251,6 +266,8 @@ public class ListEntry
     {
         StringBuilder builder = new StringBuilder();
 
+        builder.append(this.entryName);
+        builder.append("\n");
         builder.append(this.listEntry);
         builder.append("\n");
         builder.append(baseProbability);

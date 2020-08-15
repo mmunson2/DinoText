@@ -141,7 +141,7 @@ public class Table_Model
     public void addEntry(String entry, double weight, Trait[] traits)
     {
         int nextEmpty = this.nextEmptyRow();
-        this.data.addEntry(nextEmpty, entry, weight, traits);
+        this.data.addEntry(nextEmpty, "", entry, weight, traits);
 
         this.fireTableDataChanged();
     }
