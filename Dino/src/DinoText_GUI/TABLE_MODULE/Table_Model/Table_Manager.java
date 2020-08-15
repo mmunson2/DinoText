@@ -26,13 +26,17 @@ public class Table_Manager
         this.activeModel = null;
     }
 
+    /***************************************************************************
+     * Has Active Model
+     *
+     **************************************************************************/
     public boolean hasActiveModel()
     {
         return this.activeModel != null;
     }
 
     /***************************************************************************
-     * getCurrentModel
+     * Get Active Model
      *
      **************************************************************************/
     public Table_Model getActiveModel()
@@ -41,7 +45,7 @@ public class Table_Manager
     }
 
     /***************************************************************************
-     * addModel
+     * Add Model
      *
      **************************************************************************/
     public void addModel(String name)
@@ -55,7 +59,7 @@ public class Table_Manager
     }
 
     /***************************************************************************
-     * switchModel
+     * Switch Model
      *
      **************************************************************************/
     public void switchModel(int modelIndex)
@@ -149,7 +153,7 @@ public class Table_Manager
     }
 
     /***************************************************************************
-     * has List
+     * Has List
      *
      **************************************************************************/
     public boolean hasList(String name)

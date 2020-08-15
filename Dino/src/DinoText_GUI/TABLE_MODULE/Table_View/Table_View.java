@@ -42,6 +42,8 @@ public class Table_View {
         this.listTable.setRowSelectionAllowed(false);
         this.listTable.setDragEnabled(false);
         this.listTable.getTableHeader().setReorderingAllowed(false);
+
+        this.debugButton.setVisible(false);
     }
 
     /***************************************************************************

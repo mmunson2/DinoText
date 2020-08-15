@@ -1,7 +1,23 @@
 package DinoText_GUI.TABLE_MODULE.Table_Controller;
 
+/*******************************************************************************
+ * -----------------------------------------------------------------------------
+ * ████████  █████  ██████  ██      ███████ 
+ *    ██    ██   ██ ██   ██ ██      ██      
+ *    ██    ███████ ██████  ██      █████ 
+ *    ██    ██   ██ ██   ██ ██      ██    
+ *    ██    ██   ██ ██████  ███████ ███████ 
+ *
+ *
+ *  ██████  ██████  ███    ██ ████████ ██████   ██████  ██ 
+ * ██      ██    ██ ████   ██    ██    ██   ██ ██    ██ ██ 
+ * ██      ██    ██ ██ ██  ██    ██    ██████  ██    ██ ██ 
+ * ██      ██    ██ ██  ██ ██    ██    ██   ██ ██    ██ ██ 
+ *  ██████  ██████  ██   ████    ██    ██   ██  ██████  ███████
+ *------------------------------------------------------------------------------
+ ******************************************************************************/
+
 import Dino.FileTypes;
-import Dino.List.List;
 import Dino.List.ListEntry;
 import Dino.List.Trait;
 import Dino.ListParser;
@@ -28,36 +44,30 @@ import java.io.File;
 
 /*******************************************************************************
  * Table Controller
- *
  ******************************************************************************/
 public class Table_Controller {
-    private Table_Manager manager;
-    private int listNumber;
-    private Table_TabbedPane view;
+    private final Table_Manager manager;
+    private final Table_TabbedPane view;
 
-    //Listeners
-    private listener_increment incrementListener;
-    private listener_listName listNameListener;
-    private listener_tableModel tableModelListener;
-    private listener_tabSwitch tabSwitchListener;
-    private listener_addTraitButton traitButtonListener;
-    private listener_editTraitButton editTraitButtonListener;
-    private listener_firstListButton firstListButtonListener;
+    private final listener_increment incrementListener;
+    private final listener_listName listNameListener;
+    private final listener_tableModel tableModelListener;
+    private final listener_tabSwitch tabSwitchListener;
+    private final listener_addTraitButton traitButtonListener;
+    private final listener_editTraitButton editTraitButtonListener;
+    private final listener_firstListButton firstListButtonListener;
 
-    private listener_debug debugListener;
-
+    private final listener_debug debugListener;
 
     private Dialogue_Controller dialogue_controller;
 
 
     /***************************************************************************
      * Constructor
-     *
-     * Test
      **************************************************************************/
-    public Table_Controller(Table_Manager manager, Table_TabbedPane view) {
+    public Table_Controller(Table_Manager manager, Table_TabbedPane view)
+    {
         this.manager = manager;
-        this.listNumber = 0;
         this.view = view;
 
         this.incrementListener = new listener_increment();
@@ -72,36 +82,17 @@ public class Table_Controller {
 
         this.view.addTabSwitchListener(tabSwitchListener);
         this.view.addNoListButtonListener(this.firstListButtonListener);
-
-        //this.view.initializeAddTraitButtonColumn();
-        //this.view.addTraitButtonListener(traitButtonListener);
-
-       //this.view.setTableModel(model);
-        //this.view.setButtonColumn(0);
-    }
-
-    public void setDialogue_controller(Dialogue_Controller controller) {
-        this.dialogue_controller = controller;
-    }
-
-
-    /***************************************************************************
-     * addList - String overload
-     *
-     **************************************************************************/
-    public void addList(String name) {
-        addList(name, null);
     }
 
     /***************************************************************************
-     * addList - String and entries overload
+     * New List
      **************************************************************************/
-    public void addList(String name, String[] entries) {
+    public void newList(String name)
+    {
 
         //Check if the list already exists
         if (this.manager.hasActiveModel() && this.manager.hasList(name)) {
-
-            switchToName(name);
+            this.switchToName(name);
         }
         else //Otherwise make a whole new list
         {
@@ -124,42 +115,19 @@ public class Table_Controller {
             this.view.addTraitButtonListener(traitButtonListener);
             this.view.addEditTraitButtonListener(editTraitButtonListener);
         }
-
-        //If there are entries, add them
-        if (entries != null) {
-            for (int i = 0; i < entries.length; i++) {
-                this.addEntry(entries[i]);
-            }
-        }
     }
 
-
-    public String[] getListNames() {
-        return this.manager.getListNames();
-    }
-
-    public String getCurrentListName()
+    /***************************************************************************
+     * Add Entry
+     **************************************************************************/
+    public void addEntry(ListEntry listEntry)
     {
-        return this.manager.getActiveModel().getName();
-    }
-
-    public void addEntry(String entry) {
-        if(this.manager.hasActiveModel())
-            this.manager.getActiveModel().addEntry(entry, 1.0);
-    }
-
-    public void addEntry(String entry, double weight) {
-        if(this.manager.hasActiveModel())
-            this.manager.getActiveModel().addEntry(entry, weight);
-    }
-
-    public void addEntry(ListEntry listEntry) {
         if(this.manager.hasActiveModel())
             this.manager.getActiveModel().addEntry(listEntry);
     }
 
     /***************************************************************************
-     * rename List
+     * Rename List
      *
      **************************************************************************/
     public void renameList(String newName) {
@@ -170,7 +138,7 @@ public class Table_Controller {
     }
 
     /***************************************************************************
-     * rename List - listIndex overload
+     * Rename List - listIndex overload
      *
      **************************************************************************/
     public void renameList(String newName, int listIndex) {
@@ -181,7 +149,7 @@ public class Table_Controller {
     }
 
     /***************************************************************************
-     * rename List - String, String overload
+     * Rename List - String, String overload
      *
      **************************************************************************/
     public void renameList(String newName, String oldName) {
@@ -195,7 +163,7 @@ public class Table_Controller {
 
 
     /***************************************************************************
-     * switchToIndex
+     * Change List
      *
      **************************************************************************/
     public void changeList(int index) {
@@ -210,6 +178,10 @@ public class Table_Controller {
         addListeners();
     }
 
+    /***************************************************************************
+     * Change Tab
+     *
+     **************************************************************************/
     public void changeTab(int index)
     {
         if(index < 0)
@@ -219,7 +191,7 @@ public class Table_Controller {
     }
 
     /***************************************************************************
-     * switchToName
+     * Switch To Name
      *
      **************************************************************************/
     public void switchToName(String listName) {
@@ -229,23 +201,17 @@ public class Table_Controller {
             changeList(index);
     }
 
-
     /***************************************************************************
-     * writeAllToFile
+     * Write All To File
      *
      **************************************************************************/
-    public void writeAllToFile() {
-        this.manager.writeToFile();
-    }
-
     public void writeAllToFile(File directory)
     {
         this.manager.writeToFile(directory);
     }
 
-
     /***************************************************************************
-     * writeCurrentToFile
+     * Write Current To File
      *
      **************************************************************************/
     public void writeCurrentToFile() {
@@ -254,32 +220,32 @@ public class Table_Controller {
     }
 
     /***************************************************************************
-     * writeToFile
-     *
-     **************************************************************************/
-    public void writeToFile(String name) {
-        this.manager.writeToFile(name);
-    }
-
-    /***************************************************************************
-     * openFile
+     * Open File
      *
      **************************************************************************/
     public void openFile(String fileName) {
         openFile(fileName, null);
     }
 
+    /***************************************************************************
+     * Open File
+     *
+     **************************************************************************/
     public void openFile(File file) {
         openFile(file.getName(), file);
     }
 
+    /***************************************************************************
+     * Open File
+     *
+     **************************************************************************/
     public void openFile(String fileName, File file) {
         if (!FileTypes.hasListExtension(fileName)) {
             JOptionPane.showMessageDialog(null, "Could not open " + fileName);
 
             return;
         }
-        ListParser parser = null;
+        ListParser parser;
 
         if (file == null) {
             parser = new ListParser(new File(fileName));
@@ -289,7 +255,7 @@ public class Table_Controller {
 
         String name = parser.getName();
 
-        this.addList(parser.getName());
+        this.newList(name);
 
         ListEntry[] entries = parser.getList();
 
@@ -298,6 +264,15 @@ public class Table_Controller {
         }
     }
 
+    /***************************************************************************
+     * -------------------------------------------------------------------------
+     * ██      ██ ███████ ████████ ███████ ███    ██ ███████ ██████  ███████ 
+     * ██      ██ ██         ██    ██      ████   ██ ██      ██   ██ ██      
+     * ██      ██ ███████    ██    █████   ██ ██  ██ █████   ██████  ███████ 
+     * ██      ██      ██    ██    ██      ██  ██ ██ ██      ██   ██      ██ 
+     * ███████ ██ ███████    ██    ███████ ██   ████ ███████ ██   ██ ███████ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
 
     /***************************************************************************
      * Inner Class: Tab Switch Listener
@@ -356,14 +331,22 @@ public class Table_Controller {
         }
     }
 
+    /***************************************************************************
+     * Inner Class: Debug Button Listener
+     *
+     **************************************************************************/
     class listener_debug implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            addList("New List");
+            newList("New List");
         }
     }
 
+    /***************************************************************************
+     * Inner Class: Add Trait Button Listener
+     *
+     **************************************************************************/
     class listener_addTraitButton implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -390,15 +373,16 @@ public class Table_Controller {
                 Trait newTrait = traitModel.getTrait();
                 manager.getActiveModel().addTrait(row, newTrait);
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
-            } else {
-                //Cancelled Trait
             }
         }
     }
 
+    /***************************************************************************
+     * Inner Class: Edit Trait Button Listener
+     *
+     **************************************************************************/
     class listener_editTraitButton implements ActionListener
     {
-
         @Override
         public void actionPerformed(ActionEvent e)
         {
@@ -434,13 +418,13 @@ public class Table_Controller {
                 manager.getActiveModel().setTraits(row, newTraits);
                 SwingUtilities.getWindowAncestor((JButton) e.getSource()).repaint();
             }
-            else
-            {
-                //cancelled edits
-            }
         }
     }
 
+    /***************************************************************************
+     * Inner Class: Create List Button - Shown on the "No Lists" Tab
+     *
+     **************************************************************************/
     class listener_firstListButton implements ActionListener
     {
         @Override
@@ -484,6 +468,28 @@ public class Table_Controller {
         this.view.removeDebugListener(debugListener);
         Table_Model model = manager.getActiveModel();
         model.removeTableModelListener(tableModelListener);
+    }
+
+    /***************************************************************************
+     *--------------------------------------------------------------------------
+     *  ██████  ███████ ████████         ██     ███████ ███████ ████████ 
+     * ██       ██         ██           ██      ██      ██         ██    
+     * ██   ███ █████      ██          ██       ███████ █████      ██ 
+     * ██    ██ ██         ██         ██             ██ ██         ██ 
+     *  ██████  ███████    ██        ██         ███████ ███████    ██ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
+
+    public void setDialogue_controller(Dialogue_Controller controller) {
+        this.dialogue_controller = controller;
+    }
+    public String[] getListNames() {
+        return this.manager.getListNames();
+    }
+
+    public String getCurrentListName()
+    {
+        return this.manager.getActiveModel().getName();
     }
 
 

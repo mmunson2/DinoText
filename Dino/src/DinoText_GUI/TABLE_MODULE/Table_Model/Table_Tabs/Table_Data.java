@@ -10,6 +10,10 @@ import DinoText_GUI.Util.DinoWriter;
 import java.io.File;
 import java.util.ArrayList;
 
+/*******************************************************************************
+ * Table Data
+ *
+ ******************************************************************************/
 public class Table_Data
 {
     private int entryCount;
@@ -20,6 +24,10 @@ public class Table_Data
 
     private ArrayList<Boolean> emptyRows;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Table_Data()
     {
         this.list = new DinoList("Untitled List");
@@ -39,7 +47,7 @@ public class Table_Data
     }
 
     /***************************************************************************
-     * addRow
+     * Add Row
      *
      **************************************************************************/
     public void addRow()
@@ -53,65 +61,30 @@ public class Table_Data
         this.probabilities.addWeight(0);
     }
 
-    public void setName(String listName)
-    {
-        this.list.setName(listName);
-    }
-
-    public void setDirectory(File directory)
-    {
-        this.directory = directory;
-    }
-
-    public void setTraits(int row, Trait[] traits)
-    {
-        this.list.setTraits(row, traits);
-        checkForEmptyRow(row);
-    }
-
-    public String getName()
-    {
-        return this.list.getName();
-    }
-
-    public DinoList getList()
-    {
-        return this.list;
-    }
-
-    public int getEntryCount()
-    {
-        return this.entryCount;
-    }
-
-
-    public File getDirectory()
-    {
-        return this.directory;
-    }
-
-    public Trait[] getTraitArray(int rowIndex)
-    {
-        return this.list.getTraits(rowIndex);
-    }
-
-    public Table_Probabilities getProbabilities()
-    {
-        return this.probabilities;
-    }
-
+    /***************************************************************************
+     * Add Trait
+     *
+     **************************************************************************/
     public void addTrait(int rowIndex, Trait newTrait)
     {
         this.list.addTrait(rowIndex, newTrait);
         checkForEmptyRow(rowIndex);
     }
 
+    /***************************************************************************
+     * Write To File
+     *
+     **************************************************************************/
     public void writeToFile()
     {
         DinoWriter writer = new DinoWriter();
         writer.writeListToFile(this.list);
     }
 
+    /***************************************************************************
+     * Write To File
+     *
+     **************************************************************************/
     public void writeToFile(File directory)
     {
         DinoWriter writer = new DinoWriter();
@@ -119,18 +92,26 @@ public class Table_Data
         writer.writeListToFile(this.list);
     }
 
+    /***************************************************************************
+     * Add Entry
+     *
+     **************************************************************************/
     public void addEntry(int nextEmpty, String entry, double weight)
     {
         this.addEntry(nextEmpty, "", entry, weight, null);
     }
 
+    /***************************************************************************
+     * Add Entry
+     *
+     **************************************************************************/
     public void addEntry(int nextEmpty, ListEntry listEntry)
     {
         this.addEntry(nextEmpty, listEntry.getEntryName(), listEntry.getListEntry(), listEntry.getBaseProbability(), listEntry.getTraits());
     }
 
     /***************************************************************************
-     * addEntry
+     * Add Entry
      *
      **************************************************************************/
     public void addEntry(int nextEmpty, String entryName, String entry, double weight, Trait[] traits)
@@ -186,6 +167,10 @@ public class Table_Data
         }
     }
 
+    /***************************************************************************
+     * Set Entry Name
+     *
+     **************************************************************************/
     public void setEntryName(int nextEmpty, int rowIndex, String newName)
     {
         if(!this.isEmpty(rowIndex)) //If the row wasn't blank, don't add a newline
@@ -228,21 +213,37 @@ public class Table_Data
         }
     }
 
+    /***************************************************************************
+     * Is Empty
+     *
+     **************************************************************************/
     public boolean isEmpty(int row)
     {
         return this.emptyRows.get(row);
     }
 
+    /***************************************************************************
+     * Set Empty
+     *
+     **************************************************************************/
     private void setEmpty(int row)
     {
         this.emptyRows.set(row, true);
     }
 
+    /***************************************************************************
+     * Set Occupied
+     *
+     **************************************************************************/
     private void setOccupied(int row)
     {
         this.emptyRows.set(row, false);
     }
 
+    /***************************************************************************
+     * Check For Empty Row
+     *
+     **************************************************************************/
     private void checkForEmptyRow(int row)
     {
         String entryName = this.list.getEntryName(row);
@@ -264,16 +265,61 @@ public class Table_Data
         }
     }
 
-    private void checkForEmptyRows()
+    /***************************************************************************
+     *--------------------------------------------------------------------------
+     *  ██████  ███████ ████████         ██     ███████ ███████ ████████ 
+     * ██       ██         ██           ██      ██      ██         ██    
+     * ██   ███ █████      ██          ██       ███████ █████      ██ 
+     * ██    ██ ██         ██         ██             ██ ██         ██ 
+     *  ██████  ███████    ██        ██         ███████ ███████    ██ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
+
+    public void setName(String listName)
     {
-        for(int i = 0; i < this.entryCount; i++)
-        {
-            checkForEmptyRow(i);
-        }
+        this.list.setName(listName);
+    }
+
+    public void setDirectory(File directory)
+    {
+        this.directory = directory;
+    }
+
+    public void setTraits(int row, Trait[] traits)
+    {
+        this.list.setTraits(row, traits);
+        checkForEmptyRow(row);
+    }
+
+    public String getName()
+    {
+        return this.list.getName();
+    }
+
+    public DinoList getList()
+    {
+        return this.list;
+    }
+
+    public int getEntryCount()
+    {
+        return this.entryCount;
     }
 
 
+    public File getDirectory()
+    {
+        return this.directory;
+    }
 
+    public Trait[] getTraitArray(int rowIndex)
+    {
+        return this.list.getTraits(rowIndex);
+    }
 
+    public Table_Probabilities getProbabilities()
+    {
+        return this.probabilities;
+    }
 
 }

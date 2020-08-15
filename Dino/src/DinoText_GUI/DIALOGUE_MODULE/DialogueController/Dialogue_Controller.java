@@ -15,7 +15,6 @@ import DinoText_GUI.Util.DinoConfig;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.BadLocationException;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -472,7 +471,7 @@ public class Dialogue_Controller {
                     }, Color.yellow);
                 }
 
-                table_controller.addList(listName.trim());
+                table_controller.newList(listName.trim());
 
                 // add button to list
                 jPopupMenu_listInsertion_updateMenuItems(); // TODO This unlinks the tabs

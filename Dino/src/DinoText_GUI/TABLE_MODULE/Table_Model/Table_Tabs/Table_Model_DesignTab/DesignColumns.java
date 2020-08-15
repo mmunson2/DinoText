@@ -1,7 +1,7 @@
 package DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab;
 
 /*******************************************************************************
- * Columns Enum
+ * Design Columns Enum
  *
  ******************************************************************************/
 public enum DesignColumns

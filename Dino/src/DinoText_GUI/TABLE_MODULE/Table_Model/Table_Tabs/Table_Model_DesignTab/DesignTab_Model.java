@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
 import java.io.File;
 
 /*******************************************************************************
- * Table_Model
+ * Design Tab Model
  *
  ******************************************************************************/
 public class DesignTab_Model extends AbstractTableModel
@@ -31,7 +31,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * getRowCount
+     * Get Row Count
      *
      **************************************************************************/
     @Override
@@ -40,7 +40,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * getColumnCount
+     * Get Column Count
      *
      **************************************************************************/
     @Override
@@ -49,7 +49,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * getColumnName
+     * Get Column Name
      *
      **************************************************************************/
     @Override
@@ -61,7 +61,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * getColumnClass
+     * Get Column Class
      *
      **************************************************************************/
     @Override
@@ -78,7 +78,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * isCellEditable
+     * Is Cell Editable
      *
      **************************************************************************/
     @Override
@@ -101,7 +101,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * getValueAt
+     * Get Value At
      *
      **************************************************************************/
     @Override
@@ -133,7 +133,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * setValueAt
+     * Set Value At
      *
      **************************************************************************/
     @Override
@@ -187,7 +187,7 @@ public class DesignTab_Model extends AbstractTableModel
     }
 
     /***************************************************************************
-     * nextEmptyRow
+     * Next Empty Row
      *
      *
      * Returns -1 if there's no empty rows

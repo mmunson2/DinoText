@@ -3,6 +3,8 @@ package Dino;
 import Dino.Delimiter.Reference;
 import Dino.List.List;
 
+import java.io.File;
+
 
 /*******************************************************************************
  * Dino
@@ -87,7 +89,9 @@ public class Dino
             path += FileTypes.DIALOGUE_EXTENSION;
         }
 
-        DialogueParser parser = new DialogueParser(path);
+        File file = new File(path);
+
+        DialogueParser parser = new DialogueParser(file.getAbsolutePath());
         this.dialogue = parser.getDialogue();
         this.lists = parser.getListArray();
         this.staticVars = parser.getStaticVars();

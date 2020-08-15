@@ -8,26 +8,44 @@ import DinoText_GUI.Util.DinoList;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 
+/*******************************************************************************
+ * Entry Tab Model
+ *
+ ******************************************************************************/
 public class EntryTab_Model extends AbstractTableModel
 {
     private Table_Data model;
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public EntryTab_Model(Table_Data model)
     {
         this.model = model;
     }
 
+    /***************************************************************************
+     * Get Row Count
+     *
+     **************************************************************************/
     @Override
     public int getRowCount() {
         return this.model.getEntryCount();
     }
 
+    /***************************************************************************
+     * Get Column Count
+     *
+     **************************************************************************/
     @Override
     public int getColumnCount() {
         return EntryColumns.values().length;
     }
 
-
+    /***************************************************************************
+     * Get Column Name
+     *
+     **************************************************************************/
     @Override
     public String getColumnName(int columnIndex) {
 
@@ -36,12 +54,20 @@ public class EntryTab_Model extends AbstractTableModel
         return column.header;
     }
 
+    /***************************************************************************
+     * Get Column Class
+     *
+     **************************************************************************/
     @Override
     public Class<?> getColumnClass(int columnIndex)
     {
         return String.class;
     }
 
+    /***************************************************************************
+     * Is Cell Editable
+     *
+     **************************************************************************/
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         EntryColumns column = EntryColumns.values()[columnIndex];
@@ -56,6 +82,10 @@ public class EntryTab_Model extends AbstractTableModel
         return false;
     }
 
+    /***************************************************************************
+     * Get Value At
+     *
+     **************************************************************************/
     @Override
     public Object getValueAt(int rowIndex, int columnIndex)
     {
@@ -76,7 +106,7 @@ public class EntryTab_Model extends AbstractTableModel
 
 
     /***************************************************************************
-     * setValueAt
+     * Set Value At
      *
      **************************************************************************/
     @Override

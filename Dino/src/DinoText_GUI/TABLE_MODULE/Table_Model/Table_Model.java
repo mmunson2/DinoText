@@ -18,6 +18,10 @@ public class Table_Model
     private EntryTab_Model entryTab_model;
     private Table_Data data;
 
+    /***************************************************************************
+     * Constructor
+     *
+     **************************************************************************/
     public Table_Model()
     {
         this.data = new Table_Data();
@@ -27,80 +31,13 @@ public class Table_Model
     }
 
     /***************************************************************************
-     * addRow
+     * Add Row
      *
      **************************************************************************/
     public void addRow()
     {
         this.data.addRow();
         this.fireTableDataChanged();
-    }
-
-    /***************************************************************************
-     * setName
-     *
-     **************************************************************************/
-    public void setName(String listName)
-    {
-        this.data.setName(listName);
-    }
-
-    public void setDirectory(File directory)
-    {
-        this.data.setDirectory(directory);
-    }
-
-    public void setTraits(int row, Trait[] traits)
-    {
-        this.data.setTraits(row, traits);
-    }
-
-    public String getName()
-    {
-        return this.data.getName();
-    }
-
-    public DinoList getList()
-    {
-        return this.data.getList();
-    }
-
-    public File getDirectory()
-    {
-        return this.data.getDirectory();
-    }
-
-    public int getEntryCount()
-    {
-        return this.data.getEntryCount();
-    }
-
-    public DesignTab_Model getDesignTab_model()
-    {
-        return this.designTab_model;
-    }
-
-    public EntryTab_Model getEntryTab_model()
-    {
-        return this.entryTab_model;
-    }
-
-    /***************************************************************************
-     * getTraitArray
-     *
-     **************************************************************************/
-    public Trait[] getTraitArray(int rowIndex)
-    {
-        return this.data.getTraitArray(rowIndex);
-    }
-
-    /***************************************************************************
-     * getProbabilities
-     *
-     **************************************************************************/
-    public Table_Probabilities getProbabilities()
-    {
-        return this.data.getProbabilities();
     }
 
     /***************************************************************************
@@ -191,6 +128,70 @@ public class Table_Model
     public void removeTableModelListener(TableModelListener l) {
         this.designTab_model.removeTableModelListener(l);
         this.entryTab_model.removeTableModelListener(l);
+    }
+
+    /***************************************************************************
+     *--------------------------------------------------------------------------
+     *  ██████  ███████ ████████         ██     ███████ ███████ ████████ 
+     * ██       ██         ██           ██      ██      ██         ██    
+     * ██   ███ █████      ██          ██       ███████ █████      ██ 
+     * ██    ██ ██         ██         ██             ██ ██         ██ 
+     *  ██████  ███████    ██        ██         ███████ ███████    ██ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
+
+    public void setName(String listName)
+    {
+        this.data.setName(listName);
+    }
+
+    public void setDirectory(File directory)
+    {
+        this.data.setDirectory(directory);
+    }
+    public void setTraits(int row, Trait[] traits)
+    {
+        this.data.setTraits(row, traits);
+    }
+
+    public String getName()
+    {
+        return this.data.getName();
+    }
+
+    public DinoList getList()
+    {
+        return this.data.getList();
+    }
+
+    public File getDirectory()
+    {
+        return this.data.getDirectory();
+    }
+
+    public int getEntryCount()
+    {
+        return this.data.getEntryCount();
+    }
+
+    public DesignTab_Model getDesignTab_model()
+    {
+        return this.designTab_model;
+    }
+
+    public EntryTab_Model getEntryTab_model()
+    {
+        return this.entryTab_model;
+    }
+
+    public Trait[] getTraitArray(int rowIndex)
+    {
+        return this.data.getTraitArray(rowIndex);
+    }
+
+    public Table_Probabilities getProbabilities()
+    {
+        return this.data.getProbabilities();
     }
 
 }
