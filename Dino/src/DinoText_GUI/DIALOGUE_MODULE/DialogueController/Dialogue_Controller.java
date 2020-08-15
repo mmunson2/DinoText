@@ -142,11 +142,6 @@ public class Dialogue_Controller {
         menuItem.addActionListener(new listener_JMenuItem_Tools_InsertDynamicList());
         tools.add(menuItem);
 
-//        menuItem = new JMenuItem();
-//        menuItem.setText("Insert " + STATICVARNAME);
-//        menuItem.addActionListener(new listener_JMenuItem_Tools_InsertStaticVariable());
-//        tools.add(menuItem);
-
         JMenuBar toolsMenu = new JMenuBar();
         toolsMenu.add(tools);
 
@@ -697,84 +692,4 @@ public class Dialogue_Controller {
             dinoGUIView.pack();
         }
     }
-//    /***************************************************************************
-//     * Dehighlight all
-//     *
-//     **************************************************************************/
-//    private class listener_JMenuItem_Tools_Dehighlight implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            dinoGUIView.dehighlightAll();
-//        }
-//    }
-//
-//    private class listener_JPanel_dialogueInput_backspace implements KeyListener {
-//        @Override
-//        public void keyTyped(KeyEvent e) {
-//        }
-//
-//
-//        @Override
-//        public void keyPressed(KeyEvent e) {
-//            if (e.getKeyCode() == 8) {
-//                boolean space = false;
-//                boolean first = false;
-//
-//
-//                JTextPane pane = dinoGUIView.getjTextPane_dialogueInput();
-//
-//                if (pane.getText().length() >= 0) {
-//                    if (pane.getCaretPosition() == 0) {
-//                        newDialogue();
-//                        return;
-//                    }
-//
-//                    try {
-//                        if (pane.getText(pane.getCaretPosition() - 2, 1).contains("]")) {
-//                            pane.setCaretPosition(pane.getCaretPosition() - 2);
-//                            space = true;
-//                            first = true;
-//                        }
-//                    } catch (BadLocationException ex) {
-//                        ex.printStackTrace();
-//                    }
-//
-//                    while (pane.getCaretPosition() > 0 && StyleConstants.getFontSize(new SimpleAttributeSet(pane.getInputAttributes())) == 0) {
-//                        if (first) {
-//                            pane.setCaretPosition(pane.getCaretPosition() + 1);
-//                            first = false;
-//                        }
-//
-//
-//                        try {
-//                            pane.getDocument().remove(pane.getCaretPosition(), 1);
-//                        } catch (BadLocationException ex) {
-//                        }
-//
-//                        pane.setCaretPosition(pane.getCaretPosition() - 1);
-//                    }
-//
-//                    if (dinoGUIView.getjTextPane_dialogueInput().getComponentCount() > 1) {
-//                        try {
-//                            pane.getDocument().remove(pane.getCaretPosition(), 1);
-//
-//                            if (space)
-//                                pane.setCaretPosition(pane.getCaretPosition() - 1);
-//
-//                        } catch (BadLocationException ex) {
-//                        }
-//                    }
-//
-//                    if (space)
-//                        pane.setCaretPosition(pane.getCaretPosition() + 1);
-//
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void keyReleased(KeyEvent e) {
-//        }
-//
-//    }
 }
