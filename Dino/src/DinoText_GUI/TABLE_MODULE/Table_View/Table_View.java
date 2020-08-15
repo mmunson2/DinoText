@@ -1,9 +1,11 @@
 package DinoText_GUI.TABLE_MODULE.Table_View;
 
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_EntryTab.EntryColumns;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.Table_Buttons.TableButton_View;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignColumns;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.Table_Buttons.TableButton_Model;
 import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay.Table_TraitDisplay;
+import DinoText_GUI.TABLE_MODULE.TraitEditor.Editor_Controller;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
@@ -48,22 +50,35 @@ public class Table_View {
      **************************************************************************/
     public void setTableModel(TableModel tableModel) {
         this.listTable.setModel(tableModel);
+    }
 
-        // Set individual column widths
-        int listEntry = DesignColumns.ENTRY_NAME.ordinal();
+    public void initializeDesignTabColumns()
+    {
+        int entryName = DesignColumns.ENTRY_NAME.ordinal();
         int weight = DesignColumns.PROBABILITY_WEIGHT.ordinal();
         int probability = DesignColumns.PROBABILITY.ordinal();
         int addTrait = DesignColumns.ADD_TRAIT.ordinal();
         int editTrait = DesignColumns.EDIT_TRAIT.ordinal();
         int traitDisplay = DesignColumns.TRAIT.ordinal();
 
-        this.listTable.getColumnModel().getColumn(listEntry).setPreferredWidth(350);
+        this.listTable.getColumnModel().getColumn(entryName).setPreferredWidth(350);
         this.listTable.getColumnModel().getColumn(weight).setPreferredWidth(120);
         this.listTable.getColumnModel().getColumn(probability).setPreferredWidth(78);
         this.listTable.getColumnModel().getColumn(addTrait).setPreferredWidth(100);
         this.listTable.getColumnModel().getColumn(editTrait).setPreferredWidth(100);
         this.listTable.getColumnModel().getColumn(traitDisplay).setPreferredWidth(200);
     }
+
+    public void initializeEditorTabColumns()
+    {
+        int entryName = EntryColumns.ENTRY_NAME.ordinal();
+        int entry = EntryColumns.ENTRY.ordinal();
+
+        this.listTable.getColumnModel().getColumn(entryName).setPreferredWidth(200);
+        this.listTable.getColumnModel().getColumn(entry).setPreferredWidth(800);
+    }
+
+
 
     /***************************************************************************
      * get JTable

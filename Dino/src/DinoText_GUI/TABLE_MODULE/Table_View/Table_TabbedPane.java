@@ -6,7 +6,6 @@ import DinoText_GUI.TABLE_MODULE.Table_View.Custom_UI.TraitDisplay.Table_TraitDi
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,8 +18,12 @@ public class Table_TabbedPane extends JFrame{
     private JTabbedPane listPane;
     private JPanel panel1;
 
-    private ArrayList<Table_View> tables = new ArrayList<>();
-    private Table_View activeTable;
+    private ArrayList<Table_View> editorTabs = new ArrayList<>();
+    private ArrayList<Table_View> designTabs = new ArrayList<>();
+    int activeIndex = 0;
+
+    private Table_View editorTab;
+    private Table_View designTab;
 
     private Table_NoList noList;
 
@@ -37,7 +40,7 @@ public class Table_TabbedPane extends JFrame{
 
     public boolean hasActiveTable()
     {
-        return this.activeTable != null;
+        return this.editorTab != null;
     }
 
     /***************************************************************************
@@ -46,12 +49,23 @@ public class Table_TabbedPane extends JFrame{
      **************************************************************************/
     public void addList(String name)
     {
-        this.activeTable = new Table_View();
-        this.activeTable.setListName(name);
+        if(this.listPane.getTabCount() > 0)
+            this.removeCurrentTabs();
 
-        this.tables.add(this.tables.size(), activeTable);
-        this.listPane.addTab(name, this.activeTable.getPanel());
-        this.listPane.setSelectedIndex(this.tables.size() - 1);
+        this.editorTab = new Table_View();
+        this.editorTab.setListName(name);
+
+        this.designTab = new Table_View();
+        this.designTab.setListName(name);
+
+        this.activeIndex = this.editorTabs.size();
+
+        this.editorTabs.add(this.activeIndex, editorTab);
+        this.designTabs.add(this.activeIndex, designTab);
+
+        this.addCurrentTabs();
+
+        this.listPane.setSelectedIndex(0);
     }
 
     public void addNoListTab()
@@ -81,7 +95,7 @@ public class Table_TabbedPane extends JFrame{
      * getSelectedIndex
      *
      **************************************************************************/
-    public int getSelectedIndex()
+    public int getActiveIndex()
     {
         return this.listPane.getSelectedIndex();
     }
@@ -92,33 +106,74 @@ public class Table_TabbedPane extends JFrame{
      **************************************************************************/
     public void switchList(int index)
     {
-        this.activeTable = this.tables.get(index);
-        this.listPane.setSelectedIndex(index);
+        if(index < 0 || index > this.editorTabs.size())
+        {
+            System.err.println("Error in Table_View -> TabbedPane -> switchList(): \n" +
+                               "invalid index: " + index + "\n" +
+                               "Active Lists: " + this.editorTabs.size());
+
+            return;
+        }
+
+        if(this.listPane.getTabCount() > 0)
+            this.removeCurrentTabs();
+
+        this.activeIndex = index;
+
+        this.editorTab = this.editorTabs.get(index);
+        this.designTab = this.designTabs.get(index);
+
+        this.addCurrentTabs();
     }
+
+    /***************************************************************************
+     * switchIndex
+     *
+     **************************************************************************/
+    public void switchTab(int index)
+    {
+        if(index < 0 || index > 2)
+        {
+            System.err.println("Error in Table_View -> TabbedPane -> switchTab(): \n" +
+                    "invalid index: " + index + "\n" +
+                    "Should be 0 or 1.");
+
+            return;
+        }
+        if(this.listPane.getTabCount() > 1)
+            this.listPane.setSelectedIndex(index);
+    }
+
+
 
     /***************************************************************************
      * setListName
      *
      **************************************************************************/
     public void setListName(String text) {
-        this.activeTable.setListName(text);
-        listPane.setTitleAt(this.getSelectedIndex(), text);
+        this.removeCurrentTabs();
+
+        this.editorTab.setListName(text);
+        this.designTab.setListName(text);
+
+        this.addCurrentTabs();
     }
 
-    public int getSelectedRow() {return this.activeTable.getSelectedRow();}
-
+    public int getSelectedRow()
+    {
+        if(this.listPane.getSelectedIndex() == 0)
+        {
+            return this.editorTab.getSelectedRow();
+        }
+        else
+        {
+            return this.designTab.getSelectedRow();
+        }
+    }
 
     public Component getPanel()
     {
         return this.panel1;
-    }
-
-    /***************************************************************************
-     * set Button Column
-     **************************************************************************/
-    public void setButtonColumn(int columnIndex)
-    {
-        this.activeTable.getJTable().getColumn(DesignColumns.TRAIT.header).setCellRenderer(new Table_TraitDisplay());
     }
 
     public void addTabSwitchListener(ChangeListener l)
@@ -141,83 +196,113 @@ public class Table_TabbedPane extends JFrame{
         this.noList.removeCreateListActionListener(l);
     }
 
+    private void removeCurrentTabs()
+    {
+        this.listPane.removeTabAt(0);
+        this.listPane.removeTabAt(0);
+    }
+
+    private void addCurrentTabs()
+    {
+        String editorTabName = this.editorTab.getListName() + " Editor";
+        String designTabName = this.designTab.getListName() + " Designer";
+
+        this.listPane.addTab(editorTabName, this.editorTab.getPanel());
+        this.listPane.addTab(designTabName, this.designTab.getPanel());
+    }
+
+
+
     /***************************************************************************
      * PASS THROUGH METHODS
      **************************************************************************/
 
     public void setTableModel(Table_Model tableModel) {
 
-        activeTable.setTableModel(tableModel.getEntryTab_model());
+        editorTab.setTableModel(tableModel.getEntryTab_model());
+        designTab.setTableModel(tableModel.getDesignTab_model());
+
+        editorTab.initializeEditorTabColumns();
+        designTab.initializeDesignTabColumns();
     }
 
     public void setEntryCount(int count) {
-        this.activeTable.setEntryCount(count);
+        this.editorTab.setEntryCount(count);
+        this.designTab.setEntryCount(count);
     }
 
     public String getListName() {
-        return this.activeTable.getListName();
+        return this.designTab.getListName();
     }
 
     public void addIncrementListener(ActionListener l) {
-        this.activeTable.addIncrementListener(l);
+        this.editorTab.addIncrementListener(l);
+        this.designTab.addIncrementListener(l);
     }
 
     public void removeIncrementListener(ActionListener l)
     {
-        this.activeTable.removeIncrementListener(l);
+        this.editorTab.removeIncrementListener(l);
+        this.designTab.removeIncrementListener(l);
     }
 
     public void addListNameListener(ActionListener l) {
-        this.activeTable.addListNameListener(l);
+        this.editorTab.addListNameListener(l);
+        this.designTab.addListNameListener(l);
     }
 
     public void removeListNameListener(ActionListener l)
     {
-        this.activeTable.removeListNameListener(l);
+        this.editorTab.removeListNameListener(l);
+        this.designTab.removeListNameListener(l);
     }
 
     public void addDebugListener(ActionListener l)
     {
-        this.activeTable.addDebugListener(l);
+        this.editorTab.addDebugListener(l);
+        this.designTab.addDebugListener(l);
     }
 
     public void removeDebugListener(ActionListener l)
     {
-        this.activeTable.removeDebugListener(l);
+        this.editorTab.removeDebugListener(l);
+        this.designTab.removeDebugListener(l);
     }
 
     public void addTraitButtonListener(ActionListener l)
     {
-        this.activeTable.addTraitButtonListener(l);
+        //this.editorTab.addTraitButtonListener(l);
+        this.designTab.addTraitButtonListener(l);
     }
 
     public void removeTraitButtonListener(ActionListener l)
     {
-        this.activeTable.removeTraitButtonListener(l);
+        this.designTab.removeTraitButtonListener(l);
     }
 
     public void addEditTraitButtonListener(ActionListener l)
     {
-        this.activeTable.addEditTraitButtonListener(l);
+        this.designTab.addEditTraitButtonListener(l);
     }
 
     public void removeEditTraitButtonListener(ActionListener l)
     {
-        this.activeTable.removeEditTraitButtonListener(l);
+        this.designTab.removeEditTraitButtonListener(l);
     }
 
     public void initializeAddTraitButtonColumn()
     {
-        this.activeTable.initializeAddTraitButtonColumn();
+        this.designTab.initializeAddTraitButtonColumn();
     }
 
     public void initializeEditTraitButtonColumn()
     {
-        this.activeTable.initializeEditTraitButtonColumn();
+        this.designTab.initializeEditTraitButtonColumn();
     }
 
     public void updateTable() {
-        this.activeTable.updateTable();
+        this.editorTab.updateTable();
+        this.designTab.updateTable();
     }
 
 }

@@ -242,7 +242,10 @@ public class Table_Data
         String entryName = this.list.getEntryName(row);
         String entry = this.list.getEntry(row).getListEntry();
         double weight = this.list.getProbability(0);
-        boolean hasTraits = (this.list.getTraits(row).length > 0);
+
+        Trait[] traits = this.list.getTraits(row);
+
+        boolean hasTraits = !(traits == null || traits.length == 0);
 
         if(entryName.equals("") && entry.equals("") && weight == 0
             && !hasTraits)

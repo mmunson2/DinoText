@@ -7,7 +7,6 @@ import Dino.ListParser;
 import DinoText_GUI.DIALOGUE_MODULE.DialogueController.Dialogue_Controller;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Model;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignTab_Model;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Probabilities;
 import DinoText_GUI.TABLE_MODULE.TraitCreator.Creator_Model;
 import DinoText_GUI.TABLE_MODULE.Table_View.Table_TabbedPane;
@@ -168,7 +167,7 @@ public class Table_Controller {
      **************************************************************************/
     public void renameList(String newName, int listIndex) {
         if (listIndex != this.manager.getCurrentListIndex())
-            this.switchToIndex(listIndex);
+            this.changeList(listIndex);
 
         renameList(newName);
     }
@@ -191,7 +190,7 @@ public class Table_Controller {
      * switchToIndex
      *
      **************************************************************************/
-    public void switchToIndex(int index) {
+    public void changeList(int index) {
         removeListeners();
 
         if(this.manager.hasActiveModel())
@@ -203,6 +202,14 @@ public class Table_Controller {
         addListeners();
     }
 
+    public void changeTab(int index)
+    {
+        if(index < 0)
+            return;
+
+        this.view.switchTab(index);
+    }
+
     /***************************************************************************
      * switchToName
      *
@@ -211,7 +218,7 @@ public class Table_Controller {
         int index = manager.getListIndexFromName(listName);
 
         if (index != -1)
-            switchToIndex(index);
+            changeList(index);
     }
 
 
@@ -296,7 +303,8 @@ public class Table_Controller {
     class listener_tabSwitch implements ChangeListener {
         @Override
         public void stateChanged(ChangeEvent e) {
-            switchToIndex(view.getSelectedIndex());
+
+            changeTab(view.getActiveIndex());
         }
     }
 

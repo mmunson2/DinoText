@@ -1,6 +1,8 @@
 package DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_EntryTab;
 
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Data;
+import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignColumns;
+import DinoText_GUI.TABLE_MODULE.TraitEditor.Editor_Controller;
 import DinoText_GUI.Util.DinoList;
 
 import javax.swing.event.TableModelListener;
@@ -72,6 +74,31 @@ public class EntryTab_Model extends AbstractTableModel
         return null;
     }
 
+
+    /***************************************************************************
+     * setValueAt
+     *
+     **************************************************************************/
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        EntryColumns column = EntryColumns.values()[columnIndex];
+
+        switch(column)
+        {
+            case ENTRY_NAME:
+                String entryName = (String) aValue;
+                this.model.getList().setEntryName(rowIndex, entryName);
+                break;
+
+            case ENTRY:
+                String entry = (String) aValue;
+                this.model.getList().setEntry(rowIndex, entry);
+                break;
+        }
+    }
+
+
+
     /***************************************************************************
      * addTableModelListener
      *
@@ -89,4 +116,5 @@ public class EntryTab_Model extends AbstractTableModel
     public void removeTableModelListener(TableModelListener l) {
         super.removeTableModelListener(l);
     }
+    
 }
