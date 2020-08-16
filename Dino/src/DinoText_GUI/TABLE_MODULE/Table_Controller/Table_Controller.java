@@ -44,6 +44,11 @@ import java.io.File;
 
 /*******************************************************************************
  * Table Controller
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ *
  ******************************************************************************/
 public class Table_Controller {
     private final Table_Manager manager;
@@ -89,7 +94,6 @@ public class Table_Controller {
      **************************************************************************/
     public void newList(String name)
     {
-
         //Check if the list already exists
         if (this.manager.hasActiveModel() && this.manager.hasList(name)) {
             this.switchToName(name);
@@ -166,7 +170,8 @@ public class Table_Controller {
      * Change List
      *
      **************************************************************************/
-    public void changeList(int index) {
+    public void changeList(int index)
+    {
         removeListeners();
 
         if(this.manager.hasActiveModel())
@@ -277,6 +282,7 @@ public class Table_Controller {
     /***************************************************************************
      * Inner Class: Tab Switch Listener
      *
+     * This is called when the view tab is changed.
      **************************************************************************/
     class listener_tabSwitch implements ChangeListener {
         @Override
@@ -289,6 +295,7 @@ public class Table_Controller {
     /***************************************************************************
      * Inner Class: Increment Row Listener
      *
+     * This is called when the user adds an additional row to the table
      **************************************************************************/
     class listener_increment implements ActionListener {
 

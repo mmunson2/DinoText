@@ -9,6 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+/*******************************************************************************
+ * Creator Controller
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ ******************************************************************************/
 public class Creator_Controller
 {
     Creator_Model model;
@@ -22,9 +29,9 @@ public class Creator_Controller
     traitWeight_listener traitWeightListener;
     traitName_focusListener traitNameFocusListener;
 
-    ActionEvent nameChangedListener;
-
-
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Creator_Controller(Creator_Model model, Creator_View view)
     {
         this.model = model;
@@ -43,6 +50,10 @@ public class Creator_Controller
         synchronize();
     }
 
+    /***************************************************************************
+     * Set
+     *
+     **************************************************************************/
     public void set(Creator_Model model, Creator_View view)
     {
         this.removeListeners();
@@ -54,12 +65,20 @@ public class Creator_Controller
         synchronize();
     }
 
+    /***************************************************************************
+     * Finalize Trait
+     *
+     **************************************************************************/
     public void finalizeTrait() {
         String traitName = view.getTraitName();
         model.setName(traitName);
         view.setTraitName(traitName);
     }
 
+    /***************************************************************************
+     * Set Upper Bound
+     *
+     **************************************************************************/
     public void setUpperBound(int value)
     {
         if(value >= Creator_Model.MIN && value <= Creator_Model.MAX)
@@ -84,6 +103,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Set Lower Bound
+     *
+     **************************************************************************/
     public void setLowerBound(int value)
     {
         if(value >= Creator_Model.MIN && value <= Creator_Model.MAX)
@@ -108,6 +131,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Trait Name Listener
+     *
+     **************************************************************************/
     class traitName_listener implements ActionListener
     {
         @Override
@@ -120,6 +147,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Lower Bound Slider Listener
+     *
+     **************************************************************************/
     class lowerBoundSlider_listener implements ChangeListener
     {
         @Override
@@ -131,6 +162,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Innter Class - Lower Bound Spinner Listener
+     *
+     **************************************************************************/
     class lowerBoundSpinner_listener implements ChangeListener
     {
         @Override
@@ -153,6 +188,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Upper Bound Slider Listener
+     *
+     **************************************************************************/
     class upperBoundSlider_listener implements ChangeListener
     {
         @Override
@@ -164,6 +203,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Upper Bound Spinner Listener
+     *
+     **************************************************************************/
     class upperBoundSpinner_listener implements ChangeListener
     {
         @Override
@@ -187,6 +230,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Trait Weight Listener
+     *
+     **************************************************************************/
     class traitWeight_listener implements ActionListener
     {
         @Override
@@ -210,7 +257,10 @@ public class Creator_Controller
         }
     }
 
-
+    /***************************************************************************
+     * Inner Class - Trait Weight Focus Listener
+     *
+     **************************************************************************/
     private class traitName_focusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -224,6 +274,10 @@ public class Creator_Controller
         }
     }
 
+    /***************************************************************************
+     * Synchronize
+     *
+     **************************************************************************/
     private void synchronize()
     {
         this.view.setTraitName(this.model.getName());
@@ -235,8 +289,10 @@ public class Creator_Controller
         this.view.setDisplayProbability(this.model.getProbability());
     }
 
-
-
+    /***************************************************************************
+     * Add Listeners
+     *
+     **************************************************************************/
     private void addListeners()
     {
         this.view.addTraitNameListener(traitListener);
@@ -249,6 +305,10 @@ public class Creator_Controller
         this.view.addUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
 
+    /***************************************************************************
+     * Remove Listeners
+     *
+     **************************************************************************/
     private void removeListeners()
     {
         this.view.removeTraitNameListener(traitListener);
@@ -260,11 +320,19 @@ public class Creator_Controller
         this.view.removeUpperBoundSpinnerListener(this.upperBoundSpinnerListener);
     }
 
+    /***************************************************************************
+     * Add Name Change Listener
+     *
+     **************************************************************************/
     public void addNameChangeListener(ActionListener l)
     {
         this.view.addTraitNameListener(l);
     }
 
+    /***************************************************************************
+     * Remove Name Change Listener
+     *
+     **************************************************************************/
     public void removeNameChangeListener(ActionListener l)
     {
         this.view.removeTraitNameListener(l);

@@ -9,6 +9,13 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/*******************************************************************************
+ * Editor Controller
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ ******************************************************************************/
 public class Editor_Controller
 {
     private Creator_Controller traitController;
@@ -21,6 +28,9 @@ public class Editor_Controller
     private traitNameChange_listener traitNameChangeListener;
     private deleteTrait_listener deleteTraitListener;
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Editor_Controller(Editor_Model model, Editor_View view)
     {
         this.model = model;
@@ -34,6 +44,9 @@ public class Editor_Controller
         addListeners();
     }
 
+    /***************************************************************************
+     * Set Traits
+     **************************************************************************/
     public void setTraits(Trait[] traits, Table_Probabilities probabilities, int rowIndex)
     {
         if(traits.length == 0)
@@ -56,6 +69,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Add Traits
+     **************************************************************************/
     public void addTrait()
     {
         this.model.addTrait();
@@ -69,6 +85,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Delete Trait
+     **************************************************************************/
     public void deleteTrait()
     {
         int traitCount = this.model.getTraitCount();
@@ -91,6 +110,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Switch Tab
+     **************************************************************************/
     public void switchTab(int tabIndex)
     {
         if(this.view.hasNoListTab())
@@ -102,21 +124,27 @@ public class Editor_Controller
         updateCreatorController();
     }
 
+    /***************************************************************************
+     * Get Traits
+     **************************************************************************/
     public Trait[] getTraits()
     {
         return this.model.getTraits();
     }
 
-    public void addSaveButtonListener(ActionListener l)
-    {
-        this.view.addSaveButtonListener(l);
-    }
+    /***************************************************************************
+     *--------------------------------------------------------------------------
+     * ██      ██ ███████ ████████ ███████ ███    ██ ███████ ██████  ███████ 
+     * ██      ██ ██         ██    ██      ████   ██ ██      ██   ██ ██      
+     * ██      ██ ███████    ██    █████   ██ ██  ██ █████   ██████  ███████ 
+     * ██      ██      ██    ██    ██      ██  ██ ██ ██      ██   ██      ██ 
+     * ███████ ██ ███████    ██    ███████ ██   ████ ███████ ██   ██ ███████ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
 
-    public void removeSaveButtonListener(ActionListener l)
-    {
-        this.view.removeSaveButtonListener(l);
-    }
-
+    /***************************************************************************
+     * Inner Class - Tab Switch Listener
+     **************************************************************************/
     private class tabSwitch_listener implements ChangeListener
     {
         @Override
@@ -126,6 +154,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - New Trait Listener
+     **************************************************************************/
     private class newTrait_listener implements ActionListener
     {
         @Override
@@ -134,6 +165,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Delete Trait Listener
+     **************************************************************************/
     private class deleteTrait_listener implements ActionListener
     {
         @Override
@@ -143,6 +177,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Inner Class - Name Change Listener
+     **************************************************************************/
     private class traitNameChange_listener implements ActionListener
     {
         @Override
@@ -153,7 +190,9 @@ public class Editor_Controller
         }
     }
 
-
+    /***************************************************************************
+     * Update Creator Controller
+     **************************************************************************/
     private void updateCreatorController()
     {
         if(this.traitController == null)
@@ -169,6 +208,9 @@ public class Editor_Controller
         }
     }
 
+    /***************************************************************************
+     * Add Listeners
+     **************************************************************************/
     private void addListeners()
     {
         this.view.addNoTraitButtonListener(this.newTraitListener);
@@ -177,6 +219,9 @@ public class Editor_Controller
         this.view.addDeleteTraitButtonListener(this.deleteTraitListener);
     }
 
+    /***************************************************************************
+     * Remove Listeners
+     **************************************************************************/
     private void removeListeners()
     {
         this.view.removeNoTraitButtonListener(this.newTraitListener);

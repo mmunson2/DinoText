@@ -8,6 +8,9 @@ import java.awt.*;
 /*******************************************************************************
  * Table Button Model
  *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
  ******************************************************************************/
 public class TableButton_View extends JButton implements TableCellRenderer
 {

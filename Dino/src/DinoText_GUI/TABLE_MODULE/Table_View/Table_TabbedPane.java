@@ -13,6 +13,9 @@ import java.util.ArrayList;
 /*******************************************************************************
  * Table TabbedPane
  *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
  ******************************************************************************/
 public class Table_TabbedPane extends JFrame{
     private JTabbedPane listPane;

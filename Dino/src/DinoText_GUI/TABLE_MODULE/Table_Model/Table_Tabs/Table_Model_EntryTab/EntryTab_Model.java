@@ -11,6 +11,9 @@ import javax.swing.table.AbstractTableModel;
 /*******************************************************************************
  * Entry Tab Model
  *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
  ******************************************************************************/
 public class EntryTab_Model extends AbstractTableModel
 {

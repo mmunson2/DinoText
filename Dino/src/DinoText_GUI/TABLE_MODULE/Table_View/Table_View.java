@@ -16,6 +16,9 @@ import java.awt.event.ActionListener;
 /*******************************************************************************
  * Table View
  *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
  ******************************************************************************/
 public class Table_View {
 
@@ -63,12 +66,12 @@ public class Table_View {
         int editTrait = DesignColumns.EDIT_TRAIT.ordinal();
         int traitDisplay = DesignColumns.TRAIT.ordinal();
 
-        this.listTable.getColumnModel().getColumn(entryName).setPreferredWidth(350);
+        this.listTable.getColumnModel().getColumn(entryName).setPreferredWidth(200);
         this.listTable.getColumnModel().getColumn(weight).setPreferredWidth(120);
         this.listTable.getColumnModel().getColumn(probability).setPreferredWidth(78);
         this.listTable.getColumnModel().getColumn(addTrait).setPreferredWidth(100);
         this.listTable.getColumnModel().getColumn(editTrait).setPreferredWidth(100);
-        this.listTable.getColumnModel().getColumn(traitDisplay).setPreferredWidth(200);
+        this.listTable.getColumnModel().getColumn(traitDisplay).setPreferredWidth(350);
     }
 
     public void initializeEditorTabColumns()

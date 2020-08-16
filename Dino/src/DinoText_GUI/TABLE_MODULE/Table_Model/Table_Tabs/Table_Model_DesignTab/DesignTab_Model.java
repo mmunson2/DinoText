@@ -1,20 +1,20 @@
 package DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab;
 
 
-import Dino.List.ListEntry;
 import Dino.List.Trait;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Data;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_EntryTab.EntryColumns;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_EntryTab.EntryTab_Model;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Probabilities;
 import DinoText_GUI.Util.DinoList;
 
 import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
-import java.io.File;
 
 /*******************************************************************************
  * Design Tab Model
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
  *
  ******************************************************************************/
 public class DesignTab_Model extends AbstractTableModel

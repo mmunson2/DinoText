@@ -10,6 +10,9 @@ import java.awt.*;
 /*******************************************************************************
  * Table Trait Display
  *
+ * @author ihsanhalimun
+ * Date: 8/15/2020
+ * @version 0.7-beta
  ******************************************************************************/
 public class Table_TraitDisplay extends TraitLabel implements TableCellRenderer {
 

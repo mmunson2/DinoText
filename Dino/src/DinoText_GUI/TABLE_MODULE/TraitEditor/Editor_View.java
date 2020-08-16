@@ -8,10 +8,16 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/*******************************************************************************
+ * Editor View
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ ******************************************************************************/
 public class Editor_View {
     private JTabbedPane traitTabs;
     private JPanel panel1;
-    private JButton saveButton;
     private JButton deleteTraitButton;
     private JButton NewTraitButton;
 
@@ -20,6 +26,9 @@ public class Editor_View {
 
     private Editor_NoTraits noTraits;
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Editor_View()
     {
         this.noTraits = new Editor_NoTraits();
@@ -27,7 +36,9 @@ public class Editor_View {
         addNoTraitsTab();
     }
 
-
+    /***************************************************************************
+     * Add Trait
+     **************************************************************************/
     public void addTrait(String name)
     {
         this.activeTrait = new Creator_View();
@@ -38,6 +49,9 @@ public class Editor_View {
         this.traitTabs.setSelectedIndex(this.traits.size() - 1);
     }
 
+    /***************************************************************************
+     * Remove Active Trait
+     **************************************************************************/
     public void removeActiveTrait()
     {
         int currentIndex = this.getSelectedIndex();
@@ -61,11 +75,17 @@ public class Editor_View {
         }
     }
 
+    /***************************************************************************
+     * Add No Traits Tab
+     **************************************************************************/
     public void addNoTraitsTab()
     {
         this.traitTabs.addTab(Editor_NoTraits.NAME, this.noTraits.getPanel());
     }
 
+    /***************************************************************************
+     * Has No List Tab
+     **************************************************************************/
     public boolean hasNoListTab()
     {
         int index = this.traitTabs.indexOfTab(Editor_NoTraits.NAME);
@@ -73,6 +93,9 @@ public class Editor_View {
         return index != -1;
     }
 
+    /***************************************************************************
+     * Remove No List Tab
+     **************************************************************************/
     public void removeNoListTab()
     {
         int index = this.traitTabs.indexOfTab(Editor_NoTraits.NAME);
@@ -81,15 +104,6 @@ public class Editor_View {
         {
             this.traitTabs.removeTabAt(index);
         }
-    }
-
-    /***************************************************************************
-     * getSelectedIndex
-     *
-     **************************************************************************/
-    public int getSelectedIndex()
-    {
-        return this.traitTabs.getSelectedIndex();
     }
 
     /***************************************************************************
@@ -103,18 +117,44 @@ public class Editor_View {
     }
 
     /***************************************************************************
-     * setListName
-     *
+     *--------------------------------------------------------------------------
+     *  ██████  ███████ ████████         ██     ███████ ███████ ████████ 
+     * ██       ██         ██           ██      ██      ██         ██    
+     * ██   ███ █████      ██          ██       ███████ █████      ██ 
+     * ██    ██ ██         ██         ██             ██ ██         ██ 
+     *  ██████  ███████    ██        ██         ███████ ███████    ██ 
+     *--------------------------------------------------------------------------
      **************************************************************************/
+
     public void setListName(String text) {
         this.activeTrait.setTraitName(text);
         traitTabs.setTitleAt(this.getSelectedIndex(), text);
+    }
+
+    public int getSelectedIndex()
+    {
+        return this.traitTabs.getSelectedIndex();
     }
 
     public Component getPanel()
     {
         return this.panel1;
     }
+
+    public Creator_View getActiveTrait()
+    {
+        return this.activeTrait;
+    }
+
+    /***************************************************************************
+     *--------------------------------------------------------------------------
+     * ██      ██ ███████ ████████ ███████ ███    ██ ███████ ██████  ███████ 
+     * ██      ██ ██         ██    ██      ████   ██ ██      ██   ██ ██      
+     * ██      ██ ███████    ██    █████   ██ ██  ██ █████   ██████  ███████ 
+     * ██      ██      ██    ██    ██      ██  ██ ██ ██      ██   ██      ██ 
+     * ███████ ██ ███████    ██    ███████ ██   ████ ███████ ██   ██ ███████ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
 
     public void addTabSwitchListener(ChangeListener l)
     {
@@ -136,16 +176,6 @@ public class Editor_View {
         this.noTraits.removeCreateTraitListener(l);
     }
 
-    public void addSaveButtonListener(ActionListener l)
-    {
-        this.saveButton.addActionListener(l);
-    }
-
-    public void removeSaveButtonListener(ActionListener l)
-    {
-        this.saveButton.removeActionListener(l);
-    }
-
     public void addNewTraitButtonListener(ActionListener l)
     {
         this.NewTraitButton.addActionListener(l);
@@ -165,10 +195,4 @@ public class Editor_View {
     {
         this.deleteTraitButton.removeActionListener(l);
     }
-
-    public Creator_View getActiveTrait()
-    {
-        return this.activeTrait;
-    }
-
 }

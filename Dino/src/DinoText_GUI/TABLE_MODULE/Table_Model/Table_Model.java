@@ -12,6 +12,14 @@ import DinoText_GUI.Util.DinoList;
 import javax.swing.event.TableModelListener;
 import java.io.File;
 
+/*******************************************************************************
+ * Table Model
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ *
+ ******************************************************************************/
 public class Table_Model
 {
     private DesignTab_Model designTab_model;

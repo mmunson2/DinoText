@@ -10,6 +10,9 @@ import java.util.ArrayList;
 /*******************************************************************************
  * Table Manager
  *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
  ******************************************************************************/
 public class Table_Manager
 {

@@ -5,7 +5,15 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 
-public class Creator_View {
+/*******************************************************************************
+ * Creator View
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ ******************************************************************************/
+public class Creator_View
+{
     private JTextField traitName;
     private JSlider lowerBoundSlider;
     private JSlider upperBoundSlider;
@@ -15,18 +23,22 @@ public class Creator_View {
     private JSpinner upperBoundSpinner;
     private JSpinner lowerBoundSpinner;
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Creator_View()
     {
         this.probabilityDisplay.setEditable(false);
     }
-    public JPanel getPanel()
-    {
-        return this.panel;
-    }
-
 
     /***************************************************************************
-     * GETTERS / SETTERS
+     *--------------------------------------------------------------------------
+     * ███████ ███████ ████████ ████████ ███████ ██████  ███████ 
+     * ██      ██         ██       ██    ██      ██   ██ ██      
+     * ███████ █████      ██       ██    █████   ██████  ███████ 
+     *      ██ ██         ██       ██    ██      ██   ██      ██ 
+     * ███████ ███████    ██       ██    ███████ ██   ██ ███████ 
+     *--------------------------------------------------------------------------
      **************************************************************************/
 
     public void setTraitName(String name)
@@ -34,19 +46,9 @@ public class Creator_View {
         this.traitName.setText(name);
     }
 
-    public String getTraitName()
-    {
-        return this.traitName.getText();
-    }
-
     public void setLowerBoundSlider(int value)
     {
         this.lowerBoundSlider.setValue(value);
-    }
-
-    public int getLowerBoundSliderValue()
-    {
-        return this.lowerBoundSlider.getValue();
     }
 
     public void setLowerBoundSpinner(int value)
@@ -54,19 +56,9 @@ public class Creator_View {
         this.lowerBoundSpinner.setValue(value);
     }
 
-    public Object getLowerBoundSpinner()
-    {
-        return this.lowerBoundSpinner.getValue();
-    }
-
     public void setUpperBoundSlider(int value)
     {
         this.upperBoundSlider.setValue(value);
-    }
-
-    public int getUpperBoundSliderValue()
-    {
-        return this.upperBoundSlider.getValue();
     }
 
     public void setUpperBoundSpinner(int value)
@@ -74,19 +66,9 @@ public class Creator_View {
         this.upperBoundSpinner.setValue(value);
     }
 
-    public Object getUpperBoundSpinner()
-    {
-        return this.upperBoundSpinner.getValue();
-    }
-
     public void setTraitWeight(double weight)
     {
         this.traitWeight.setText("" + weight);
-    }
-
-    public String getTraitWeight()
-    {
-        return this.traitWeight.getText();
     }
 
     public void setDisplayProbability(double probability)
@@ -96,9 +78,58 @@ public class Creator_View {
         this.probabilityDisplay.setText(probabilityString);
     }
 
+    /***************************************************************************
+     *--------------------------------------------------------------------------
+     *  ██████  ███████ ████████ ████████ ███████ ██████  ███████ 
+     * ██       ██         ██       ██    ██      ██   ██ ██      
+     * ██   ███ █████      ██       ██    █████   ██████  ███████ 
+     * ██    ██ ██         ██       ██    ██      ██   ██      ██ 
+     *  ██████  ███████    ██       ██    ███████ ██   ██ ███████ 
+     *--------------------------------------------------------------------------
+     **************************************************************************/
+    public JPanel getPanel()
+    {
+        return this.panel;
+    }
+
+    public String getTraitName()
+    {
+        return this.traitName.getText();
+    }
+
+    public int getLowerBoundSliderValue()
+    {
+        return this.lowerBoundSlider.getValue();
+    }
+
+    public Object getLowerBoundSpinner()
+    {
+        return this.lowerBoundSpinner.getValue();
+    }
+
+    public int getUpperBoundSliderValue()
+    {
+        return this.upperBoundSlider.getValue();
+    }
+
+    public Object getUpperBoundSpinner()
+    {
+        return this.upperBoundSpinner.getValue();
+    }
+
+    public String getTraitWeight()
+    {
+        return this.traitWeight.getText();
+    }
 
     /***************************************************************************
-     * LISTENERS
+     *--------------------------------------------------------------------------
+     * ██      ██ ███████ ████████ ███████ ███    ██ ███████ ██████  ███████ 
+     * ██      ██ ██         ██    ██      ████   ██ ██      ██   ██ ██      
+     * ██      ██ ███████    ██    █████   ██ ██  ██ █████   ██████  ███████ 
+     * ██      ██      ██    ██    ██      ██  ██ ██ ██      ██   ██      ██ 
+     * ███████ ██ ███████    ██    ███████ ██   ████ ███████ ██   ██ ███████ 
+     *--------------------------------------------------------------------------
      **************************************************************************/
     public void addTraitNameListener(ActionListener l)
     {
@@ -161,12 +192,4 @@ public class Creator_View {
     }
 
     public void addTraitNameFocusListener(FocusListener l) { this.traitName.addFocusListener(l); }
-
-
-
-
-
-
-
-
 }

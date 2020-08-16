@@ -7,6 +7,14 @@ import DinoText_GUI.Util.TraitModel;
 
 import java.util.ArrayList;
 
+
+/*******************************************************************************
+ * Editor Model
+ *
+ * @author matthewmunson
+ * Date: 8/15/2020
+ * @version 0.7-beta
+ ******************************************************************************/
 public class Editor_Model
 {
     private ArrayList<Creator_Model> traits = new ArrayList<>();
@@ -17,17 +25,18 @@ public class Editor_Model
     private Creator_Model activeModel;
     private int activeIndex = -1;
 
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Editor_Model(Table_Probabilities probabilities, int row)
     {
         this.probabilities = probabilities;
         this.rowIndex = row;
     }
 
-    public Creator_Model getActiveModel()
-    {
-        return this.activeModel;
-    }
-
+    /***************************************************************************
+     * Constructor
+     **************************************************************************/
     public Editor_Model(Trait[] traits, Table_Probabilities probabilities, int row)
     {
         this.probabilities = probabilities;
@@ -51,11 +60,25 @@ public class Editor_Model
         }
     }
 
+    /***************************************************************************
+     * Get Active Model
+     **************************************************************************/
+    public Creator_Model getActiveModel()
+    {
+        return this.activeModel;
+    }
+
+    /***************************************************************************
+     * Get Trait Count
+     **************************************************************************/
     public int getTraitCount()
     {
         return this.traits.size();
     }
 
+    /***************************************************************************
+     * Add Trait
+     **************************************************************************/
     public void addTrait()
     {
         Creator_Model newTrait = new Creator_Model();
@@ -67,6 +90,9 @@ public class Editor_Model
         this.activeIndex = traits.size() - 1;
     }
 
+    /***************************************************************************
+     * Remove Active Trait
+     **************************************************************************/
     public void removeActiveTrait()
     {
         int currentIndex = this.activeIndex;
@@ -90,6 +116,9 @@ public class Editor_Model
         }
     }
 
+    /***************************************************************************
+     * Get Traits
+     **************************************************************************/
     public Trait[] getTraits()
     {
         Trait[] retVal = new Trait[this.traits.size()];
@@ -102,16 +131,20 @@ public class Editor_Model
         return retVal;
     }
 
+    /***************************************************************************
+     * Get Trait Name At
+     **************************************************************************/
     public String getTraitNameAt(int index)
     {
         return this.traits.get(index).getName();
     }
 
+    /***************************************************************************
+     * Switch Model
+     **************************************************************************/
     public void switchModel(int index)
     {
         this.activeModel = this.traits.get(index);
         this.activeIndex = index;
     }
-
-
 }
