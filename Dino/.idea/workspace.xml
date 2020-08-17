@@ -8,9 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="515ba6cb-9291-4e5f-b1a7-6e1aad727293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST_DINOTEXT.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/META-INF/MANIFEST_DINOVIEWER.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Dino_jar/Dino.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_addTraitButton.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_debug.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_debug.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller$listener_increment.class" afterDir="false" />
@@ -34,32 +31,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Dino/Test4.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Dino/Test4.dlist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_DesignTab/DesignColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_DesignTab/DesignColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_DesignTab/DesignTab_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_DesignTab/DesignTab_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_EntryTab/EntryColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_EntryTab/EntryColumns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_EntryTab/EntryTab_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Model_EntryTab/EntryTab_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Probabilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Probabilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/Table_Buttons/TableButton_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/Table_TraitDisplay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/Table_TraitDisplay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/TraitLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Custom_UI/TraitDisplay/TraitLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_NoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_NoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_TabbedPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_View/Table_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitCreator/Creator_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_NoTraits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_NoTraits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/TraitEditor/Editor_View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Resources/Test4.dlist" beforeDir="false" afterPath="$PROJECT_DIR$/../Resources/Test4.dlist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueView/Dialogue_View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -362,69 +335,77 @@
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="656" y="364" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1851.1234@0.0.1851.1234" timestamp="1593775972114" />
+    <state x="809" y="350" key="#xdebugger.XInspectDialog" timestamp="1597621950134">
+      <screen x="0" y="0" width="1851" height="1194" />
+    </state>
+    <state x="809" y="350" key="#xdebugger.XInspectDialog/0.0.1851.1194@0.0.1851.1194" timestamp="1597621950134" />
+    <state x="93" y="93" width="1665" height="1008" key="DiffContextDialog" timestamp="1597622146744">
+      <screen x="0" y="0" width="1851" height="1194" />
+    </state>
+    <state x="93" y="93" width="1665" height="1008" key="DiffContextDialog/0.0.1851.1194@0.0.1851.1194" timestamp="1597622146744" />
     <state x="706" y="372" key="FileChooserDialogImpl" timestamp="1594662692953">
       <screen x="0" y="0" width="1851" height="1234" />
     </state>
     <state x="706" y="372" key="FileChooserDialogImpl/0.0.1851.1234@0.0.1851.1234" timestamp="1594662692953" />
-    <state width="1398" height="192" key="GridCell.Tab.0.bottom" timestamp="1597614497601">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="274" key="GridCell.Tab.0.bottom" timestamp="1597622778819">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.bottom/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936605" />
     <state width="1398" height="192" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1597614497601" />
-    <state width="1808" height="192" key="GridCell.Tab.0.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1596801233894" />
+    <state width="880" height="274" key="GridCell.Tab.0.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1597622778819" />
     <state width="1808" height="347" key="GridCell.Tab.0.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662342" />
     <state width="1398" height="255" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1596040574569" />
-    <state width="1398" height="192" key="GridCell.Tab.0.center" timestamp="1597614497600">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="274" key="GridCell.Tab.0.center" timestamp="1597622778818">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.center/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
     <state width="1398" height="192" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1597614497600" />
-    <state width="1808" height="192" key="GridCell.Tab.0.center/0.0.1851.1194@0.0.1851.1194" timestamp="1596801233894" />
+    <state width="880" height="274" key="GridCell.Tab.0.center/0.0.1851.1194@0.0.1851.1194" timestamp="1597622778818" />
     <state width="1808" height="347" key="GridCell.Tab.0.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1596040574567" />
-    <state width="1398" height="192" key="GridCell.Tab.0.left" timestamp="1597614497600">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="274" key="GridCell.Tab.0.left" timestamp="1597622778818">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.left/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936603" />
     <state width="1398" height="192" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1597614497600" />
     <state width="1398" height="112" key="GridCell.Tab.0.left/0.0.1440.900@0.23.1440.877" timestamp="1594682617231" />
-    <state width="1808" height="192" key="GridCell.Tab.0.left/0.0.1851.1194@0.0.1851.1194" timestamp="1596801233893" />
+    <state width="880" height="274" key="GridCell.Tab.0.left/0.0.1851.1194@0.0.1851.1194" timestamp="1597622778818" />
     <state width="1808" height="347" key="GridCell.Tab.0.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1596040574566" />
-    <state width="1398" height="192" key="GridCell.Tab.0.right" timestamp="1597614497601">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="274" key="GridCell.Tab.0.right" timestamp="1597622778818">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="238" key="GridCell.Tab.0.right/0.0.1440.900/1440.0.1920.1080@0.0.1440.900" timestamp="1594527936604" />
     <state width="1398" height="192" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1597614497601" />
-    <state width="1808" height="192" key="GridCell.Tab.0.right/0.0.1851.1194@0.0.1851.1194" timestamp="1596801233894" />
+    <state width="880" height="274" key="GridCell.Tab.0.right/0.0.1851.1194@0.0.1851.1194" timestamp="1597622778818" />
     <state width="1808" height="347" key="GridCell.Tab.0.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595916662341" />
     <state width="1398" height="255" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1596040574568" />
-    <state width="1398" height="340" key="GridCell.Tab.1.bottom" timestamp="1597539662909">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="407" key="GridCell.Tab.1.bottom" timestamp="1597622747677">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="340" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1597539662909" />
-    <state width="1808" height="409" key="GridCell.Tab.1.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1596763544691" />
+    <state width="880" height="407" key="GridCell.Tab.1.bottom/0.0.1851.1194@0.0.1851.1194" timestamp="1597622747677" />
     <state width="1808" height="425" key="GridCell.Tab.1.bottom/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="340" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1597529873902" />
-    <state width="1398" height="340" key="GridCell.Tab.1.center" timestamp="1597539662908">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="407" key="GridCell.Tab.1.center" timestamp="1597622747676">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="340" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1597539662908" />
-    <state width="1808" height="409" key="GridCell.Tab.1.center/0.0.1851.1194@0.0.1851.1194" timestamp="1596763544691" />
+    <state width="880" height="407" key="GridCell.Tab.1.center/0.0.1851.1194@0.0.1851.1194" timestamp="1597622747676" />
     <state width="1808" height="425" key="GridCell.Tab.1.center/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="340" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1597529873901" />
-    <state width="1398" height="340" key="GridCell.Tab.1.left" timestamp="1597539662908">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="407" key="GridCell.Tab.1.left" timestamp="1597622747676">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="340" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1597539662908" />
-    <state width="1808" height="409" key="GridCell.Tab.1.left/0.0.1851.1194@0.0.1851.1194" timestamp="1596763544690" />
+    <state width="880" height="407" key="GridCell.Tab.1.left/0.0.1851.1194@0.0.1851.1194" timestamp="1597622747676" />
     <state width="1808" height="425" key="GridCell.Tab.1.left/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="340" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1597529873901" />
-    <state width="1398" height="340" key="GridCell.Tab.1.right" timestamp="1597539662908">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="880" height="407" key="GridCell.Tab.1.right" timestamp="1597622747676">
+      <screen x="0" y="0" width="1851" height="1194" />
     </state>
     <state width="1398" height="340" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1597539662908" />
-    <state width="1808" height="409" key="GridCell.Tab.1.right/0.0.1851.1194@0.0.1851.1194" timestamp="1596763544691" />
+    <state width="880" height="407" key="GridCell.Tab.1.right/0.0.1851.1194@0.0.1851.1194" timestamp="1597622747676" />
     <state width="1808" height="425" key="GridCell.Tab.1.right/0.0.1851.1234@0.0.1851.1234" timestamp="1595490269940" />
     <state width="1398" height="340" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1597529873901" />
     <state x="388" y="172" key="GuiDesigner.FormSource.Dialog" timestamp="1594552740690">
@@ -490,28 +471,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Dino/Dino.java</url>
-          <line>93</line>
+          <line>97</line>
           <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java</url>
-          <line>328</line>
+          <line>327</line>
           <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueController/Dialogue_Controller.java</url>
-          <line>586</line>
-          <option name="timeStamp" value="70" />
+          <url>file://$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java</url>
+          <line>288</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Controller/Table_Controller.java</url>
-          <line>307</line>
-          <option name="timeStamp" value="71" />
+          <url>file://$PROJECT_DIR$/src/DinoText_GUI/DIALOGUE_MODULE/DialogueModel/Dialogue_Model.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/DinoText_GUI/TABLE_MODULE/Table_Model/Table_Tabs/Table_Data.java</url>
-          <line>158</line>
-          <properties class="DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Data" method="setWeight">
+          <line>143</line>
+          <properties class="DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Data">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="63" />

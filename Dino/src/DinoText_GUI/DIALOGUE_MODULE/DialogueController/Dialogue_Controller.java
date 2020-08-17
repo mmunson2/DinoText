@@ -568,7 +568,7 @@ public class Dialogue_Controller {
     }
 
     private void saveDialogueFileHelper(File savedFile) {
-        dinoGUIModel.setName(savedFile.getName());
+        dinoGUIModel.setName(savedFile.getAbsolutePath());
         mostRecentSaved = savedFile;
 
         String dialogue = "";
