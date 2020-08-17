@@ -288,10 +288,18 @@ public class Dialogue_Controller {
     class listener_JMenuItem_File_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (saveExistingDialogueFile()) {
-                JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
-                jFrame.setVisible(false);
-                DinoText.main(null);
+            boolean exit = false;
+            while (!exit) {
+                if (!saveExistingDialogueFile()) {
+                    if (JOptionPane.showConfirmDialog(null,
+                            "Are you sure you want to create a new DinoText without saving?", null,
+                            JOptionPane.YES_NO_OPTION) == 0) {
+                        JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
+                        jFrame.setVisible(false);
+                        DinoText.main(null);
+                        exit = true;
+                    }
+                }
             }
         }
     }
