@@ -47,15 +47,13 @@ public class Table_Data
     {
         this.list = new DinoList(DEFAULT_LIST_NAME);
         this.emptyRows = new ArrayList<>();
+        this.probabilities = new Table_Probabilities();
 
-        this.entryCount = Table_Manager.DEFAULT_ROWS;
-
-        for(int i = 0; i < this.entryCount; i++)
+        for(int i = 0; i < Table_Manager.DEFAULT_ROWS; i++)
         {
             this.addRow();
         }
 
-        this.probabilities = new Table_Probabilities();
     }
 
     /***************************************************************************
