@@ -300,6 +300,9 @@ public class Dialogue_Controller {
                         exit = true;
                     }
                 }
+                else {
+                    exit = true;
+                }
             }
         }
     }
