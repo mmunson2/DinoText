@@ -49,14 +49,12 @@ public class Dialogue_View {
         jTextPane_dialogueInput.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                int caretPos = getjTextPane_dialogueInput().getCaretPosition();
                 super.keyPressed(e);
 
                 if (e.getKeyCode() == 8) {
                     clearAllArrows();
                     insertAllArrows();
                 }
-                jTextPane_dialogueInput.setCaretPosition(caretPos);
             }
         });
         numArrows = 0;
@@ -493,7 +491,6 @@ public class Dialogue_View {
 
     private void insertArrows() {
         numArrows = 0;
-        System.out.println("NEW CALL");
         //remove any existing arrows
         int cursorPos = 0;
         int components = 0;

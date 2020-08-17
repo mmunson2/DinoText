@@ -34,7 +34,7 @@ public class Dialogue_Controller {
 
     private static DinoConfig config;
 
-    public static final String DYNAMICLISTNAME = "Part of Conversation";
+    public static final String DYNAMICLISTNAME = "Dialogue Section";
 //    private static final String STATICVARNAME = "Game Value";
 
     //Todo: Mark for deletion
@@ -288,10 +288,18 @@ public class Dialogue_Controller {
     class listener_JMenuItem_File_New implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (saveExistingDialogueFile()) {
-                JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
-                jFrame.setVisible(false);
-                DinoText.main(null);
+            boolean exit = false;
+            while (!exit) {
+                if (!saveExistingDialogueFile()) {
+                    if (JOptionPane.showConfirmDialog(null,
+                            "Are you sure you want to create a new DinoText without saving?", null,
+                            JOptionPane.YES_NO_OPTION) == 0) {
+                        JFrame jFrame = (JFrame) SwingUtilities.getWindowAncestor(dinoGUIView.getjPanel_dialogueEditor());
+                        jFrame.setVisible(false);
+                        DinoText.main(null);
+                        exit = true;
+                    }
+                }
             }
         }
     }
@@ -568,7 +576,7 @@ public class Dialogue_Controller {
     }
 
     private void saveDialogueFileHelper(File savedFile) {
-        dinoGUIModel.setName(savedFile.getName());
+        dinoGUIModel.setName(savedFile.getAbsolutePath());
         mostRecentSaved = savedFile;
 
         String dialogue = "";
