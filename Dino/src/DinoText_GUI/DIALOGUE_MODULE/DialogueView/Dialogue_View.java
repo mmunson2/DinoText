@@ -491,7 +491,6 @@ public class Dialogue_View {
 
     private void insertArrows() {
         numArrows = 0;
-        System.out.println("NEW CALL");
         //remove any existing arrows
         int cursorPos = 0;
         int components = 0;

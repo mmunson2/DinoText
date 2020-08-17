@@ -34,7 +34,7 @@ public class Dialogue_Controller {
 
     private static DinoConfig config;
 
-    public static final String DYNAMICLISTNAME = "Part of Conversation";
+    public static final String DYNAMICLISTNAME = "Dialogue Section";
 //    private static final String STATICVARNAME = "Game Value";
 
     //Todo: Mark for deletion
