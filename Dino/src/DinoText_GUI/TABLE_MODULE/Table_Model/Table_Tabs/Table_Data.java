@@ -3,7 +3,6 @@ package DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs;
 import Dino.List.ListEntry;
 import Dino.List.Trait;
 import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
-import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Tabs.Table_Model_DesignTab.DesignColumns;
 import DinoText_GUI.Util.DinoList;
 import DinoText_GUI.Util.DinoWriter;
 
@@ -16,6 +15,10 @@ import java.util.ArrayList;
  * @author matthewmunson
  * Date: 8/15/2020
  * @version 0.7-beta
+ *
+ * This class represents all of the data stored in the Entry and Design tab
+ * tables. The Table_Model, DesignTab_Model, and EntryTab_Model all share
+ * a reference to this class.
  ******************************************************************************/
 public class Table_Data
 {
@@ -27,57 +30,68 @@ public class Table_Data
 
     private ArrayList<Boolean> emptyRows;
 
+    //Just in case you want to modify what an "empty" cell is
+    private static final String EMPTY_ENTRY_DEFAULT = "";
+    private static final String EMPTY_ENTRY_NAME_DEFAULT = "";
+    private static final double EMPTY_WEIGHT_DEFAULT = 0.0;
+
+    private static final String DEFAULT_LIST_NAME = "Untitled List";
+
     /***************************************************************************
      * Constructor
      *
+     * Creates an empty table with the default number of rows and the default
+     * list name.
      **************************************************************************/
     public Table_Data()
     {
-        this.list = new DinoList("Untitled List");
+        this.list = new DinoList(DEFAULT_LIST_NAME);
         this.emptyRows = new ArrayList<>();
-
-        for(int i = 0; i < Table_Manager.DEFAULT_ROWS; i++)
-        {
-            this.emptyRows.add(true);
-            this.list.add("");
-            this.list.setEntryName(i, "");
-            this.list.setProbability(i, 0);
-        }
 
         this.entryCount = Table_Manager.DEFAULT_ROWS;
 
-        probabilities = new Table_Probabilities();
+        for(int i = 0; i < this.entryCount; i++)
+        {
+            this.addRow();
+        }
+
+        this.probabilities = new Table_Probabilities();
     }
 
     /***************************************************************************
      * Add Row
      *
+     * Adds an empty row to the end of the table.
      **************************************************************************/
     public void addRow()
     {
         this.entryCount++;
 
-        this.list.add("");
-        this.list.setEntryName(this.entryCount - 1, "");
-        this.emptyRows.add(true);
-        this.list.setProbability(this.list.size() - 1, 0);
+        int newIndex = this.entryCount - 1; //The index of the new entry
 
-        this.probabilities.addWeight(0);
+        this.list.add(EMPTY_ENTRY_DEFAULT);
+        this.list.setEntryName(newIndex, EMPTY_ENTRY_NAME_DEFAULT);
+        this.list.setProbability(newIndex, EMPTY_WEIGHT_DEFAULT);
+        this.emptyRows.add(true);
+
+        this.probabilities.addWeight(EMPTY_WEIGHT_DEFAULT);
     }
 
     /***************************************************************************
      * Add Trait
      *
+     * Applies a trait to a given index.
      **************************************************************************/
     public void addTrait(int rowIndex, Trait newTrait)
     {
         this.list.addTrait(rowIndex, newTrait);
-        checkForEmptyRow(rowIndex);
+        updateEmptyStatus(rowIndex);
     }
 
     /***************************************************************************
      * Write To File
      *
+     * Writes the current list to the working directory
      **************************************************************************/
     public void writeToFile()
     {
@@ -86,8 +100,9 @@ public class Table_Data
     }
 
     /***************************************************************************
-     * Write To File
+     * Write To File - File overload
      *
+     * Writes the current list to the given directory.
      **************************************************************************/
     public void writeToFile(File directory)
     {
@@ -99,24 +114,34 @@ public class Table_Data
     /***************************************************************************
      * Add Entry
      *
+     * Appends an entry and weight to the next empty row in the table.
      **************************************************************************/
     public void addEntry(int nextEmpty, String entry, double weight)
     {
-        this.addEntry(nextEmpty, "", entry, weight, null);
+        addEntry(nextEmpty, "", entry, weight, null);
     }
 
     /***************************************************************************
-     * Add Entry
+     * Add Entry - ListEntry overload
      *
+     * Appends a ListEntry, which could include an entry name, entry, weight,
+     * and trait array, to the next empty row in the table.
      **************************************************************************/
     public void addEntry(int nextEmpty, ListEntry listEntry)
     {
-        this.addEntry(nextEmpty, listEntry.getEntryName(), listEntry.getListEntry(), listEntry.getBaseProbability(), listEntry.getTraits());
+        addEntry(nextEmpty,
+                 listEntry.getEntryName(),
+                 listEntry.getListEntry(),
+                 listEntry.getBaseProbability(),
+                 listEntry.getTraits());
     }
 
     /***************************************************************************
-     * Add Entry
+     * Add Entry - Main Overload
      *
+     * Appends all provided information to the next empty row in the table.
+     *
+     * - traits can be null
      **************************************************************************/
     public void addEntry(int nextEmpty, String entryName, String entry, double weight, Trait[] traits)
     {
@@ -139,11 +164,11 @@ public class Table_Data
         {
             for(Trait trait : traits)
             {
-                this.addTrait(rowIndex, trait);
+                addTrait(rowIndex, trait);
             }
         }
 
-        checkForEmptyRow(rowIndex);
+        updateEmptyStatus(rowIndex);
     }
 
     /***************************************************************************
@@ -157,64 +182,34 @@ public class Table_Data
      * • If a user sets the weight of any other row, just update the value.
      *
      **************************************************************************/
-    public void setWeight(int nextEmpty, int rowIndex, double weight)
+    public void setWeight(int rowIndex, double weight)
     {
-        if(this.isEmpty(rowIndex))
-        {
-            addEntry(nextEmpty, "", weight);
-        }
-        else
-        {
-            this.list.setProbability(rowIndex, weight);
-            this.probabilities.updateWeight(rowIndex, weight);
-            checkForEmptyRow(rowIndex);
-        }
+        this.list.setProbability(rowIndex, weight);
+        this.probabilities.updateWeight(rowIndex, weight);
+
+        updateEmptyStatus(rowIndex);
     }
 
     /***************************************************************************
      * Set Entry Name
      *
      **************************************************************************/
-    public void setEntryName(int nextEmpty, int rowIndex, String newName)
+    public void setEntryName(int rowIndex, String newName)
     {
-        if(!this.isEmpty(rowIndex)) //If the row wasn't blank, don't add a newline
-        {
-            this.list.setEntryName(rowIndex, newName);
-        }
-        else //If the row is blank and currentWeight 0, set the weight to 1
-        {
-            this.addEntry(nextEmpty, "", 1.0);
-            this.list.setEntryName(nextEmpty, newName);
-        }
-    }
+        this.list.setEntryName(rowIndex, newName);
 
+        updateEmptyStatus(rowIndex);
+    }
 
     /***************************************************************************
      * setListEntry
      *
-     * Making a change to the list entry logic? Congratulations! You've been
-     * chosen for the setListEntry test program:
-     *
-     * 1) Create a list in a blank row where you'd expect the entry to go
-     * 2) Create a list in a blank row out of order
-     * 3) Set a list entry that has text so that it's blank
-     * 4) Set a blank list entry so that it stays blank
-     * 5) Repeat #4 in an out-of-order position
-     * 6) Set the probability of a row first, then set its entry
-     *
      **************************************************************************/
-    public void setEntry(int nextEmpty, int rowIndex, String newEntry)
+    public void setEntry(int rowIndex, String newEntry)
     {
+        this.list.setEntry(rowIndex, newEntry);
 
-        if(!isEmpty(rowIndex)) //If the row wasn't blank, don't add a newline
-        {
-            this.list.setEntry(rowIndex, newEntry);
-        }
-        else //If the row is blank and currentWeight 0, set the weight to 1
-        {
-            this.addEntry(nextEmpty, newEntry, 1.0);
-            //Todo: Only do this if there aren't any traits
-        }
+        updateEmptyStatus(rowIndex);
     }
 
     /***************************************************************************
@@ -245,21 +240,22 @@ public class Table_Data
     }
 
     /***************************************************************************
-     * Check For Empty Row
+     * Update Empty Status
      *
      **************************************************************************/
-    private void checkForEmptyRow(int row)
+    private void updateEmptyStatus(int row)
     {
         String entryName = this.list.getEntryName(row);
         String entry = this.list.getEntry(row).getListEntry();
         double weight = this.list.getProbability(0);
 
         Trait[] traits = this.list.getTraits(row);
-
         boolean hasTraits = !(traits == null || traits.length == 0);
 
-        if(entryName.equals("") && entry.equals("") && weight == 0
-            && !hasTraits)
+        if(entryName.equals(EMPTY_ENTRY_NAME_DEFAULT)
+                && entry.equals(EMPTY_ENTRY_DEFAULT)
+                && weight == EMPTY_WEIGHT_DEFAULT
+                && !hasTraits)
         {
             setEmpty(row);
         }
@@ -292,7 +288,8 @@ public class Table_Data
     public void setTraits(int row, Trait[] traits)
     {
         this.list.setTraits(row, traits);
-        checkForEmptyRow(row);
+
+        this.updateEmptyStatus(row);
     }
 
     public String getName()
@@ -309,7 +306,6 @@ public class Table_Data
     {
         return this.entryCount;
     }
-
 
     public File getDirectory()
     {

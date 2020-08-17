@@ -140,13 +140,11 @@ public class DesignTab_Model extends AbstractTableModel
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         DesignColumns column = DesignColumns.values()[columnIndex];
 
-        int nextEmpty = this.nextEmptyRow();
-
         switch(column)
         {
             case ENTRY_NAME:
                 String entryName = (String) aValue;
-                this.model.setEntryName(nextEmpty, rowIndex, entryName);
+                this.model.setEntryName(rowIndex, entryName);
                 break;
 
             case PROBABILITY_WEIGHT:
@@ -162,7 +160,8 @@ public class DesignTab_Model extends AbstractTableModel
                     weight = 0;
                 }
 
-                this.model.setWeight(nextEmpty, rowIndex, weight);
+                this.model.setWeight(rowIndex, weight);
+                this.fireTableDataChanged();
 
                 break;
         }

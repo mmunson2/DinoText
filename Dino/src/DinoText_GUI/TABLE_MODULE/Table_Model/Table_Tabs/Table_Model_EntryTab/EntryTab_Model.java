@@ -116,18 +116,16 @@ public class EntryTab_Model extends AbstractTableModel
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         EntryColumns column = EntryColumns.values()[columnIndex];
 
-        int nextEmpty = this.nextEmptyRow();
-
         switch(column)
         {
             case ENTRY_NAME:
                 String entryName = (String) aValue;
-                this.model.setEntryName(nextEmpty, rowIndex, entryName);
+                this.model.setEntryName(rowIndex, entryName);
                 break;
 
             case ENTRY:
                 String entry = (String) aValue;
-                this.model.setEntry(nextEmpty, rowIndex, entry);
+                this.model.setEntry(rowIndex, entry);
                 break;
         }
     }
