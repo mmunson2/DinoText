@@ -107,11 +107,11 @@ public class DinoText implements Runnable {
         UIManager.put("info", new Color(60,63,65));
         UIManager.put("nimbusBase", new Color(100, 100, 143));
         UIManager.put("nimbusAlertYellow", new Color(248, 187, 0));
-        UIManager.put("nimbusDisabledText", new Color(60,63,65));
+        UIManager.put("textForeground", new Color(201,201,201));
+        UIManager.put("nimbusDisabledText", new Color(201,201,201));
         UIManager.put("nimbusFocus", new Color(60,63,65));
         UIManager.put("nimbusGreen", new Color(176, 179, 50));
         UIManager.put("nimbusBlueGrey", new Color(43, 43, 43));
-
         UIManager.put("nimbusInfoBlue", new Color(66, 139, 221));
         UIManager.put("nimbusLightBackground", new Color(43, 43, 43));
         UIManager.put("nimbusOrange", new Color(191, 98, 4));
@@ -120,6 +120,7 @@ public class DinoText implements Runnable {
         UIManager.put("nimbusSelectionBackground", new Color(60,63,65));
         UIManager.put("text", new Color(201, 201, 201));
         UIManager.put("Button.background",new Color(212,208,199));
+        UIManager.put("DesktopIcon.font",new Color(212,208,199));
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
