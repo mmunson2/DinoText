@@ -57,6 +57,15 @@ public class Dialogue_View {
                 }
             }
         });
+
+        jTextPane_dialogueInput.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                jTextPane_dialogueInput.setEditable(true);
+                jTextPane_dialogueInput.requestFocus();
+            }
+        });
         numArrows = 0;
         jTextPane_dialogueInput.requestFocus();
     }
@@ -259,31 +268,6 @@ public class Dialogue_View {
         }
         return files;
     }
-
-    /***************************************************************************
-     * Set List Names
-     *
-     **************************************************************************/
-    public void setSetListNames(HashSet<String> newNames) {
-        listNames = newNames;
-    }
-//
-//    /***************************************************************************
-//     * Set List Names
-//     *
-//     **************************************************************************/
-//    public void setSetListNames(HashSet<String> newNames) {
-//        listNames = newNames;
-//    }
-//
-//    /***************************************************************************
-//     * Remove List Names
-//     *
-//     **************************************************************************/
-//    public void removeListName(String name) {
-//        System.out.println("Attempting to remove " + name + "from: " + listNames.size());
-//        if (listNames.contains(name)) listNames.remove(name);
-//    }
 
     /*************************************
      * POPUP MENU
