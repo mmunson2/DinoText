@@ -67,6 +67,8 @@ public class DinoText implements Runnable {
 
         JFrame jFrame_dinoText = new JFrame();
 
+        jFrame_dinoText.getContentPane().setForeground(Color.RED);
+
         config = DinoConfig.loadConfig();
 
         table_manager = new Table_Manager();
@@ -103,11 +105,13 @@ public class DinoText implements Runnable {
     private static void setLookAndFeel() {
         UIManager.put("control", new Color(57, 59, 61));
         UIManager.put("info", new Color(60,63,65));
-        UIManager.put("nimbusBase", new Color(43, 43, 43));
+        UIManager.put("nimbusBase", new Color(100, 100, 143));
         UIManager.put("nimbusAlertYellow", new Color(248, 187, 0));
         UIManager.put("nimbusDisabledText", new Color(60,63,65));
         UIManager.put("nimbusFocus", new Color(60,63,65));
         UIManager.put("nimbusGreen", new Color(176, 179, 50));
+        UIManager.put("nimbusBlueGrey", new Color(43, 43, 43));
+
         UIManager.put("nimbusInfoBlue", new Color(66, 139, 221));
         UIManager.put("nimbusLightBackground", new Color(43, 43, 43));
         UIManager.put("nimbusOrange", new Color(191, 98, 4));
@@ -115,6 +119,7 @@ public class DinoText implements Runnable {
         UIManager.put("nimbusSelectedText", new Color(231, 231, 231));
         UIManager.put("nimbusSelectionBackground", new Color(60,63,65));
         UIManager.put("text", new Color(201, 201, 201));
+        UIManager.put("Button.background",new Color(212,208,199));
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
