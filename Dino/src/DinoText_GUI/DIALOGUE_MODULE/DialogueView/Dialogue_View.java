@@ -151,15 +151,6 @@ public class Dialogue_View {
         }
         return null;
     }
-//
-//    public JButton getStaticVarButton(String name) {
-//        for (JButton button : staticVarButtons) {
-//            if (button.getName().equals(name)) {
-//                return button;
-//            }
-//        }
-//        return null;
-//    }
 
     /***************************************************************************
      * get all buttons
