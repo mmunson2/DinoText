@@ -199,7 +199,8 @@ public class Dialogue_View {
         newList.setName(listName);
         newList.setText(listName);
         newList.addActionListener(actionListener);
-        newList.setBackground(null);
+        newList.setFont(new Font("Arial", Font.PLAIN, 20));
+        newList.setBackground(new Color(50,40,90));
         listButtons.add(newList);
         return newList;
     }
