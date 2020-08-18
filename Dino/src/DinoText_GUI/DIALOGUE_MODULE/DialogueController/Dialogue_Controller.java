@@ -35,7 +35,6 @@ public class Dialogue_Controller {
     private static DinoConfig config;
 
     public static final String DYNAMICLISTNAME = "Dialogue Section";
-//    private static final String STATICVARNAME = "Game Value";
 
     //Todo: Mark for deletion
     private static final String STATICVARNAME = "Game Value";
@@ -60,15 +59,10 @@ public class Dialogue_Controller {
      *
      **************************************************************************/
     private void initialize() {
-//        dinoGUIView.addKeyListenerjTextPane_dialogueInput(new listener_JPanel_dialogueInput_backspace());
         initializejPopupMenu();
         initializejToolBar_File();
         initializejToolBar_ListTools();
-//        initializejToolBar_DictionaryTools();
         newDialogue();
-
-        //Todo: Matthew commented this out to prevent the untitled list from appearing
-        //insertionHelper("Untitled List", false);
 
         dinoGUIView.getjTextPane_dialogueInput().addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
@@ -340,74 +334,6 @@ public class Dialogue_Controller {
         return new Dino(mostRecentSaved.getAbsolutePath());
     }
 
-    /***************************************************************************
-     * File Dropdown Menu - Preferences
-     *
-     **************************************************************************/
-    private class listener_JMenuItem_Preferences implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dinoGUIView.setVisiblejDialog_Preferences(true);
-        }
-    }
-
-
-    /***************************************************************************
-     * Tools Dropdown Menu - Convert to Dynamic List
-     *
-     **************************************************************************/
-//    private class listener_JMenuItem_Tools_ConvertToDynamicList implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            if (dinoGUIView.getSelectedText_jTextPane_dialogueInput() != null) {
-//                String word = dinoGUIView.getSelectedText_jTextPane_dialogueInput();
-//
-//                if (word.length() > 0 && word.trim().length() > 0) {
-//
-//                    String listName = dinoGUIView.requestListNamejOptionPane_listInsertion(DYNAMICLISTNAME);
-//                    conversionHelper(word, listName);
-//
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please highlight a word/sentence and try again.");
-//            }
-//        }
-//    }
-//
-//    public void conversionHelper(String word, String listName) {
-//
-//        if (word != null && word.trim().length() > 0) {
-//            conversionHelper(listName);
-//            table_controller.addEntry(word.trim());
-//        }
-//    }
-//
-//    public void conversionHelper(String listName) {
-//        if (listName.length() > 0 && listName.trim().length() > 0) {
-//
-//
-//            //inserts button into panel
-//            dinoGUIView.insertButtonjTextPane_DynamicList(listName.trim(), new ActionListener() {
-//
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    //When a list button is pressed, change the list tab
-//                    table_controller.switchToName(listName.trim());
-//                }
-//            }, Color.yellow);
-//
-//            //adds button to table
-//            table_controller.addList(listName.trim());
-//
-//            // add button to list
-//            jPopupMenu_listInsertion_updateMenuItems();
-//
-//        }
-//
-//        dinoGUIView.setFocusTSDialogueInput();
-// q
-//        dinoGUIView.deleteSelectedText_jTextPane_dialogueInput();
-//    }
     public void jPopupMenu_listInsertion_updateMenuItems() {
         HashSet<String> currentLists = new HashSet<>();
         // checks if the table has a list the view does not
@@ -493,15 +419,6 @@ public class Dialogue_Controller {
             } else {
                 JOptionPane.showMessageDialog(dinoGUIView.getjTextPane_dialogueInput(), "Please enter a name.");
             }
-    }
-
-
-    /***************************************************************************
-     * set jOptionPane_Preferences
-     * use this to pass in the JOptionPane from another class
-     **************************************************************************/
-    public void setjOptionPane_Preferences(JOptionPane pane) {
-        dinoGUIView.setjOptionPane_Preferences(pane);
     }
 
     /***************************************************************************
@@ -612,23 +529,7 @@ public class Dialogue_Controller {
     /***************************************************************************
      * SETTERS
      **************************************************************************/
-    /***************************************************************************
-     * set ListNames
-     *
-     **************************************************************************/
-    public void setListNames(Set<File> newListNames) {
-        dinoGUIModel.setListNames(newListNames);
-    }
-
-    /***************************************************************************
-     * set staticVars
-     *
-     **************************************************************************/
-    public void setStaticVars(Set<String> newVars) {
-        dinoGUIModel.setStaticVars(newVars);
-    }
-
-    /***************************************************************************
+   /***************************************************************************
      * set Dialogue
      *
      **************************************************************************/
@@ -663,19 +564,6 @@ public class Dialogue_Controller {
         return dinoGUIView.getSetListNames().toArray(new String[dinoGUIView.getSetListNames().size()]);
     }
 
-//    /***************************************************************************
-//     * get staticVars
-//     *
-//     **************************************************************************/
-//    public Set<String> getSetStaticVars() {
-//        return dinoGUIModel.getStaticVars();
-//    }
-//
-//    public String[] getArrayStaticVars() {
-//        return dinoGUIModel.getStaticVars().toArray(new String[dinoGUIModel.getStaticVars().size()]);
-//
-//    }
-
     /***************************************************************************
      * rename List
      *
@@ -684,9 +572,6 @@ public class Dialogue_Controller {
         HashSet<String> temp = dinoGUIView.getSetListNames();
         if (temp.contains(oldName)) {
             ArrayList<String> tempList = new ArrayList<>(Arrays.asList(temp.toArray(new String[0])));
-
-//            Collections.sort(tempList);
-            int oldPos = tempList.indexOf(oldName);
 
             //remove oldname from dialogue
             dinoGUIView.getText_jTextPane_dialogueInput().replaceAll(oldName, newName);

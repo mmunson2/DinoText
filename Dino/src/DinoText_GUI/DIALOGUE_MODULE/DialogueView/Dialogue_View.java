@@ -19,10 +19,8 @@ public class Dialogue_View {
     private JTextPane jTextPane_dialogueInput;
     private JLabel jLabel_instructions;
     private JMenu jMenu_listInsertion;
-    private JMenu jMenu_dictionaryFunctions;
     private JToolBar jToolBar_topBar;
     private ArrayList<JButton> listButtons; //  buttons in the popup that may not be in the dialogue
-    private ArrayList<JButton> staticVarButtons;
     private HashSet<String> listNames;
     private JDialog jDialog_Preferences = new JDialog();
     private JOptionPane jOptionPane_Preferences = new JOptionPane("Preferences");
@@ -88,13 +86,6 @@ public class Dialogue_View {
     }
 
     /***************************************************************************
-     * add button to toolbar
-     **************************************************************************/
-    public void addButtonjToolBar_topBar(JButton button) {
-        jToolBar_topBar.add(button);
-    }
-
-    /***************************************************************************
      * add menu to toolbar
      **************************************************************************/
     public void addJMenujToolBar_topBar(JMenuBar menu) {
@@ -107,10 +98,6 @@ public class Dialogue_View {
      **************************************************************************/
     public void addListenerjTextPane_dialogueInput(MouseAdapter mouseAdapter) {
         jTextPane_dialogueInput.addMouseListener(mouseAdapter);
-    }
-
-    public void addKeyListenerjTextPane_dialogueInput(KeyListener keyListener) {
-        jTextPane_dialogueInput.addKeyListener(keyListener);
     }
 
     /***************************************************************************
@@ -132,14 +119,6 @@ public class Dialogue_View {
      **************************************************************************/
     public String getText_jTextPane_dialogueInput() {
         return jTextPane_dialogueInput.getText();
-    }
-
-    /***************************************************************************
-     * get JPopup menu
-     **************************************************************************/
-    public JPopupMenu getjPopupMenu_listInsertion() {
-        jPopupMenu_listInsertion.setInvoker(jTextPane_dialogueInput);
-        return jPopupMenu_listInsertion;
     }
 
     /***************************************************************************
@@ -166,10 +145,6 @@ public class Dialogue_View {
      **************************************************************************/
     public ArrayList<JButton> getAllListButtons() {
         return listButtons;
-    }
-
-    public ArrayList<JButton> getAllStaticVarButtons() {
-        return staticVarButtons;
     }
 
     /*************************************
@@ -232,7 +207,6 @@ public class Dialogue_View {
         }
         return activeButtons;
     }
-
 
     /***************************************************************************
      * Get List Names
@@ -297,17 +271,6 @@ public class Dialogue_View {
         jPopupMenu_listInsertion.pack();
     }
 
-//    /***************************************************************************
-//     * add item to popup menu - existing insertion
-//     *
-//     **************************************************************************/
-//    public void addItemjPopupMenu_dictionary(JMenuItem temp) {
-//        if (!jMenu_dictionaryFunctions.isMenuComponent(temp)) {
-//            jMenu_dictionaryFunctions.add(temp);
-//            jPopupMenu_listInsertion.pack();
-//        }
-//    }
-
     /***************************************************************************
      * remove item to popup menu
      *
@@ -338,7 +301,6 @@ public class Dialogue_View {
      *
      **************************************************************************/
     public String requestListNamejOptionPane_listInsertion(String category) {
-        JTextArea textArea = new JTextArea();
         String listName = JOptionPane.showInputDialog(category + ":");
         return listName;
     }
@@ -351,87 +313,6 @@ public class Dialogue_View {
         listButtons.clear();
     }
 
-
-    /***************************************************************************
-     * Add List Buttons
-     *
-     **************************************************************************/
-    public void addListButtonsjPopupMenu(JButton button) {
-        listButtons.add(button);
-    }
-
-    /***************************************************************************
-     * Get Selected Text
-     *
-     **************************************************************************/
-    public String getSelectedText_jTextPane_dialogueInput() {
-        return jTextPane_dialogueInput.getSelectedText();
-    }
-
-    /***************************************************************************
-     * Set Selected Text
-     *
-     **************************************************************************/
-    public void setSelectedText_jTextPane_dialogueInput(int start, int end) {
-        jTextPane_dialogueInput.setSelectionStart(start);
-        jTextPane_dialogueInput.setSelectionEnd(end);
-    }
-
-    /***************************************************************************
-     * Delete Selected Text
-     *
-     **************************************************************************/
-    public void deleteSelectedText_jTextPane_dialogueInput() {
-        jTextPane_dialogueInput.replaceSelection("");
-    }
-
-
-//    /***************************************************************************
-//     * Highlight Word
-//     *
-//     **************************************************************************/
-//    public void highlightWord(String wordToFind, Color color) throws BadLocationException {
-//        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-//        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
-//                new DefaultHighlighter.DefaultHighlightPainter(color);
-//
-//        String dialogueInputText = jTextPane_dialogueInput.getText();
-//
-//        String words[] = dialogueInputText.split(" ");
-//
-//        int offset = 0;
-//        for (String word : words) {
-//            if (word.equals(wordToFind)) {
-//                highlighter.addHighlight(offset, offset + word.length(),
-//                        highlightPainter);
-//            }
-//            offset += word.length() + 1;
-//        }
-//    }
-//
-//    public void highlightWordInSelection(String wordToFind, Color color) throws BadLocationException {
-//        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-//        DefaultHighlighter.DefaultHighlightPainter highlightPainter =
-//                new DefaultHighlighter.DefaultHighlightPainter(color);
-//
-//        String dialogueInputText = jTextPane_dialogueInput.getSelectedText();
-//
-//        String words[] = dialogueInputText.split(" ");
-//        int offset = 0;
-//        for (String word : words) {
-//            if (word.equals(wordToFind)) {
-//                highlighter.addHighlight(offset, offset + word.length(),
-//                        highlightPainter);
-//            }
-//            offset += word.length() + 1;
-//        }
-//    }
-//
-//    public void dehighlightAll() {
-//        Highlighter highlighter = jTextPane_dialogueInput.getHighlighter();
-//        highlighter.removeAllHighlights();
-//    }
-
     /***************************************************************************
      * Set Caret Position
      *
@@ -442,10 +323,6 @@ public class Dialogue_View {
 
     public void pack() {
         SwingUtilities.getWindowAncestor(jTextPane_dialogueInput).pack();
-    }
-
-    public int getCaret_jTextPane_dialogueInput() {
-        return jTextPane_dialogueInput.getCaretPosition();
     }
 
     public void clearjTextPane_dialogueInput() {
@@ -503,8 +380,6 @@ public class Dialogue_View {
 
     private void clearAllArrows() {
         //remove any existing arrows
-
-
         ElementIterator iterator = new ElementIterator(jTextPane_dialogueInput.getStyledDocument());
         Element element;
         int caretPos = 0;
