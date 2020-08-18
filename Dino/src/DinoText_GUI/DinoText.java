@@ -22,6 +22,7 @@ import DinoText_GUI.TABLE_MODULE.Table_Model.Table_Manager;
 import DinoText_GUI.TABLE_MODULE.Table_View.Table_TabbedPane;
 import DinoText_GUI.Util.DinoConfig;
 
+import javax.swing.UIManager;
 import javax.swing.*;
 import java.awt.*;
 
@@ -53,13 +54,16 @@ public class DinoText implements Runnable {
 
         system_controller = new System_Controller(dialogue_controller, textDisplayController, table_controller);
 
-        if (LOOKANDFEEL_VISIBLE) {
-            try {
-                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); //Windows Look and feel
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-                e.printStackTrace();
-            }
-        }
+        setLookAndFeel();
+
+//        if (LOOKANDFEEL_VISIBLE) {
+//            try {
+//                ((MetalLookAndFeel) UIManager.getLookAndFeel()).setCurrentTheme(new TestTheme());
+//                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); //Windows Look and feel
+//            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         JFrame jFrame_dinoText = new JFrame();
 
@@ -94,6 +98,41 @@ public class DinoText implements Runnable {
         jFrame_dinoText.pack();
         jFrame_dinoText.setVisible(true);
 
+    }
+
+    private static void setLookAndFeel() {
+        UIManager.put("control", new Color(57, 59, 61));
+        UIManager.put("info", new Color(60,63,65));
+        UIManager.put("nimbusBase", new Color(43, 43, 43));
+        UIManager.put("nimbusAlertYellow", new Color(248, 187, 0));
+        UIManager.put("nimbusDisabledText", new Color(60,63,65));
+        UIManager.put("nimbusFocus", new Color(60,63,65));
+        UIManager.put("nimbusGreen", new Color(176, 179, 50));
+        UIManager.put("nimbusInfoBlue", new Color(66, 139, 221));
+        UIManager.put("nimbusLightBackground", new Color(43, 43, 43));
+        UIManager.put("nimbusOrange", new Color(191, 98, 4));
+        UIManager.put("nimbusRed", new Color(169, 46, 34));
+        UIManager.put("nimbusSelectedText", new Color(231, 231, 231));
+        UIManager.put("nimbusSelectionBackground", new Color(60,63,65));
+        UIManager.put("text", new Color(201, 201, 201));
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (javax.swing.UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
